@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'historiaapp',
-    #'bootstrap4',
+    #'bootstrap4', # TO FIX
     #'rest_framework',
 ]
 
