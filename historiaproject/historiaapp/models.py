@@ -1,3 +1,5 @@
+from importlib.resources import path
+from unicodedata import name
 from django.db import models
 
 class Quiz(models.Model):
@@ -33,4 +35,7 @@ class Answer(models.Model):
     score_id = models.ManyToManyField('Score')
     answer_option_id = models.ManyToManyField('AnswerOptions')
     
-
+class Card(models.Model):
+    name = models.CharField(max_length=200)
+    path = models.CharField(max_length=1000)
+    
