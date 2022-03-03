@@ -13,3 +13,17 @@ def index(request):
 #class RegisterView(generic.TemplateView):
 #    template_name = "historiaapp/register.html"
 
+class HomePage(View):
+    def get(self, request):
+        return render(request, 'historiaapp/home.html', context)
+
+
+class AddUser(View):
+    def post(self, request):
+        print("ADD USER")
+        return redirect('home')
+    
+    def get(self, request):
+        return HttpResponse('Unauthorized! AddUser.', status=401)
+
+

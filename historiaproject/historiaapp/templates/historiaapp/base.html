@@ -1,1 +1,33 @@
-<p>base</p>
+<html>
+
+<head>
+    <title>Historia</title>
+
+</head>
+
+<body style="margin: 0;">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-5" style="background-color: black;color: white; margin-bottom: -17px;">
+    <a class="navbar-brand" href="#" style="text-decoration: none;padding-left: 1rem;">
+      <p style="font-size: 5rem;margin: 0;padding: 0;display: contents; color: white;">Historia</p>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a>Login</a>
+        </li>
+        <li class="nav-item">
+            <a>Register</a>
+        </li>
+      </ul>
+
+  </nav>
+  {% block content %}{% endblock %}
+</body>
+
+</html>

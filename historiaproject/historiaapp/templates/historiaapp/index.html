@@ -1,1 +1,37 @@
-<p>Index</p>
+{% extends 'historiaapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="background-image: url( '/static/images/background.png' ); color:black; background-size:cover; height: 100%;">
+    <div style="background-color: lightgray;margin-left: 10rem;margin-right: 10rem; height: 100%; opacity: 85%;">
+        <div>
+            <p>Welcome</p>
+            <p>Please,
+            <br>
+            if you are not registered yet, kindly register to access a new world of knowledges.
+            <br>
+            else, you can sign in here.
+        </div>
+
+        <div>
+            <form method="post" action="{% url 'add-user' %}"> 
+                <div>
+                    <label for="username">Username :</label>
+                    <input type="text" id="username" name="username">
+                </div>
+                <div>
+                    <label for="password">Password :</label>
+                    <input type="password" id="password" name="password">
+                </div>
+                <div>
+                    <label for="password">Confirm password :</label>
+                    <input type="password" id="confirm_password" name="confirm_password">
+                </div>
+                <div>
+                    <input type="submit" value="Register" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
