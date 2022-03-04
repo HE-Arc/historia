@@ -4,32 +4,34 @@
 {% block content %}
 <div style="background-image: url( '/static/images/background.png' ); color:black; background-size:cover; height: 100%;">
     <div style="background-color: lightgray;margin-left: 10rem;margin-right: 10rem; height: 100%; opacity: 85%;">
-        <div>
+        <div style="display: inline-block;width: 40rem;font-size: 2em;font-family: monospace; padding-left: 1em;padding-top: 2em;">
             <p>Welcome</p>
+            <br>
             <p>Please,
+            <br>
             <br>
             if you are not registered yet, kindly register to access a new world of knowledges.
             <br>
-            else, you can sign in here.
+            Else, you can sign in.
         </div>
 
-        <div>
+        <div style="display: inline-block;width: 34rem;font-size: 1.5em; font-family: monospace;">
             <form method="post" action="{% url 'add-user' %}"> 
-                <div>
-                    <label for="username">Username :</label>
-                    <input type="text" id="username" name="username">
+                <div style="margin-bottom: 1em;">
+                    <input type="text" id="username" name="username" placeholder="Create username">
                 </div>
-                <div>
-                    <label for="password">Password :</label>
-                    <input type="password" id="password" name="password">
+                <div style="margin-bottom: 1em;">
+                    <input type="password" id="password" name="password" placeholder="Password">
                 </div>
-                <div>
-                    <label for="password">Confirm password :</label>
-                    <input type="password" id="confirm_password" name="confirm_password">
+                <div style="margin-bottom: 1em;">
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password">
                 </div>
-                <div>
+                <div style="margin-bottom: 1em;">
                     <input type="submit" value="Register" />
                 </div>
+                <div>
+                    <button class="btn btn-sm btn-secondary" type="button">Sign in</button>
+                <div>
             </form>
         </div>
     </div>

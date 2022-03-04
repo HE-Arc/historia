@@ -10,8 +10,15 @@ def index(request):
     context = {}
     return render(request, 'historiaapp/index.html', context)
 
-#class RegisterView(generic.TemplateView):
-#    template_name = "historiaapp/register.html"
+class RegisterView(generic.TemplateView):
+    print("Register view")
+    #model = User 
+    #fields = ['username', 'password']
+    #success_url = reverse_lazy('home')
+    template_name = "historiaapp/register.html"
+    
+    #def get(self, request):
+    #    return render(request, 'historiaapp/register.html', context)
 
 class HomePage(View):
     def get(self, request):
