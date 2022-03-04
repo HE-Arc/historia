@@ -1,1 +1,26 @@
-<p>LOGIN</p>
+{% extends 'historiaapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div style="background-color: lightgray;height: 100%; display: flex;">
+
+        <div style="width: 40rem;font-size: 2em;font-family: monospace; padding-top: 4em; text-align: center;">
+            <p>Sign in</p>
+            <form method="post" action="#"> 
+                <div style="margin-bottom: 1em;margin-top: 1em;">
+                    <input type="text" id="username" name="username" placeholder="Username">
+                </div>
+                <div style="margin-bottom: 1em;">
+                    <input type="password" id="password" name="password" placeholder="Password">
+                </div>
+                <div style="margin-bottom: 1em;">
+                    <input type="submit" value="Sign In" />
+                </div>
+            </form>
+        </div>
+
+        <div style="width: 54rem;background-image: url( '/static/images/background.png' ); background-size:cover; height: 100%; opacity: 60%;">
+            
+        </div>
+    </div>
+{% endblock %}

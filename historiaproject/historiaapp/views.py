@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 
 def index(request):
     context = {}
-    return render(request, 'historiaapp/index.html', context)
+    return render(request, 'historiaapp/login.html', context)
 
 class RegisterView(generic.TemplateView):
     print("Register view")
