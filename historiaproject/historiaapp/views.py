@@ -1,4 +1,3 @@
-import json
 from re import T
 
 from django.shortcuts import render
@@ -12,7 +11,7 @@ from django.db.models.query import QuerySet
 from typing import Generic
 
 from .forms import AddQuestionForm
-from .models import Card
+from .models import *
 
 #/----------------------------------------------------------------------------\#   
 #   Methods
@@ -28,8 +27,16 @@ def cards_visualizer(request):
 
 def add_question(request):
     form = AddQuestionForm()
+    if request.method=='POST':
+        form = AddQuestionForm(request.POST)
+        if(form.is_valid()):
+            form.save()
+            return redirect('/')
+        context = {'form':form}
+        return render(request, 'add_question.html', context)
+    else:
+        return redirect('cards')
     
-
 #/----------------------------------------------------------------------------\#   
 #   Views Classes
 #\----------------------------------------------------------------------------/#
@@ -41,7 +48,15 @@ class CardsView(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         context['cards'] = Card.objects.all()
         return context
+
+class QuizView(generic.TemplateView):
+    template_name = "historiaapp/quiz.html"
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['quiz'] = Quiz.objects.all()
+        return context
+
 class CardsListView(generic.ListView):
     model = Card
     

@@ -26,7 +26,7 @@
         "name": "Albert Einstein",
         "image": "../media/images/einstein.jpg",
         "birth": "14 March 1879",
-        "text": "Einstein was born in the German Empire, but moved to Switzerland in 1895, forsaking his German citizenship (as a subject of the Kingdom of Württemberg)[note 1] the following year. In 1897, at the age of 17, he enrolled in the mathematics and physics teaching diploma program at the Swiss Federal polytechnic school in Zürich, graduating in 1900."
+        "text": "Einstein was born in the German Empire, but moved to Switzerland in 1895, forsaking his German citizenship (as a subject of the Kingdom of Württemberg) the following year. In 1897, at the age of 17, he enrolled in the mathematics and physics teaching diploma program at the Swiss Federal polytechnic school in Zürich, graduating in 1900."
     }
 },
 {
@@ -36,7 +36,7 @@
         "name": "Srinivasa Ramanujan",
         "image": "../media/images/ramanujan.jpg",
         "birth": "22 December 1887",
-        "text": "During his short life, Ramanujan independently compiled nearly 3,900 results (mostly identities and equations).[6] Many were completely novel; his original and highly unconventional results, such as the Ramanujan prime, the Ramanujan theta function, partition formulae and mock theta functions, have opened entire new areas of work and inspired a vast amount of further research."
+        "text": "During his short life, Ramanujan independently compiled nearly 3,900 results (mostly identities and equations). Many were completely novel; his original and highly unconventional results, such as the Ramanujan prime, the Ramanujan theta function, partition formulae and mock theta functions, have opened entire new areas of work and inspired a vast amount of further research."
     }
 }
 ]

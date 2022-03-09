@@ -15,8 +15,13 @@ from django.conf.urls.static import static
 router = routers.DefaultRouter()
 
 urlpatterns = [
+    
     path('', views.index, name='index'),
+    
     path('cards/', views.CardsListView.as_view(), name='cards-list'),  
-    path('cards_visualizer/', views.cards_visualizer, name='cards_visualizer'),
-    path('add_question/', AddQuestionForm, name="add_question"),
+    
+    path('cards/visualizer/', views.cards_visualizer, name='cards-visualizer'),
+    
+    path('quiz/', AddQuestionForm, name="quiz"),
+    
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

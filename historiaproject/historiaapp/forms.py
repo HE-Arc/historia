@@ -15,7 +15,6 @@ from django.contrib.auth.models import User
 #
 #\----------------------------------------------------------------------------/#
 
-
 # class CreateUserForm(UserCreationForm):
 #     """_summary_
 # 

@@ -5,35 +5,25 @@ from unicodedata import name
 from django.db import models
 from django.core import serializers
 import json
-from pprint import pprint
+from pprint import pprint 
 
-class Quiz(models.Model):
-    options = {
-        "option_one"    : models.CharField(max_length=200, null=True),
-        "option_two"    : models.CharField(max_length=200, null=True),
-        "option_three"  : models.CharField(max_length=200, null=True),
-        "option_four"   : models.CharField(max_length=200, null=True),            
-    }
-    text = models.CharField(max_length=200)
-    name = models.CharField(max_length=200)
-    size = models.IntegerField
-    
-class Question(models.Model):
-    text = models.CharField(max_length=2000)
-    
+
 class QuestionByQuiz(models.Model):
     question_id = models.ManyToManyField('Question')
     quiz_id = models.ManyToManyField('Quiz')
+
     
 class AnswerOptions(models.Model):
     question_id = models.ForeignKey('Question', on_delete=models.CASCADE)
     answerText = models.CharField(max_length=200)
     isCorrect = models.BooleanField
 
+
 class User(models.Model):
     pseudo = models.CharField(max_length=200)
     password = models.CharField(max_length=200)
     isAdmin = models.BooleanField
+
     
 class Score(models.Model):
     user_id = models.ForeignKey('User', on_delete=models.CASCADE)
@@ -41,6 +31,7 @@ class Score(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     start_time = models.TimeField(auto_now_add=True)
     end_time = models.TimeField(auto_now_add=True)
+
     
 class Answer(models.Model):
     score_id = models.ManyToManyField('Score')
@@ -52,10 +43,10 @@ class Card(models.Model):
     Card model for historical characters registered in cards.json file.
     It is used as a reward when answering a question from a quizz.
     Args:
-        models (_type_): _description_
+        models (_type_): Model
 
     Returns:
-        _type_: _description_
+        _type_: Card
     """
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='images/', default="")
@@ -64,3 +55,47 @@ class Card(models.Model):
     
     def __str__(self) -> str:
         return self.name
+
+
+class Question(models.Model):
+    """_summary_
+    Quiz model based on question with four possible answers.
+    Args:
+        models (_type_): _description_
+    """
+    # name of the question
+    name = models.CharField(max_length=200)
+    
+    question = models.CharField(max_length=200)
+    
+    options = {
+        models.CharField(max_length=200, null=True) : 1,
+        models.CharField(max_length=200, null=True) : 2,
+        models.CharField(max_length=200, null=True) : 3,
+        models.CharField(max_length=200, null=True) : 4            
+    }
+    
+    answer = models.IntegerField
+    
+    character = models.ForeignKey("Card", on_delete=models.CASCADE)
+    
+    def __str__(self) -> str:
+        return self.name
+    
+
+class Quiz(models.Model):
+    """_summary_
+    Quiz model based on question with four possible answers.
+    Args:
+        models (_type_): _description_
+    """
+    # name of the quiz
+    name = models.CharField(max_length=200)
+    # number of questions of the quiz
+    size = models.IntegerField
+    # questions list
+    questions = []
+
+    def __str__(self) -> str:
+        return self.name
+   
