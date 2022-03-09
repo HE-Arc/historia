@@ -1,6 +1,11 @@
+from email.mime import image
+import imp
 from importlib.resources import path
 from unicodedata import name
 from django.db import models
+from django.core import serializers
+import json
+from pprint import pprint
 
 class Quiz(models.Model):
     text = models.CharField(max_length=200)
@@ -37,5 +42,9 @@ class Answer(models.Model):
     
 class Card(models.Model):
     name = models.CharField(max_length=200)
-    path = models.CharField(max_length=1000)
+    image = models.ImageField(upload_to='images/', default="")
+    birth = models.CharField(max_length=20)
+    text = models.CharField(max_length=4000)
     
+    def __str__(self) -> str:
+        return self.name

@@ -1,12 +1,19 @@
 from django.urls import path
 from django.contrib import admin
+from django.conf.urls import url
+from django.urls import include
 
 from . import views
+from rest_framework import routers
+from .models import Card
 
-# TODO-ADV-1-3 Add a rest_framework router to register the 2 new viewsets that you've created
+from django.conf import settings
+from django.conf.urls.static import static
 
+router = routers.DefaultRouter()
 
 urlpatterns = [
     path('', views.index, name='index'),
-    #path('register/', views.RegisterView, name='register')
-]
+    path('cards/', views.CardsListView.as_view(), name='cards-list'),  
+    path('cards_visualizer/', views.cards_visualizer, name='cards_visualizer'),
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
