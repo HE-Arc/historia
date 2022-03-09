@@ -8,12 +8,18 @@ import json
 from pprint import pprint
 
 class Quiz(models.Model):
+    options = {
+        "option_one"    : models.CharField(max_length=200, null=True),
+        "option_two"    : models.CharField(max_length=200, null=True),
+        "option_three"  : models.CharField(max_length=200, null=True),
+        "option_four"   : models.CharField(max_length=200, null=True),            
+    }
     text = models.CharField(max_length=200)
     name = models.CharField(max_length=200)
     size = models.IntegerField
     
 class Question(models.Model):
-    text = models.CharField(max_length=200)
+    text = models.CharField(max_length=2000)
     
 class QuestionByQuiz(models.Model):
     question_id = models.ManyToManyField('Question')
@@ -40,7 +46,17 @@ class Answer(models.Model):
     score_id = models.ManyToManyField('Score')
     answer_option_id = models.ManyToManyField('AnswerOptions')
     
+    
 class Card(models.Model):
+    """_summary_
+    Card model for historical characters registered in cards.json file.
+    It is used as a reward when answering a question from a quizz.
+    Args:
+        models (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='images/', default="")
     birth = models.CharField(max_length=20)

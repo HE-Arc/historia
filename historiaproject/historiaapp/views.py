@@ -10,8 +10,13 @@ from django.template.loader import render_to_string
 from rest_framework import viewsets
 from django.db.models.query import QuerySet
 from typing import Generic
+
+from .forms import AddQuestionForm
 from .models import Card
 
+#/----------------------------------------------------------------------------\#   
+#   Methods
+#\----------------------------------------------------------------------------/#
 
 def index(request):
     context = {}
@@ -20,6 +25,14 @@ def index(request):
 def cards_visualizer(request):
     context = {}
     return render(request, 'historiaapp/cards.html', context)    
+
+def add_question(request):
+    form = AddQuestionForm()
+    
+
+#/----------------------------------------------------------------------------\#   
+#   Views Classes
+#\----------------------------------------------------------------------------/#
 
 class CardsView(generic.TemplateView):
     template_name = "historiaapp/cards.html"
@@ -37,3 +50,4 @@ class CardsListView(generic.ListView):
     
     def get_queryset(self) -> QuerySet[T]:
         return Card.objects.all()
+

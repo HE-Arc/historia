@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from .models import Card
+from .models import Card, Quiz
 
 from rest_framework import serializers
 
@@ -14,3 +14,8 @@ class CardSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Card
         fields = ('name', 'image', 'birth', 'text')
+
+class QuizSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Quiz
+        fields = ('question', 'options', 'text', 'name', 'size')
