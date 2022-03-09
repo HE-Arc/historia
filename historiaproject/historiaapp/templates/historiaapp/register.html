@@ -3,8 +3,8 @@
 
 {% block content %}
 <div style="background-image: url( '/static/images/background.png' ); color:black; background-size:cover; height: 100%;">
-    <div style="background-color: lightgray;margin-left: 10rem;margin-right: 10rem; height: 100%; opacity: 85%;">
-        <div style="display: inline-block;width: 40rem;font-size: 2em;font-family: monospace; padding-left: 1em;padding-top: 2em;">
+    <div class="bg-light col-md-9 order-md-1 row featurette" style="background-color: lightgray;margin-left: 10rem;margin-right: 10rem; height: 100%; opacity: 85%;">
+        <div class="col-md-7 order-md-1" style="font-size: 2em;font-family: monospace;margin-top: 5rem;">
             <p>Welcome</p>
             <br>
             <p>Please,
@@ -15,7 +15,7 @@
             Else, you can sign in.
         </div>
 
-        <div style="display: inline-block;width: 34rem;font-size: 1.5em; font-family: monospace;">
+        <div class="col-md-5 order-md-2" style="font-size: 1.5em; font-family: monospace;margin-top: 5rem;">
             <form method="post" action="#"> 
                 <div style="margin-bottom: 1em;">
                     <input type="text" id="username" name="username" placeholder="Create username">

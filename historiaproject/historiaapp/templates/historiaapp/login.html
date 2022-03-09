@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block content %}
-    <div style="background-color: lightgray;height: 100%; display: flex;">
+    <div class="bg-light" style="background-color: lightgray;height: 100%; display: flex;">
 
-        <div style="width: 40rem;font-size: 2em;font-family: monospace; padding-top: 4em; text-align: center;">
+        <div class="col-md-5 order-md-1" style="width: 40rem;font-size: 2em;font-family: monospace; padding-top: 4em; text-align: center;">
             <p>Sign in</p>
             <form method="post" action="#"> 
                 <div style="margin-bottom: 1em;margin-top: 1em;">
@@ -19,7 +19,7 @@
             </form>
         </div>
 
-        <div style="width: 54rem;background-image: url( '/static/images/background.png' ); background-size:cover; height: 100%; opacity: 60%;">
+        <div class="col-md-7 order-md-2" style="background-image: url( '/static/images/background.png' ); background-size:cover; height: 100%; opacity: 60%;">
             
         </div>
     </div>
