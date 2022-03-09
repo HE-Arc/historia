@@ -1,3 +1,4 @@
+from re import template
 from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -10,6 +11,6 @@ def index(request):
     context = {}
     return render(request, 'historiaapp/index.html', context)
 
-#class RegisterView(generic.TemplateView):
-#    template_name = "historiaapp/register.html"
+class QuizzPage(generic.TemplateView):
+    template_name = "historiaapp/quizz/quizzpage.html"
 

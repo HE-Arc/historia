@@ -1,1 +1,36 @@
-<p>base</p>
+<html>
+  
+<head>
+    <title>Historia</title>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+</head>
+
+<body style="margin: 0;">
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <p style="font-size: 5rem;margin: 0;padding: 0;display: contents; color: white;">Historia</p>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          
+        </li>
+        <li class="nav-item">
+          
+        </li>
+      </ul>
+    <div>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+</body>
+
+</html>
