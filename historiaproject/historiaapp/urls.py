@@ -24,4 +24,12 @@ urlpatterns = [
     
     path('quiz/', AddQuestionForm, name="quiz"),
     
+    path('login/', views.login, name='login'),
+
+    path('register/', views.RegisterView.as_view(), name='register'),
+    
+    path('home/', views.HomePage.as_view(), name='home'),
+    
+    path('user/add-user/', views.AddUser.as_view(), name='add-user'),
+    
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -13,13 +13,17 @@ from typing import Generic
 from .forms import AddQuestionForm
 from .models import *
 
-#/----------------------------------------------------------------------------\#   
-#   Methods
-#\----------------------------------------------------------------------------/#
+#|----------------------------------------------------------------------------|
+#   Methods                                                                   |
+#|----------------------------------------------------------------------------/
 
 def index(request):
     context = {}
     return render(request, 'historiaapp/index.html', context)
+    
+def login(request):
+    context = {}
+    return render(request, 'historiaapp/login.html', context)
     
 def cards_visualizer(request):
     context = {}
@@ -37,9 +41,41 @@ def add_question(request):
     else:
         return redirect('cards')
     
-#/----------------------------------------------------------------------------\#   
-#   Views Classes
-#\----------------------------------------------------------------------------/#
+#|----------------------------------------------------------------------------| 
+#   Views Classes                                                             |
+#|----------------------------------------------------------------------------/
+
+
+#|-----------------------|
+#| User, Login, Register |
+#|-----------------------/
+
+class RegisterView(generic.TemplateView):
+    print("Register view")
+    #model = User 
+    #fields = ['username', 'password']
+    #success_url = reverse_lazy('home')
+    template_name = "historiaapp/register.html"
+    
+    #def get(self, request):
+    #    return render(request, 'historiaapp/register.html', context)
+
+class HomePage(View):
+    def get(self, request):
+        return render(request, 'historiaapp/home.html', context)
+
+class AddUser(View):
+    def post(self, request):
+        print("ADD USER")
+        return redirect('home')
+    
+    def get(self, request):
+        return HttpResponse('Unauthorized! AddUser.', status=401)
+
+
+#|-----------------------|
+#|Cards and Quizzes      |
+#|-----------------------/
 
 class CardsView(generic.TemplateView):
     template_name = "historiaapp/cards.html"
@@ -65,4 +101,3 @@ class CardsListView(generic.ListView):
     
     def get_queryset(self) -> QuerySet[T]:
         return Card.objects.all()
-
