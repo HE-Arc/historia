@@ -1,18 +1,17 @@
 [
-{
-    "model": "historiaapp.quiz",
-    "pk": 1,
-    "fields": {
-        "name": "Question 1",
-        "text": "What is the first enzyme discovered by Alexander Flemming about immunity?",
-        "options": {
-            "Pennicilin" : 1,
-            "Lyzozyme" : 2,
-            "Hexokinase" : 3,
-            "Caspase-8" : 4
-        },
-        "answer" : 2
+    {
+        "model": "historiaapp.quiz",
+        "pk": 1,
+        "fields": {
+            "name": "Quizz 1",
+            "size": 4,
+            "questions": {
+                "fk1" : 1,
+                "fk2" : 2,
+                "fk3" : 3,
+                "fk4" : 4
+            }
+        }
     }
-}
 ]
     

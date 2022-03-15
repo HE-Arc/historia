@@ -66,18 +66,26 @@ class Question(models.Model):
     # name of the question
     name = models.CharField(max_length=200)
     
-    question = models.CharField(max_length=200)
+    text = models.CharField(max_length=2000)
+    
+    opt_one = models.CharField(max_length=200)
+    opt_two = models.CharField(max_length=200)
+    opt_three = models.CharField(max_length=200)
+    opt_four = models.CharField(max_length=200)
+    
+    ans_one = models.BooleanField(default=False)
+    ans_two = models.BooleanField(default=False)
+    ans_three = models.BooleanField(default=False)
+    ans_four = models.BooleanField(default=False)
+    
+    character = models.ForeignKey('Card', on_delete=models.CASCADE, null=True)
     
     options = {
-        models.CharField(max_length=200, null=True) : 1,
-        models.CharField(max_length=200, null=True) : 2,
-        models.CharField(max_length=200, null=True) : 3,
-        models.CharField(max_length=200, null=True) : 4            
+        opt_one: ans_one,
+        opt_two: ans_two,
+        opt_three: ans_three,
+        opt_four: ans_four,
     }
-    
-    answer = models.IntegerField
-    
-    character = models.ForeignKey("Card", on_delete=models.CASCADE)
     
     def __str__(self) -> str:
         return self.name
@@ -91,10 +99,17 @@ class Quiz(models.Model):
     """
     # name of the quiz
     name = models.CharField(max_length=200)
+    
     # number of questions of the quiz
     size = models.IntegerField
+    
     # questions list
-    questions = []
+    #    questions = [
+    #        models.ForeignKey("Question", on_delete=models.CASCADE),
+    #        models.ForeignKey("Question", on_delete=models.CASCADE),
+    #        models.ForeignKey("Question", on_delete=models.CASCADE),
+    #        models.ForeignKey("Question", on_delete=models.CASCADE)
+    #    ]
 
     def __str__(self) -> str:
         return self.name

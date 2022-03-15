@@ -7,7 +7,7 @@ from django.urls import include
 from . import views
 from rest_framework import routers
 from .models import Card
-from .forms import AddQuestionForm
+from .forms import AddQuestionForm, QuestionOptionsForm
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -16,13 +16,17 @@ router = routers.DefaultRouter()
 
 urlpatterns = [
     
+    path('admin/', admin.site.urls),
+
     path('', views.index, name='index'),
     
     path('cards/', views.CardsListView.as_view(), name='cards-list'),  
     
     path('cards/visualizer/', views.cards_visualizer, name='cards-visualizer'),
     
-    path('quiz/', AddQuestionForm, name="quiz"),
+    path('questions/', views.QuestionListView.as_view(), name="questions-list"),
+    
+    path('questions/options', views.options_view, name='options'),
     
     path('login/', views.login, name='login'),
 

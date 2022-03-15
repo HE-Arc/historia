@@ -10,7 +10,7 @@ from rest_framework import viewsets
 from django.db.models.query import QuerySet
 from typing import Generic
 
-from .forms import AddQuestionForm
+from .forms import AddQuestionForm, QuestionOptionsForm
 from .models import *
 
 #|----------------------------------------------------------------------------|
@@ -40,7 +40,14 @@ def add_question(request):
         return render(request, 'add_question.html', context)
     else:
         return redirect('cards')
-    
+
+def options_view(request):
+    print(request)
+    OptionsForm = QuestionOptionsForm(request.POST)
+    if request.method == 'POST':
+        answer = OptionsForm.cleaned_data['options']
+    return render(request, "questions", {"answer" : answer})
+
 #|----------------------------------------------------------------------------| 
 #   Views Classes                                                             |
 #|----------------------------------------------------------------------------/
@@ -74,8 +81,9 @@ class AddUser(View):
 
 
 #|-----------------------|
-#|Cards and Quizzes      |
+#| Cards and Quizzes     |
 #|-----------------------/
+
 
 class CardsView(generic.TemplateView):
     template_name = "historiaapp/cards.html"
@@ -85,6 +93,7 @@ class CardsView(generic.TemplateView):
         context['cards'] = Card.objects.all()
         return context
 
+
 class QuizView(generic.TemplateView):
     template_name = "historiaapp/quiz.html"
     
@@ -93,11 +102,24 @@ class QuizView(generic.TemplateView):
         context['quiz'] = Quiz.objects.all()
         return context
 
+
+class QuestionView(generic.TemplateView):
+    template_name = "historiaapp/questions.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['questions'] = Question.objects.all()
+        return context
+
+
+class QuestionListView(generic.ListView):
+    model = Question  
+      
+    def get_queryset(self) -> QuerySet[T]:
+        return Question.objects.all()
+
+
 class CardsListView(generic.ListView):
-    model = Card
-    
-    # always use .objects when using the model 
-    # in the view (controller)
-    
+    model = Card    
     def get_queryset(self) -> QuerySet[T]:
         return Card.objects.all()

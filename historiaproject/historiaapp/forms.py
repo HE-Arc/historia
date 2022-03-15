@@ -1,4 +1,6 @@
+from django.forms import ChoiceField
 from django.forms import ModelForm
+from django.forms import forms
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -25,6 +27,19 @@ from django.contrib.auth.models import User
 #         model = User
 #         fields = ('url', 'username', 'email') 
  
+
+class QuestionOptionsForm(ModelForm):
+    model = Question
+    options = (
+        model.ans_one,
+        model.ans_two,
+        model.ans_three,
+        model.ans_four     
+    )
+
+    options= ChoiceField(choices = options)
+    
+
 class AddQuestionForm(ModelForm):
     """_summary_
 

@@ -1,6 +1,6 @@
 {% extends 'historiaapp/base.html' %}
 
-{% block title %}Card visualizer{% endblock %}
+{% block title %}Quizzes visualizer{% endblock %}
 
 {% block content %}
 
@@ -8,14 +8,48 @@
 
     <div class="col-md-12">
         <h1 class="display-4 mb-2">
-            Quiz
+            Quizzes
         </h1>
         <hr />
     </div>
 
     <h5 class="card-header mb-4">
-        List of Quiz actually available.
+        List of Quizzes actually available.
     </h5>
+
+    <div class="card-deck">
+
+        <!--
+        * for loop section to display all quizzes.
+        -->
+
+        {% for quiz in object_list %}
+
+            <div class="col-md-4 mb-4">
+
+                <div class="card shadow character-card text-white bg-dark">
+
+                    <div class="card-body">
+
+                        <h4 class="card-title text-lg-left">
+                            {{ quiz.name }}
+                        </h4>                
+
+                        <p class="card-text text text-sm-left character-text lead">
+                            <small class="lead">
+                            {{ quiz.text }}
+                            </small>
+                        </p>
+
+                    </div>
+
+                </div>
+                    
+            </div>
+
+        {% endfor %}
+
+    </div>
 
     <div class="container ">
 

@@ -1,0 +1,93 @@
+{% extends 'historiaapp/base.html' %}
+
+{% block title %}
+Questions visualizer
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="col-md-12">
+        <h1 class="display-4 mb-2">
+            Questions
+        </h1>
+        <hr />
+    </div>
+
+    <h5 class="card-header mb-4">
+        List of Questions actually available.
+    </h5>
+
+        <!--
+        * for loop section to display all quizzes.
+        -->
+
+        {% for questions in object_list %}
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h4 class="card-title">
+                        {{ questions.name }}
+                    </h4>                
+
+                    <p class="card-text lead">
+                        <small class="lead">
+                        {{ questions.text }}
+                        </small>
+                    </p>
+
+                    <div class="card-body">
+                        <h5 class="card-text lead">
+                            Options:
+                        </h5>
+                        
+                        <form name="form" action="" method="post">
+                            {% csrf_token %}
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="{{ questions.ans_one }}">
+                                <label class="form-check-label" for="{{ questions.ans_one }}">  
+                                    {{ questions.opt_one }}
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="{{ questions.ans_two }}">
+                                <label class="form-check-label" for="{{ questions.ans_two }}">
+                                    {{ questions.opt_two }}
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="{{ questions.ans_three }}">
+                                <label class="form-check-label" for="{{ questions.ans_three }}">
+                                    {{ questions.opt_three }}
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="{{ questions.ans_four }}">
+                                <label class="form-check-label" for="{{ questions.ans_four }}">
+                                    {{ questions.opt_four }}
+                                </label>
+                            </div>
+
+                            <button type="submit" value="submit" class="btn btn-primary">check</button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    <div class="container ">
+
+     
+    </div>
+
+
+{% endblock %}
