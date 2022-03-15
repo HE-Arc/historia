@@ -19,7 +19,7 @@ from .models import *
 
 def index(request):
     context = {}
-    return render(request, 'historiaapp/home.html', context)
+    return render(request, 'historiaapp/login.html', context)
     
 def login(request):
     context = {}
