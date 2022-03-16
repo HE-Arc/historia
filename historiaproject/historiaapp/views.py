@@ -24,33 +24,37 @@ def index(request):
 def login(request):
     context = {}
     return render(request, 'historiaapp/login.html', context)
+
+def get_answer(request):
     
-def cards_visualizer(request):
-    context = {}
-    return render(request, 'historiaapp/cards.html', context)    
-
-def add_question(request):
-    form = AddQuestionForm()
-    if request.method=='POST':
-        form = AddQuestionForm(request.POST)
-        if(form.is_valid()):
-            form.save()
-            return redirect('/')
-        context = {'form':form}
-        return render(request, 'add_question.html', context)
-    else:
-        return redirect('cards')
-
-def options_view(request):
-    print(request)
-    OptionsForm = QuestionOptionsForm(request.POST)
+    form = QuestionOptionsForm()
+    
     if request.method == 'POST':
-        answer = OptionsForm.cleaned_data['options']
-    return render(request, "questions", {"answer" : answer})
+        form = QuestionOptionsForm(request.POST)
+        
+        if form.is_valid():
+            form.save()
+            selected = form.cleaned_data.get('options')
+            print(selected)
+        
+            return redirect('questions/')
+        
+        context={'form':form}
+        
+        return render(request, 
+                'question_list.html', 
+                context)
+        
+    else:
+        return redirect('questions/')
+
+
+
 
 #|----------------------------------------------------------------------------| 
 #   Views Classes                                                             |
 #|----------------------------------------------------------------------------/
+
 
 
 #|-----------------------|
@@ -80,32 +84,68 @@ class AddUser(View):
         return HttpResponse('Unauthorized! AddUser.', status=401)
 
 
+
 #|-----------------------|
-#| Cards and Quizzes     |
+#| Dashboard             |
 #|-----------------------/
 
+class DashboardView(generic.TemplateView):
+    template_name = "historiaapp/dashboard.html"
 
-class CardsView(generic.TemplateView):
-    template_name = "historiaapp/cards.html"
-    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['user'] = User.objects.all()
+        context['quizzes'] = Quiz.objects.all()
         context['cards'] = Card.objects.all()
+        context['questions'] = Question.objects.all()
         return context
 
 
+
+#|-----------------------|
+#| Cards                 |
+#|-----------------------/
+
+class CardsListView(generic.ListView):
+    model = Card    
+    def get_queryset(self) -> QuerySet[T]:
+        return Card.objects.all()
+
+
+class CardsDetailView(generic.DetailView):
+    model = Card
+
+
+
+#|-----------------------|
+#| Quiz                  |
+#|-----------------------/
+
 class QuizView(generic.TemplateView):
     template_name = "historiaapp/quiz.html"
-    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['quiz'] = Quiz.objects.all()
         return context
 
 
+class QuizListView(generic.ListView):
+    model = Quiz
+    def get_queryset(self) -> QuerySet[T]:
+        return Quiz.objects.all()
+
+
+class QuizDetailView(generic.DetailView):
+    model = Quiz
+
+
+
+#|-----------------------|
+#| Questions             |
+#|-----------------------/
+
 class QuestionView(generic.TemplateView):
     template_name = "historiaapp/questions.html"
-    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['questions'] = Question.objects.all()
@@ -113,13 +153,10 @@ class QuestionView(generic.TemplateView):
 
 
 class QuestionListView(generic.ListView):
-    model = Question  
-      
+    model = Question
     def get_queryset(self) -> QuerySet[T]:
         return Question.objects.all()
 
 
-class CardsListView(generic.ListView):
-    model = Card    
-    def get_queryset(self) -> QuerySet[T]:
-        return Card.objects.all()
+class QuestionDetailView(generic.DetailView):
+    model = Question

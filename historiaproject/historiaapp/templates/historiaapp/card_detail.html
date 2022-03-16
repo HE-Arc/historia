@@ -1,0 +1,56 @@
+{% extends 'historiaapp/basequizz.html' %}
+
+{% block title %} Details | {{ card }} {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+
+        <h3>Card informations</h3>
+
+        <div class="card-deck">
+
+            <div class="row">
+
+                <div class="card p-3 m-3">
+
+                    <div class="row">
+
+                        <div class="character-image"
+                            style="max-width:18rem;">
+                            <img class="card-img-top img-fluid character-image p-3"
+                            src="../../{{ card.image }}"
+                            alt="Card image cap">
+                        </div>
+
+                        <div class="card p-3 m-3">
+
+                            <h4 class="card-title text-lg-left">
+                                {{ card.name }}
+                            </h4>                
+
+                            <p class="card-text text-sm character-text lead">
+                                <small class="lead">
+                                {{ card.text }}
+                                </small>
+                            </p>
+
+                            <div class="card-footer text-muted">
+                                Birth: 
+                                {{ card.birth }}
+                            </div>
+                            
+                        </div>
+                    
+                    </div>
+
+                </div>
+                
+            </div>
+        
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

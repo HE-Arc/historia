@@ -1,0 +1,49 @@
+{% extends 'historiaapp/basequizz.html' %}
+
+{% block title %} Details | {{ quiz }} {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+
+        <h3>Card informations</h3>
+
+        <div class="card-deck">
+
+            <div class="row">
+
+                <div class="card p-3 m-3">
+
+                    <div class="row">
+
+                        <div class="card p-3 m-3">
+
+                            <h4 class="card-title text-lg-left">
+                                {{ quiz.name }}
+                            </h4>                
+
+                            <p class="card-text text-sm character-text lead">
+                                <small class="lead">
+                                {{ quiz.size }}
+                                </small>
+                            </p>
+
+                            <div class="card-text text-sm">
+                                Birth: 
+                                {{ quiz.options }}
+                            </div>
+                            
+                        </div>
+                    
+                    </div>
+
+                </div>
+                
+            </div>
+        
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

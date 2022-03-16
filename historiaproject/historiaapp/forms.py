@@ -1,9 +1,7 @@
-from django.forms import ChoiceField
-from django.forms import ModelForm
-from django.forms import forms
+from django.forms import *
 from .models import *
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.forms import *
+from django.contrib.auth.models import *
 
 #/----------------------------------------------------------------------------\#   
 #   _summary_:
@@ -26,19 +24,17 @@ from django.contrib.auth.models import User
 #     class Meta:
 #         model = User
 #         fields = ('url', 'username', 'email') 
- 
+
+#|----------------------------------------------------------------------------| 
+#   Model Forms                                                               |
+#|----------------------------------------------------------------------------/
+
 
 class QuestionOptionsForm(ModelForm):
-    model = Question
-    options = (
-        model.ans_one,
-        model.ans_two,
-        model.ans_three,
-        model.ans_four     
-    )
+    class Meta:
+        model = Question
+        fields = '__all__'
 
-    options= ChoiceField(choices = options)
-    
 
 class AddQuestionForm(ModelForm):
     """_summary_
@@ -49,3 +45,13 @@ class AddQuestionForm(ModelForm):
     class Meta:
         model = Quiz
         fields = "__all__"
+        
+        
+#|----------------------------------------------------------------------------| 
+#   Forms                                                                     |
+#|----------------------------------------------------------------------------/
+
+
+class QuestionOptionsForm(Form):
+    options = CharField(widget=RadioSelect(choices=Question.options))
+    

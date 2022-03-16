@@ -1,0 +1,89 @@
+{% extends 'historiaapp/base.html' %}
+
+{% block title %}
+Questions visualizer
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="col-md-12">
+        <h1 class="display-4">
+            Dashboard
+        </h1>
+        <hr/>
+    </div>
+
+    <div class="card-body">
+        <div class="card text-white bg-dark">
+
+            <div class="card-body">
+                <h4 class="display-5 col mt-5">Users:</h4>
+                <div class="container">
+                    <div class="row">    
+                        {% for user in users %}
+                            <div class="card shadow character-card text-dark bg-white p-3 m-3"
+                                style="max-width: 14rem;height: auto;">
+                                <h5 class="card-text">{{ user.pseudo }}</h5>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <h4 class="display-5 col mt-5">Cards:</h4>
+                <div class="container">
+                    <div class="row">    
+                        {% for card in cards %}
+                            <div class="card shadow character-card text-dark bg-white p-3 m-3"
+                                style="max-width: 14rem;height: auto;">
+                                
+                                <a href="{% url 'cards-detail' card.id %}" class="btn btn-dark btn-sm">Informations</a>
+
+                                <h5 class="card-text">{{ card.name }}</h5>
+                                <p class="card-text">{{ card.birth }}</p>
+
+                                <div class="text-center">
+                                    <img class="card-img-top img-fluid character-image p-3"
+                                    src="{{ card.image }}"
+                                    alt="Card image cap">
+                                </div>
+                                
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        
+            <div class="card-body">
+                <h4 class="display-5 col mt-5">Questions:</h4>
+                <div class="container">
+                    <div class="row">    
+                        {% for question in questions %}
+                            <div class="card shadow character-card text-dark bg-white p-3 m-3"
+                                style="max-width: 14rem;height: auto;">
+                                <h5 class="card-text">{{ question.name }}</h5>
+                                <p class="card-text">{{ question.text }}</p>                                
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+        <!--
+        * for loop section to display all quizzes.
+        -->
+
+
+    <div class="container ">
+
+     
+    </div>
+
+
+{% endblock %}

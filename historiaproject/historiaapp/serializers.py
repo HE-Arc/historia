@@ -23,15 +23,12 @@ class QuestionSerializer(serializers.HyperlinkedModelSerializer):
         fields = (
             'name', 
             'text', 
-            'opt_one',
-            'opt_two',
-            'opt_three',
-            'opt_four',
-            'ans_one',
-            'ans_two',
-            'ans_three',
-            'ans_four',
-            'answer', 
+            'text_opt_one',
+            'text_opt_two',
+            'text_opt_three',
+            'text_opt_four',
+            'answer',
+            'options',
             'character'
         )
 

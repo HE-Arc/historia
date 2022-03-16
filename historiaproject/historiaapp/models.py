@@ -16,7 +16,7 @@ class QuestionByQuiz(models.Model):
 class AnswerOptions(models.Model):
     question_id = models.ForeignKey('Question', on_delete=models.CASCADE)
     answerText = models.CharField(max_length=200)
-    isCorrect = models.BooleanField
+    isCorrect = models.BooleanField(default=False)
 
 
 class User(models.Model):
@@ -62,33 +62,29 @@ class Question(models.Model):
     Quiz model based on question with four possible answers.
     Args:
         models (_type_): _description_
-    """
-    # name of the question
+    """            
     name = models.CharField(max_length=200)
-    
     text = models.CharField(max_length=2000)
     
     opt_one = models.CharField(max_length=200)
     opt_two = models.CharField(max_length=200)
     opt_three = models.CharField(max_length=200)
     opt_four = models.CharField(max_length=200)
-    
-    ans_one = models.BooleanField(default=False)
-    ans_two = models.BooleanField(default=False)
-    ans_three = models.BooleanField(default=False)
-    ans_four = models.BooleanField(default=False)
-    
-    character = models.ForeignKey('Card', on_delete=models.CASCADE, null=True)
-    
-    options = {
-        opt_one: ans_one,
-        opt_two: ans_two,
-        opt_three: ans_three,
-        opt_four: ans_four,
-    }
-    
+
+    answer = models.IntegerField(default=1)
+
+    character = models.ForeignKey('Card', 
+                                on_delete=models.CASCADE, 
+                                null=True)
+
+    options = models.IntegerChoices('Options', 
+                                'ONE TWO THREE FOUR')
+
     def __str__(self) -> str:
         return self.name
+    
+    def get_answer(self) -> int:
+        return self.answer
     
 
 class Quiz(models.Model):
@@ -103,13 +99,12 @@ class Quiz(models.Model):
     # number of questions of the quiz
     size = models.IntegerField
     
-    # questions list
-    #    questions = [
-    #        models.ForeignKey("Question", on_delete=models.CASCADE),
-    #        models.ForeignKey("Question", on_delete=models.CASCADE),
-    #        models.ForeignKey("Question", on_delete=models.CASCADE),
-    #        models.ForeignKey("Question", on_delete=models.CASCADE)
-    #    ]
+    questions = [
+        models.ForeignKey("Question", on_delete=models.CASCADE),
+        models.ForeignKey("Question", on_delete=models.CASCADE),
+        models.ForeignKey("Question", on_delete=models.CASCADE),
+        models.ForeignKey("Question", on_delete=models.CASCADE)
+    ]
 
     def __str__(self) -> str:
         return self.name
