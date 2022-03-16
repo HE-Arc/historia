@@ -16,19 +16,32 @@
         </div>
 
         <div class="col-md-5 order-md-2" style="font-size: 1.5em; font-family: monospace;margin-top: 5rem;">
-            <form method="post" action="#"> 
+            <form class="form-group" method="post" action="{% url 'addUser' %}"> 
+                {% csrf_token %}
                 <div style="margin-bottom: 1em;">
-                    <input type="text" id="username" name="username" placeholder="Create username">
+                    <input class="form-control" type="text" id="pseudo" name="pseudo" placeholder="Create username">
                 </div>
                 <div style="margin-bottom: 1em;">
-                    <input type="password" id="password" name="password" placeholder="Password">
+                    <input class="form-control" type="password" id="password" name="password" placeholder="Password">
                 </div>
                 <div style="margin-bottom: 1em;">
-                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password">
+                    <input class="form-control" type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password">
                 </div>
+                
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %} 
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+
                 <div style="margin-bottom: 1em;">
                     <input type="submit" value="Register" />
                 </div>
+
                 <div>
                     <a href="{% url 'login' %}" class="btn btn-sm btn-secondary" type="button">Sign in</a>
                 <div>

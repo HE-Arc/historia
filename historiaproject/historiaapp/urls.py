@@ -28,8 +28,9 @@ urlpatterns = [
 
     path('register/', views.RegisterView.as_view(), name='register'),
     
+    path('register/addUser/', views.AddUser, name='addUser'),
+
     path('home/', views.HomePage.as_view(), name='home'),
     
-    path('user/add-user/', views.AddUser.as_view(), name='add-user'),
     
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
