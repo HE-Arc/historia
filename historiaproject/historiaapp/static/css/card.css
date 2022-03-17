@@ -12,6 +12,10 @@
   border-radius: 1.25em;
 }
 
+.darker {
+  background-color :#1c1c1c;
+}
+
 .character-card {
   max-width: 100%;
   height: 100%;

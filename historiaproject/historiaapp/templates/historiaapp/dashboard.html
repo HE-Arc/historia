@@ -60,7 +60,10 @@ Questions visualizer
             <div class="card-body">
                 <h4 class="display-5 col mt-5">Questions:</h4>
                 <div class="container">
-                    <div class="row">    
+                    <div class="row">
+
+                        <a href="{% url 'questions-list' %}" class="btn btn-dark btn-sm">Liste de questions</a>
+
                         {% for question in questions %}
                             <div class="card shadow character-card text-dark bg-white p-3 m-3"
                                 style="max-width: 14rem;height: auto;">

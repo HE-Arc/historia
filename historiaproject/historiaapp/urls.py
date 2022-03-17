@@ -48,10 +48,18 @@ urlpatterns = [
     # Questions urls
     # ---------------------------------------------------------------------------------- #
     
-    path('questions/', views.QuestionListView.as_view(), name="questions-list"),
+    path('dashboard/questions/', views.QuestionListView.as_view(), name="questions-list"),
     
-    path('questions/<pk>', views.QuestionListView.as_view(), name="questions-detail"),
+    path('dashboard/questions/check/', views.QuestionCheckView.as_view(), name="questions-check"),
     
-    path('get_answer/', views.get_answer, name='get_answer'),
+    path('dashboard/questions/checkanswer/', views.check_answer, name="questions-checkanswer"),
     
+    path('dashboard/questions/new/', views.QuestionCreateView.as_view(), name="questions-create"),
+    
+    path('dashboard/questions/<pk>/', views.QuestionDetailView.as_view(), name="questions-detail"),
+    
+    path('dashboard/questions/<pk>/update', views.QuestionUpdateView.as_view(), name="questions-update"),
+    
+    path('dashboard/questions/<pk>/delete', views.QuestionDeleteView.as_view(), name="questions-delete"),
+        
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

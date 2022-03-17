@@ -29,8 +29,17 @@ from django.contrib.auth.models import *
 #   Model Forms                                                               |
 #|----------------------------------------------------------------------------/
 
+OPTIONS = [
+        (1, 'one'),
+        (2, 'two'),
+        (3, 'three'),
+        (4, 'four')
+    ] 
 
 class QuestionOptionsForm(ModelForm):
+
+    options = CharField(widget=RadioSelect(choices=OPTIONS))
+    
     class Meta:
         model = Question
         fields = '__all__'
@@ -45,13 +54,9 @@ class AddQuestionForm(ModelForm):
     class Meta:
         model = Quiz
         fields = "__all__"
-        
-        
-#|----------------------------------------------------------------------------| 
-#   Forms                                                                     |
-#|----------------------------------------------------------------------------/
 
 
-class QuestionOptionsForm(Form):
-    options = CharField(widget=RadioSelect(choices=Question.options))
-    
+class QuizzForm(ModelForm):
+    class Meta:
+        model = Quiz
+        fields = "__all__"        

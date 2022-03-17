@@ -6,12 +6,14 @@ from django.http import HttpResponse, JsonResponse
 from django.views import generic, View
 from django.urls import reverse_lazy
 from django.template.loader import render_to_string
+from matplotlib.style import context
 from rest_framework import viewsets
 from django.db.models.query import QuerySet
 from typing import Generic
 
 from .forms import AddQuestionForm, QuestionOptionsForm
 from .models import *
+from django.contrib.auth import get_user_model
 
 #|----------------------------------------------------------------------------|
 #   Methods                                                                   |
@@ -25,37 +27,30 @@ def login(request):
     context = {}
     return render(request, 'historiaapp/login.html', context)
 
-def get_answer(request):
+def check_answer(request):
+    context = Question.objects.get(pk=request.POST.get("option_id"))
+        
+    if request.POST.get(str(context.pk)):
+        user_answer = request.POST['option_id']
+        question = Question.objects.get(pk=request.POST.get("option_id"))
+        
+        print("QUESTION WAS ANSWERED")
+        print("POST : ", request.POST['option_id'])
+        print("test answer", question.answer, "type:", type(question.answer))
+        print("user answer", user_answer, "type:", type(user_answer))
+
+        if user_answer == str(question.answer):
+            question.is_correct = True
+        else:
+            question.is_correct = False
+
+        question.save()
     
-    form = QuestionOptionsForm()
-    
-    if request.method == 'POST':
-        form = QuestionOptionsForm(request.POST)
-        
-        if form.is_valid():
-            form.save()
-            selected = form.cleaned_data.get('options')
-            print(selected)
-        
-            return redirect('questions/')
-        
-        context={'form':form}
-        
-        return render(request, 
-                'question_list.html', 
-                context)
-        
-    else:
-        return redirect('questions/')
-
-
-
+    return render(request, 'historiaapp/question_list.html', context)
 
 #|----------------------------------------------------------------------------| 
 #   Views Classes                                                             |
 #|----------------------------------------------------------------------------/
-
-
 
 #|-----------------------|
 #| User, Login, Register |
@@ -121,6 +116,7 @@ class CardsDetailView(generic.DetailView):
 #| Quiz                  |
 #|-----------------------/
 
+# not used anymore, was mainly used to test data at first
 class QuizView(generic.TemplateView):
     template_name = "historiaapp/quiz.html"
     def get_context_data(self, **kwargs):
@@ -144,8 +140,9 @@ class QuizDetailView(generic.DetailView):
 #| Questions             |
 #|-----------------------/
 
+# not used anymore, was mainly used to test data at first
 class QuestionView(generic.TemplateView):
-    template_name = "historiaapp/questions.html"
+    template_name = "historiaapp/question_list.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['questions'] = Question.objects.all()
@@ -160,3 +157,62 @@ class QuestionListView(generic.ListView):
 
 class QuestionDetailView(generic.DetailView):
     model = Question
+
+
+class QuestionCreateView(generic.CreateView):
+    model = Question
+
+    fields = [
+        'name', 
+        'text', 
+        'opt_one',
+        'opt_two',
+        'opt_three',
+        'opt_four',
+        'answer',
+        'character'
+    ]
+    
+    success_url = reverse_lazy('questions-list')
+
+
+class QuestionUpdateView(generic.UpdateView):
+    model = Question
+
+    fields = [
+        'name', 
+        'text', 
+        'opt_one',
+        'opt_two',
+        'opt_three',
+        'opt_four',
+        'answer',
+        'character'
+    ]
+    
+    success_url = reverse_lazy('questions-list')
+
+
+class QuestionDeleteView(generic.DeleteView):
+    model = Question
+    success_url = reverse_lazy('questions-list')
+
+
+class QuestionCheckView(View):
+    def post(self, request):
+        user_answer = request.POST['option_id']
+        question = Question.objects.get(pk=request.POST.get("option_id"))
+        
+        print("QUESTION WAS ANSWERED")
+        print("POST : ", request.POST['option_id'])
+        print("test answer", question.answer, "type:", type(question.answer))
+        print("user answer", user_answer, "type:", type(user_answer))
+
+        if user_answer == str(question.answer):
+            question.is_correct = True
+        else:
+            question.is_correct = False
+
+        question.save()
+        
+        return redirect('questions-list')

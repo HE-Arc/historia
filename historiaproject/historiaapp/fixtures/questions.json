@@ -10,6 +10,7 @@
             "opt_three": "Hexokinase",
             "opt_four": "Caspase-8",
             "answer" : 2,
+            "is_correct": false,
             "character" : 1
         }
     },
@@ -24,6 +25,7 @@
             "opt_three" : "Hexokinase",
             "opt_four" : "Caspase-8",
             "answer" : 2,
+            "is_correct": false,
             "character" : 1
         }
     }

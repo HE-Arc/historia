@@ -1,11 +1,13 @@
 from email.mime import image
 import imp
 from importlib.resources import path
+from ssl import Options
 from unicodedata import name
 from django.db import models
 from django.core import serializers
 import json
 from pprint import pprint 
+from django.db.models.signals import post_save, post_delete
 
 
 class QuestionByQuiz(models.Model):
@@ -22,9 +24,9 @@ class AnswerOptions(models.Model):
 class User(models.Model):
     pseudo = models.CharField(max_length=200)
     password = models.CharField(max_length=200)
-    isAdmin = models.BooleanField
+    is_admin = models.BooleanField(default=False)
 
-    
+
 class Score(models.Model):
     user_id = models.ForeignKey('User', on_delete=models.CASCADE)
     quiz_id = models.ForeignKey('Quiz', on_delete=models.CASCADE)
@@ -70,21 +72,20 @@ class Question(models.Model):
     opt_two = models.CharField(max_length=200)
     opt_three = models.CharField(max_length=200)
     opt_four = models.CharField(max_length=200)
-
+    
     answer = models.IntegerField(default=1)
+    
+    is_correct = models.BooleanField(default=False)
 
-    character = models.ForeignKey('Card', 
-                                on_delete=models.CASCADE, 
-                                null=True)
+    character = models.ForeignKey('Card',
+                        on_delete=models.CASCADE, 
+                        null=True)
 
     options = models.IntegerChoices('Options', 
-                                'ONE TWO THREE FOUR')
-
+                        'ONE TWO THREE FOUR')
+    
     def __str__(self) -> str:
         return self.name
-    
-    def get_answer(self) -> int:
-        return self.answer
     
 
 class Quiz(models.Model):
