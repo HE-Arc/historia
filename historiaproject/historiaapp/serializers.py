@@ -8,7 +8,7 @@ from rest_framework import serializers
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('url', 'username', 'email')
+        fields = ('pseudo', 'password', 'is_admin')
 
 class CardSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

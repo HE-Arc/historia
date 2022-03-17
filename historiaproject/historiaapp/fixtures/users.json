@@ -1,0 +1,26 @@
+[
+    {
+        "model": "historiaapp.user",
+        "pk": 1,
+        "fields": {
+            "pseudo": "Simon",
+            "password": "simon"
+        }
+    },
+    {
+        "model": "historiaapp.user",
+        "pk": 2,
+        "fields": {
+            "pseudo": "Alex",
+            "password": "alex"
+        }
+    },
+    {
+        "model": "historiaapp.user",
+        "pk": 3,
+        "fields": {
+            "pseudo": "Yasmine",
+            "password": "yasmine"
+        }
+    }
+]

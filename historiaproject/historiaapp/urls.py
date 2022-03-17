@@ -14,7 +14,9 @@ from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 
+
 urlpatterns = [
+    path('admin/', admin.site.urls),
     
     path('', views.index, name='index'),
     
@@ -25,6 +27,8 @@ urlpatterns = [
     path('quiz/', AddQuestionForm, name="quiz"),
     
     path('login/', views.index, name='login'),
+    
+    path('loginUser/', views.LoginUser, name='loginUser'),
 
     path('register/', views.RegisterView.as_view(), name='register'),
     

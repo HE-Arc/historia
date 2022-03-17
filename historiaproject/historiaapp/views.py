@@ -62,93 +62,71 @@ class HomePage(View):
         return render(request, 'historiaapp/home.html', context)
 
 my_default_errors = {
-    'required': 'All the field are required. The passwords habe to be the same.',
+    'required': 'All the field are required. The passwords have to be the same.',
     'invalid': 'Enter a valid value'
 }
 
-class MyForm(forms.ModelForm):
-    name = forms.CharField()
-    
+class AddUserForm(forms.ModelForm):  
     class Meta:
         model = User
-        fields = ('pseudo', 'password')
+        fields = "__all__"
         pseudo = forms.CharField(error_messages=my_default_errors)
         password = forms.CharField(error_messages=my_default_errors)
 
+    def __init__(self, *args, **kwargs):
+        super(AddUserForm, self).__init__(*args, **kwargs)
+
+        # add custom error messages
+        self.fields['pseudo'].error_messages.update({
+            'required': 'Please enter an username.',
+        })
+        
+        self.fields['password'].error_messages.update({
+            'required': 'The passwords have to be the same.',
+        })
+        
+      
+class LoginUserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = "__all__"
+        pseudo = forms.CharField(error_messages=my_default_errors)
+        password = forms.CharField(error_messages=my_default_errors)
+
+  
+def LoginUser(request):
+    context = {}
+    form = LoginUserForm(request.POST or None)
+    pseudo = request.POST['pseudo']
+    password = request.POST['password']
+    
+    user = authenticate(request, pseudo=pseudo, password=password)
+    if user is not None:
+        login(request, user)
+        # Redirect to a success page.
+        success_url = reverse_lazy('home')
+    else:
+        # Return an 'invalid login' error message.
+        return render(request, 'historiaapp/login.html',{
+            "message": "Wrong login" })
+    
     
 def AddUser(request):
-    print("AddUser")
     context = {}
     if request.method == "POST" or None:
+        form = AddUserForm(request.POST or None)
         pseudo = request.POST['pseudo']
         password = request.POST['password']
         passwordConfirm = request.POST['confirm_password']
-        print(pseudo)
-        print(password)
-        print(passwordConfirm)
         
-        if pseudo is not None and password == passwordConfirm:
-            #template_name = "historiaapp/home.html"
+        if password == passwordConfirm and form.is_valid():
+            form.save()
             return render(request, 'historiaapp/home.html', context)
         else:
-            form = MyForm(request.POST or None)
-            print(form.errors)
-            return render(request, 'historiaapp/register.html',{'form':form})
-
-            #return render(request, 'historiaapp/register.html', context)
-            #template_name = "historiaapp/register.html"
+            return render(request, 'historiaapp/register.html',{
+            "message": "Passwords must match."
+        })
             
-        '''
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            # Redirect to a success page.
-            success_url = reverse_lazy('home')
-            #template_name = "historiaapp/home.html"
-        else:
-            # Return an 'invalid login' error message.
-            print(form.errors)
-            
-            
-        form = MyForm(request.POST or None)
-        if form.is_valid():
-            form.save(commit=False)
-            print(form)
-            print("Valid form")
-            form.save()
-            template_name = "historiaapp/home.html"
-        else:
-            print(form)
-            print("Invalid Form")
-            print(form.errors)
-            template_name = "historiaapp/register.html"
-    '''
-    
-    #model = User 
-    #fields = ['username', 'password']
-    #success_url = reverse_lazy('home')
-    '''
-    def post(self, request):  
-        print("addUser")
-        print(request)
-        model = User 
-        fields = ['username', 'password']
-        
-        pseudo = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            # Redirect to a success page.
-            success_url = reverse_lazy('home')
-            #template_name = "historiaapp/home.html"
-        else:
-            # Return an 'invalid login' error message.
-            print(form.errors)
-    
-    def get(self, request):
-        return HttpResponse('Unauthorized! AddUser.', status=401)
-    '''
 
 #|-----------------------|
 #|Cards and Quizzes      |
