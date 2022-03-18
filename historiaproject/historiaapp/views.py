@@ -27,10 +27,12 @@ def login(request):
     context = {}
     return render(request, 'historiaapp/login.html', context)
 
-def check_answer(request):
-    context = Question.objects.get(pk=request.POST.get("option_id"))
-        
-    if request.POST.get(str(context.pk)):
+def checkanswer(request):
+    question = Question.objects.get(pk=request.GET.get('btn_' + str(question.id)))
+    print(question)
+    print('btn_' + str(question.id))
+    
+    if request.GET.get('btn_' + str(question.id)) == request.POST.get('btn_' + str(question.id)):
         user_answer = request.POST['option_id']
         question = Question.objects.get(pk=request.POST.get("option_id"))
         
@@ -46,7 +48,7 @@ def check_answer(request):
 
         question.save()
     
-    return render(request, 'historiaapp/question_list.html', context)
+    return redirect('questions-list')
 
 #|----------------------------------------------------------------------------| 
 #   Views Classes                                                             |
@@ -200,8 +202,15 @@ class QuestionDeleteView(generic.DeleteView):
 
 class QuestionCheckView(View):
     def post(self, request):
-        user_answer = request.POST['option_id']
         question = Question.objects.get(pk=request.POST.get("option_id"))
+        question.is_correct = False
+        print("question: ", question)
+        print("request.POST.get(option_id): ", request.POST.get("option_id"))
+        
+        btn_id = request.POST.get('btn_' + str(question.id))
+        print("btn_id: ", btn_id)
+        
+        user_answer = request.POST['option_id']
         
         print("QUESTION WAS ANSWERED")
         print("POST : ", request.POST['option_id'])
@@ -212,6 +221,8 @@ class QuestionCheckView(View):
             question.is_correct = True
         else:
             question.is_correct = False
+
+        print("question: ", question.is_correct)
 
         question.save()
         

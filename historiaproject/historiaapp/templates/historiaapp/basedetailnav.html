@@ -18,13 +18,11 @@
 
 <body class="body text-light darker">
     <div class="pos-f-t darker">
-      <div class="row m-3 p-3">
-
-        <!--LEFT PART-->
+      <div class="row m-4">
         <div class="darker text-light col-sm mt-6">
           <a class="navbar-brand text-light" href="{% url 'dashboard' %}">
             <div class="row">
-              <img src="../../media/images/logo.svg"
+              <img src="../../../media/images/logo.svg"
               width="100" height="100" alt="logo">
               
               <div class="display-4 lead text-light mb-4">
@@ -37,18 +35,8 @@
               </div>
           </a>
         </div>
-        
-        <!--CENTER PART - QUIZZ-->
-        <div class="darker text-light col-sm mt-6">
-          <a class="navbar-brand" href="{% url 'questions-list' %}">
-            <img src="../media/images/quizz.svg" 
-            width="154" height="154" alt="">
-          </a>
-        </div>
 
-        <!--RIGHT PART - USER-->
         <div class="darker col-">
-          
           <div class="collapse darker" id="navbarToggleExternalContent">
             <div class="darker text-light p-4">
               <h4 class="text-light">Navigation</h4>
@@ -63,16 +51,16 @@
             type="button" data-toggle="collapse" 
             data-target="#navbarToggleExternalContent" 
             aria-controls="navbarToggleExternalContent" 
-            aria-expanded="false" 
+            aria-expanded="false"
             aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
           </nav>
-
         </div>
         <span class="border-right border-warning"></span>            
       </div>
     </div>
+  </div>
 
   {% block content %}
   

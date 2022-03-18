@@ -1,7 +1,7 @@
 {% extends 'historiaapp/base.html' %}
 
 {% block title %}
-Questions visualizer
+Historia
 {% endblock %}
 
 {% block content %}
@@ -15,10 +15,10 @@ Questions visualizer
         <hr/>
     </div>
 
-    <div class="card-body">
+    <div class="card-body darker">
         <div class="card text-white bg-dark">
 
-            <div class="card-body">
+            <div class="card-body darker">
                 <h4 class="display-5 col mt-5">Users:</h4>
                 <div class="container">
                     <div class="row">    
@@ -32,32 +32,40 @@ Questions visualizer
                 </div>
             </div>
 
-            <div class="card-body">
-                <h4 class="display-5 col mt-5">Cards:</h4>
-                <div class="container">
+            <div class="card-body darker">
+                <h4 class="display-5 darker col mt-5">Cards:</h4>
+                <div class="container darker">
                     <div class="row">    
                         {% for card in cards %}
-                            <div class="card shadow character-card text-dark bg-white p-3 m-3"
-                                style="max-width: 14rem;height: auto;">
+                            <div class="card bg-light shadow character-card text-dark p-3 m-3"
+                                style="max-width: 14rem; height: auto;">
                                 
-                                <a href="{% url 'cards-detail' card.id %}" class="btn btn-dark btn-sm">Informations</a>
-
-                                <h5 class="card-text">{{ card.name }}</h5>
-                                <p class="card-text">{{ card.birth }}</p>
+                                <div class="bg-light">
+                                    <h5 class="card-text">{{ card.name }}</h5>
+                                    <p class="card-text">{{ card.birth }}</p>
+                                </div>
+                                
+                                <div class="bg-light">                                                  
+                                    <a href="{% url 'cards-detail' card.id %}">
+                                        <img class="float-right" 
+                                        src="./../media/images/infos.svg"
+                                        width="32" height="32" alt="logo">
+                                    </a>
+                                </div>
 
                                 <div class="text-center">
-                                    <img class="card-img-top img-fluid character-image p-3"
+                                    <img class="float-center img-fluid character-image rounded mt-3"
                                     src="{{ card.image }}"
                                     alt="Card image cap">
                                 </div>
-                                
+
                             </div>
                         {% endfor %}
                     </div>
                 </div>
             </div>
         
-            <div class="card-body">
+            <div class="card-body darker">
                 <h4 class="display-5 col mt-5">Questions:</h4>
                 <div class="container">
                     <div class="row">
@@ -76,17 +84,7 @@ Questions visualizer
             </div>
 
         </div>
+
     </div>
-
-        <!--
-        * for loop section to display all quizzes.
-        -->
-
-
-    <div class="container ">
-
-     
-    </div>
-
 
 {% endblock %}

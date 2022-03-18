@@ -1,4 +1,4 @@
-{% extends 'historiaapp/base.html' %}
+{% extends 'historiaapp/basedetailnav.html' %}
 
 {% block title %} Details | {{ card }} {% endblock %}
 
@@ -16,20 +16,20 @@
 
                     <div class="row">
 
-                        <div class="character-image"
-                            style="max-width:18rem;">
-                            <img class="card-img-top img-fluid character-image p-3"
+                        <div class="text-center shadow rounded m-3"
+                        style="max-width:18rem;">
+                            <img class="float-center img-fluid character-image rounded"
                             src="../../{{ card.image }}"
                             alt="Card image cap">
                         </div>
 
-                        <div class="card p-3 m-3">
+                        <div class="card m-3 p-3 text-dark">
 
-                            <h4 class="card-title text-lg-left">
+                            <h4 class="card-title text-dark text-lg-left">
                                 {{ card.name }}
                             </h4>                
 
-                            <p class="card-text text-sm character-text lead">
+                            <p class="card-text text-dark text-sm character-text lead">
                                 <small class="lead">
                                 {{ card.text }}
                                 </small>

@@ -52,7 +52,7 @@ urlpatterns = [
     
     path('dashboard/questions/check/', views.QuestionCheckView.as_view(), name="questions-check"),
     
-    path('dashboard/questions/checkanswer/', views.check_answer, name="questions-checkanswer"),
+    path('dashboard/questions/checkanswer/', views.checkanswer, name="questions-checkanswer"),
     
     path('dashboard/questions/new/', views.QuestionCreateView.as_view(), name="questions-create"),
     

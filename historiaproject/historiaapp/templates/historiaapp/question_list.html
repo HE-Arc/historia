@@ -6,19 +6,20 @@ Questions visualizer
 
 {% block content %}
 
-<div class="container text-white bg-dark">
+<div class="container text-light darker pt-3">
 
-    <div class="col-md-12">
-        <h1 class="display-4 mb-2">
-            Questions
-        </h1>
-        <hr />
-    </div>
+    <hr>
 
-    <a href="{% url 'questions-create' %}" class="btn btn-primary btn-sm">Create question</a>
+    <h1 class="display-4 mb-2 p-3">
+        Questions
+        <a href="{% url 'questions-create' %}" 
+        class="btn btn-warning float-right">Create question</a>
+    </h1>
 
-    <h5 class="card-header mb-4">
-        List of Questions actually available.
+    <hr>
+
+    <h5 class="lead mb-4 darker">
+        List of questions actually available.
     </h5>
 
         <!--
@@ -27,7 +28,7 @@ Questions visualizer
 
         {% for questions in object_list %}
 
-            <div class="card">
+            <div class="darker">
 
                 {% block script %}
                 <script>
@@ -35,70 +36,118 @@ Questions visualizer
                 </script>
                 {% endblock script %}
 
+                <!--
+                    FORM
+                -->
 
-                <p>Test is_correct : {{ questions.is_correct }}</p>
-
-                {% if questions.is_correct %}
-                
-                    <div class"card bg-success">
-                        You guessed right!
+                <div class="p-3 mb-2 lead darker border-bottom border-warning text-white">
+                    <div class"card">
+                        {{ questions.name }}
                     </div>
 
-                {% endif %}
+                    <form class="darker" 
+                    method="post"
+                    name="question_id"
+                    action="{% url 'questions-check' %}">
 
-                <form method="post" action="{% url 'questions-check' %}">
-                    {% csrf_token %}
+                        {% csrf_token %}
 
-                    <div class="form-check">
-                        <input type="radio" name="option_id" value="{{ questions.options.ONE }}" required>
-                        <label class="form-check-label" for="{{ questions.opt_one }}">  
-                            <p class="card-text">
-                                <small>
-                                    {{ questions.opt_one }}
-                                </small>
-                            </p>
-                        </label>
+                        <!--
+                            OPTION ONE
+                        -->
+
+                        <div class="form-check lead darker text-light">
+                            <input type="radio"
+                            name="option_id"
+                            value="{{ questions.options.ONE }}"
+                            required>
+                            <label class="form-check-label" 
+                            for="{{ questions.opt_one }}">  
+                                <p class="card-text">
+                                    <small>
+                                        {{ questions.opt_one }}
+                                    </small>
+                                </p>
+                            </label>
+                        </div>
+
+                        <!--
+                            OPTION TWO
+                        -->
+
+                        <div class="form-check lead darker text-light">
+                            <input type="radio" 
+                            name="option_id" 
+                            value="{{ questions.options.TWO }}" 
+                            required>
+                            <label class="form-check-label" 
+                            for="{{ questions.opt_two }}">  
+                                <p class="card-text">
+                                    <small>
+                                        {{ questions.opt_two }}
+                                    </small>
+                                </p>
+                            </label>
+                        </div>
+
+                        <!--
+                            OPTION THREE
+                        -->
+
+                        <div class="form-check lead darker text-light">
+                            <input type="radio" 
+                            name="option_id" 
+                            value="{{ questions.options.THREE }}" 
+                            required>
+                            <label class="form-check-label" for="{{ questions.opt_three }}">  
+                                <p class="card-text">
+                                    <small>
+                                        {{ questions.opt_three }}
+                                    </small>
+                                </p>
+                            </label>
+                        </div>
+
+                        <!--
+                            OPTION FOUR
+                        -->
+
+                        <div class="form-check lead darker text-light">
+                            <input type="radio" 
+                            name="option_id" 
+                            value="{{ questions.options.FOUR }}" 
+                            required>
+                            <label class="form-check-label" for="{{ questions.opt_four }}">  
+                                <p class="card-text">
+                                    <small>
+                                        {{ questions.opt_four }}
+                                    </small>
+                                </p>
+                            </label>
+                        </div>
+
+                    <!--
+                        ANSWER
+                    -->
+
+                    <div class="card-body darker text-light">
+                        <p>{{ questions.id }}</p>
+                        <button name="btn_{{ questions.id }}" 
+                        type="submit"
+                        class="btn btn-dark btn-sm">Answer</button>
                     </div>
 
-                    <div class="form-check">
-                        <input type="radio" name="option_id" value="{{ questions.options.TWO }}" required>
-                        <label class="form-check-label" for="{{ questions.opt_two }}">  
-                            <p class="card-text">
-                                <small>
-                                    {{ questions.opt_two }}
-                                </small>
-                            </p>
-                        </label>
+                    <div class="alert alert-success" role="alert">
+                        {% if questions.is_correct == 'None' %}
+                        {% elif questions.is_correct %}
+                            <div class"card bg-success">
+                                You guessed right! -> {{ questions.is_correct }}
+                            </div>
+                        {% endif %}
                     </div>
 
-                    <div class="form-check">
-                        <input type="radio" name="option_id" value="{{ questions.options.THREE }}" required>
-                        <label class="form-check-label" for="{{ questions.opt_three }}">  
-                            <p class="card-text">
-                                <small>
-                                    {{ questions.opt_three }}
-                                </small>
-                            </p>
-                        </label>
-                    </div>
-                    
-                    <div class="form-check">
-                        <input type="radio" name="option_id" value="{{ questions.options.FOUR }}" required>
-                        <label class="form-check-label" for="{{ questions.opt_four }}">  
-                            <p class="card-text">
-                                <small>
-                                    {{ questions.opt_four }}
-                                </small> 
-                            </p>
-                        </label>
-                    </div>
-
-                <div class="card-body">
-                    <p>{{ questions.id }}</p>
-                    <button name="{{ questions.id }}" type="submit" action="" class="btn btn-dark btn-sm">Answer</button>
+                    </form>
                 </div>
-
-                </form>
 
                 <div class="card-body">
                     <a href="{% url 'questions-detail' questions.id %}" class="btn btn-primary btn-sm">Details</a>
