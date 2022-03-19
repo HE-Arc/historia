@@ -27,6 +27,10 @@ def login(request):
     context = {}
     return render(request, 'historiaapp/login.html', context)
 
+def signin(request):
+    context = {}
+    return render(request, 'historiaapp/signin.html', context)
+
 def checkanswer(request):
     question = Question.objects.get(pk=request.GET.get('btn_' + str(question.id)))
     print(question)
@@ -69,9 +73,12 @@ class RegisterView(generic.TemplateView):
     #    return render(request, 'historiaapp/register.html', context)
 
 class HomePage(View):
-    def get(self, request):
-        return render(request, 'historiaapp/home.html', context)
-
+    template_name = "historiaapp/home.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+    
 class AddUser(View):
     def post(self, request):
         print("ADD USER")

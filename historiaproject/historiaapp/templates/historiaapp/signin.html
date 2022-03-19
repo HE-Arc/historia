@@ -1,0 +1,96 @@
+{% extends 'historiaapp/nav_home.html' %}
+
+{% block title %}
+Historia
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="pt-3">
+        <div class="darker text-center text-light">
+            <h1 class="display-4 mt-4 mb-4">
+                Welcome
+            </h1>
+        </div>
+    
+        <div class="darker align-items-center">
+            <div class="container">
+                <div class="row darker justify-content-center align-items-center">
+                    <div class="darker">
+                        <div class="card-body darker p-3">
+
+                            <form action="" method="post">
+            
+                                <div class="form-outline mb-4">
+                                    <label class="form-label lead" for="form3Example1cg">Your Name</label>
+                                    <input type="text" id="form3Example1cg" class="form-control form-control-sm" placeholder="Name"/>
+                                </div>
+                
+                                <div class="form-outline mb-5">
+                                    <label class="form-label lead" for="form3Example4cg">Password</label>
+                                    <input type="password" id="form3Example4cg" class="form-control form-control-sm" placeholder="password"/>
+                                </div>
+                
+                                <div class="d-flex justify-content-center mb-5">
+                                    <button type="button" class="btn btn-success btn-block btn-md gradient-custom-4 text-body">Register</button>
+                                </div>
+                
+                                <p class="text-center lead text-light mt-5 mb-4">Have already an account?</p>
+                                
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" onclick="location.href='{% url 'login' %}'" class="btn-warning btn-sm text-center mb-5">Sign in</button>
+                                </div>
+
+                            </form>
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer class="bg-light text-dark">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm    text-right p-2">
+                <div class="text-left p-2">
+                    <div class="small lead">
+                    © 2022 :
+                    </div>
+                    <a class="text-dark" href="https://www.he-arc.ch/">
+                        <img src="../media/images/arc-logo.png" alt="He-Arc" width="180" height="54">
+                    </a>
+                </div>
+            </div>
+
+            <div class="col- text-right p-1">
+                <div class="bg-light font-weight-light small lead text-right m-1 p-1">
+                    <a class="text-dark" href="https://github.com/MrAresInFlesh">
+                        Simon Meier
+                        <img class="rounded" src="https://avatars.githubusercontent.com/u/22440990?s=96&v=4" alt="Simon Meier" width="25" height="25">
+                    </a>
+                </div>
+                <div class="bg-light font-weight-light small lead text-right m-1 p-1">
+                    <a class="text-dark" href="https://github.com/ymargueron">
+                        Yasmine Margueron
+                        <img class="rounded" src="https://avatars.githubusercontent.com/u/69893166?v=4" alt="He-Arc" width="25" height="25">
+                    </a>
+                </div>
+                <div class="bg-light font-weight-light small lead text-right m-1 p-1">
+                    <a class="text-dark" href="https://github.com/AlexMozerski">
+                        Alex Mozerski
+                        <img class="rounded" src="https://avatars.githubusercontent.com/u/91063762?v=4" alt="He-Arc" width="25" height="25">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}

@@ -5,6 +5,7 @@
 
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/card.css' %}">
+  <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
 
   {% load bootstrap4 %}
   {% bootstrap_css %}
@@ -20,7 +21,7 @@
     <div class="pos-f-t darker">
       <div class="row m-4">
         <div class="darker text-light col-sm mt-6">
-          <a class="navbar-brand text-light" href="{% url 'dashboard' %}">
+          <a class="navbar-brand text-light" href="{% url 'home' %}">
             <div class="row">
               <img src="../../../media/images/logo.svg"
               width="100" height="100" alt="logo">

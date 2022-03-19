@@ -40,9 +40,13 @@ Questions visualizer
                     FORM
                 -->
 
-                <div class="p-3 mb-2 lead darker border-bottom border-warning text-white">
-                    <div class"card">
+                <div class="p-3 mb-2 darker border-bottom border-warning text-white">
+                    <div class"card lead">
                         {{ questions.name }}
+                    </div>
+
+                    <div class"card lead">
+                        {{ questions.text }}
                     </div>
 
                     <form class="darker" 
@@ -130,21 +134,30 @@ Questions visualizer
                         ANSWER
                     -->
 
-                    <div class="card-body darker text-light">
-                        <p>{{ questions.id }}</p>
-                        <button name="btn_{{ questions.id }}" 
-                        type="submit"
-                        class="btn btn-dark btn-sm">Answer</button>
-                    </div>
+                        <div class="card-body darker text-light">
+                            <p>{{ questions.id }}</p>
+                            <button name="btn_{{ questions.id }}" 
+                            type="submit"
+                            class="btn btn-dark btn-sm">Answer</button>
+                        </div>
 
-                    <div class="alert alert-success" role="alert">
                         {% if questions.is_correct == 'None' %}
-                        {% elif questions.is_correct %}
-                            <div class"card bg-success">
+                            <div class="alert alert-warning" role="alert">
+                                Not answered! -> {{ questions.is_correct }}
+                            </div>
+                        {% endif %}
+
+                        {% if questions.is_correct %}
+                            <div class="alert alert-success" role="alert">
                                 You guessed right! -> {{ questions.is_correct }}
                             </div>
                         {% endif %}
-                    </div>
+                        
+                        {% if not questions.is_correct %}
+                            <div class="alert alert-danger" role="alert">
+                                You guessed wrong   ! -> {{ questions.is_correct }}
+                            </div>
+                        {% endif %}
 
                     </form>
                 </div>

@@ -5,6 +5,7 @@
 
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/card.css' %}">
+  <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
 
   {% load bootstrap4 %}
   {% bootstrap_css %}
@@ -18,59 +19,62 @@
 
 <body class="body text-light darker">
     <div class="pos-f-t darker">
-      <div class="row m-3 p-3">
+      
+      <div class="container-fluid">
+        <div class="row m-3 p-3">
 
-        <!--LEFT PART-->
-        <div class="darker text-light col-sm mt-6">
-          <a class="navbar-brand text-light" href="{% url 'dashboard' %}">
-            <div class="row">
-              <img src="../../media/images/logo.svg"
-              width="100" height="100" alt="logo">
-              
-              <div class="display-4 lead text-light mb-4">
-                  istoria
+          <!--LEFT PART-->
+          <div class="darker text-light col-sm mt-6">
+            <a class="navbar-brand text-light" href="{% url 'home' %}">
+              <div class="row">
+                <img src="../../media/images/logo.svg"
+                width="100" height="100" alt="logo">
+                
+                <div class="display-4 lead text-light mb-4">
+                    istoria
+                </div>
               </div>
-            </div>
-                      
-              <div class="display-5 lead border-bottom border-warning pr-4 pt-4 pb-4 pl-6">
-                A web app challenging your historical characters knowledges.
-              </div>
-          </a>
-        </div>
-        
-        <!--CENTER PART - QUIZZ-->
-        <div class="darker text-light col-sm mt-6">
-          <a class="navbar-brand" href="{% url 'questions-list' %}">
-            <img src="../media/images/quizz.svg" 
-            width="154" height="154" alt="">
-          </a>
-        </div>
-
-        <!--RIGHT PART - USER-->
-        <div class="darker col-">
+                        
+                <div class="display-5 lead border-bottom border-warning pr-4 pt-4 pb-4 pl-6">
+                  A web app challenging your historical characters knowledges.
+                </div>
+            </a>
+          </div>
           
-          <div class="collapse darker" id="navbarToggleExternalContent">
-            <div class="darker text-light p-4">
-              <h4 class="text-light">Navigation</h4>
-              <a class="nav-link text-warning" href="{% url 'dashboard' %}">Dashboard</a>
-              <a class="nav-link text-warning" href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a>
-              <a class="nav-link text-warning" href="{% url 'register' %}">Register</a>
-            </div>
+          <!--CENTER PART - QUIZZ-->
+          <div class="darker text-light col-sm mt-6">
+            <a class="navbar-brand" href="{% url 'questions-list' %}">
+              <img src="../media/images/quizz.svg" 
+              width="154" height="154" alt="">
+            </a>
           </div>
 
-          <nav class="navbar navbar-dark">
-            <button class="navbar-toggler" 
-            type="button" data-toggle="collapse" 
-            data-target="#navbarToggleExternalContent" 
-            aria-controls="navbarToggleExternalContent" 
-            aria-expanded="false" 
-            aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          </nav>
+          <!--RIGHT PART - USER-->
+          <div class="darker col-">
+            
+            <div class="collapse darker" id="navbarToggleExternalContent">
+              <div class="darker text-light p-4">
+                <h4 class="text-light">Navigation</h4>
+                <a class="nav-link text-warning" href="{% url 'home' %}">Home</a>
+                <a class="nav-link text-warning" href="{% url 'dashboard' %}">Dashboard</a>
+                <a class="nav-link text-warning" href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-warning" href="{% url 'register' %}">Register</a>
+              </div>
+            </div>
 
+            <nav class="navbar navbar-dark">
+              <button class="navbar-toggler" 
+              type="button" data-toggle="collapse" 
+              data-target="#navbarToggleExternalContent" 
+              aria-controls="navbarToggleExternalContent" 
+              aria-expanded="false" 
+              aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </nav>
+          </div>
+          <span class="border-right border-warning"></span>            
         </div>
-        <span class="border-right border-warning"></span>            
       </div>
     </div>
 
@@ -79,5 +83,44 @@
   {% endblock %}
 
 </body>
+
+<footer class="text-light">
+  <div class="container-fluid darker">
+      <div class="row">
+          <div class="col-sm text-right p-2">
+              <div class="text-left p-2">
+                <div class="lead justify-content-center mb-5" style="width: 30%;">
+                  <button type="button" 
+                      class="button-historia hearc text-uppercase lead" width="" 
+                      onclick="location.href='https://www.he-arc.ch/'">
+                      <img src="../media/images/arc-logo.png" alt="He-Arc" width="180" height="54">
+                  </button>
+                </div>
+              </div>
+          </div>
+
+          <div class="col- text-right p-1">
+              <div class="font-weight-light small lead text-right m-1 p-1">
+                  <a class="text-light" href="https://github.com/MrAresInFlesh">
+                      Simon Meier
+                      <img class="rounded" src="https://avatars.githubusercontent.com/u/22440990?s=96&v=4" alt="Simon Meier" width="25" height="25">
+                  </a>
+              </div>
+              <div class="font-weight-light small lead text-right m-1 p-1">
+                  <a class="text-light" href="https://github.com/ymargueron">
+                      Yasmine Margueron
+                      <img class="rounded" src="https://avatars.githubusercontent.com/u/69893166?v=4" alt="He-Arc" width="25" height="25">
+                  </a>
+              </div>
+              <div class="font-weight-light small lead text-right m-1 p-1">
+                  <a class="text-light" href="https://github.com/AlexMozerski">
+                      Alex Mozerski
+                      <img class="rounded" src="https://avatars.githubusercontent.com/u/91063762?v=4" alt="He-Arc" width="25" height="25">
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+</footer>
 
 </html>
