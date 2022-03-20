@@ -12,15 +12,19 @@ from django.db.models.query import QuerySet
 from typing import Generic
 from django import forms
 from django.contrib.auth.hashers import make_password, check_password
+import rsa
 
 
 from .models import User
 from .forms import AddQuestionForm
 from .models import *
 
+publicKey, privateKey = rsa.newkeys(512)
+
 #|----------------------------------------------------------------------------|
 #   Methods                                                                   |
 #|----------------------------------------------------------------------------/
+
 
 def index(request):
     context = {}
@@ -102,20 +106,28 @@ def LoginUser(request):
     pseudo = request.POST['pseudo']
     password = request.POST['password']
     
-    print("pseudo : " + pseudo)
-    print("password : " + password)
-    
-    #passwd = make_password(password, None, 'pbkdf2_sha256')
-    #print("passwd : " + passwd)
-    
     user = User.objects.get(pseudo=pseudo)
-    print(user)
-    print("make_password : " + make_password(password))
-    print("user password : " + user.password)
-    print(check_password(password, user.password))
-    print(check_password(make_password("password"), user.password))
+    #print(user)
+    #print("make_password : " + make_password(password))
+    #print("user password : " + user.password)
+    #print(check_password(password, user.password))
+    #print(check_password(make_password("password"), user.password))
     
-    if User.objects.filter(pseudo=pseudo, password=password).exists():
+    #enc = rsa.encrypt(password.encode(), publicKey)
+    print("user : " , user.password)
+    #arr = bytes(user.password, 'ascii')
+    
+    encMessage = rsa.encrypt(password.encode(), publicKey)
+    print("encMessage : " , encMessage)
+    
+    #print(encMessage == user.password)
+    
+    print(type(user.password))
+    
+    dec = rsa.decrypt((user.password).encode(encoding = 'UTF-8'), privateKey).decode()
+    print("dec : " , dec)
+    
+    if User.objects.filter(pseudo=pseudo, password=encMessage).exists():
         # Redirect to a success page.
         return render(request, 'historiaapp/home.html', context)
     else:
@@ -132,17 +144,13 @@ def AddUser(request):
         password = request.POST['password']
         passwordConfirm = request.POST['confirm_password']
         
-        print("pseudo : " + pseudo)
-        print("pass1 : " + password)
-        print("pass2 : " + passwordConfirm)
-        
         if User.objects.filter(pseudo=pseudo).exists():
             return render(request, 'historiaapp/register.html',{
             "message": "This pseudo already exists." })
         
         if password == passwordConfirm and form.is_valid():
-            #password = make_password("password")
-            User.objects.create(pseudo=pseudo, password=password)
+            enc = rsa.encrypt(password.encode(), publicKey)
+            User.objects.create(pseudo=pseudo, password=enc)
             return render(request, 'historiaapp/home.html', context)
         else:
             return render(request, 'historiaapp/register.html',{
