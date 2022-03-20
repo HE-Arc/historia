@@ -26,7 +26,7 @@ urlpatterns = [
     
     path('quiz/', AddQuestionForm, name="quiz"),
     
-    path('login/', views.index, name='login'),
+    path('login/', views.index, name='login_view'),
     
     path('loginUser/', views.LoginUser, name='loginUser'),
 

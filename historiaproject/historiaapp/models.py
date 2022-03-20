@@ -22,7 +22,8 @@ class AnswerOptions(models.Model):
 class User(models.Model):
     pseudo = models.CharField(max_length=200)
     password = models.CharField(max_length=200)
-    #is_admin = models.BooleanField(default=False) # FIXME
+    is_admin = models.BooleanField(default=False)
+    
     
 class Score(models.Model):
     user_id = models.ForeignKey('User', on_delete=models.CASCADE)

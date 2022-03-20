@@ -11,6 +11,8 @@ from rest_framework import viewsets
 from django.db.models.query import QuerySet
 from typing import Generic
 from django import forms
+from django.contrib.auth.hashers import make_password, check_password
+
 
 from .models import User
 from .forms import AddQuestionForm
@@ -100,11 +102,22 @@ def LoginUser(request):
     pseudo = request.POST['pseudo']
     password = request.POST['password']
     
-    user = authenticate(request, pseudo=pseudo, password=password)
-    if user is not None:
-        login(request, user)
+    print("pseudo : " + pseudo)
+    print("password : " + password)
+    
+    #passwd = make_password(password, None, 'pbkdf2_sha256')
+    #print("passwd : " + passwd)
+    
+    user = User.objects.get(pseudo=pseudo)
+    print(user)
+    print("make_password : " + make_password(password))
+    print("user password : " + user.password)
+    print(check_password(password, user.password))
+    print(check_password(make_password("password"), user.password))
+    
+    if User.objects.filter(pseudo=pseudo, password=password).exists():
         # Redirect to a success page.
-        success_url = reverse_lazy('home')
+        return render(request, 'historiaapp/home.html', context)
     else:
         # Return an 'invalid login' error message.
         return render(request, 'historiaapp/login.html',{
@@ -119,13 +132,21 @@ def AddUser(request):
         password = request.POST['password']
         passwordConfirm = request.POST['confirm_password']
         
+        print("pseudo : " + pseudo)
+        print("pass1 : " + password)
+        print("pass2 : " + passwordConfirm)
+        
+        if User.objects.filter(pseudo=pseudo).exists():
+            return render(request, 'historiaapp/register.html',{
+            "message": "This pseudo already exists." })
+        
         if password == passwordConfirm and form.is_valid():
-            form.save()
+            #password = make_password("password")
+            User.objects.create(pseudo=pseudo, password=password)
             return render(request, 'historiaapp/home.html', context)
         else:
             return render(request, 'historiaapp/register.html',{
-            "message": "Passwords must match."
-        })
+            "message": "Passwords must match." })
             
 
 #|-----------------------|
