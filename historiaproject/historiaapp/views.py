@@ -1,3 +1,4 @@
+from optparse import Option
 from re import T
 
 from django.shortcuts import render
@@ -6,7 +7,6 @@ from django.http import HttpResponse, JsonResponse
 from django.views import generic, View
 from django.urls import reverse_lazy
 from django.template.loader import render_to_string
-from matplotlib.style import context
 from rest_framework import viewsets
 from django.db.models.query import QuerySet
 from typing import Generic
@@ -209,27 +209,21 @@ class QuestionDeleteView(generic.DeleteView):
 
 class QuestionCheckView(View):
     def post(self, request):
-        question = Question.objects.get(pk=request.POST.get("option_id"))
-        question.is_correct = False
-        print("question: ", question)
-        print("request.POST.get(option_id): ", request.POST.get("option_id"))
-        
-        btn_id = request.POST.get('btn_' + str(question.id))
-        print("btn_id: ", btn_id)
-        
-        user_answer = request.POST['option_id']
-        
-        print("QUESTION WAS ANSWERED")
-        print("POST : ", request.POST['option_id'])
-        print("test answer", question.answer, "type:", type(question.answer))
-        print("user answer", user_answer, "type:", type(user_answer))
+        """_summary_
 
-        if user_answer == str(question.answer):
+        Args:
+            request (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        question = Question.objects.get(pk=request.POST.get("question_id"))
+        option = request.POST.get("option_id")
+
+        if option == str(question.answer):
             question.is_correct = True
         else:
             question.is_correct = False
-
-        print("question: ", question.is_correct)
 
         question.save()
         
