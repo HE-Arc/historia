@@ -1,0 +1,59 @@
+{% extends 'historiaapp/bases/base_home.html' %}
+
+{% block title %}
+Historia
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="pt-3">
+        <div class="darker text-center text-light">
+            <h1 class="display-4 mt-4 mb-4">
+                Welcome
+            </h1>
+        </div>
+    
+        <div class="darker align-items-center">
+            <div class="container">
+                <div class="row darker justify-content-center align-items-center">
+                    <div class="darker">
+                        <div class="card-body darker p-3">
+
+                            <form action="" method="post">
+            
+                                <div class="form-outline mb-4">
+                                    <label class="form-label lead" for="form3Example1cg">Your Name</label>
+                                    <input type="text" id="form3Example1cg" class="form-control form-control-sm" placeholder="Name"/>
+                                </div>
+                
+                                <div class="form-outline mb-5">
+                                    <label class="form-label lead" for="form3Example4cg">Password</label>
+                                    <input type="password" id="form3Example4cg" class="form-control form-control-sm" placeholder="password"/>
+                                </div>
+                
+                                <div class="d-flex justify-content-center mb-5">
+                                    <button type="button"
+                                    onclick="location.href='{% url 'register' %}'"
+                                    class="btn btn-success btn-block btn-md gradient-custom-4 text-body">Register</button>
+                                </div>
+                
+                                <p class="text-center lead text-light mt-5 mb-4">Have already an account?</p>
+                                
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" onclick="location.href='{% url 'login' %}'" class="btn-warning btn-sm text-center mb-5">Sign in</button>
+                                </div>
+
+                            </form>
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

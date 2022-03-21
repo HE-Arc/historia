@@ -15,6 +15,10 @@
   background-color :#1c1c1c;
 }
 
+.whiter {
+  background-color : #d1d1d1;
+}
+
 .character-card {
   color :#1c1c1c;
   max-width: 100%;
@@ -23,7 +27,11 @@
 }
 
 .character-text {
-  font-size: max(1vw, 16px);
+  font-size: max(1vw, 20px);
+}
+
+.character-text-reward {
+  font-size: max(1vw, 20px);
 }
 
 .text {
@@ -40,4 +48,19 @@
   }
 }
 
-/****************************************************/
+/****************************************************
+* 
+*   Style for sign up form.
+*
+*/ 
+
+.gradient-custom-4 {
+  /* fallback for old browsers */
+  background: #84fab0;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+}

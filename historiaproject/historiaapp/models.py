@@ -1,6 +1,7 @@
 from email.mime import image
 import imp
 from importlib.resources import path
+from random import choices
 from ssl import Options
 from unicodedata import name
 from django.db import models
@@ -66,7 +67,7 @@ class Question(models.Model):
         models (_type_): _description_
     """            
     name = models.CharField(max_length=200)
-    text = models.CharField(max_length=2000)
+    text = models.TextField(max_length=2000)
     
     opt_one = models.CharField(max_length=200)
     opt_two = models.CharField(max_length=200)
@@ -80,7 +81,7 @@ class Question(models.Model):
     character = models.ForeignKey('Card',
                         on_delete=models.CASCADE, 
                         null=True)
-
+    
     options = models.IntegerChoices('Options', 
                         'ONE TWO THREE FOUR')
     
