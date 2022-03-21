@@ -1,9 +1,8 @@
-from optparse import Option
 from re import T
 
 from django.shortcuts import render
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from django.views import generic, View
 from django.urls import reverse_lazy
 from django.template.loader import render_to_string
@@ -11,15 +10,16 @@ from rest_framework import viewsets
 from django.db.models.query import QuerySet
 from typing import Generic
 
-from .forms import AddQuestionForm, QuestionOptionsForm
 from .models import *
 from django.contrib.auth import get_user_model
+
+
 
 #|----------------------------------------------------------------------------|
 #   Methods                                                                   |
 #|----------------------------------------------------------------------------/
 
-def index(request):
+def home(request):
     context = {}
     return render(request, 'historiaapp/home.html', context)
     
@@ -31,28 +31,7 @@ def signin(request):
     context = {}
     return render(request, 'historiaapp/signin.html', context)
 
-def checkanswer(request):
-    question = Question.objects.get(pk=request.GET.get('btn_' + str(question.id)))
-    print(question)
-    print('btn_' + str(question.id))
-    
-    if request.GET.get('btn_' + str(question.id)) == request.POST.get('btn_' + str(question.id)):
-        user_answer = request.POST['option_id']
-        question = Question.objects.get(pk=request.POST.get("option_id"))
-        
-        print("QUESTION WAS ANSWERED")
-        print("POST : ", request.POST['option_id'])
-        print("test answer", question.answer, "type:", type(question.answer))
-        print("user answer", user_answer, "type:", type(user_answer))
 
-        if user_answer == str(question.answer):
-            question.is_correct = True
-        else:
-            question.is_correct = False
-
-        question.save()
-    
-    return redirect('questions-list')
 
 #|----------------------------------------------------------------------------| 
 #   Views Classes                                                             |
@@ -165,10 +144,21 @@ class QuestionListView(generic.ListView):
 
 
 class QuestionDetailView(generic.DetailView):
+    """_summary_
+    To show a question detail informations.
+    Args:
+        generic (_type_): _description_
+    """
     model = Question
 
 
 class QuestionCreateView(generic.CreateView):
+    """_summary_
+    To create a question in the database.
+    Called from the question_create page -> <pk>/create route.
+    Args:
+        generic (_type_): _description_
+    """
     model = Question
 
     fields = [
@@ -186,6 +176,12 @@ class QuestionCreateView(generic.CreateView):
 
 
 class QuestionUpdateView(generic.UpdateView):
+    """_summary_
+    To update a question in the database.
+    Called from the question_update page -> <pk>/update route.
+    Args:
+        generic (_type_): _description_
+    """
     model = Question
 
     fields = [
@@ -203,14 +199,35 @@ class QuestionUpdateView(generic.UpdateView):
 
 
 class QuestionDeleteView(generic.DeleteView):
+    """_summary_
+    To delete a question from the database.
+    Called from the question_delete -> <pk>/delete route.
+    Args:
+        generic (_type_): _description_
+    """
     model = Question
     success_url = reverse_lazy('questions-list')
 
-
-class QuestionCheckView(View):
     def post(self, request):
         """_summary_
+        To check the posted answers through the form.
+        Args:
+            request (_type_): _description_
 
+        Returns:
+            _type_: _description_
+        """
+        question = Question.objects.get(pk=request.POST.get("question_id"))        
+        question.delete()
+        
+        
+
+
+class QuestionCheckView(View):
+    
+    def post(self, request):
+        """_summary_
+        To check the posted answers through the form.
         Args:
             request (_type_): _description_
 

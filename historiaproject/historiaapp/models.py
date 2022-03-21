@@ -67,7 +67,7 @@ class Question(models.Model):
         models (_type_): _description_
     """            
     name = models.CharField(max_length=200)
-    text = models.CharField(max_length=2000)
+    text = models.TextField(max_length=2000)
     
     opt_one = models.CharField(max_length=200)
     opt_two = models.CharField(max_length=200)
@@ -82,10 +82,6 @@ class Question(models.Model):
                         on_delete=models.CASCADE, 
                         null=True)
     
-    choices = {
-        
-    }
-
     options = models.IntegerChoices('Options', 
                         'ONE TWO THREE FOUR')
     

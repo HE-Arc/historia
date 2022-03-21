@@ -40,8 +40,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'historiaapp',
     'bootstrap4',
+    'crispy_forms',
     'rest_framework',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

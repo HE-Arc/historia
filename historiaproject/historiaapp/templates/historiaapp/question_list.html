@@ -1,4 +1,4 @@
-{% extends 'historiaapp/baselistnav.html' %}
+{% extends 'historiaapp/bases/base_list.html' %}
 
 {% block title %}
 Questions visualizer
@@ -40,12 +40,6 @@ Questions visualizer
         {% for questions in object_list %}
 
             <div class="darker">
-
-                {% block script %}
-                <script>
-                    
-                </script>
-                {% endblock script %}
 
                 <!--
                     FORM
@@ -260,22 +254,34 @@ Questions visualizer
                     MODIFYERS
                 -->
 
-                <div class="card-body border-bottom border-warning mb-4">
+                <div class="card-body mt-3 mb-4">
 
-                    <div class="text-center p-2">
-                        <a href="{% url 'questions-detail' questions.id %}" class="btn btn-primary btn-md">Details</a>
-                        
-                        <a href="{% url 'questions-update' questions.id %}" class="btn btn-success btn-md">Update</a>
-                        
-                        <a href="{% url 'questions-delete' questions.id %}" class="btn btn-warning btn-md">Delete</a>
+                    <div class="row text-center">
+
+                        <div class="col-sm text-center">
+                            <div class="p-2">
+                                <a href="{% url 'questions-detail' questions.id %}" class="btn btn-primary btn-lg">Details</a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm text-center">
+                            <div class="p-2">
+                                <a href="{% url 'questions-update' questions.id %}" class="btn btn-success btn-lg">Update</a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm text-center">
+                            <div class="p-2">
+                                <a href="{% url 'questions-delete' questions.id %}" class="btn btn-danger btn-lg">Delete</a>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
         {% endfor %}
-
-        <span class=""></span>
 
     <div class="container ">
 

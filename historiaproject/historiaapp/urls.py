@@ -16,7 +16,7 @@ urlpatterns = [
     
     path('admin/', admin.site.urls),
     
-    path('', views.index, name='index'),
+    path('', views.home, name='home'),
     
     path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
     
@@ -28,9 +28,7 @@ urlpatterns = [
     path('signin/', views.signin, name='signin'),
 
     path('register/', views.RegisterView.as_view(), name='register'),
-    
-    path('home/', views.index, name='home'),
-    
+        
     path('user/add-user/', views.AddUser.as_view(), name='add-user'),
     
     # Cards urls
@@ -53,9 +51,7 @@ urlpatterns = [
     path('dashboard/questions/', views.QuestionListView.as_view(), name="questions-list"),
     
     path('dashboard/questions/check/', views.QuestionCheckView.as_view(), name="questions-check"),
-    
-    path('dashboard/questions/checkanswer/', views.checkanswer, name="questions-checkanswer"),
-    
+        
     path('dashboard/questions/new/', views.QuestionCreateView.as_view(), name="questions-create"),
     
     path('dashboard/questions/<pk>/', views.QuestionDetailView.as_view(), name="questions-detail"),
@@ -63,5 +59,5 @@ urlpatterns = [
     path('dashboard/questions/<pk>/update', views.QuestionUpdateView.as_view(), name="questions-update"),
     
     path('dashboard/questions/<pk>/delete', views.QuestionDeleteView.as_view(), name="questions-delete"),
-        
+
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
