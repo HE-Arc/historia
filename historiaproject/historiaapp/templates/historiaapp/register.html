@@ -6,8 +6,8 @@
 {% load crispy_forms_tags %}
 
 
-<div style="background-image: url( '/static/images/background.png' ); color:black; background-size:cover; height: 100%;">
-    <div class="bg-light col-md-9 order-md-1 row featurette" style="background-color: lightgray;margin-left: 10rem;margin-right: 10rem; height: 100%; opacity: 85%;">
+<div>
+    <div class="col-md-9 order-md-1 row featurette" style="margin-left: 10rem;margin-right: 10rem;">
         <div class="col-md-7 order-md-1" style="font-size: 2em;font-family: monospace;margin-top: 5rem;">
             <p>Welcome</p>
             <br>
@@ -40,14 +40,13 @@
                 <input type="hidden" value="        
                     {% if object is None %}
                         Save
-                        {% else %}
-                        Update
                     {% endif %}"/>
 
                 <div class="text-center">
-                    <button type="submit" value="Register">
+                    <button type="submit" value="Register" class="button-historia answer mt-5 mb-5"
+                    style="max-width:30%;min-width:10%;">
                         <div class="lead">
-                            <strong>Submit</strong>
+                            <strong>Register</strong>
                         </div>
                     </button>
                 </div>

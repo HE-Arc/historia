@@ -58,6 +58,20 @@ def add_question(request):
 #| User, Login, Register |
 #|-----------------------/
   
+class AuthenticationForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super(AuthenticationForm, self).__init__(*args, **kwargs)
+
+        for fieldname in ['username', 'password']:
+            self.fields[fieldname].help_text = None
+
+class UserCreationForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super(UserCreationForm, self).__init__(*args, **kwargs)
+
+        for fieldname in ['username', 'password1', 'password2']:
+            self.fields[fieldname].help_text = None
+            
 def login_view(request):
     if request.method == "POST":
         # Pass information from form with request.POST
@@ -89,11 +103,11 @@ def register_view(request):
     # Send the UserCreationForm to render
     return render(request, "historiaapp/register.html", {'form': form})
 
-      
+@login_required(login_url="login")  
 def logout_view(request):
-    if request.method == "POST":
-        logout(request)
-        return redirect('/')      
+    logout(request)
+    return redirect('login')
+   
 
 
 #|-----------------------|

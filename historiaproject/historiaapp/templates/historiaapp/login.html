@@ -7,7 +7,7 @@
 
     <div class="bg-light" style="background-color: lightgray;height: 100%; display: flex;">
 
-        <div class="col-md-5 order-md-1" style="width: 40rem;font-size: 2em;font-family: monospace; padding-top: 4em; text-align: center;">
+        <div class="col-md-5 order-md-1" style="width: 40rem;font-size: 2em;font-family: monospace; padding-top: 2em; text-align: center;">
             <p>Sign in</p>
             
             <form action="" method="POST">
@@ -22,15 +22,10 @@
                     {{ form.password|as_crispy_field }}
                 </div>
 
-                <input type="hidden" value="        
-                    {% if object is None %}
-                        Save
-                        {% else %}
-                        Update
-                    {% endif %}"/>
 
                 <div class="text-center">
-                    <button type="submit" value="Login">
+                    <button type="submit" value="Login" class="button-historia answer mt-5 mb-5"
+                                    style="max-width:30%;min-width:10%;">
                         <div class="lead">
                             <strong>Login</strong>
                         </div>
