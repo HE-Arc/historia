@@ -5,10 +5,11 @@
 
 {% load crispy_forms_tags %}
 
-    <div class="bg-light" style="background-color: lightgray;height: 100%; display: flex;">
+    <div class="d-flex justify-content-center">
 
-        <div class="col-md-5 order-md-1" style="width: 40rem;font-size: 2em;font-family: monospace; padding-top: 2em; text-align: center;">
-            <p>Sign in</p>
+        <div class="col-md-7 order-md-1" style="font-size: 2em;font-family: monospace; padding-top: 1em; text-align: center;">
+            <h1>Sign in</h1>
+            <br>
             
             <form action="" method="POST">
                 {% csrf_token %}
@@ -18,7 +19,7 @@
                 </div>
 
 
-                <div class="form-outline mb-5">
+                <div class="form-outline mb-3">
                     {{ form.password|as_crispy_field }}
                 </div>
 
@@ -35,8 +36,5 @@
             
         </div>
 
-        <div class="col-md-7 order-md-2" style="background-image: url( '/static/images/background.png' ); background-size:cover; height: 100%; opacity: 60%;">
-            
-        </div>
     </div>
 {% endblock %}

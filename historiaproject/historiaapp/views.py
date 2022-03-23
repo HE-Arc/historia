@@ -109,7 +109,6 @@ def logout_view(request):
     return redirect('login')
    
 
-
 #|-----------------------|
 #|Cards and Quizzes      |
 #|-----------------------/
