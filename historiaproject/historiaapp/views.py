@@ -65,10 +65,10 @@ def login_view(request):
         if form.is_valid():  # Check if form is valid or not (User exist ? Password ok ? etc.)
             user = form.get_user()
             login(request, user)
-            if 'next' in request.POST:
-                return redirect(request.POST.get('next'))
+            context = {'form':form}
+            return render(request, 'historiaapp/quiz.html', context)
         else:
-            return redirect('historiaapp/quiz.html')
+            return redirect('historiaapp/login.html')
     else:
         form = AuthenticationForm()  # Create a new instance of this form
     # Send the UserCreationForm to render
