@@ -2,6 +2,10 @@
 {% load static %}
 
 {% block content %}
+
+{% load crispy_forms_tags %}
+
+
 <div style="background-image: url( '/static/images/background.png' ); color:black; background-size:cover; height: 100%;">
     <div class="bg-light col-md-9 order-md-1 row featurette" style="background-color: lightgray;margin-left: 10rem;margin-right: 10rem; height: 100%; opacity: 85%;">
         <div class="col-md-7 order-md-1" style="font-size: 2em;font-family: monospace;margin-top: 5rem;">
@@ -16,33 +20,39 @@
         </div>
 
         <div class="col-md-5 order-md-2" style="font-size: 1.5em; font-family: monospace;margin-top: 5rem;">
-            <form class="form-group" method="post" action="{% url 'addUser' %}"> 
+            
+            <form action="" method="POST">
                 {% csrf_token %}
-                <div style="margin-bottom: 1em;">
-                    <input class="form-control" type="text" id="pseudo" name="pseudo" placeholder="Create username" required>
-                </div>
-                <div style="margin-bottom: 1em;">
-                    <input class="form-control" type="password" id="password" name="password" placeholder="Password" required>
-                </div>
-                <div style="margin-bottom: 1em;">
-                    <input class="form-control" type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password" required>
-                </div>
-                
-                {% if message %}
-                    <div class="alert alert-danger">
-                        <strong>{{ error|escape }}</strong>
-                        {{ message }}
-                    </div>
-                {% endif %}
-
-                <div style="margin-bottom: 1em;">
-                    <input type="submit" value="Register" />
+            
+                <div class="form-outline mb-5">
+                    {{ form.username|as_crispy_field }}
                 </div>
 
-                <div>
-                    <a href="{% url 'login_view' %}" class="btn btn-sm btn-secondary" type="button">Sign in</a>
-                <div>
+
+                <div class="form-outline mb-5">
+                    {{ form.password1|as_crispy_field }}
+                </div>
+
+                <div class="form-outline mb-5">
+                    {{ form.password2|as_crispy_field }}
+                </div>
+
+                <input type="hidden" value="        
+                    {% if object is None %}
+                        Save
+                        {% else %}
+                        Update
+                    {% endif %}"/>
+
+                <div class="text-center">
+                    <button type="submit" value="Register">
+                        <div class="lead">
+                            <strong>Submit</strong>
+                        </div>
+                    </button>
+                </div>
             </form>
+
         </div>
     </div>
 </div>

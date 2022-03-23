@@ -20,21 +20,17 @@ urlpatterns = [
     
     path('', views.index, name='index'),
     
-    path('cards/', views.CardsListView.as_view(), name='cards-list'),  
+    #path('cards/', views.CardsListView.as_view(), name='cards-list'),  
     
     path('cards/visualizer/', views.cards_visualizer, name='cards-visualizer'),
     
     path('quiz/', AddQuestionForm, name="quiz"),
     
-    path('login/', views.index, name='login_view'),
+    path('login/', views.login_view, name='login'),
     
-    path('loginUser/', views.LoginUser, name='loginUser'),
+    path('logout/', views.logout_view, name='logout'),
 
-    path('register/', views.RegisterView.as_view(), name='register'),
-    
-    path('register/addUser/', views.AddUser, name='addUser'),
-
-    path('home/', views.HomePage.as_view(), name='home'),
-    
+    path('register/', views.register_view, name='register'),
+        
     
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

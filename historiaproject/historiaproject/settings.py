@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'historiaapp',
     'bootstrap4',
     'rest_framework',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
