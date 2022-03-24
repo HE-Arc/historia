@@ -66,5 +66,7 @@ urlpatterns = [
     
     path('ranking/<pk>', views.RankingView.as_view(), name="ranking"),
      
+    path('rankings/', views.RankingListView.as_view(), name="ranking-list"),
+
     
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

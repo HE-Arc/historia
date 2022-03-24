@@ -1,0 +1,13 @@
+<h1>Ranking</h1>
+
+<ul>
+    {% for ranking in object_list %}
+        <li>{{ ranking.quiz }}</li>
+        <li>{{ ranking.user }}</li>
+        <li>{{ ranking.score }}</li>
+        <li>{{ ranking.date }}</li>
+    {% empty %}
+        <li>No ranking yet.</li>
+    {% endfor %}
+</ul>
+

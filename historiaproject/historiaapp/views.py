@@ -93,7 +93,8 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
             context = {'form':form}
-            return render(request, 'historiaapp/quiz_list.html', context)
+            
+            return render(request, 'quiz-list', context)
         else:
             return redirect('login')
     else:
@@ -313,12 +314,17 @@ def DateNow():
     return datetime.datetime.utcnow().replay(tzinfo=utc)
 
 
+
+class RankingListView(generic.ListView):
+    model = Ranking
+    def get_queryset(self) -> QuerySet[T]:
+        return Ranking.objects.all()
+    
 class RankingView(generic.DetailView):
     model = Ranking
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        #context["now"] = timezone.now()
         context['last'] = Ranking.objects.order_by("-score")[:5]
         return context
     
