@@ -1,13 +1,75 @@
-<h1>Ranking</h1>
+{% extends 'historiaapp/bases/base_connected.html' %}
 
-<ul>
-    {% for ranking in object_list %}
-        <li>{{ ranking.quiz }}</li>
-        <li>{{ ranking.user }}</li>
-        <li>{{ ranking.score }}</li>
-        <li>{{ ranking.date }}</li>
-    {% empty %}
-        <li>No ranking yet.</li>
-    {% endfor %}
-</ul>
+{% block title %}Rankings visualizer{% endblock %}
 
+{% block content %}
+
+<div class="container">
+
+    <div class="col-md-12">
+        <h1 class="display-4 mb-2">
+            Rankings
+        </h1>
+        <hr />
+    </div>
+
+    <h5 class="card-header mb-4">
+        List of all Ranking.
+    </h5>
+
+    <div class="card-deck">
+
+        <!--
+        * for loop section to display all quizzes.
+        -->
+
+        {% for ranking in object_list %}
+
+            <div class="col-md-4 mb-4">
+
+                <div class="card shadow character-card text-white bg-dark">
+
+                    <div class="card-body">
+
+                        <h4 class="card-title text-lg-left">
+                            Quiz : {{ ranking.quiz }}
+                        </h4>                
+
+                        <p class="card-title text-lg-left">
+                            <small class="lead">
+                            Name user : {{ ranking.user }}
+                            </small>
+                        </p>
+
+                        <p class="card-title text-lg-left">
+                            <small class="lead">
+                            Score : {{ ranking.score }}
+                            </small>
+                        </p>
+
+                        <p class="card-title text-lg-left">
+                            <small class="lead">
+                            Date : {{ ranking.date }}
+                            </small>
+                        </p>
+
+                    </div>
+
+                </div>
+                    
+            </div>
+
+            {% empty %}
+            <li>No ranking yet.</li>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="container ">
+
+     
+    </div>
+
+
+{% endblock %}
