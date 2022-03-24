@@ -9,6 +9,8 @@ from django.core import serializers
 import json
 from pprint import pprint 
 from django.db.models.signals import post_save, post_delete
+from django.conf import settings
+
 
 
 class QuestionByQuiz(models.Model):
@@ -104,3 +106,20 @@ class Quiz(models.Model):
     def __str__(self) -> str:
         return self.name
    
+   
+class Ranking(models.Model):
+    # quiz
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    
+    # user
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    
+    # score
+    score = models.IntegerField()
+    
+    # date
+    date = models.DateField(db_index=True)
+    
+    
+    
+    

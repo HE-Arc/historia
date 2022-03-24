@@ -1,0 +1,12 @@
+<h1>Ranking</h1>
+
+<ul>
+    {% for line in last %}
+        <li>{{ line.user|date }}</li>
+        <li>{{ line.score }}</li>
+        <li>{{ line.date }}</li>
+    {% empty %}
+        <li>No ranking yet.</li>
+    {% endfor %}
+</ul>
+

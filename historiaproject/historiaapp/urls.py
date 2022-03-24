@@ -60,4 +60,11 @@ urlpatterns = [
     
     path('dashboard/questions/<pk>/delete', views.QuestionDeleteView.as_view(), name="questions-delete"),
 
+
+    # Ranking urls
+    # ---------------------------------------------------------------------------------- #
+    
+    path('ranking/<pk>', views.RankingView.as_view(), name="ranking"),
+     
+    
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

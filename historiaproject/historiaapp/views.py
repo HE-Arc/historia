@@ -17,6 +17,11 @@ from django.template import loader
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib import messages
+import datetime
+from django.utils.timezone import utc
+from optparse import make_option
+from django.utils import timezone
+
 
 from .forms import *
 from .models import *
@@ -298,3 +303,24 @@ class QuestionCheckView(View):
         question.save()
         
         return redirect('questions-list')
+
+
+#|-----------------------|
+#| Ranking             |
+#|-----------------------/
+
+def DateNow():
+    return datetime.datetime.utcnow().replay(tzinfo=utc)
+
+
+class RankingView(generic.DetailView):
+    model = Ranking
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        #context["now"] = timezone.now()
+        context['last'] = Ranking.objects.order_by("-score")[:5]
+        return context
+    
+    
+    
