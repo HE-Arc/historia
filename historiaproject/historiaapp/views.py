@@ -317,10 +317,16 @@ def DateNow():
 
 class RankingListView(generic.ListView):
     model = Ranking
+    
     def get_queryset(self) -> QuerySet[T]:
         return Ranking.objects.all()
     
-class RankingView(generic.DetailView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['last'] = Ranking.objects.order_by("-score")[:5]
+        return context
+  
+class RankingDetailView(generic.DetailView):
     model = Ranking
     
     def get_context_data(self, **kwargs):

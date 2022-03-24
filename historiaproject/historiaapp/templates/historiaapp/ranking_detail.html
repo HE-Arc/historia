@@ -1,6 +1,6 @@
 {% extends 'historiaapp/bases/base_connected.html' %}
 
-{% block title %}Rankings visualizer{% endblock %}
+{% block title %}Rankings visualizer | {{ ranking }}{% endblock %}
 
 {% block content %}
 
@@ -14,17 +14,10 @@
     </div>
 
     <h5 class="card-header mb-4">
-        List of all Ranking.
+        List ranking for this quiz.
     </h5>
 
     <div class="card-deck">
-
-        <!--
-        * for loop section to display all rankings.
-        -->
-
-        {% for ranking in object_list %}
-
             <div class="col-md-4 mb-4">
 
                 <div class="card shadow character-card text-white bg-dark">
@@ -58,11 +51,6 @@
                 </div>
                     
             </div>
-
-            {% empty %}
-            <li>No ranking yet.</li>
-
-        {% endfor %}
 
     </div>
 
