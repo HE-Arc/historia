@@ -30,7 +30,7 @@ from django.contrib.auth import get_user_model
 
 def home(request):
     context = {}
-    return render(request, 'historiaapp/login.html', context)
+    return render(request, 'historiaapp/home.html', context)
 
 @login_required(login_url="login")    
 def cards_visualizer(request):
@@ -90,7 +90,7 @@ def login_view(request):
             context = {'form':form}
             return render(request, 'historiaapp/quiz_list.html', context)
         else:
-            return redirect('historiaapp/login.html')
+            return redirect('login')
     else:
         form = AuthenticationForm()  # Create a new instance of this form
     # Send the UserCreationForm to render
@@ -145,7 +145,6 @@ def get_context_data(self, **kwargs):
 #| Cards                 |
 #|-----------------------/
 
-@login_required(login_url="login")
 class CardsListView(generic.ListView):
     model = Card    
     def get_queryset(self) -> QuerySet[T]:
