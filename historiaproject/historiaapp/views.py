@@ -319,11 +319,11 @@ class RankingListView(generic.ListView):
     model = Ranking
     
     def get_queryset(self) -> QuerySet[T]:
-        return Ranking.objects.filter(quiz=1)
+        return Ranking.objects.filter(quiz=1).order_by("-score")[:5]
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['last'] = Ranking.objects.order_by("-score")[:5]
+        context['last'] = Ranking.objects.order_by("-score")[:1]
         return context
   
 class RankingDetailView(generic.DetailView):
