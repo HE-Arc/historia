@@ -319,7 +319,7 @@ class RankingListView(generic.ListView):
     model = Ranking
     
     def get_queryset(self) -> QuerySet[T]:
-        return Ranking.objects.all()
+        return Ranking.objects.filter(quiz=1)
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -334,5 +334,13 @@ class RankingDetailView(generic.DetailView):
         context['last'] = Ranking.objects.order_by("-score")[:5]
         return context
     
-    
+  
+''' 
+  https://blog.logrocket.com/querysets-and-aggregations-in-django/
+  
+  User.objects.filter(date_joined__lte=datetime.today())
+
+  User.objects.filter(is_active=True).order_by('username', '-date_joined')
+
+'''  
     
