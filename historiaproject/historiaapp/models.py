@@ -57,7 +57,7 @@ class Card(models.Model):
     
     def __str__(self) -> str:
         return self.name
-
+    
 
 class Question(models.Model):
     """_summary_

@@ -18,6 +18,8 @@ Card list visualizer
     <h5 class="card-header mb-4">
         Collection of historical characters
     </h5>
+
+    <a href="{% url 'cards-create' %}" class="btn btn-success btn-sm">Add a card</a>
     
     <div class="card-deck">
 
@@ -36,7 +38,7 @@ Card list visualizer
 
                     <div class="text-center">
                         <img class="card-img img-fluid character-image m-3"
-                        src="../{{ card.image }}"
+                        src="../../{{ card.image }}"
                         alt="Card image cap">
                     </div>
 

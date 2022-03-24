@@ -103,16 +103,45 @@ class DashboardView(generic.TemplateView):
 #| Cards                 |
 #|-----------------------/
 
+class CardsView(generic.TemplateView):
+     template_name = "historiaapp/card_list.html"
+     
+     def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cards'] = Card.objects.all()
+        return context
+
 class CardsListView(generic.ListView):
+
     model = Card    
     def get_queryset(self) -> QuerySet[T]:
         return Card.objects.all()
 
-
 class CardsDetailView(generic.DetailView):
     model = Card
 
+class CardsCreateView(generic.CreateView):
+    
+    model = Card
+    
+    fields = ['name',
+              'image', 
+              'birth',
+              'text']
+    
+    success_url = reverse_lazy('cards-list')
+    
 
+class CardsUpdateView(generic.UpdateView):
+    
+    model = Card
+    
+    fields = ['name',
+              'image', 
+              'birth',
+              'text']
+    
+    success_url = reverse_lazy('cards-list')
 
 #|-----------------------|
 #| Quiz                  |
