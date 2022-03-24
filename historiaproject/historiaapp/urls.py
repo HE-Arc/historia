@@ -12,8 +12,8 @@ from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 
+
 urlpatterns = [
-    
     path('admin/', admin.site.urls),
     
     path('', views.home, name='home'),
@@ -23,13 +23,12 @@ urlpatterns = [
     # User urls
     # ---------------------------------------------------------------------------------- #
         
-    path('login/', views.login, name='login'),
+    path('login/', views.login_view, name='login'),
+    
+    path('logout/', views.logout_view, name='logout'),
 
-    path('signin/', views.signin, name='signin'),
-
-    path('register/', views.RegisterView.as_view(), name='register'),
-        
-    path('user/add-user/', views.AddUser.as_view(), name='add-user'),
+    path('register/', views.register_view, name='register'),
+    
     
     # Cards urls
     # ---------------------------------------------------------------------------------- #
@@ -44,6 +43,7 @@ urlpatterns = [
     path('dashboard/quiz/', views.QuizListView.as_view(), name="quiz-list"),
     
     path('dashboard/quiz/<pk>', views.QuizDetailView.as_view(), name="quiz-detail"),
+            
     
     # Questions urls
     # ---------------------------------------------------------------------------------- #
