@@ -66,6 +66,18 @@ Card list visualizer
                             {{ card.birth }}
                         </div>
 
+                        <div class="col-sm text-center">
+                            <div class="p-2">
+                                <a href="{% url 'cards-update' card.id %}" class="btn btn-success btn-lg">Update</a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm text-center">
+                            <div class="p-2">
+                                <a href="{% url 'cards-delete' card.id %}" class="btn btn-danger btn-lg">Delete</a>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>

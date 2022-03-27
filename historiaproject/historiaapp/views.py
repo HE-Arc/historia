@@ -143,6 +143,12 @@ class CardsUpdateView(generic.UpdateView):
               'text']
     
     success_url = reverse_lazy('cards-list')
+    
+class CardsDeleteView(generic.DeleteView):
+    
+    model = Card
+    success_url = reverse_lazy('cards-list')
+    
 
 #|-----------------------|
 #| Quiz                  |

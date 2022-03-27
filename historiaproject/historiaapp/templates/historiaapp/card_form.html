@@ -1,13 +1,60 @@
 {% extends 'historiaapp/basedetailnav.html' %}
 
+{% block title %}
+    {% if object is None %}
+        Add card
+    {% else %}
+        Update card
+    {% endif %}
+{% endblock %}
 
 {% block content %}
-  <form action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    
-    {{ form.media }}
-    {{ form.as_p }}
-        
-    <input type="submit" value="Submit">
-  </form>
-{% endblock %}
+<div class="container">
+  <hr>
+
+    <h1 class="display-3 mb-5 p-3">
+
+        Create card
+    </h1>
+
+    <h5 class="lead mb-4 pb-3 darker border-bottom border-warning">
+        Fill all the fields to create your card.
+    </h5>
+
+    <div class="darker align-items-center">
+      <div class="container">
+          <div class="row darker justify-content-center align-items-center">
+              <div class="darker">
+                  <div class="card-body darker p-3">
+                      <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        {{ form.media }}
+                        {{ form.as_p }}
+                            
+                        <input type="hidden" value="
+                                
+                            {% if object is None %}
+                                Save
+                                {% else %}
+                                Update
+                            {% endif %}"/>
+
+                            <div class="text-center">
+                                <button type="submit" 
+                                    class="button-historia answer mt-5 mb-5"
+                                    style="max-width:30%;min-width:10%;">
+                                    <div class="lead">
+                                        <strong>Save</strong>
+                                    </div>
+                                </button>
+                            </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>                  
+ {% endblock %}
