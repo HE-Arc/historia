@@ -51,7 +51,7 @@ class Card(models.Model):
         _type_: Card
     """
     name = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='images/', default="")
+    image = models.ImageField(upload_to='images/', null=True)
     birth = models.CharField(max_length=20)
     text = models.CharField(max_length=4000)
     

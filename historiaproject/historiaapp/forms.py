@@ -60,3 +60,12 @@ class QuizzForm(ModelForm):
     class Meta:
         model = Quiz
         fields = "__all__"        
+
+class CardForm(forms.ModelForm):
+    class Meta:
+        model = Card
+        fields = ('name',
+              'image', 
+              'birth',
+              'text')
+        

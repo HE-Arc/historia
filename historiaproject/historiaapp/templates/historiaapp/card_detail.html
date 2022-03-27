@@ -16,12 +16,14 @@
 
                     <div class="row">
 
+                        {% if card.image %}
                         <div class="text-center shadow rounded m-3"
                         style="max-width:18rem;">
                             <img class="float-center img-fluid character-image rounded"
-                            src="../../{{ card.image }}"
+                            src="{{  card.image.url }}"
                             alt="Card image cap">
                         </div>
+                        {% endif %}
 
                         <div class="card m-3 p-3 text-dark">
 

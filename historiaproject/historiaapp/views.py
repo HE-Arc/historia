@@ -1,4 +1,5 @@
 from re import T
+from urllib import request
 
 from django.shortcuts import render
 from django.shortcuts import render, redirect
@@ -121,7 +122,7 @@ class CardsDetailView(generic.DetailView):
     model = Card
 
 class CardsCreateView(generic.CreateView):
-    
+      
     model = Card
     
     fields = ['name',
