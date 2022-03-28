@@ -4,14 +4,9 @@
         "pk": 1,
         "fields": {
             "name": "Quizz 1",
-            "size": 4,
-            "questions": {
-                "fk1" : 1,
-                "fk2" : 2,
-                "fk3" : 3,
-                "fk4" : 4
-            }
+            "text": "First quizz of the app.",
+            "is_over" : false,
+            "questions": [1, 2, 3, 4]
         }
     }
 ]
-    

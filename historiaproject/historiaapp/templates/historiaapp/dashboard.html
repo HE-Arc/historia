@@ -33,6 +33,34 @@ Historia
             </div>
 
             <div class="card-body darker">
+                <h4 class="display-5 darker col mt-5">Quizzes:</h4>
+                <div class="btn container darker" 
+                    onclick="location.href='{% url 'quiz-list' %}'">
+                    <div class="row">
+
+                        {% for quiz in quizzes %}
+                        
+                            <div class="card bg-light shadow character-card text-dark p-3 m-3"
+                                style="max-width: 14rem; height: auto;">
+
+                                <div class="bg-light">
+                                    <h5 class="card-text">{{ quiz.name }}</h5>
+                                    <p class="card-text">{{ quiz.text }}</p>
+                                    <p class="card-text lead">
+                                        <small class="lead">
+                                        {{ quiz.questions }}
+                                        </small>
+                                    </p>
+                                </div>
+
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body darker">
                 <h4 class="display-5 darker col mt-5">Cards:</h4>
                 <div class="container darker">
                     <div class="row">    

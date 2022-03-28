@@ -116,6 +116,7 @@ class QuizView(generic.TemplateView):
 class QuizListView(generic.ListView):
     model = Quiz
     def get_queryset(self) -> QuerySet[T]:
+        print(Quiz.objects.all())
         return Quiz.objects.all()
 
 
@@ -123,7 +124,40 @@ class QuizDetailView(generic.DetailView):
     model = Quiz
 
 
+class QuizCreateView(generic.CreateView):
+    model = Quiz
+    fields = [
+        'name', 
+        'text', 
+        'q',
+        'is_over'
+    ]
+    
+    success_url = reverse_lazy('questions-list')
+    
 
+class QuizCheckView(View):
+    def post(self, request):
+        """_summary_
+        To check the posted answers through the form.
+        Args:
+            request (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        quiz = Quiz.objects.get(pk=request.POST.get("quiz_id"))
+        option = request.POST.get("question_id")
+
+        if option == str(quiz.answer):
+            quiz.is_correct = True
+        else:
+            quiz.is_correct = False
+
+        quiz.save()
+        
+        return redirect('quiz-list')
+    
 #|-----------------------|
 #| Questions             |
 #|-----------------------/
@@ -172,7 +206,7 @@ class QuestionCreateView(generic.CreateView):
         'character'
     ]
     
-    success_url = reverse_lazy('questions-list')
+    success_url = reverse_lazy('questions-detail')
 
 
 class QuestionUpdateView(generic.UpdateView):
@@ -219,12 +253,9 @@ class QuestionDeleteView(generic.DeleteView):
         """
         question = Question.objects.get(pk=request.POST.get("question_id"))        
         question.delete()
-        
-        
 
 
 class QuestionCheckView(View):
-    
     def post(self, request):
         """_summary_
         To check the posted answers through the form.
@@ -245,3 +276,4 @@ class QuestionCheckView(View):
         question.save()
         
         return redirect('questions-list')
+

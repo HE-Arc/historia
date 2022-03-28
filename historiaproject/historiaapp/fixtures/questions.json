@@ -28,5 +28,35 @@
             "is_correct": false,
             "character" : 1
         }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 3,
+        "fields": {
+            "name" : "Question 3",
+            "text" : "To which school Einstein did not pass the entrance exam the first time?",
+            "opt_one" : "École polytechnique fédérale de Zurich",
+            "opt_two" : "École polytechnique fédérale de Lausanne",
+            "opt_three" : "Luitpold Gymnasium de Munich",
+            "opt_four" : "Université de St-Gall",
+            "answer" : 1,
+            "is_correct": false,
+            "character" : 3
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 4,
+        "fields": {
+            "name" : "Question 4",
+            "text" : "Qui a créé le premier langage de programmation ?",
+            "opt_one" : "Konrad Zuse",
+            "opt_two" : "Ada Lovelace",
+            "opt_three" : "Mary Curry",
+            "opt_four" : "Karl Marx",
+            "answer" : 2,
+            "is_correct": false,
+            "character" : 5
+        }
     }
 ]

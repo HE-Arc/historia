@@ -38,5 +38,15 @@
             "birth": "22 December 1887",
             "text": "During his short life, Ramanujan independently compiled nearly 3,900 results (mostly identities and equations). Many were completely novel; his original and highly unconventional results, such as the Ramanujan prime, the Ramanujan theta function, partition formulae and mock theta functions, have opened entire new areas of work and inspired a vast amount of further research."
         }
+    },
+    {
+        "model": "historiaapp.card",
+        "pk": 5,
+        "fields": {
+            "name": "Ada Lovelace",
+            "image": "../media/images/adalovelace.jpg",
+            "birth": "10 December 1815",
+            "text": "Between 1842 and 1843, Ada translated an article by Italian military engineer Luigi Menabrea about the Analytical Engine, supplementing it with an elaborate set of notes, simply called \"Notes\". Lovelace's notes are important in the early history of computers, containing what many consider to be the first computer program—that is, an algorithm designed to be carried out by a machine."
+        }
     }
 ]
