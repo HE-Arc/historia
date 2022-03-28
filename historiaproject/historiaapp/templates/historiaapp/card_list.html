@@ -18,6 +18,13 @@ Card list visualizer
     <h5 class="card-header mb-4">
         Collection of historical characters
     </h5>
+
+
+    <h1 class="display-4 mb-2 p-3">
+        Cards
+        <a href="{% url 'cards-create' %}" 
+        class="btn btn-warning float-right">Create card</a>
+    </h1>
     
     <div class="card-deck">
 
@@ -34,11 +41,13 @@ Card list visualizer
                     <a href="{% url 'cards-detail' card.id %}" 
                     class="btn btn-secondary btn-sm p-6 m-2">Informations</a>
 
+                    {% if card.image %}
                     <div class="text-center">
                         <img class="card-img img-fluid character-image m-3"
-                        src="../{{ card.image }}"
+                        src=" {{  card.image.url }}"
                         alt="Card image cap">
                     </div>
+                    {% endif %}
 
                     <div class="card-body">
 
@@ -55,6 +64,18 @@ Card list visualizer
                         <div class="card-footer text-muted">
                             Birth: 
                             {{ card.birth }}
+                        </div>
+
+                        <div class="col-sm text-center">
+                            <div class="p-2">
+                                <a href="{% url 'cards-update' card.id %}" class="btn btn-success btn-lg">Update</a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm text-center">
+                            <div class="p-2">
+                                <a href="{% url 'cards-delete' card.id %}" class="btn btn-danger btn-lg">Delete</a>
+                            </div>
                         </div>
 
                     </div>

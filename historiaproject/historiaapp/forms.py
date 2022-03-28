@@ -1,3 +1,4 @@
+from pyexpat import model
 from django.forms import *
 from .models import *
 from django.contrib.auth.forms import *
@@ -55,8 +56,16 @@ class AddQuestionForm(ModelForm):
         model = Quiz
         fields = "__all__"
 
-
 class QuizzForm(ModelForm):
     class Meta:
         model = Quiz
         fields = "__all__"        
+
+class CardForm(forms.ModelForm):
+    class Meta:
+        model = Card
+        fields = ('name',
+              'image', 
+              'birth',
+              'text')
+        

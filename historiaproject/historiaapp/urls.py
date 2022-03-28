@@ -34,8 +34,14 @@ urlpatterns = [
     # ---------------------------------------------------------------------------------- #
     
     path('dashboard/cards/', views.CardsListView.as_view(), name='cards-list'),  
-        
+    
+    path('dashboard/cards/new/', views.CardsCreateView.as_view(), name='cards-create'),
+    
     path('dashboard/cards/<pk>/', views.CardsDetailView.as_view(), name='cards-detail'),
+    
+    path('dashboard/cards/<pk>/update', views.CardsUpdateView.as_view(), name="cards-update"),
+    
+    path('dashboard/cards/<pk>/delete', views.CardsDeleteView.as_view(), name="cards-delete"),
     
     # Quiz urls
     # ---------------------------------------------------------------------------------- #
