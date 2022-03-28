@@ -124,21 +124,16 @@ def logout_view(request):
 #|-----------------------/
 
 class DashboardView(generic.TemplateView):
-    template_name = "historiaapp/dashboard.html"
-
-
-@login_required(login_url="login")
-class CardsView(generic.TemplateView):
-    template_name = "historiaapp/cards.html"
     
-
-def get_context_data(self, **kwargs):
-    context = super().get_context_data(**kwargs)
-    context['user'] = User.objects.all()
-    context['quizzes'] = Quiz.objects.all()
-    context['cards'] = Card.objects.all()
-    context['questions'] = Question.objects.all()
-    return context
+    template_name = "historiaapp/dashboard.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = User.objects.all()
+        context['quizzes'] = Quiz.objects.all()
+        context['cards'] = Card.objects.all()
+        context['questions'] = Question.objects.all()
+        return context
 
 
 
@@ -147,6 +142,7 @@ def get_context_data(self, **kwargs):
 #|-----------------------/
 
 class CardsView(generic.TemplateView):
+    
      template_name = "historiaapp/card_list.html"
      
      def get_context_data(self, **kwargs):
@@ -166,7 +162,6 @@ class CardsDetailView(generic.DetailView):
 class CardsCreateView(generic.CreateView):
       
     model = Card
-    
     fields = ['name',
               'image', 
               'birth',
@@ -178,7 +173,6 @@ class CardsCreateView(generic.CreateView):
 class CardsUpdateView(generic.UpdateView):
     
     model = Card
-    
     fields = ['name',
               'image', 
               'birth',
@@ -200,6 +194,7 @@ class CardsDeleteView(generic.DeleteView):
 
 @login_required(login_url="login")
 class QuizView(generic.TemplateView):
+    
     template_name = "historiaapp/quiz.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -207,12 +202,14 @@ class QuizView(generic.TemplateView):
         return context
 
 class QuizListView(generic.ListView):
+    
     model = Quiz
     def get_queryset(self) -> QuerySet[T]:
         return Quiz.objects.all()
 
 
 class QuizDetailView(generic.DetailView):
+    
     model = Quiz
 
 
