@@ -57,10 +57,11 @@ class Quiz(models.Model):
     Args:
         models (_type_): _description_
     """
-    # name of the quiz
     name = models.CharField(max_length=200)
     text = models.TextField(max_length=2000)
+    
     questions = models.ManyToManyField('Question', related_name="questions")
+    
     is_over = models.BooleanField(default=False)
     
     def __str__(self) -> str:
@@ -73,16 +74,21 @@ class Question(models.Model):
     opt_{N} corresponds to the texted answer showed to the user.
     Args:
         models (_type_): _description_
-    """            
+    """
     name = models.CharField(max_length=200)
     text = models.TextField(max_length=2000)
+    
     opt_one = models.CharField(max_length=200)
     opt_two = models.CharField(max_length=200)
     opt_three = models.CharField(max_length=200)
     opt_four = models.CharField(max_length=200)
+    
     answer = models.IntegerField(default=1)
+    
     is_correct = models.BooleanField(default=False)
+    
     character = models.ForeignKey('Card', on_delete=models.CASCADE, null=True)
+    
     options = models.IntegerChoices('Options', 'ONE TWO THREE FOUR')
 
     def __str__(self) -> str:

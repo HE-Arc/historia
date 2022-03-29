@@ -56,16 +56,16 @@ urlpatterns = [
     # Quiz urls
     # ---------------------------------------------------------------------------------- #
     
-    path('dashboard/quiz/', views.QuizListView.as_view(), name="quiz-list"),
+    path('dashboard/quiz/', views.QuizListView.as_view(), name="quizs-list"),
     
-    path('dashboard/quiz/check/', views.QuestionCheckView.as_view(), name="quiz-check"),
+    path('dashboard/quiz/check/', views.QuestionCheckView.as_view(), name="quizs-check"),
             
-    path('dashboard/quiz/new/', views.QuestionCreateView.as_view(), name="quiz-create"),
+    path('dashboard/quiz/new/', views.QuestionCreateView.as_view(), name="quizs-create"),
     
-    path('dashboard/quiz/<pk>', views.QuizDetailView.as_view(), name="quiz-detail"),
+    path('dashboard/quiz/<pk>', views.QuizDetailView.as_view(), name="quizs-detail"),
     
-    path('dashboard/quiz/<pk>/update', views.QuestionUpdateView.as_view(), name="quiz-update"),
+    path('dashboard/quiz/<pk>/update', views.QuestionUpdateView.as_view(), name="quizs-update"),
     
-    path('dashboard/quiz/<pk>/delete', views.QuestionDeleteView.as_view(), name="quiz-delete"),
+    path('dashboard/quiz/<pk>/delete', views.QuestionDeleteView.as_view(), name="quizs-delete"),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

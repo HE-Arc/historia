@@ -4,46 +4,91 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
 
-        <h3>Card informations</h3>
-
-        <div class="card-deck">
-
-            <div class="row">
-
-                <div class="card p-3 m-3">
-
-                    <div class="row">
-
-                        <div class="card p-3 m-3">
-
-                            <h4 class="card-title text-lg-left">
-                                {{ quiz.name }}
-                            </h4>                
-
-                            <p class="card-text text-sm character-text lead">
-                                <small class="lead">
-                                {{ quiz.size }}
-                                </small>
+    <div class="card-deck d-flex justify-content-center">
+        <!-- * for loop section to display all quizzes. -->
+        {% for question in page_obj %}
+            <div class="mb-4">
+                <div class="card shadow character-card text-white bg-dark">
+                    <div class="card-body">
+                        <h4 class="card-title text-lg-left">
+                            {{ quiz.name }}
+                        </h4>                
+                        <p class="card-text lead">
+                            <small class="lead">
+                            {{ quiz.text }}
+                            </small>
+                        </p>
+                        <div class="card-header">
+                            <p class="card-text lead">
+                                Questions
                             </p>
 
-                            <div class="card-text text-sm">
-                                Birth: 
-                                {{ quiz.options }}
+                            <!-- QUESTIONS DISPLAY -->
+
+                            <div class="card-body">
+
+                                {% for question in quiz.questions.all %}
+                                    <p class="card-text">
+                                        <small>
+                                            {{ question.text }}
+                                        </small>
+                                    </p>
+                                {% endfor %}
+
                             </div>
                             
+                            <!-- END QUESTIONS DISPLAY -->
+
                         </div>
-                    
                     </div>
-
                 </div>
-                
             </div>
-        
-        </div>
-
+        {% endfor %}
     </div>
+
+    
+    <!-- PAGINATION -->
+
+    <div class="d-flex justify-content-center darker">
+        <nav aria-label="pagination navbar navbar-dark darker">
+            <ul class="pagination navbar darker">
+                {% if page_obj.has_previous %}
+                    <li class="page-item darker">
+                        <a class="page-link darker" href="?page=1">
+                            &laquo; first
+                        </a>
+                    </li>
+                    <li class="page-item darker">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                            {{ page_obj.previous_page_number }}
+                        </a>
+                    </li>
+                {% endif %}
+                
+                <li class="page-item active">
+                    <a class="page-link" href="#">
+                        {{ page_obj.number }}
+                    </a>
+                </li>
+        
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                            {{ page_obj.next_page_number }}
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+                            last &raquo;
+                        </a>
+                    </li>
+                {% endif %}            
+            </ul>
+        </nav>
+    </div>
+
+    <!-- END PAGINATION -->
 
 </div>
 {% endblock %}

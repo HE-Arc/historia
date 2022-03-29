@@ -84,7 +84,6 @@ class DashboardView(generic.TemplateView):
         return context
 
 
-
 #|-----------------------|
 #| Cards                 |
 #|-----------------------/
@@ -114,10 +113,10 @@ class QuizView(generic.TemplateView):
 
 
 class QuizListView(generic.ListView):
-    model = Quiz
+    paginate_by = 1
     def get_queryset(self) -> QuerySet[T]:
-        print(Quiz.objects.all())
-        return Quiz.objects.all()
+        quizs = Quiz.objects.all()
+        return quizs
 
 
 class QuizDetailView(generic.DetailView):
@@ -126,10 +125,11 @@ class QuizDetailView(generic.DetailView):
 
 class QuizCreateView(generic.CreateView):
     model = Quiz
+    
     fields = [
         'name', 
         'text', 
-        'q',
+        'questions',
         'is_over'
     ]
     
@@ -146,6 +146,7 @@ class QuizCheckView(View):
         Returns:
             _type_: _description_
         """
+        
         quiz = Quiz.objects.get(pk=request.POST.get("quiz_id"))
         option = request.POST.get("question_id")
 
