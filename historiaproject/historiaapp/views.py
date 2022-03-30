@@ -142,14 +142,6 @@ class DashboardView(generic.TemplateView):
 #| Cards                 |
 #|-----------------------/
 
-class CardsView(generic.TemplateView):
-    
-     template_name = "historiaapp/card_list.html"
-     
-     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['cards'] = Card.objects.all()
-        return context
 
 class CardsListView(generic.ListView):
 
@@ -300,14 +292,6 @@ class QuizCheckView(View):
 #|-----------------------|
 #| Questions             |
 #|-----------------------/
-
-# not used anymore, was mainly used to test data at first
-class QuestionView(generic.TemplateView):
-    template_name = "historiaapp/question_list.html"
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['questions'] = Question.objects.all()
-        return context
 
 
 class QuestionListView(generic.ListView):

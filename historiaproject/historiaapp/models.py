@@ -2,11 +2,6 @@ from django.db import models
 from django.core import serializers
 
 
-class QuestionByQuiz(models.Model):
-    question_id = models.ForeignKey('Question', on_delete=models.CASCADE, default=False)
-    quiz_id = models.ForeignKey('Quiz', on_delete=models.CASCADE, default=False)
-
-
 class AnswerOptions(models.Model):
     question_id = models.ForeignKey('Question', on_delete=models.CASCADE)
     answerText = models.CharField(max_length=200)
@@ -19,12 +14,7 @@ class Score(models.Model):
     start_time = models.TimeField(auto_now_add=True)
     end_time = models.TimeField(auto_now_add=True)
 
-
-class Answer(models.Model):
-    score_id = models.ManyToManyField('Score')
-    answer_option_id = models.ManyToManyField('AnswerOptions')
-    
-    
+  
 class Card(models.Model):
     """_summary_
     Card model for historical characters registered in cards.json file.
