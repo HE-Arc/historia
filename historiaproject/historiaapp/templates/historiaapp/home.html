@@ -1,4 +1,4 @@
-{% extends 'historiaapp/bases/base_home.html' %}
+{% extends 'historiaapp/bases/base.html' %}
 
 {% block title %}
 Historia
@@ -9,12 +9,16 @@ Historia
 <div class="container-fluid">
 
     <div class="pt-3">
+        {% if user.is_authenticated %}
+
         <div class="text-center text-light">
             <h1 class="display-4 mt-4 mb-4">
-                Welcome
+                Welcome, {{ user.username }}.
             </h1>
         </div>
-    
+        
+        {% else %}
+
         <div class="darker align-items-center">
             <div class="container">
                 <div class="row darker justify-content-center align-items-center">
@@ -38,7 +42,7 @@ Historia
                             <div class="d-flex justify-content-center mb-5">
                                 <button type="button" 
                                     class="button-historia text-uppercase lead" 
-                                    onclick="location.href='{% url 'signin' %}'">
+                                    onclick="location.href='{% url 'login' %}'">
                                     Sign in
                                 </button>
                             </div>
@@ -47,6 +51,9 @@ Historia
                     </div>
                 </div>
             </div>
+
+            {% endif %}
+
         </div>
 
     </div>

@@ -25,8 +25,6 @@ urlpatterns = [
         
     path('login/', views.login, name='login'),
 
-    path('signin/', views.signin, name='signin'),
-
     path('register/', views.RegisterView.as_view(), name='register'),
         
     path('user/add-user/', views.AddUser.as_view(), name='add-user'),
@@ -58,14 +56,14 @@ urlpatterns = [
     
     path('dashboard/quiz/', views.QuizListView.as_view(), name="quizs-list"),
     
-    path('dashboard/quiz/check/', views.QuestionCheckView.as_view(), name="quizs-check"),
+    path('dashboard/quiz/check/', views.QuizCheckView.as_view(), name="quizs-check"),
             
-    path('dashboard/quiz/new/', views.QuestionCreateView.as_view(), name="quizs-create"),
+    path('dashboard/quiz/new/', views.QuizCreateView.as_view(), name="quizs-create"),
     
     path('dashboard/quiz/<pk>', views.QuizDetailView.as_view(), name="quizs-detail"),
     
-    path('dashboard/quiz/<pk>/update', views.QuestionUpdateView.as_view(), name="quizs-update"),
+    path('dashboard/quiz/<pk>/update', views.QuizUpdateView.as_view(), name="quizs-update"),
     
-    path('dashboard/quiz/<pk>/delete', views.QuestionDeleteView.as_view(), name="quizs-delete"),
+    path('dashboard/quiz/<pk>/delete', views.QuizDeleteView.as_view(), name="quizs-delete"),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

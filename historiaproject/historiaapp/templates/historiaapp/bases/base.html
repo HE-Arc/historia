@@ -31,7 +31,7 @@
       <div class="container d-flex justify-content-center darker">
 
         <div class="row">
-          <!--LEFT PART-->
+
           <a class="col-sm navbar-brand text-light darker" href="{% url 'home' %}">
             <div class="row ">
               <img src="../../media/images/logo.svg"
@@ -58,30 +58,55 @@
           </button>
 
           <div class="col-sm collapse navbar-collapse ml-4" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto lead m-2">
-              <li class="nav-item active mr-4">
-                <a class="nav-link text-warning" href="{% url 'dashboard' %}">
-                  <div class="btn btn-warning bi bi-house-fill">
-                  </div>
-                  Dashboard<span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item active mr-4">
-                <a class="nav-link text-warning" href="{% url 'cards-list' %}">
-                  <div class="btn btn-warning bi bi-wallet2">
-                  </div>
-                  Cards
-                </a>
-              </li>
-              <li class="nav-item active mr-4">
-                <a class="nav-link text-warning" href="{% url 'quizs-list' %}">
-                  <div class="btn btn-warning bi bi-question-square-fill">
-                  </div>
-                  Quizzes
-                </a>
-              </li>
-            </ul>
+            {% if user.is_authenticated %}
+
+              <ul class="navbar-nav mr-auto lead m-2">
+                <li class="nav-item active mr-4">
+                  <a class="nav-link text-warning" href="{% url 'dashboard' %}">
+                    <div class="btn btn-warning bi bi-house-fill">
+                    </div>
+                    Dashboard<span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item active mr-4">
+                  <a class="nav-link text-warning" href="{% url 'cards-list' %}">
+                    <div class="btn btn-warning bi bi-wallet2">
+                    </div>
+                    Cards
+                  </a>
+                </li>
+                <li class="nav-item active mr-4">
+                  <a class="nav-link text-warning" href="{% url 'quizs-list' %}">
+                    <div class="btn btn-warning bi bi-question-square-fill">
+                    </div>
+                    Quizzes
+                  </a>
+                </li>
+              </ul>
+
+            {% else %}
+
+              <ul class="navbar-nav mr-auto lead m-2">
+                <li class="nav-item active mr-4">
+                  <a class="nav-link text-warning" href="{% url 'login' %}">
+                    <div class="btn btn-warning bi bi-door-closed">
+                    </div>
+                    Sign in<span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item active mr-4">
+                  <a class="nav-link text-warning" href="{% url 'register' %}">
+                    <div class="btn btn-warning bi bi-box-arrow-in-down">
+                    </div>
+                    Register
+                  </a>
+                </li>
+              </ul>
+
+            {% endif %}
+
           </div>
+
         </div>
 
       </div>
@@ -89,9 +114,8 @@
     </nav>
 
   </div>
-
   {% block content %}
-  
+
   {% endblock %}
 
 </body>

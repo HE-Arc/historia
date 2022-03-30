@@ -27,6 +27,7 @@
                 <!-- QUIZ DISPLAY -->
 
                 {% for quiz in page_obj %}
+
                     <div class="mb-4">
                         <div class="card shadow character-card text-white bg-dark">
                             <div class="card-body">
@@ -58,14 +59,27 @@
                                             </p>
                                         {% endfor %}
 
+                                        <div class="d-flex justify-content-center mb-5">
+                                            <button type="button"
+                                                class="button-historia text-uppercase lead"
+                                                style="max-width:35%;"
+                                                onclick="location.href='{% url 'quizs-detail' quiz.id %}'">
+                                                Begin
+                                            </button>
+                                        </div>
+
                                     </div>
                                     
                                     <!-- END QUESTIONS DISPLAY -->
                                     
                                 </div>
+
                             </div>
+                        
                         </div>
+
                     </div>
+
                 {% endfor %}
 
                 <!-- END QUESTIONS DISPLAY -->

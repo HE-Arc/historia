@@ -1,3 +1,4 @@
+from cgi import print_arguments
 from re import T
 
 from django.shortcuts import render
@@ -68,6 +69,7 @@ class AddUser(View):
 
 
 
+
 #|-----------------------|
 #| Dashboard             |
 #|-----------------------/
@@ -98,24 +100,21 @@ class CardsDetailView(generic.DetailView):
     model = Card
 
 
-
 #|-----------------------|
 #| Quiz                  |
 #|-----------------------/
 
-# not used anymore, was mainly used to test data at first
-class QuizView(generic.TemplateView):
-    template_name = "historiaapp/quiz.html"
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['quiz'] = Quiz.objects.all()
-        return context
-
 
 class QuizListView(generic.ListView):
-    paginate_by = 1
+    paginate_by = 2
+    
     def get_queryset(self) -> QuerySet[T]:
         quizs = Quiz.objects.all()
+        for quiz in quizs:
+            for question in quiz.questions.all():
+                question.is_correct = False
+                question.save()
+                
         return quizs
 
 
@@ -127,16 +126,44 @@ class QuizCreateView(generic.CreateView):
     model = Quiz
     
     fields = [
+        'name',
+        'text',
+        'questions',
+        'is_over'
+    ]
+    
+    success_url = reverse_lazy('quizs-list')
+
+
+class QuizUpdateView(generic.UpdateView):
+    """_summary_
+    To update a quiz in the database.
+    Called from the quiz_update page -> <pk>/update route.
+    Args:
+        generic (_type_): _description_
+    """
+    model = Quiz
+
+    fields = [
         'name', 
         'text', 
         'questions',
         'is_over'
     ]
     
-    success_url = reverse_lazy('questions-list')
-    
+    success_url = reverse_lazy('quizs-list')
 
-class QuizCheckView(View):
+
+class QuizDeleteView(generic.DeleteView):
+    """_summary_
+    To delete a question from the database.
+    Called from the quiz_delete -> <pk>/delete route.
+    Args:
+        generic (_type_): _description_
+    """
+    model = Quiz
+    success_url = reverse_lazy('quizs-list')
+
     def post(self, request):
         """_summary_
         To check the posted answers through the form.
@@ -146,19 +173,42 @@ class QuizCheckView(View):
         Returns:
             _type_: _description_
         """
+        quiz = Quiz.objects.get(pk=request.POST.get("quiz_id"))        
+        quiz.delete()
+
+
+class QuizCheckView(View):
         
+    def post(self, request):
+        """_summary_
+        To check the posted answers through the form.
+        Args:
+            request (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
         quiz = Quiz.objects.get(pk=request.POST.get("quiz_id"))
-        option = request.POST.get("question_id")
-
-        if option == str(quiz.answer):
-            quiz.is_correct = True
-        else:
-            quiz.is_correct = False
-
+        quiz.score = 0
+        questions = quiz.questions.all()
+        values = list(request.POST.values())
+        values.pop(0)
+                
+        for question, answer in zip(questions, values):
+            if answer == str(question.answer):
+                quiz.score += 1
+                question.is_correct = True
+                question.save()
+            else:
+                question.is_correct = False
+                question.save()
         quiz.save()
         
-        return redirect('quiz-list')
-    
+
+        
+        return redirect('quizs-detail', quiz.id)
+
+
 #|-----------------------|
 #| Questions             |
 #|-----------------------/
@@ -175,7 +225,9 @@ class QuestionView(generic.TemplateView):
 class QuestionListView(generic.ListView):
     model = Question
     def get_queryset(self) -> QuerySet[T]:
-        return Question.objects.all()
+        questions = Question.objects.all()
+        
+        return questions
 
 
 class QuestionDetailView(generic.DetailView):

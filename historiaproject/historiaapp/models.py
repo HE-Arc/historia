@@ -53,7 +53,7 @@ class Card(models.Model):
 
 class Quiz(models.Model):
     """_summary_
-    Quiz model based on question with four possible answers.
+    Quiz model based on a number of questions.
     Args:
         models (_type_): _description_
     """
@@ -62,7 +62,7 @@ class Quiz(models.Model):
     
     questions = models.ManyToManyField('Question', related_name="questions")
     
-    is_over = models.BooleanField(default=False)
+    score_quiz = models.IntegerField(default=0)
     
     def __str__(self) -> str:
         return self.name
@@ -70,7 +70,7 @@ class Quiz(models.Model):
 
 class Question(models.Model):
     """_summary_
-    Quiz model based on question with four possible answers.
+    Question model four possible answers.
     opt_{N} corresponds to the texted answer showed to the user.
     Args:
         models (_type_): _description_
