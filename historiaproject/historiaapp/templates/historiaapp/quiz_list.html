@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-{% extends 'historiaapp/bases/base_connected.html' %}
-=======
 {% extends 'historiaapp/bases/base.html' %}
->>>>>>> quizzes
 
 {% block title %}Quizzes visualizer{% endblock %}
 
@@ -30,19 +26,19 @@
                 
                 <!-- QUIZ DISPLAY -->
 
-                {% for quiz in page_obj %}
+                {% for quizs in page_obj %}
 
                     <div class="mb-4">
                         <div class="card shadow character-card text-white bg-dark">
                             <div class="card-body">
                                 
                                 <h4 class="card-title text-lg-left">
-                                    {{ quiz.name }}
+                                    {{ quizs.name }}
                                 </h4>
 
                                 <p class="card-text lead">
                                     <small class="lead">
-                                    {{ quiz.text }}
+                                    {{ quizs.text }}
                                     </small>
                                 </p>
 
@@ -55,7 +51,7 @@
 
                                     <div class="card-body">
 
-                                        {% for question in quiz.questions.all %}
+                                        {% for question in quizs.questions.all %}
                                             <p class="card-text">
                                                 <small>
                                                     {{ question.text }}
@@ -67,7 +63,7 @@
                                             <button type="button"
                                                 class="button-historia text-uppercase lead"
                                                 style="max-width:35%;"
-                                                onclick="location.href='{% url 'quizs-detail' quiz.id %}'">
+                                                onclick="location.href='{% url 'quizs-detail' quizs.id %}'">
                                                 Begin
                                             </button>
                                         </div>
