@@ -20,7 +20,6 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib import messages
 
-from .forms import *
 from .models import *
 from django.contrib.auth import get_user_model
 
@@ -37,20 +36,7 @@ def home(request):
 @login_required(login_url="login")    
 def cards_visualizer(request):
     context = {}
-    return render(request, 'historiaapp/cards.html', context)    
-
-@login_required(login_url="login")
-def add_question(request):
-    form = AddQuestionForm()
-    if request.method=='POST':
-        form = AddQuestionForm(request.POST)
-        if(form.is_valid()):
-            form.save()
-            return redirect('/')
-        context = {'form':form}
-        return render(request, 'add_question.html', context)
-    else:
-        return redirect('cards')
+    return render(request, 'historiaapp/cards.html', context)
     
 
 #|----------------------------------------------------------------------------| 
