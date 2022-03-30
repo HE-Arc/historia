@@ -29,6 +29,8 @@ urlpatterns = [
 
     path('register/', views.register_view, name='register'),
     
+    path('home/', views.home_user_view, name='home-user'),
+    
     
     # Cards urls
     # ---------------------------------------------------------------------------------- #
@@ -64,7 +66,7 @@ urlpatterns = [
     # Ranking urls
     # ---------------------------------------------------------------------------------- #
     
-    path('ranking/<pk>', views.RankingDetailView.as_view(), name="ranking"),
+    # path('ranking/<pk>', views.RankingDetailView.as_view(), name="ranking"),
      
     path('rankings/', views.RankingListView.as_view(), name="ranking-list"),
 

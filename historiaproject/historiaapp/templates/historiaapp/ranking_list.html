@@ -14,55 +14,44 @@
     </div>
 
     <h5 class="card-header mb-4">
-        List of all Ranking.
+        List of ranking for this quiz.
     </h5>
 
     <div class="card-deck">
 
-        <!--
-        * for loop section to display all rankings.
-        -->
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Position</th>
+              <th scope="col">Quiz</th>
+              <th scope="col">Name user</th>
+              <th scope="col">Score</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
 
         {% for ranking in object_list %}
 
             <div class="col-md-4 mb-4">
 
-                <div class="card shadow character-card text-white bg-dark">
+                    <tbody>
+                      <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ ranking.quiz }}</td>
+                        <td>{{ ranking.user }}</td>
+                        <td>{{ ranking.score }}</td>
+                        <td>{{ ranking.date }}</td>
+                      </tr>
+                    </tbody>
 
-                    <div class="card-body">
-
-                        <h4 class="card-title text-lg-left">
-                            Quiz : {{ ranking.quiz }}
-                        </h4>                
-
-                        <p class="card-title text-lg-left">
-                            <small class="lead">
-                            Name user : {{ ranking.user }}
-                            </small>
-                        </p>
-
-                        <p class="card-title text-lg-left">
-                            <small class="lead">
-                            Score : {{ ranking.score }}
-                            </small>
-                        </p>
-
-                        <p class="card-title text-lg-left">
-                            <small class="lead">
-                            Date : {{ ranking.date }}
-                            </small>
-                        </p>
-
-                    </div>
-
-                </div>
-                    
             </div>
 
             {% empty %}
             <li>No ranking yet.</li>
-
+        
         {% endfor %}
+
+      </table>
 
     </div>
 

@@ -54,7 +54,8 @@ def add_question(request):
         return render(request, 'add_question.html', context)
     else:
         return redirect('cards')
-    
+  
+  
 
 #|----------------------------------------------------------------------------| 
 #   Views Classes                                                             |
@@ -94,7 +95,7 @@ def login_view(request):
             login(request, user)
             context = {'form':form}
             
-            return render(request, 'quiz-list', context)
+            return render(request, "historiaapp/home_user.html", context)
         else:
             return redirect('login')
     else:
@@ -111,7 +112,7 @@ def register_view(request):
             form.save()
             return redirect('/')
         context = {'form':form}
-        return render(request, 'historiaapp/quiz_list.html', context)
+        return render(request, 'historiaapp/home_user.html', context)
     else:
         form = UserCreationForm()  # Create a new instance of this form
     # Send the UserCreationForm to render
@@ -121,7 +122,16 @@ def register_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
-   
+
+
+@login_required(login_url="login")    
+def home_user_view(request):
+    context = super().get_context_data(**kwargs)
+    context['user'] = request.user
+    context['quizs'] = Quiz.objects.all()
+    context['rankings'] = Ranking.objects.all()
+    return render(request, 'historiaapp/home_user.html', context)    
+     
 
 
 #|-----------------------|
@@ -321,11 +331,7 @@ class RankingListView(generic.ListView):
     def get_queryset(self) -> QuerySet[T]:
         return Ranking.objects.filter(quiz=1).order_by("-score")[:5]
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['last'] = Ranking.objects.order_by("-score")[:1]
-        return context
-  
+'''
 class RankingDetailView(generic.DetailView):
     model = Ranking
     
@@ -333,7 +339,7 @@ class RankingDetailView(generic.DetailView):
         context = super().get_context_data(**kwargs)
         context['last'] = Ranking.objects.order_by("-score")[:5]
         return context
-    
+'''    
   
 ''' 
   https://blog.logrocket.com/querysets-and-aggregations-in-django/
