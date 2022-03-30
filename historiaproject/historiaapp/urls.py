@@ -42,15 +42,7 @@ urlpatterns = [
     path('dashboard/cards/<pk>/update', views.CardsUpdateView.as_view(), name="cards-update"),
     
     path('dashboard/cards/<pk>/delete', views.CardsDeleteView.as_view(), name="cards-delete"),
-    
-    # Quiz urls
-    # ---------------------------------------------------------------------------------- #
-    
-    path('dashboard/quiz/', views.QuizListView.as_view(), name="quiz-list"),
-    
-    path('dashboard/quiz/<pk>', views.QuizDetailView.as_view(), name="quiz-detail"),
-            
-    
+
     # Questions urls
     # ---------------------------------------------------------------------------------- #
     
@@ -65,5 +57,20 @@ urlpatterns = [
     path('dashboard/questions/<pk>/update', views.QuestionUpdateView.as_view(), name="questions-update"),
     
     path('dashboard/questions/<pk>/delete', views.QuestionDeleteView.as_view(), name="questions-delete"),
+
+    # Quiz urls
+    # ---------------------------------------------------------------------------------- #
+    
+    path('dashboard/quiz/', views.QuizListView.as_view(), name="quizs-list"),
+    
+    path('dashboard/quiz/check/', views.QuizCheckView.as_view(), name="quizs-check"),
+            
+    path('dashboard/quiz/new/', views.QuizCreateView.as_view(), name="quizs-create"),
+    
+    path('dashboard/quiz/<pk>', views.QuizDetailView.as_view(), name="quizs-detail"),
+    
+    path('dashboard/quiz/<pk>/update', views.QuizUpdateView.as_view(), name="quizs-update"),
+    
+    path('dashboard/quiz/<pk>/delete', views.QuizDeleteView.as_view(), name="quizs-delete"),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -1,21 +1,12 @@
-from email.mime import image
-import imp
-from importlib.resources import path
-from random import choices
-from ssl import Options
-from unicodedata import name
 from django.db import models
 from django.core import serializers
-import json
-from pprint import pprint 
-from django.db.models.signals import post_save, post_delete
 
 
 class QuestionByQuiz(models.Model):
-    question_id = models.ManyToManyField('Question')
-    quiz_id = models.ManyToManyField('Quiz')
+    question_id = models.ForeignKey('Question', on_delete=models.CASCADE, default=False)
+    quiz_id = models.ForeignKey('Quiz', on_delete=models.CASCADE, default=False)
 
-    
+
 class AnswerOptions(models.Model):
     question_id = models.ForeignKey('Question', on_delete=models.CASCADE)
     answerText = models.CharField(max_length=200)
@@ -28,7 +19,7 @@ class Score(models.Model):
     start_time = models.TimeField(auto_now_add=True)
     end_time = models.TimeField(auto_now_add=True)
 
-    
+
 class Answer(models.Model):
     score_id = models.ManyToManyField('Score')
     answer_option_id = models.ManyToManyField('AnswerOptions')
@@ -53,12 +44,30 @@ class Card(models.Model):
         return self.name
     
 
-class Question(models.Model):
+class Quiz(models.Model):
     """_summary_
-    Quiz model based on question with four possible answers.
+    Quiz model based on a number of questions.
     Args:
         models (_type_): _description_
-    """            
+    """
+    name = models.CharField(max_length=200)
+    text = models.TextField(max_length=2000)
+    
+    questions = models.ManyToManyField('Question', related_name="questions")
+    
+    score_quiz = models.IntegerField(default=0)
+    
+    def __str__(self) -> str:
+        return self.name
+
+
+class Question(models.Model):
+    """_summary_
+    Question model four possible answers.
+    opt_{N} corresponds to the texted answer showed to the user.
+    Args:
+        models (_type_): _description_
+    """
     name = models.CharField(max_length=200)
     text = models.TextField(max_length=2000)
     
@@ -70,37 +79,10 @@ class Question(models.Model):
     answer = models.IntegerField(default=1)
     
     is_correct = models.BooleanField(default=False)
-
-    character = models.ForeignKey('Card',
-                        on_delete=models.CASCADE, 
-                        null=True)
     
-    options = models.IntegerChoices('Options', 
-                        'ONE TWO THREE FOUR')
+    character = models.ForeignKey('Card', on_delete=models.CASCADE, null=True)
     
-    def __str__(self) -> str:
-        return self.name
-    
-
-class Quiz(models.Model):
-    """_summary_
-    Quiz model based on question with four possible answers.
-    Args:
-        models (_type_): _description_
-    """
-    # name of the quiz
-    name = models.CharField(max_length=200)
-    
-    # number of questions of the quiz
-    size = models.IntegerField
-    
-    questions = [
-        models.ForeignKey("Question", on_delete=models.CASCADE),
-        models.ForeignKey("Question", on_delete=models.CASCADE),
-        models.ForeignKey("Question", on_delete=models.CASCADE),
-        models.ForeignKey("Question", on_delete=models.CASCADE)
-    ]
+    options = models.IntegerChoices('Options', 'ONE TWO THREE FOUR')
 
     def __str__(self) -> str:
         return self.name
-   
