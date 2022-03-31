@@ -462,7 +462,7 @@ class QuestionCreateView(generic.CreateView):
         'character'
     ]
     
-    success_url = reverse_lazy('questions-detail')
+    success_url = reverse_lazy('questions-list')
 
 
 
