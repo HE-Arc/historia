@@ -1,4 +1,4 @@
-{% extends 'historiaapp/bases/base_connected.html' %}
+{% extends 'historiaapp/bases/base.html' %}
 
 {% block title %}
 Historia
@@ -45,15 +45,19 @@ Historia
 
                                 <div class="bg-light">
                                     <h5 class="card-text">{{ quiz.name }}</h5>
+
                                     <p class="card-text">{{ quiz.text }}</p>
+                                    
                                     <p class="card-text lead">
                                         <small class="lead">
-                                        {{ quiz.questions }}
+                                            {{ quiz.questions }}
                                         </small>
                                     </p>
+
                                 </div>
 
                             </div>
+
                         {% endfor %}
 
                     </div>
@@ -72,11 +76,13 @@ Historia
                                     <h5 class="card-text">{{ card.name }}</h5>
                                     <p class="card-text">{{ card.birth }}</p>
                                 </div>
-                                
+
+                                {% load static %}
+
                                 <div class="bg-light">                                                  
                                     <a href="{% url 'cards-detail' card.id %}">
-                                        <img class="float-right" 
-                                        src="./../media/images/infos.svg"
+                                        <img class="float-right"
+                                        src="{% static '../media/images/infos.svg' %}"
                                         width="32" height="32" alt="logo">
                                     </a>
                                 </div>

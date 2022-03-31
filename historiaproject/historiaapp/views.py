@@ -33,7 +33,6 @@ def home(request):
     context = {}
     return render(request, 'historiaapp/home.html', context)
 
-@login_required(login_url="login")    
 def cards_visualizer(request):
     context = {}
     return render(request, 'historiaapp/cards.html', context)
@@ -46,6 +45,7 @@ def cards_visualizer(request):
 #|-----------------------|
 #| User, Login, Register |
 #|-----------------------/
+
   
 class AuthenticationForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
@@ -54,6 +54,7 @@ class AuthenticationForm(AuthenticationForm):
         for fieldname in ['username', 'password']:
             self.fields[fieldname].help_text = None
 
+
 class HomePage(View):
     template_name = "historiaapp/home.html"
     
@@ -61,12 +62,14 @@ class HomePage(View):
         context = super().get_context_data(**kwargs)
         return context
 
+
 class UserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(UserCreationForm, self).__init__(*args, **kwargs)
 
         for fieldname in ['username', 'password1', 'password2']:
             self.fields[fieldname].help_text = None
+
             
 def login_view(request):
     if request.method == "POST":
@@ -84,7 +87,7 @@ def login_view(request):
     # Send the UserCreationForm to render
     return render(request, "historiaapp/login.html", {'form': form})
     
-    
+
 def register_view(request):
     if request.method == "POST":
         # Pass information from form with request.POST
@@ -99,12 +102,10 @@ def register_view(request):
     # Send the UserCreationForm to render
     return render(request, "historiaapp/register.html", {'form': form})
 
-@login_required(login_url="login")  
+@login_required(login_url="login")
 def logout_view(request):
     logout(request)
     return redirect('login')
-   
-
 
 
 #|-----------------------|
@@ -116,7 +117,7 @@ class DashboardView(generic.TemplateView):
     template_name = "historiaapp/dashboard.html"
     
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs) 
         context['user'] = User.objects.all()
         context['quizzes'] = Quiz.objects.all()
         context['cards'] = Card.objects.all()
@@ -244,13 +245,16 @@ class QuizDeleteView(generic.DeleteView):
 
 
 class QuizCheckView(View):
-        
+    
     def post(self, request):
-        """_summary_
+        """
+        _summary_
+        To check the posted answers through the form
+        :param request: The HTTP request that is sent to the view
+        :return: The quiz detail page.
         To check the posted answers through the form.
         Args:
             request (_type_): _description_
-
         Returns:
             _type_: _description_
         """
@@ -259,18 +263,25 @@ class QuizCheckView(View):
         questions = quiz.questions.all()
         values = list(request.POST.values())
         values.pop(0)
-                
+        
+        quiz.score_quiz = 0
+
         for question, answer in zip(questions, values):
             if answer == str(question.answer):
-                quiz.score += 1
+                quiz.score_quiz += 1
                 question.is_correct = True
                 question.save()
             else:
                 question.is_correct = False
                 question.save()
-        quiz.save()
+                
+        print(quiz.score_quiz)
         
+        quiz.score_quiz *= 100 / (len(values)-1)
+        
+        print(quiz.score_quiz)
 
+        quiz.save()
         
         return redirect('quizs-detail', quiz.id)
 

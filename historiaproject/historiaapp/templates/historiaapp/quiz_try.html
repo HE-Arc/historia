@@ -21,48 +21,9 @@
                             {{ quiz.text }}
                         </p>
                         
-                        <div class="d-flex justify-content-center">
-                            <div class="card-body d-flex justify-content-center">
-                                <div class="rating">
-                                    {{ quiz.score_quiz }}%
-                                </div>
-                            </div>
-                        </div>
-
-                        {% block scripts %}
-                        <script>
-                            // Find al rating items
-                            const ratings = document.querySelectorAll(".rating");
-    
-                            // Iterate over all rating items
-                            document.querySelectorAll(".rating").forEach((rating) => {
-                            
-                            // Define if the score is good, meh or bad according to its value
-                            const scoreClass = parseInt(rating.innerHTML, 10) < 40 ? "bad" : parseInt(rating.innerHTML, 10) < 60 ? "meh" : "good";
-    
-                            // Add score class to the rating
-                            rating.classList.add(scoreClass);
-    
-                            // After adding the class, get its color
-                            const ratingColor = window.getComputedStyle(rating).backgroundColor;
-    
-                            // Define the background gradient according to the score and color
-                            const gradient = `background: conic-gradient(${ratingColor} ${parseInt(rating.innerHTML, 10)}%, transparent 0 100%)`;
-    
-                            // Set the gradient as the rating background
-                            rating.setAttribute("style", gradient);
-    
-                            // Wrap the content in a tag to show it above the pseudo element that masks the bar
-                            rating.innerHTML = `<span>${parseInt(rating.innerHTML, 10)} ${
-                                rating.innerHTML.indexOf("%") >= 0 ? "<small>%</small>" : ""
-                            }</span>`;
-                            });
-                        </script>
-                        {% endblock %}
-
                         <div class="card-header">
                             <p class="card-text lead">
-                                 Questions :
+                                Questions :
                             </p>
                         </div>
 
@@ -78,25 +39,26 @@
                                 method="post"
                                 name="question_id"
                                 action="{% url 'quizs-check' %}">
+
                                 {% csrf_token %}
 
-                                {% for questions in quiz.questions.all %}
-                                
-                                    <div class="p-3 mb-2 darker border-bottom border-warning text-white">
+                                    {% for questions in quiz.questions.all %}
+                                    
+                                        <div class="p-3 mb-2 darker border-bottom border-warning text-white">
 
-                                        <div class"card lead">
+                                            <div class"card lead">
 
-                                            <div class="h3">
-                                                {{ questions.name }}
-                                            </div>
-                    
-                                            <div class="row">
-                    
-                                                <div class="col-sm">
-                    
-                                                    <div class="lead text-light">
-                                                        {{ questions.text }}
-                                                    </div>
+                                                <div class="h3">
+                                                    {{ questions.name }}
+                                                </div>
+                        
+                                                <div class="row">
+                        
+                                                    <div class="col-sm">
+                        
+                                                        <div class="lead text-light">
+                                                            {{ questions.text }}
+                                                        </div>
 
                                                         <!-- OPTIONS -->
 
@@ -161,10 +123,9 @@
                                                                 </label>
                                                             </div>
                                                         </div>
-                    
 
                                                         <!-- END OPTIONS -->
-                    
+
                                                         <!-- CARD REWARD -->
                                                         {% if questions.is_correct %}
 
@@ -177,7 +138,7 @@
                                                             aria-controls="navbarSupportedContent" 
                                                             aria-expanded="false" 
                                                             aria-label="Toggle navigation">
-                                                              <span class="bi bi-person-badge-fill"></span>
+                                                                <span class="bi bi-person-badge-fill"></span>
                                                             </button>
 
                                                             <div class="collapse navbar-collapse col-sm float-right transition m-2"
@@ -192,7 +153,7 @@
                                                                                 src="../../{{ questions.character.image }}"
                                                                                 alt="Card image cap">
                                                                             </div>
-    
+
                                                                             <div class="col-sm card m-3 p-3 text-dark character-text-reward">
                                                     
                                                                                 <h4 class="card-title text-dark text-lg-left character-text-reward">
@@ -219,8 +180,7 @@
                                                         </nav>
                                                         {% endif %}
                                                         <!-- END CARD REWARD -->
-
-                                                        
+                        
                                                         <div class="d-flex justify-content-center mb-4 mt-4">
                                                             {% if questions.is_correct %}
                                                                 <div class="alert alert-success float-right"
@@ -230,18 +190,16 @@
                                                             {% endif %}
                                                         </div>
 
-                                                        <!-- END FORM -->
-                                                        
                                                     </div>
-                    
-                                            </div>
 
+                                                </div>
+
+                                            </div>
+                                            
                                         </div>
-                                        
-                                    </div>
-                                
-                                {% endfor %}
-                                
+                                    
+                                    {% endfor %}
+
                                     <input type="hidden"
                                     name="quiz_id"
                                     value="{{ quiz.id }}">
@@ -259,13 +217,14 @@
                                     <!-- END SUBMIT ANSWER -->
 
                                 </form>
+                                
+                                <!-- END FORM -->
 
                             </div>
                         
                         </div>
-                        
+                            
                         <!-- END QUESTIONS DISPLAY -->
-
                     </div>
 
                 </div>
