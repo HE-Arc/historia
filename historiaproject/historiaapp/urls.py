@@ -76,6 +76,8 @@ urlpatterns = [
             
     path('dashboard/quiz/new/', views.QuizCreateView.as_view(), name="quizs-create"),
     
+    path('dashboard/quiz/', views.QuizDetailView.as_view(), name="quizs_try"),
+    
     path('dashboard/quiz/<pk>', views.QuizDetailView.as_view(), name="quizs-detail"),
     
     path('dashboard/quiz/<pk>/update', views.QuizUpdateView.as_view(), name="quizs-update"),
