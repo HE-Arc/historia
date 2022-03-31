@@ -20,6 +20,7 @@ urlpatterns = [
     
     path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
     
+    
     # User urls
     # ---------------------------------------------------------------------------------- #
     
@@ -28,9 +29,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
 
     path('register/', views.register_view, name='register'),
-    
-    path('home/', views.home_user_view, name='home-user'),
-    
+        
     
     # Cards urls
     # ---------------------------------------------------------------------------------- #
@@ -44,6 +43,7 @@ urlpatterns = [
     path('dashboard/cards/<pk>/update', views.CardsUpdateView.as_view(), name="cards-update"),
     
     path('dashboard/cards/<pk>/delete', views.CardsDeleteView.as_view(), name="cards-delete"),
+
 
     # Questions urls
     # ---------------------------------------------------------------------------------- #
@@ -60,10 +60,12 @@ urlpatterns = [
     
     path('dashboard/questions/<pk>/delete', views.QuestionDeleteView.as_view(), name="questions-delete"),
 
+
     # Ranking urls
     # ---------------------------------------------------------------------------------- #
          
     path('rankings/', views.RankingListView.as_view(), name="ranking-list"),
+
 
     # Quiz urls
     # ---------------------------------------------------------------------------------- #

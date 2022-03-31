@@ -125,7 +125,7 @@ def login_view(request):
             context = {'form':form}
             # Redirect with the user's home with his rankings
             context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
-            return render(request, "historiaapp/home_user.html", context)
+            return render(request, "historiaapp/home.html", context)
         else:
             return redirect('login') # Redirect to login if form is not valid
     else:
@@ -147,7 +147,7 @@ def register_view(request):
             form.save()
             return redirect('/')
         context = {'form':form}
-        return render(request, 'historiaapp/home_user.html', context)
+        return render(request, 'historiaapp/home.html', context)
     else:
         form = UserCreationForm()  # Create a new instance of this form
     # Send the UserCreationForm to render
@@ -163,20 +163,6 @@ def logout_view(request):
     """
     logout(request)
     return redirect('login')
-
-
-@login_required(login_url="login")    
-def home_user_view(request):
-    """_summary_
-    Display the user's home page.
-    Must be connected.
-    Args:
-        generic (_type_): _description_
-    """
-    context = {}
-    context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
-    return render(request, 'historiaapp/home_user.html', context)   
-
 
 
 
