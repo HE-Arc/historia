@@ -1,4 +1,6 @@
+from cgi import print_arguments
 from re import T
+from urllib import request
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -22,7 +24,6 @@ from django.utils.timezone import utc
 from optparse import make_option
 from django.utils import timezone
 
-from .forms import *
 from .models import *
 from django.contrib.auth import get_user_model
 
@@ -71,7 +72,7 @@ def add_question(request):
     else:
         return redirect('cards')
   
-  
+    
 
 #|----------------------------------------------------------------------------| 
 #   Views Classes                                                             |
@@ -178,6 +179,7 @@ def home_user_view(request):
 
 
 
+
 #|-----------------------|
 #| Dashboard             |
 #|-----------------------/
@@ -226,10 +228,10 @@ def get_context_data(self, **kwargs):
     return context
 
 
-
 #|-----------------------|
 #| Cards                 |
 #|-----------------------/
+
 
 class CardsListView(generic.ListView):
     """_summary_
@@ -237,10 +239,9 @@ class CardsListView(generic.ListView):
     Args:
         generic (_type_): List View _description_
     """
-    model = Card
+    model = Card    
     def get_queryset(self) -> QuerySet[T]:
         return Card.objects.all()
-
 
 class CardsDetailView(generic.DetailView):
     """_summary_
@@ -250,7 +251,32 @@ class CardsDetailView(generic.DetailView):
     """
     model = Card
 
+class CardsCreateView(generic.CreateView):
+      
+    model = Card
+    fields = ['name',
+              'image', 
+              'birth',
+              'text']
+    
+    success_url = reverse_lazy('cards-list')
+    
 
+class CardsUpdateView(generic.UpdateView):
+    
+    model = Card
+    fields = ['name',
+              'image', 
+              'birth',
+              'text']
+    
+    success_url = reverse_lazy('cards-list')
+    
+class CardsDeleteView(generic.DeleteView):
+    
+    model = Card
+    success_url = reverse_lazy('cards-list')
+    
 
 #|-----------------------|
 #| Quiz                  |
@@ -277,9 +303,16 @@ class QuizListView(generic.ListView):
     Args:
         generic (_type_): List View _description_
     """
-    model = Quiz
+    paginate_by = 2
+    
     def get_queryset(self) -> QuerySet[T]:
-        return Quiz.objects.all() # Get all quiz
+        quizs = Quiz.objects.all()
+        for quiz in quizs:
+            for question in quiz.questions.all():
+                question.is_correct = False
+                question.save()
+                
+        return quizs
 
 
 class QuizDetailView(generic.DetailView):
@@ -290,6 +323,97 @@ class QuizDetailView(generic.DetailView):
     """
     model = Quiz
 
+
+class QuizCreateView(generic.CreateView):
+    """_summary_
+    To create a quiz in the database.
+    Args:
+        generic (_type_): _description_
+    """
+    model = Quiz
+    
+    fields = [
+        'name',
+        'text',
+        'questions',
+        'is_over'
+    ]
+    
+    success_url = reverse_lazy('quizs-list')
+
+
+class QuizUpdateView(generic.UpdateView):
+    """_summary_
+    To update a quiz in the database.
+    Called from the quiz_update page -> <pk>/update route.
+    Args:
+        generic (_type_): _description_
+    """
+    model = Quiz
+
+    fields = [
+        'name', 
+        'text', 
+        'questions',
+        'is_over'
+    ]
+    
+    success_url = reverse_lazy('quizs-list')
+
+
+class QuizDeleteView(generic.DeleteView):
+    """_summary_
+    To delete a question from the database.
+    Called from the quiz_delete -> <pk>/delete route.
+    Args:
+        generic (_type_): _description_
+    """
+    model = Quiz
+    success_url = reverse_lazy('quizs-list')
+
+    def post(self, request):
+        """_summary_
+        To check the posted answers through the form.
+        Args:
+            request (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        quiz = Quiz.objects.get(pk=request.POST.get("quiz_id"))        
+        quiz.delete()
+
+
+class QuizCheckView(View):
+        
+    def post(self, request):
+        """_summary_
+        To check the posted answers through the form.
+        Args:
+            request (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        quiz = Quiz.objects.get(pk=request.POST.get("quiz_id"))
+        quiz.score = 0
+        questions = quiz.questions.all()
+        values = list(request.POST.values())
+        values.pop(0)
+                
+        for question, answer in zip(questions, values):
+            if answer == str(question.answer):
+                quiz.score += 1
+                question.is_correct = True
+                question.save()
+            else:
+                question.is_correct = False
+                question.save()
+        quiz.save()
+        
+
+        
+        return redirect('quizs-detail', quiz.id)
 
 
 #|-----------------------|
@@ -304,7 +428,9 @@ class QuestionListView(generic.ListView):
     """
     model = Question
     def get_queryset(self) -> QuerySet[T]:
-        return Question.objects.all()
+        questions = Question.objects.all()
+        
+        return questions
 
 
 class QuestionDetailView(generic.DetailView):
@@ -335,6 +461,9 @@ class QuestionCreateView(generic.CreateView):
         'answer',
         'character'
     ]
+    
+    success_url = reverse_lazy('questions-detail')
+
 
 
 class QuestionUpdateView(generic.UpdateView):

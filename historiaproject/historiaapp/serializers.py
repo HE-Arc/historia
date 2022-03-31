@@ -3,7 +3,6 @@ from .models import Card, Question, Quiz
 
 from rest_framework import serializers
 
-# serializers : permet de récuperé des modèles et de les retourner en fichiers json
 
 class CardSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

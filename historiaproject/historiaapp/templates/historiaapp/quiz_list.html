@@ -1,4 +1,4 @@
-{% extends 'historiaapp/bases/base_connected.html' %}
+{% extends 'historiaapp/bases/base.html' %}
 
 {% block title %}Quizzes visualizer{% endblock %}
 
@@ -6,55 +6,140 @@
 
 <div class="container">
 
-    <div class="col-md-12">
-        <h1 class="display-4 mb-2">
-            Quizzes
-        </h1>
-        <hr />
-    </div>
+    <hr />
 
-    <h5 class="card-header mb-4">
-        List of Quizzes actually available.
-    </h5>
+    <h1 class="display-4 mt-4 mb-2">
+        Quizzes
+    </h1>
 
-    <div class="card-deck">
+    <hr />
 
-        <!--
-        * for loop section to display all quizzes.
-        -->
+    <div class="card border-0 darker mt-4">
 
-        {% for quiz in object_list %}
+        <div class="card-body darker">
 
-            <div class="col-md-4 mb-4">
+            <div class="card-header mb-4">
+                List of Quizzes actually available.
+            </div>
 
-                <div class="card shadow character-card text-white bg-dark">
+            <div class="card-deck d-flex justify-content-center">
+                
+                <!-- QUIZ DISPLAY -->
 
-                    <div class="card-body">
+                {% for quizs in page_obj %}
 
-                        <h4 class="card-title text-lg-left">
-                            {{ quiz.name }}
-                        </h4>                
+                    <div class="mb-4">
+                        <div class="card shadow character-card text-white bg-dark">
+                            <div class="card-body">
+                                
+                                <h4 class="card-title text-lg-left">
+                                    {{ quizs.name }}
+                                </h4>
 
-                        <p class="card-text text text-sm-left character-text lead">
-                            <small class="lead">
-                            {{ quiz.text }}
-                            </small>
-                        </p>
+                                <p class="card-text lead">
+                                    <small class="lead">
+                                    {{ quizs.text }}
+                                    </small>
+                                </p>
+
+                                <div class="card-header">
+                                    <p class="card-text lead">
+                                        Questions
+                                    </p>
+
+                                    <!-- QUESTIONS DISPLAY -->
+
+                                    <div class="card-body">
+
+                                        {% for question in quizs.questions.all %}
+                                            <p class="card-text">
+                                                <small>
+                                                    {{ question.text }}
+                                                </small>
+                                            </p>
+                                        {% endfor %}
+
+                                        <div class="d-flex justify-content-center mb-5">
+                                            <button type="button"
+                                                class="button-historia text-uppercase lead"
+                                                style="max-width:35%;"
+                                                onclick="location.href='{% url 'quizs-detail' quizs.id %}'">
+                                                Begin
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                    
+                                    <!-- END QUESTIONS DISPLAY -->
+                                    
+                                </div>
+
+                            </div>
+                        
+                        </div>
 
                     </div>
 
-                </div>
-                    
+                {% endfor %}
+
+                <!-- END QUESTIONS DISPLAY -->
+
             </div>
 
-        {% endfor %}
+            
+            <!-- PAGINATION -->
+
+            <div class="d-flex justify-content-center darker">
+
+                <nav aria-label="pagination navbar navbar-dark darker">
+
+                    <ul class="pagination navbar darker">
+
+                        {% if page_obj.has_previous %}
+
+                            <li class="page-item darker">
+                                <a class="page-link darker" href="?page=1">
+                                    &laquo; first
+                                </a>
+                            </li>
+
+                            <li class="page-item darker">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                                    {{ page_obj.previous_page_number }}
+                                </a>
+                            </li>
+
+                        {% endif %}
+                        
+                        <li class="page-item active">
+                            <a class="page-link" href="#">
+                                {{ page_obj.number }}
+                            </a>
+                        </li>
+                
+                        {% if page_obj.has_next %}
+
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                                    {{ page_obj.next_page_number }}
+                                </a>
+                            </li>
+
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+                                    last &raquo;
+                                </a>
+                            </li>
+
+                        {% endif %}            
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- END PAGINATION -->
+
+        </div>
 
     </div>
-
-    <div class="container ">
-
-     
-    </div>
-
 
 {% endblock %}

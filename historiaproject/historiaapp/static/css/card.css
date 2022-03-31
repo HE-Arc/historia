@@ -12,15 +12,15 @@
 }
 
 .darker {
-  background-color :#1c1c1c;
+  background-color:#1c1c1c;
 }
 
 .whiter {
-  background-color : #d1d1d1;
+  background-color: #d1d1d1;
 }
 
 .character-card {
-  color :#1c1c1c;
+  color:#1c1c1c;
   max-width: 100%;
   height: 100%;
   border-radius: 1.25rem;
@@ -40,12 +40,6 @@
 
 .text:hover {
   color: azure;
-}
-
-@media all and (max-width: 400px) {
-  .card-list {
-    flex-direction: column;
-  }
 }
 
 /****************************************************

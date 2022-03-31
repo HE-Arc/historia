@@ -1,10 +1,10 @@
-{% extends 'historiaapp/bases/base_connected.html' %}
+{% extends 'historiaapp/bases/base_detailnav.html' %}
 
 {% block title %}
     {% if object is None %}
-        Add question
+        Add quiz
     {% else %}
-        Update question
+        Update quiz
     {% endif %}
 {% endblock %}
 
@@ -15,7 +15,7 @@
     <hr>
 
     <h1 class="display-3 mb-5 p-3">
-        Create question
+        Create quiz
     </h1>
 
     <h5 class="lead mb-4 pb-3 darker border-bottom border-warning">
@@ -41,29 +41,13 @@
                                 {{ form.text|as_crispy_field }}
                             </div>
 
-                            
-                            <div class="row mb-5 p-4 border-bottom border-top border-warning">
-                                <div class="col-6">
-                                    {{ form.opt_one|as_crispy_field }}
-                                </div>
-                                <div class="col-6">
-                                    {{ form.opt_two|as_crispy_field }}
-                                </div>
-                                <div class="col-6">
-                                    {{ form.opt_three|as_crispy_field }}
-                                </div>
-                                <div class="col-6">
-                                    {{ form.opt_four|as_crispy_field }}
-                                </div>
+
+                            <div class="form-outline mb-5">
+                                {{ form.questions|as_crispy_field }}
                             </div>
 
-                            <div class="row mb-5">
-                                <div class="col-6">
-                                    {{ form.character|as_crispy_field }}
-                                </div>
-                                <div class="col-6">
-                                    {{ form.answer|as_crispy_field }}
-                                </div>
+                            <div class="form-outline mb-5">
+                                {{ form.is_over|as_crispy_field }}
                             </div>
 
                             <input type="hidden" value="
@@ -85,6 +69,7 @@
                                 </button>
 
                             </div>
+
                         </form>
                     </div>
                 </div>

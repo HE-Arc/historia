@@ -36,17 +36,15 @@ urlpatterns = [
     # ---------------------------------------------------------------------------------- #
     
     path('dashboard/cards/', views.CardsListView.as_view(), name='cards-list'),  
-        
+    
+    path('dashboard/cards/new/', views.CardsCreateView.as_view(), name='cards-create'),
+    
     path('dashboard/cards/<pk>/', views.CardsDetailView.as_view(), name='cards-detail'),
     
-    # Quiz urls
-    # ---------------------------------------------------------------------------------- #
+    path('dashboard/cards/<pk>/update', views.CardsUpdateView.as_view(), name="cards-update"),
     
-    path('dashboard/quiz/', views.QuizListView.as_view(), name="quiz-list"),
-    
-    path('dashboard/quiz/<pk>', views.QuizDetailView.as_view(), name="quiz-detail"),
-            
-    
+    path('dashboard/cards/<pk>/delete', views.CardsDeleteView.as_view(), name="cards-delete"),
+
     # Questions urls
     # ---------------------------------------------------------------------------------- #
     
@@ -62,11 +60,24 @@ urlpatterns = [
     
     path('dashboard/questions/<pk>/delete', views.QuestionDeleteView.as_view(), name="questions-delete"),
 
-
     # Ranking urls
     # ---------------------------------------------------------------------------------- #
          
     path('rankings/', views.RankingListView.as_view(), name="ranking-list"),
 
+    # Quiz urls
+    # ---------------------------------------------------------------------------------- #
     
+    path('dashboard/quiz/', views.QuizListView.as_view(), name="quizs-list"),
+    
+    path('dashboard/quiz/check/', views.QuizCheckView.as_view(), name="quizs-check"),
+            
+    path('dashboard/quiz/new/', views.QuizCreateView.as_view(), name="quizs-create"),
+    
+    path('dashboard/quiz/<pk>', views.QuizDetailView.as_view(), name="quizs-detail"),
+    
+    path('dashboard/quiz/<pk>/update', views.QuizUpdateView.as_view(), name="quizs-update"),
+    
+    path('dashboard/quiz/<pk>/delete', views.QuizDeleteView.as_view(), name="quizs-delete"),
+
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

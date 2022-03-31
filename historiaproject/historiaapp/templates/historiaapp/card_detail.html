@@ -4,6 +4,8 @@
 
 {% block content %}
 <div class="container">
+
+    <div class="">
     <div class="row">
 
         <h3>Card informations</h3>
@@ -12,27 +14,27 @@
 
             <div class="row">
 
-                <div class="card p-3 m-3">
+                <div class="card bg-dark p-3 m-3">
 
                     <div class="row">
 
+                        {% if card.image %}
                         <div class="text-center shadow rounded m-3"
                         style="max-width:18rem;">
                             <img class="float-center img-fluid character-image rounded"
-                            src="../../{{ card.image }}"
+                            src="{{  card.image.url }}"
                             alt="Card image cap">
                         </div>
+                        {% endif %}
 
-                        <div class="card m-3 p-3 text-dark">
+                        <div class="card character-text lead bg-dark m-3 p-3 text-light">
 
-                            <h4 class="card-title text-dark text-lg-left">
+                            <h4 class="card-title text-lg-left">
                                 {{ card.name }}
-                            </h4>                
+                            </h4>
 
-                            <p class="card-text text-dark text-sm character-text lead">
-                                <small class="lead">
+                            <p class="card-text character-text">
                                 {{ card.text }}
-                                </small>
                             </p>
 
                             <div class="card-footer text-muted">
@@ -43,7 +45,6 @@
                         </div>
                     
                     </div>
-
                 </div>
                 
             </div>
