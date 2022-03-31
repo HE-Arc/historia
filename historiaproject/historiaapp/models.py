@@ -22,11 +22,7 @@ class AnswerOptions(models.Model):
     question_id = models.ForeignKey('Question', on_delete=models.CASCADE)
     answerText = models.CharField(max_length=200)
     isCorrect = models.BooleanField(default=False)
-   
-class Answer(models.Model):
-    score_id = models.ManyToManyField('Score')
-    answer_option_id = models.ManyToManyField('AnswerOptions')
-    
+
     
 class Card(models.Model):
     """_summary_
