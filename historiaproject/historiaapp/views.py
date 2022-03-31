@@ -94,7 +94,7 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
             context = {'form':form}
-            
+            context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
             return render(request, "historiaapp/home_user.html", context)
         else:
             return redirect('login')
@@ -127,21 +127,9 @@ def logout_view(request):
 @login_required(login_url="login")    
 def home_user_view(request):
     context = {}
-    #context['user'] = request.user
-    #context['quizs'] = Quiz.objects.all()
     context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
-    #Ranking.objects.filter(quiz=1).order_by("-score")[:5]
     return render(request, 'historiaapp/home_user.html', context)   
 
-
-'''
-@login_required(login_url="login")    
-class home_user_view(generic.TemplateView):
-    model = Ranking
-    
-    def get_queryset(self) -> QuerySet[T]:
-        return Ranking.objects.filter(user=request.user).order_by("-score")
-'''  
 
 #|-----------------------|
 #| Dashboard             |
