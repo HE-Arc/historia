@@ -33,7 +33,7 @@ from django.contrib.auth import get_user_model
 #|----------------------------------------------------------------------------/
 
 def home(request):
-    """ _summary_
+    """_summary_
     To display the main page with the possibility to register or login.
     Args:
         generic (_type_): _description_
@@ -43,7 +43,7 @@ def home(request):
 
 @login_required(login_url="login")    
 def cards_visualizer(request):
-    """ _summary_
+    """_summary_
     To display the page with the cards.
     Must be connected.
     Args:
@@ -54,7 +54,7 @@ def cards_visualizer(request):
 
 @login_required(login_url="login")
 def add_question(request):
-    """ _summary_
+    """_summary_
     To add question in a quiz.
     Must be connected.
     Args:
@@ -82,7 +82,7 @@ def add_question(request):
 #|-----------------------/
   
 class AuthenticationForm(AuthenticationForm):
-    """ _summary_
+    """_summary_
     Form for the authentication form.
     Args:
         generic (_type_): AuthenticationForm from django _description_
@@ -96,7 +96,7 @@ class AuthenticationForm(AuthenticationForm):
 
 
 class UserCreationForm(UserCreationForm):
-    """ _summary_
+    """_summary_
     Form to create a user with the form.
     Args:
         generic (_type_): UserCreationForm from django _description_
@@ -110,7 +110,7 @@ class UserCreationForm(UserCreationForm):
             
             
 def login_view(request):
-    """ _summary_
+    """_summary_
     Display the login page.
     Args:
         generic (_type_): _description_
@@ -134,7 +134,7 @@ def login_view(request):
     
     
 def register_view(request):
-    """ _summary_
+    """_summary_
     Display the register page.
     Args:
         generic (_type_): _description_
@@ -154,7 +154,7 @@ def register_view(request):
 
 @login_required(login_url="login")
 def logout_view(request):
-    """ _summary_
+    """_summary_
     Logout the current user.
     Must be connected.
     Args:
@@ -166,7 +166,7 @@ def logout_view(request):
 
 @login_required(login_url="login")    
 def home_user_view(request):
-    """ _summary_
+    """_summary_
     Display the user's home page.
     Must be connected.
     Args:
@@ -184,7 +184,7 @@ def home_user_view(request):
 
 
 class DashboardView(generic.TemplateView):
-    """ _summary_
+    """_summary_
     Display dashboard.
     Must be connected.
     Args:
@@ -203,7 +203,7 @@ class DashboardView(generic.TemplateView):
 
 @login_required(login_url="login")
 class CardsView(generic.TemplateView):
-    """ _summary_
+    """_summary_
     Display the card's page.
     Must be connected.
     Args:
@@ -213,7 +213,7 @@ class CardsView(generic.TemplateView):
     
 
 def get_context_data(self, **kwargs):
-    """ _summary_
+    """_summary_
     Function to take all informations : user, quiz, card and question.
     Args:
         generic (_type_): _description_
@@ -232,7 +232,7 @@ def get_context_data(self, **kwargs):
 #|-----------------------/
 
 class CardsListView(generic.ListView):
-    """ _summary_
+    """_summary_
     Function to display all cards in list.
     Args:
         generic (_type_): List View _description_
@@ -243,7 +243,7 @@ class CardsListView(generic.ListView):
 
 
 class CardsDetailView(generic.DetailView):
-    """ _summary_
+    """_summary_
     Function to display details of one card.
     Args:
         generic (_type_): Detail View _description_
@@ -258,7 +258,7 @@ class CardsDetailView(generic.DetailView):
 
 @login_required(login_url="login")
 class QuizView(generic.TemplateView):
-    """ _summary_
+    """_summary_
     Function to display all quiz.
     Must be connected.
     Args:
@@ -272,7 +272,7 @@ class QuizView(generic.TemplateView):
 
 
 class QuizListView(generic.ListView):
-    """ _summary_
+    """_summary_
     Function to display all quiz in a list.
     Args:
         generic (_type_): List View _description_
@@ -283,7 +283,7 @@ class QuizListView(generic.ListView):
 
 
 class QuizDetailView(generic.DetailView):
-    """ _summary_
+    """_summary_
     Function to display one quiz with his details.
     Args:
         generic (_type_): Detail View _description_
@@ -411,7 +411,7 @@ class QuestionCheckView(View):
 #|-----------------------/
 
 class RankingListView(generic.ListView):
-    """ _summary_
+    """_summary_
     Function to display all rankings in a specific quiz.
     Must be connected.
     Args:
