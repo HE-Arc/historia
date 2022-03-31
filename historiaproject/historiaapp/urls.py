@@ -65,9 +65,7 @@ urlpatterns = [
 
     # Ranking urls
     # ---------------------------------------------------------------------------------- #
-    
-    # path('ranking/<pk>', views.RankingDetailView.as_view(), name="ranking"),
-     
+         
     path('rankings/', views.RankingListView.as_view(), name="ranking-list"),
 
     
