@@ -437,7 +437,7 @@ class QuestionDetailView(generic.DetailView):
     """_summary_
     To show a question detail informations.
     Args:
-        generic (_type_): DEtail View _description_
+        generic (_type_): Detail View _description_
     """
     model = Question
 
