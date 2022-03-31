@@ -34,7 +34,7 @@
             <a class="navbar-brand text-light" href="{% url 'home-user' %}">
 
               <div class="row">
-                <img src="../../media/images/logo.svg"
+                <img src="{% static '../media/images/logo.svg' %}"
                 width="100" height="100" alt="logo">
                 
                 <div class="display-4 lead text-light mb-4">
@@ -51,7 +51,7 @@
           <!--CENTER PART - QUIZZ-->
           <div class="darker text-light col-sm mt-6">
             <a class="navbar-brand" href="{% url 'questions-list' %}">
-              <img src="../media/images/quizz.svg" 
+              <img src="{% static '../media/images/quizz.svg' %}"
               width="154" height="154" alt="">
             </a>
           </div>
