@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from .models import Card, Question, Quiz
 
 from rest_framework import serializers

@@ -1,15 +1,5 @@
 from django.db import models
-from django.core import serializers
-import json
-from pprint import pprint 
-from django.db.models.signals import post_save, post_delete
 from django.conf import settings
-
-
-class AnswerOptions(models.Model):
-    question_id = models.ForeignKey('Question', on_delete=models.CASCADE)
-    answerText = models.CharField(max_length=200)
-    isCorrect = models.BooleanField(default=False)
 
 
 class Card(models.Model):

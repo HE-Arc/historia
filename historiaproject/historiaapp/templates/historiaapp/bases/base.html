@@ -124,28 +124,23 @@
   {% block content %}
 
   {% if user.is_authenticated %}
-  
-  {% else %}
 
   <div class="container-fluid">
-
     <div class="pt-3">
-        {% if user.is_authenticated %}
-
         <div class="text-center text-light">
             <h1 class="display-4 mt-4 mb-4">
                 Welcome, {{ user.username }}.
             </h1>
         </div>
-        
-        {% else %}
+    </div>
+  </div>
 
+  {% else %}
         <div class="darker align-items-center">
             <div class="container">
                 <div class="row darker justify-content-center align-items-center">
                     <div class="darker">
                         <div class="card-body darker p-3">
-                            
                             <div class="d-flex justify-content-center mb-5">
                                 <button type="button" 
                                     class="button-historia text-uppercase lead" 
@@ -167,14 +162,10 @@
                                   Sign in
                               </button>
                             </div>
-            
                         </div>
                     </div>
                 </div>
             </div>
-
-            {% endif %}
-
         </div>
 
     </div>

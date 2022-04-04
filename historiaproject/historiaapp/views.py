@@ -1,32 +1,13 @@
-from cgi import print_arguments
-from re import T
-from urllib import request
-
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.views import generic, View
 from django.urls import reverse_lazy
-from django.template.loader import render_to_string
-from django.contrib.auth import authenticate, login
-from rest_framework import viewsets
-from django.db.models.query import QuerySet
-from typing import Generic
-from django import forms
+from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
-from django.template import loader
-from django.conf import settings
+
 from django.contrib.auth.models import User
-from django.contrib import messages
-import datetime
-from django.utils.timezone import utc
-from optparse import make_option
-from django.utils import timezone
-
 from .models import *
-from django.contrib.auth import get_user_model
-
 
 
 #|----------------------------------------------------------------------------|
@@ -42,16 +23,6 @@ def home(request):
     context = {}
     return render(request, 'historiaapp/home.html', context)
 
-def cards_visualizer(request):
-    """_summary_
-    To display the page with the cards.
-    Must be connected.
-    Args:
-        generic (_type_): _description_
-    """
-    context = {}
-    return render(request, 'historiaapp/cards.html', context)  
-    
 
 #|----------------------------------------------------------------------------| 
 #   Views Classes                                                             |
@@ -89,8 +60,7 @@ class UserCreationForm(UserCreationForm):
             # Remove the help text
             self.fields[fieldname].help_text = None
 
-            
-            
+
 def login_view(request):
     """_summary_
     Display the login page.
@@ -134,6 +104,7 @@ def register_view(request):
     # Send the UserCreationForm to render
     return render(request, "historiaapp/register.html", {'form': form})
 
+
 @login_required(login_url="login")
 def logout_view(request):
     """_summary_
@@ -170,31 +141,6 @@ class DashboardView(generic.TemplateView):
         return context
 
 
-@login_required(login_url="login")
-class CardsView(generic.TemplateView):
-    """_summary_
-    Display the card's page.
-    Must be connected.
-    Args:
-        generic (_type_): Template View _description_
-    """
-    template_name = "historiaapp/cards.html"
-    
-
-def get_context_data(self, **kwargs):
-    """_summary_
-    Function to take all informations : user, quiz, card and question.
-    Args:
-        generic (_type_): _description_
-    """
-    context = super().get_context_data(**kwargs)
-    context['user'] = User.objects.all()
-    context['quizzes'] = Quiz.objects.all()
-    context['cards'] = Card.objects.all()
-    context['questions'] = Question.objects.all()
-    return context
-
-
 #|-----------------------|
 #| Cards                 |
 #|-----------------------/
@@ -206,8 +152,9 @@ class CardsListView(generic.ListView):
     Args:
         generic (_type_): List View _description_
     """
-    model = Card    
-    def get_queryset(self) -> QuerySet[T]:
+    model = Card
+    
+    def get_queryset(self):
         return Card.objects.all()
 
 class CardsDetailView(generic.DetailView):
@@ -249,7 +196,7 @@ class CardsDeleteView(generic.DeleteView):
 #| Quiz                  |
 #|-----------------------/
 
-@login_required(login_url="login")
+
 class QuizView(generic.TemplateView):
     """_summary_
     Function to display all quiz.
@@ -257,10 +204,12 @@ class QuizView(generic.TemplateView):
     Args:
         generic (_type_): Template View _description_
     """
+    
     template_name = "historiaapp/quiz.html"
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['quiz'] = Quiz.objects.all() # Get all quiz
+        context['quiz'] = Quiz.objects.all()
         return context
 
 
@@ -270,9 +219,10 @@ class QuizListView(generic.ListView):
     Args:
         generic (_type_): List View _description_
     """
+    
     paginate_by = 2
     
-    def get_queryset(self) -> QuerySet[T]:
+    def get_queryset(self):
         quizs = Quiz.objects.all()
         for quiz in quizs:
             for question in quiz.questions.all():
@@ -404,7 +354,7 @@ class QuestionListView(generic.ListView):
         generic (_type_): List View _description_
     """
     model = Question
-    def get_queryset(self) -> QuerySet[T]:
+    def get_queryset(self):
         questions = Question.objects.all()
         
         return questions
@@ -440,7 +390,6 @@ class QuestionCreateView(generic.CreateView):
     ]
     
     success_url = reverse_lazy('questions-list')
-
 
 
 class QuestionUpdateView(generic.UpdateView):
@@ -525,7 +474,7 @@ class RankingListView(generic.ListView):
     """
     model = Ranking
     
-    def get_queryset(self) -> QuerySet[T]:
+    def get_queryset(self):
         return Ranking.objects.filter(quiz=1).order_by("-score")[:5]
     
     
