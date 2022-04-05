@@ -68,6 +68,7 @@ def login_view(request):
         generic (_type_): _description_
     """
     if request.method == "POST":
+        #msg = ''
         # Pass information from form with POST request
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():  # Check if form is valid or not (User exists ? Password ok ?)
@@ -78,7 +79,9 @@ def login_view(request):
             context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
             return render(request, "historiaapp/home.html", context)
         else:
-            return redirect('login') # Redirect to login if form is not valid
+            context = {'form':form}
+            context['form_errors'] = "Please enter a correct username and password."
+            return render(request, "historiaapp/login.html", context)
     else:
         form = AuthenticationForm()  # Create a new instance of this form
     # Send the AuthenticationForm to render
@@ -96,9 +99,13 @@ def register_view(request):
         form = UserCreationForm(request.POST)
         if(form.is_valid()):
             form.save()
-            return redirect('/')
-        context = {'form':form}
-        return render(request, 'historiaapp/home.html', context)
+            #return redirect('register')
+            context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
+            return render(request, "historiaapp/home.html", context)
+        else:
+            context = {'form':form}
+            context['form_errors'] = "Please enter a correct username and password."
+            return render(request, 'historiaapp/register.html', context)
     else:
         form = UserCreationForm()  # Create a new instance of this form
     # Send the UserCreationForm to render

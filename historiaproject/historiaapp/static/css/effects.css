@@ -87,3 +87,10 @@ based on their score */
   background: var(--rating-color-bad);
   color: var(--rating-color-bad);
 }
+
+#form-errors {
+  background-color: #eb5252;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}

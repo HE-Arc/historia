@@ -13,7 +13,9 @@
             
             <form action="" method="POST">
                 {% csrf_token %}
-            
+
+                <div id='form-errors'>{{ form_errors }}</div>
+                
                 <div class="form-outline mb-5">
                     {{ form.username|as_crispy_field }}
                 </div>
@@ -32,6 +34,8 @@
                         </div>
                     </button>
                 </div>
+
+                
             </form>
             
         </div>
