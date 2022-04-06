@@ -13,7 +13,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     
     path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
-    
+        
     
     # User urls
     # ---------------------------------------------------------------------------------- #
@@ -59,6 +59,9 @@ urlpatterns = [
     # ---------------------------------------------------------------------------------- #
          
     path('rankings/', views.RankingListView.as_view(), name="ranking-list"),
+    
+    path('rankings-user/', views.RankingsUser, name="ranking-user"),
+    
 
 
     # Quiz urls
