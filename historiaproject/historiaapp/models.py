@@ -13,13 +13,16 @@ class Card(models.Model):
         _type_: Card
     """
     name = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='images/', null=True)
-    birth = models.CharField(max_length=20)
+    historicPeriod = models.CharField(max_length=400, default="Unknown")
+    domain = models.CharField(max_length=200, default="Unknown")
+    category = models.CharField(max_length=400, default="Unknown")
+    birth = models.CharField(max_length=100, default="Unknown")
+    land = models.CharField(max_length=200, default="Unknown")
     text = models.CharField(max_length=4000)
+    image = models.ImageField(upload_to='images/', null=True)
     
     def __str__(self) -> str:
         return self.name
-    
 
 class Quiz(models.Model):
     """_summary_

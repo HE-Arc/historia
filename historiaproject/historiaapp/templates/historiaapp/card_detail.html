@@ -33,14 +33,35 @@
                                 {{ card.name }}
                             </h4>
 
-                            <p class="card-text character-text">
-                                {{ card.text }}
-                            </p>
-
+                            <h4 class="card-footer text-muted">
+                                Period historic:
+                                {{ card.historicPeriod }}
+                            </h4>
+    
+                            <div class="card-footer text-muted">
+                                Domain: 
+                                {{ card.domain }}
+                            </div>
+    
+                            <div class="card-footer text-muted">
+                                Category: 
+                                {{ card.category }}
+                            </div>
+    
                             <div class="card-footer text-muted">
                                 Birth: 
                                 {{ card.birth }}
                             </div>
+    
+                            <div class="card-footer text-muted">
+                                Birth: 
+                                {{ card.land }}
+                            </div>
+                  
+
+                            <p class="card-text character-text">
+                                {{ card.text }}
+                            </p>
                             
                         </div>
                     

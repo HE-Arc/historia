@@ -6,7 +6,13 @@ from rest_framework import serializers
 class CardSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Card
-        fields = ('name', 'image', 'birth', 'text')
+        fields = ('name',
+                  'domain',
+                  'category',
+                  'birth',
+                  'land',
+                  'image', 
+                  'text')
 
 
 class QuestionSerializer(serializers.HyperlinkedModelSerializer):

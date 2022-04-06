@@ -169,9 +169,13 @@ class CardsCreateView(generic.CreateView):
       
     model = Card
     fields = ['name',
-              'image', 
-              'birth',
-              'text']
+                'historicPeriod',
+                'domain',
+                'category',
+                'birth',
+                'land',
+                'image', 
+                'text']
     
     success_url = reverse_lazy('cards-list')
     
@@ -180,9 +184,13 @@ class CardsUpdateView(generic.UpdateView):
     
     model = Card
     fields = ['name',
-              'image', 
-              'birth',
-              'text']
+                'historicPeriod',
+                'domain',
+                'category',
+                'birth',
+                'land',
+                'image', 
+                'text']
     
     success_url = reverse_lazy('cards-list')
     

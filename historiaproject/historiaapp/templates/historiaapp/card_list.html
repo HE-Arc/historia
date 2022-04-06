@@ -53,18 +53,43 @@ Card list visualizer
 
                         <h4 class="card-title text-lg-left">
                             {{ card.name }}
-                        </h4>                
+                        </h4>    
 
                         <p class="card-text text-sm-left character-text lead">
                             <small class="lead">
                             {{ card.text }}
                             </small>
                         </p>
+                        <h4 class="card-footer text-muted">
+                            Period:
+                            {{ card.historicPeriod }}
+                        </h4>
+
+                        <div class="card-footer text-muted">
+                            Domain: 
+                            {{ card.domain }}
+                        </div>
+
+                        <div class="card-footer text-muted">
+                            Category: 
+                            {{ card.category }}
+                        </div>
 
                         <div class="card-footer text-muted">
                             Birth: 
                             {{ card.birth }}
                         </div>
+
+                        <div class="card-footer text-muted">
+                            Birth: 
+                            {{ card.land }}
+                        </div>
+
+                        <p class="card-text text text-sm-left character-text lead">
+                            <small class="lead">
+                            {{ card.text }}
+                            </small>
+                        </p>
 
                         <div class="col-sm text-center">
                             <div class="p-2">
