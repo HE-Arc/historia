@@ -5,6 +5,9 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
 
 from django.contrib.auth.models import User
 from .models import *
@@ -74,10 +77,12 @@ def login_view(request):
         if form.is_valid():  # Check if form is valid or not (User exists ? Password ok ?)
             user = form.get_user()
             login(request, user)
-            context = {'form':form}
-            # Redirect with the user's home with his rankings
-            context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
-            return render(request, "historiaapp/home.html", context)
+            context = {}
+            context['user'] = User.objects.all()
+            context['quizzes'] = Quiz.objects.all()
+            context['cards'] = Card.objects.all()
+            context['questions'] = Question.objects.all()
+            return render(request, "historiaapp/dashboard.html", context)
         else:
             context = {'form':form}
             context['form_errors'] = "Please enter a correct username and password."
@@ -99,9 +104,8 @@ def register_view(request):
         form = UserCreationForm(request.POST)
         if(form.is_valid()):
             form.save()
-            #return redirect('register')
-            context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
-            return render(request, "historiaapp/home.html", context)
+            #context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
+            return render(request, "historiaapp/dashboard.html", context)
         else:
             context = {'form':form}
             context['form_errors'] = "Please enter a correct username and password."
@@ -121,7 +125,7 @@ def logout_view(request):
         generic (_type_): _description_
     """
     logout(request)
-    return redirect('login')
+    return redirect('home')
 
 
 
@@ -140,12 +144,16 @@ class DashboardView(generic.TemplateView):
     template_name = "historiaapp/dashboard.html"
     
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs) 
-        context['user'] = User.objects.all()
-        context['quizzes'] = Quiz.objects.all()
-        context['cards'] = Card.objects.all()
-        context['questions'] = Question.objects.all()
-        return context
+        if self.request.user.is_authenticated:
+            context = super().get_context_data(**kwargs) 
+            context['user'] = User.objects.all()
+            context['quizzes'] = Quiz.objects.all()
+            context['cards'] = Card.objects.all()
+            context['questions'] = Question.objects.all()
+            return context
+        else:
+            context = {}
+            return context
 
 
 #|-----------------------|
@@ -483,5 +491,9 @@ class RankingListView(generic.ListView):
     
     def get_queryset(self):
         return Ranking.objects.filter(quiz=1).order_by("-score")[:5]
-    
+   
+def RankingsUser(request):
+    context = {}
+    context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
+    return render(request, "historiaapp/home.html", context) 
     
