@@ -67,7 +67,7 @@ class Question(models.Model):
     def __str__(self) -> str:
         return self.name
    
-   
+
 class Ranking(models.Model):
     # quiz
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)

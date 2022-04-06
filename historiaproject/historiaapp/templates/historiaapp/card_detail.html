@@ -14,46 +14,46 @@
 
             <div class="row">
 
-                <div class="card bg-dark p-3 m-3">
+                <div class="card bg-light p-3 m-3">
 
                     <div class="row">
 
                         {% if card.image %}
                         <div class="text-center shadow rounded m-3"
-                        style="max-width:18rem;">
+                        style="max-width:12rem;">
                             <img class="float-center img-fluid character-image rounded"
                             src="{{  card.image.url }}"
                             alt="Card image cap">
                         </div>
                         {% endif %}
 
-                        <div class="card character-text lead bg-dark m-3 p-3 text-light">
+                        <div class="card character-text lead m-3 p-3 text-dark bg-light">
 
-                            <h4 class="card-title text-lg-left">
+                            <h4 class="card-header text-lg-left bg-warning text-dark">
                                 {{ card.name }}
                             </h4>
 
-                            <h4 class="card-footer text-muted">
+                            <h4 class="card-text">
                                 Period historic:
                                 {{ card.historicPeriod }}
                             </h4>
     
-                            <div class="card-footer text-muted">
+                            <div class="card-text">
                                 Domain: 
                                 {{ card.domain }}
                             </div>
     
-                            <div class="card-footer text-muted">
+                            <div class="card-text">
                                 Category: 
                                 {{ card.category }}
                             </div>
     
-                            <div class="card-footer text-muted">
+                            <div class="card-text">
                                 Birth: 
                                 {{ card.birth }}
                             </div>
     
-                            <div class="card-footer text-muted">
+                            <div class="card-text">
                                 Birth: 
                                 {{ card.land }}
                             </div>

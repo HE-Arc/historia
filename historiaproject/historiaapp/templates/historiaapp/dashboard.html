@@ -19,20 +19,6 @@ Historia
         <div class="card text-white bg-dark">
 
             <div class="card-body darker">
-                <h4 class="display-5 col mt-5">Users:</h4>
-                <div class="container">
-                    <div class="row">
-                        {% for user in users %}
-                            <div class="card shadow character-card text-dark bg-white p-3 m-3"
-                                style="max-width: 14rem;height: auto;">
-                                <h5 class="card-text">{{ user.pseudo }}</h5>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-body darker">
                 <h4 class="display-5 darker col mt-5">Quizzes:</h4>
                 <div class="btn container darker" 
                     onclick="location.href='{% url 'quizs-list' %}'">
@@ -65,9 +51,9 @@ Historia
             </div>
 
             <div class="card-body darker">
-                <h4 class="display-5 darker col mt-5">Cards:</h4>
+                <h4 class="display-5 darker col mt-4">Cards:</h4>
                 <div class="container darker">
-                    <div class="row">    
+                    <div class="row">
                         {% for card in cards %}
                             <div class="card bg-light shadow character-card text-dark p-3 m-3"
                                 style="max-width: 14rem; height: auto;">

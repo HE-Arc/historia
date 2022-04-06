@@ -27,11 +27,11 @@
 }
 
 .character-text {
-  font-size: max(1vw, 20px);
+  font-size: max(1vw, 16px);
 }
 
 .character-text-reward {
-  font-size: max(1vw, 20px);
+  font-size: max(1vw, 16px);
 }
 
 .text {
