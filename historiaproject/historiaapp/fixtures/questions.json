@@ -19,11 +19,11 @@
     "pk": 2,
     "fields": {
         "name": "Question 2",
-        "text": "What is the first enzyme discovered by Alexander Flemming about immunity?",
-        "opt_one": "Pennicilin",
-        "opt_two": "Lyzozyme",
-        "opt_three": "Hexokinase",
-        "opt_four": "Caspase-8",
+        "text": "When did he get the Nobel Prize in in Physiology or Medicine ?",
+        "opt_one": "1940",
+        "opt_two": "1945",
+        "opt_three": "1950",
+        "opt_four": "1955",
         "answer": 2,
         "is_correct": false,
         "character": 1
@@ -35,10 +35,10 @@
     "fields": {
         "name": "Question 3",
         "text": "To which school Einstein did not pass the entrance exam the first time?",
-        "opt_one": "École polytechnique fédérale de Zurich",
-        "opt_two": "École polytechnique fédérale de Lausanne",
-        "opt_three": "Luitpold Gymnasium de Munich",
-        "opt_four": "Université de St-Gall",
+        "opt_one": "Swiss Federal Institute of Technology Zurich",
+        "opt_two": "Swiss Federal Institute of Technology Lausanne",
+        "opt_three": "Luitpold Gymnasium in Munich",
+        "opt_four": "University of St. Gallen",
         "answer": 1,
         "is_correct": false,
         "character": 3
@@ -56,7 +56,7 @@
         "opt_four": "Karl Marx",
         "answer": 2,
         "is_correct": false,
-        "character": 5
+        "character": 48
     }
 },
 {
