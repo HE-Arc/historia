@@ -28,8 +28,8 @@ SECRET_KEY = 'django-insecure-f_^!&yijzdedjb0h+g*dy@+!6gf_oka7n)8yhwjf9dq&_@3t86
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = ['historia.srvz-webapp.he-arc.ch']
+# historia.srvz-webapp.he-arc.ch
 # Application definition
 
 INSTALLED_APPS = [
@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'historiaproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('GROUPNAME'),
         'USER': os.environ.get('GROUPNAME', 'postgres'),
         'PASSWORD': os.environ.get('PASSWORD', ''),
