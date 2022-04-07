@@ -82,19 +82,17 @@ WSGI_APPLICATION = 'historiaproject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+# 'ENGINE': 'django.db.backends.sqlite3',
+# 'NAME': BASE_DIR / 'db.sqlite3',
 
 DATABASES = {
     'default': {
-        # si sqlite3:
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        # si postgresql:
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'historia',
-        # 'USER': 'root',
-        # 'PASSWORD':'pass1234',
-        # 'HOST': 'localhost',
-        # 'PORT':'',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('GROUPNAME'),
+        'USER': os.environ.get('GROUPNAME', 'postgres'),
+        'PASSWORD': os.environ.get('PASSWORD', ''),
+        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432')
     }
 }
 
