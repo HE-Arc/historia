@@ -140,10 +140,12 @@ Questions visualizer
                                                                 <div class="card p-1 m-1">
                                                                     <div class="row">
 
+                                                                        {% load static %}
+
                                                                         <div class="text-center rounded m-3"
                                                                             style="max-width:10rem;">
                                                                             <img class="float-center img-fluid character-image rounded"
-                                                                            src="../../{{ questions.character.image }}"
+                                                                            src="{% static questions.character.image %}"  
                                                                             alt="Card image cap">
                                                                         </div>
 
