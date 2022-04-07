@@ -1,20 +1,21 @@
-from django.contrib.auth.models import User
 from .models import Card, Question, Quiz
 
 from rest_framework import serializers
-
-# serializers : permet de récuperé des modèles et de les retourner en fichiers json
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ('url', 'username', 'email')
 
 
 class CardSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Card
-        fields = ('name', 'image', 'birth', 'text')
+        fields = (
+            'name',
+            'historicPeriod',
+            'domain',
+            'category',
+            'birth',
+            'land',
+            'text',
+            'image'
+        )
 
 
 class QuestionSerializer(serializers.HyperlinkedModelSerializer):
@@ -28,7 +29,7 @@ class QuestionSerializer(serializers.HyperlinkedModelSerializer):
             'opt_three',
             'opt_four',
             'answer',
-            'options',
+            'is_correct',
             'character'
         )
 
@@ -36,4 +37,9 @@ class QuestionSerializer(serializers.HyperlinkedModelSerializer):
 class QuizSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Quiz
-        fields = ('name', 'size', 'questions')
+        fields = (
+            'name',
+            'text',
+            'questions',
+            'score_quiz'
+        )

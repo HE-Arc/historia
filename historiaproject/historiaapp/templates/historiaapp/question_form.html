@@ -1,4 +1,4 @@
-{% extends 'historiaapp/bases/base_detailnav.html' %}
+{% extends 'historiaapp/bases/base.html' %}
 
 {% block title %}
     {% if object is None %}
@@ -12,15 +12,15 @@
 
 {% block content %}
 <div class="container">
+    
     <hr>
 
     <h1 class="display-3 mb-5 p-3">
-
         Create question
     </h1>
 
     <h5 class="lead mb-4 pb-3 darker border-bottom border-warning">
-        Fill all the fields to create your question.
+        Fill all the fields to create your {{ object }}.
     </h5>
 
     <div class="darker align-items-center">
@@ -92,7 +92,6 @@
             </div>
         </div>
     </div>
-
 
 </div>
 {% endblock %}

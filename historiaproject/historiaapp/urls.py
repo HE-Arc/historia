@@ -1,50 +1,44 @@
-from unicodedata import name
 from django.urls import path
 from django.contrib import admin
-from django.conf.urls import url
-from django.urls import include
-
 from . import views
 from rest_framework import routers
-
 from django.conf import settings
 from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 
 urlpatterns = [
-    
     path('admin/', admin.site.urls),
     
     path('', views.home, name='home'),
     
     path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
+        
     
     # User urls
     # ---------------------------------------------------------------------------------- #
-        
-    path('login/', views.login, name='login'),
+    
+    path('logout/', views.logout_view, name='logout'),
+    
+    path('login/', views.login_view, name='login'),
 
-    path('signin/', views.signin, name='signin'),
-
-    path('register/', views.RegisterView.as_view(), name='register'),
+    path('register/', views.register_view, name='register'),
         
-    path('user/add-user/', views.AddUser.as_view(), name='add-user'),
     
     # Cards urls
     # ---------------------------------------------------------------------------------- #
     
     path('dashboard/cards/', views.CardsListView.as_view(), name='cards-list'),  
-        
+    
+    path('dashboard/cards/new/', views.CardsCreateView.as_view(), name='cards-create'),
+    
     path('dashboard/cards/<pk>/', views.CardsDetailView.as_view(), name='cards-detail'),
     
-    # Quiz urls
-    # ---------------------------------------------------------------------------------- #
+    path('dashboard/cards/<pk>/update', views.CardsUpdateView.as_view(), name="cards-update"),
     
-    path('dashboard/quiz/', views.QuizListView.as_view(), name="quiz-list"),
-    
-    path('dashboard/quiz/<pk>', views.QuizDetailView.as_view(), name="quiz-detail"),
-    
+    path('dashboard/cards/<pk>/delete', views.CardsDeleteView.as_view(), name="cards-delete"),
+
+
     # Questions urls
     # ---------------------------------------------------------------------------------- #
     
@@ -59,5 +53,31 @@ urlpatterns = [
     path('dashboard/questions/<pk>/update', views.QuestionUpdateView.as_view(), name="questions-update"),
     
     path('dashboard/questions/<pk>/delete', views.QuestionDeleteView.as_view(), name="questions-delete"),
+
+        
+    # Ranking urls
+    # ---------------------------------------------------------------------------------- #
+         
+    path('dashboard/rankings/', views.RankingListView.as_view(), name="ranking-list"),
+    
+    path('dashboard/rankings-user/', views.rankings_user, name="rankings-user"),
+
+
+    # Quiz urls
+    # ---------------------------------------------------------------------------------- #
+    
+    path('dashboard/quiz/', views.QuizListView.as_view(), name="quizs-list"),
+    
+    path('dashboard/quiz/check/', views.QuizCheckView.as_view(), name="quizs-check"),
+            
+    path('dashboard/quiz/new/', views.QuizCreateView.as_view(), name="quizs-create"),
+    
+    path('dashboard/quiz/', views.QuizDetailView.as_view(), name="quizs_try"),
+    
+    path('dashboard/quiz/<pk>', views.QuizDetailView.as_view(), name="quizs-detail"),
+    
+    path('dashboard/quiz/<pk>/update', views.QuizUpdateView.as_view(), name="quizs-update"),
+    
+    path('dashboard/quiz/<pk>/delete', views.QuizDeleteView.as_view(), name="quizs-delete"),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

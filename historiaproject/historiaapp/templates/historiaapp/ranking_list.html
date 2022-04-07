@@ -1,0 +1,59 @@
+{% extends 'historiaapp/bases/base.html' %}
+
+{% block title %}Rankings visualizer{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+  <div class="col-md-12">
+      <h1 class="display-4 mb-2">
+          Rankings
+      </h1>
+      <hr />
+  </div>
+
+  <h5 class="card-header mb-4">
+      List of ranking for this quiz.
+  </h5>
+
+  <div class="card-deck">
+
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Position</th>
+            <th scope="col">Quiz</th>
+            <th scope="col">Name user</th>
+            <th scope="col">Score</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+
+      {% for ranking in object_list %}
+
+          <div class="col-md-4 mb-4">
+
+                  <tbody>
+                    <tr>
+                      <th scope="row">{{ forloop.counter }}</th>
+                      <td>{{ ranking.quiz }}</td>
+                      <td>{{ ranking.user }}</td>
+                      <td>{{ ranking.score }}</td>
+                      <td>{{ ranking.date }}</td>
+                    </tr>
+                  </tbody>
+
+          </div>
+
+          {% empty %}
+          <li>No ranking yet.</li>
+      
+      {% endfor %}
+
+    </table>
+
+  </div>
+</div>
+
+{% endblock %}
