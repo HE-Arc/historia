@@ -1,62 +1,347 @@
 [
-    {
-        "model": "historiaapp.question",
-        "pk": 1,
-        "fields": {
-            "name": "Question 1",
-            "text": "What is the first enzyme discovered by Alexander Flemming about immunity?",
-            "opt_one": "Pennicilin",
-            "opt_two": "Lyzozyme",
-            "opt_three": "Hexokinase",
-            "opt_four": "Caspase-8",
-            "answer" : 2,
-            "is_correct": false,
-            "character" : 1
-        }
-    },
-    {
-        "model": "historiaapp.question",
-        "pk": 2,
-        "fields": {
-            "name" : "Question 2",
-            "text" : "What is the first enzyme discovered by Alexander Flemming about immunity?",
-            "opt_one" : "Pennicilin",
-            "opt_two" : "Lyzozyme",
-            "opt_three" : "Hexokinase",
-            "opt_four" : "Caspase-8",
-            "answer" : 2,
-            "is_correct": false,
-            "character" : 1
-        }
-    },
-    {
-        "model": "historiaapp.question",
-        "pk": 3,
-        "fields": {
-            "name" : "Question 3",
-            "text" : "To which school Einstein did not pass the entrance exam the first time?",
-            "opt_one" : "École polytechnique fédérale de Zurich",
-            "opt_two" : "École polytechnique fédérale de Lausanne",
-            "opt_three" : "Luitpold Gymnasium de Munich",
-            "opt_four" : "Université de St-Gall",
-            "answer" : 1,
-            "is_correct": false,
-            "character" : 3
-        }
-    },
-    {
-        "model": "historiaapp.question",
-        "pk": 4,
-        "fields": {
-            "name" : "Question 4",
-            "text" : "Who wrote the first programming language?",
-            "opt_one" : "Konrad Zuse",
-            "opt_two" : "Ada Lovelace",
-            "opt_three" : "Mary Curry",
-            "opt_four" : "Karl Marx",
-            "answer" : 2,
-            "is_correct": false,
-            "character" : 5
-        }
+{
+    "model": "historiaapp.question",
+    "pk": 1,
+    "fields": {
+        "name": "Question 1",
+        "text": "What is the first enzyme discovered by Alexander Flemming about immunity?",
+        "opt_one": "Pennicilin",
+        "opt_two": "Lyzozyme",
+        "opt_three": "Hexokinase",
+        "opt_four": "Caspase-8",
+        "answer": 2,
+        "is_correct": false,
+        "character": 1
     }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 2,
+    "fields": {
+        "name": "Question 2",
+        "text": "When did he get the Nobel Prize in in Physiology or Medicine ?",
+        "opt_one": "1940",
+        "opt_two": "1945",
+        "opt_three": "1950",
+        "opt_four": "1955",
+        "answer": 2,
+        "is_correct": false,
+        "character": 1
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 3,
+    "fields": {
+        "name": "Question 3",
+        "text": "To which school Einstein did not pass the entrance exam the first time?",
+        "opt_one": "Swiss Federal Institute of Technology Zurich",
+        "opt_two": "Swiss Federal Institute of Technology Lausanne",
+        "opt_three": "Luitpold Gymnasium in Munich",
+        "opt_four": "University of St. Gallen",
+        "answer": 1,
+        "is_correct": false,
+        "character": 3
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 4,
+    "fields": {
+        "name": "Question 4",
+        "text": "Who wrote the first programming language?",
+        "opt_one": "Konrad Zuse",
+        "opt_two": "Ada Lovelace",
+        "opt_three": "Mary Curry",
+        "opt_four": "Karl Marx",
+        "answer": 2,
+        "is_correct": false,
+        "character": 48
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 6,
+    "fields": {
+        "name": "Question 5",
+        "text": "Whose tutor was Aristotle?",
+        "opt_one": "Philip II of Macedonia",
+        "opt_two": "Alexander the Great",
+        "opt_three": "Epicurus",
+        "opt_four": "Platon",
+        "answer": 2,
+        "is_correct": false,
+        "character": 20
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 7,
+    "fields": {
+        "name": "Question 6",
+        "text": "Plato was a great philosopher and thinker, whose disciple was he?",
+        "opt_one": "Hegel",
+        "opt_two": "Karl Marx",
+        "opt_three": "Socrate",
+        "opt_four": "Claudius Ptolemy",
+        "answer": 3,
+        "is_correct": false,
+        "character": 21
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 8,
+    "fields": {
+        "name": "Question 7",
+        "text": "At Plato's Academy, the school founded in Athens by Plato, what was the phrase engraved at the entrance ?",
+        "opt_one": "No one enters here who is not a surveyor",
+        "opt_two": "No one enters here who is not a physicist",
+        "opt_three": "No one enters here who is not a philosopher",
+        "opt_four": "No one enters here who is not a fighter",
+        "answer": 1,
+        "is_correct": false,
+        "character": 21
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 9,
+    "fields": {
+        "name": "Question 8",
+        "text": "Who should denounce it to the political and religious authorities of the time ?",
+        "opt_one": "James the Just",
+        "opt_two": "Simon",
+        "opt_three": "Ponce Pilate",
+        "opt_four": "Judas",
+        "answer": 4,
+        "is_correct": false,
+        "character": 22
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 10,
+    "fields": {
+        "name": "Question 9",
+        "text": "How did Socrates die after being condemned?",
+        "opt_one": "Stunned with a giant crab",
+        "opt_two": "Peeled with a knife",
+        "opt_three": "By absorbing a deadly poison, hemlock",
+        "opt_four": "Eating the heart by otters",
+        "answer": 3,
+        "is_correct": false,
+        "character": 23
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 11,
+    "fields": {
+        "name": "Question 10",
+        "text": "Which of these three philosophers is not one of his disciples ?",
+        "opt_one": "Plato",
+        "opt_two": "Xenophon",
+        "opt_three": "Bernard-Henri Levy",
+        "opt_four": "Caius Octavius Thurinus",
+        "answer": 1,
+        "is_correct": false,
+        "character": 23
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 12,
+    "fields": {
+        "name": "Question 11",
+        "text": "Whose student was Alexander the Great ?",
+        "opt_one": "Pangloss",
+        "opt_two": "Pytagore",
+        "opt_three": "Aristotle",
+        "opt_four": "Socrate",
+        "answer": 3,
+        "is_correct": false,
+        "character": 24
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 13,
+    "fields": {
+        "name": "Question 12",
+        "text": "Which famous artist - painter, sculptor and goldsmith - agreed to take Leonardo on as an apprentice when he was 14 years old ?",
+        "opt_one": "Fra Filippo Lippi",
+        "opt_two": "Andrea del Verrocchio",
+        "opt_three": "The Perugin",
+        "opt_four": "Michelangelo Buonarroti",
+        "answer": 2,
+        "is_correct": false,
+        "character": 25
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 14,
+    "fields": {
+        "name": "Question 13",
+        "text": "Moving away from his family, Confucius founded a school of wisdom that counts ?",
+        "opt_one": "12 disciples",
+        "opt_two": "100 disciples",
+        "opt_three": "300 disciples",
+        "opt_four": "555 disciples",
+        "answer": 1,
+        "is_correct": false,
+        "character": 26
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 15,
+    "fields": {
+        "name": "Question 14",
+        "text": "How is it considered ?",
+        "opt_one": "China's first soldier",
+        "opt_two": "China's first philosopher",
+        "opt_three": "China's first educator",
+        "opt_four": "China's first god",
+        "answer": 3,
+        "is_correct": false,
+        "character": 26
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 16,
+    "fields": {
+        "name": "Question 15",
+        "text": "Which river did Julius Caesar cross with his legions in 49 BC on his way to Rome, a symbolic barrier between the territories he ruled as proconsul and the Roman Republic ?",
+        "opt_one": "The Tiber",
+        "opt_two": "The Rubicon",
+        "opt_three": "The Po",
+        "opt_four": "The Tanaro",
+        "answer": 2,
+        "is_correct": false,
+        "character": 27
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 17,
+    "fields": {
+        "name": "Question 16",
+        "text": "What is homer famous for?",
+        "opt_one": "The mermaids",
+        "opt_two": "Tomorrow, at dawn",
+        "opt_three": "The Odyssey",
+        "opt_four": "The myth of Orpheus",
+        "answer": 3,
+        "is_correct": false,
+        "character": 28
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 18,
+    "fields": {
+        "name": "Question 17",
+        "text": "A legend suggests that Pythagoras participated in the Olympic Games. In what sport would he have shone ?",
+        "opt_one": "Modern dance",
+        "opt_two": "Catch",
+        "opt_three": "Pugilism",
+        "opt_four": "Javelin",
+        "answer": 3,
+        "is_correct": false,
+        "character": 29
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 19,
+    "fields": {
+        "name": "Question 18",
+        "text": "What famous word did Archimed say ?",
+        "opt_one": "Eureka",
+        "opt_two": "Ataraxie",
+        "opt_three": "Kairos",
+        "opt_four": "Morphed",
+        "answer": 1,
+        "is_correct": false,
+        "character": 30
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 20,
+    "fields": {
+        "name": "Question 19",
+        "text": "She passed away in ...",
+        "opt_one": "1900",
+        "opt_two": "1901",
+        "opt_three": "1902",
+        "opt_four": "1903",
+        "answer": 2,
+        "is_correct": false,
+        "character": 11
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 21,
+    "fields": {
+        "name": "Question 20",
+        "text": "How old was Marie-Antoinette when she arrived in France?",
+        "opt_one": "12",
+        "opt_two": "14",
+        "opt_three": "16",
+        "opt_four": "18",
+        "answer": 2,
+        "is_correct": false,
+        "character": 12
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 22,
+    "fields": {
+        "name": "Question 21",
+        "text": "In what year was she born ?",
+        "opt_one": "1525",
+        "opt_two": "1529",
+        "opt_three": "1533",
+        "opt_four": "1536",
+        "answer": 3,
+        "is_correct": false,
+        "character": 13
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 23,
+    "fields": {
+        "name": "Question 22",
+        "text": "How did Anne Boleyn die ?",
+        "opt_one": "Beheaded",
+        "opt_two": "Assassinated by her sister",
+        "opt_three": "Burned by hellfire",
+        "opt_four": "Poisoned",
+        "answer": 1,
+        "is_correct": false,
+        "character": 15
+    }
+},
+{
+    "model": "historiaapp.question",
+    "pk": 24,
+    "fields": {
+        "name": "Question 23",
+        "text": "What taboo did she break ?",
+        "opt_one": "That of working",
+        "opt_two": "That of polyamory",
+        "opt_three": "That of independence",
+        "opt_four": "That of homosexuality",
+        "answer": 4,
+        "is_correct": false,
+        "character": 16
+    }
+}
 ]
