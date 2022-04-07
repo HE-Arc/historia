@@ -87,12 +87,15 @@ WSGI_APPLICATION = 'historiaproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ.get('GROUPNAME'),
-        'USER': os.environ.get('GROUPNAME', 'postgres'),
+        'USER': os.environ.get('GROUPNAME', 'root'),
         'PASSWORD': os.environ.get('PASSWORD', ''),
-        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
-        'PORT': os.environ.get('POSTGRES_PORT', '5432')
+        'HOST': os.environ.get('MYSQL_HOST', 'localhost'),
+        'PORT': os.environ.get('MYSQL_PORT', '3306'),
+        'OPTIONS': {
+            'charset': 'utf8mb4'
+        }
     }
 }
 
