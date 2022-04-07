@@ -87,12 +87,12 @@ WSGI_APPLICATION = 'historiaproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'historia',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
-        'PORT': '5432'
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('GROUPNAME'),
+        'USER': os.environ.get('GROUPNAME', 'postgres'),
+        'PASSWORD': os.environ.get('PASSWORD', ''),
+        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432')
     }
 }
 
