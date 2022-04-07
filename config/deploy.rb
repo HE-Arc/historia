@@ -40,6 +40,9 @@ namespace :python do
 	    execute "#{venv_path}/bin/pip install -r #{release_path}/requirements.txt"
         execute "cd #{release_path}/historiaproject && #{venv_path}/bin/python3 manage.py makemigrations"
         execute "cd #{release_path}/historiaproject && #{venv_path}/bin/python3 manage.py migrate"
+        execute "cd #{release_path}/historiaproject && #{venv_path}/bin/python3 manage.py loaddata cards.json"
+        execute "cd #{release_path}/historiaproject && #{venv_path}/bin/python3 manage.py loaddata questions.json"
+        execute "cd #{release_path}/historiaproject && #{venv_path}/bin/python3 manage.py loaddata quizzes.json"
         end
     end
 end
