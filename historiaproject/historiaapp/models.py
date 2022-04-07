@@ -67,14 +67,10 @@ class Question(models.Model):
     def __str__(self) -> str:
         return self.name
    
-
+    
 class Ranking(models.Model):
-    # quiz
-    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
-    # user
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="quiz")
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    # score
     score = models.IntegerField()
-    # date
     date = models.DateField(db_index=True)
     

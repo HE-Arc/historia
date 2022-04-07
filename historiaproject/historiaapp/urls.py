@@ -18,9 +18,9 @@ urlpatterns = [
     # User urls
     # ---------------------------------------------------------------------------------- #
     
-    path('login/', views.login_view, name='login'),
-    
     path('logout/', views.logout_view, name='logout'),
+    
+    path('login/', views.login_view, name='login'),
 
     path('register/', views.register_view, name='register'),
         
@@ -54,14 +54,13 @@ urlpatterns = [
     
     path('dashboard/questions/<pk>/delete', views.QuestionDeleteView.as_view(), name="questions-delete"),
 
-
+        
     # Ranking urls
     # ---------------------------------------------------------------------------------- #
          
-    path('rankings/', views.RankingListView.as_view(), name="ranking-list"),
+    path('dashboard/rankings/', views.RankingListView.as_view(), name="ranking-list"),
     
-    path('rankings-user/', views.RankingsUser, name="ranking-user"),
-    
+    path('dashboard/rankings-user/', views.rankings_user, name="rankings-user"),
 
 
     # Quiz urls

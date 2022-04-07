@@ -5,8 +5,6 @@
 {% block content %}
 <div class="container">
 
-    {% if user.is_authenticated %}
-
     <div class="">
     <div class="row">
 
@@ -74,21 +72,6 @@
         </div>
 
     </div>
-
-    <!-- If user is not connected -->
-    {% else %}
-    <div class="card-body darker">
-        <div class="text-center">
-            <h1>Access Denied</h1>
-            <button type="submit" value="Login" class="button-historia answer mt-5 mb-5"
-                            style="max-width:30%;min-width:10%;" onclick="location.href='{% url 'home' %}'">
-                <div class="lead">
-                    <strong>Go to Home Page</strong>
-                </div>
-            </button>
-        </div>
-    </div>
-    {% endif %}
 
 </div>
 {% endblock %}

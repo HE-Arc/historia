@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="{% static 'css/card.css' %}">
   <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
   <link rel="stylesheet" href="{% static 'css/effects.css' %}">
-  <!-- <script src="{% static 'js/score.js' %}"></script> -->
   
   {% load bootstrap4 %}
   {% bootstrap_css %}
@@ -88,7 +87,7 @@
                 </li>
 
                 <li class="nav-item active mr-4">
-                  <a class="nav-link text-warning" href="{% url 'ranking-user' %}">
+                  <a class="nav-link text-warning" href="{% url 'rankings-user' %}">
                     <div class="btn btn-warning bi bi-trophy">
                       Rankings
                     </div>
@@ -101,6 +100,12 @@
                     </div>
                     Logout
                   </a>
+                </li>
+
+                <li class="nav-item active mr-4">
+                  <div class="btn btn-infos bi bi-trophy">
+                    Name= {{ user.username }}
+                  </div>
                 </li>
               </ul>
 
@@ -130,8 +135,6 @@
 
   </div>
 
-  {% block content %}
-
   {% if user.is_authenticated %}
 
   <div class="container-fluid">
@@ -143,45 +146,12 @@
         </div>
     </div>
   </div>
-
-  {% else %}
-        <div class="darker align-items-center">
-            <div class="container">
-                <div class="row darker justify-content-center align-items-center">
-                    <div class="darker">
-                        <div class="card-body darker p-3">
-                            <div class="d-flex justify-content-center mb-5">
-                                <button type="button" 
-                                    class="button-historia text-uppercase lead" 
-                                    onclick="location.href='{% url 'register' %}'">
-                                    Create an account
-                                </button>
-                            </div>
-
-                            <div class="text-center text-light">
-                                <h1 class="lead mt-4 mb-4">
-                                    Or
-                                </h1>
-                            </div>
-
-                            <div class="d-flex justify-content-center mb-5">
-                              <button type="button" 
-                                  class="button-historia text-uppercase lead" 
-                                  onclick="location.href='{% url 'login' %}'">
-                                  Sign in
-                              </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-  </div>
-    
   {% endif %}
-    
+
+  {% block content %}
+  {% if user.is_authenticated %}
+  
+  {% endif %}
   {% endblock %}
 
 </body>

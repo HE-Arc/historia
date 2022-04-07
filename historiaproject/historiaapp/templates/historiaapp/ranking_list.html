@@ -1,4 +1,4 @@
-{% extends 'historiaapp/bases/base_connected.html' %}
+{% extends 'historiaapp/bases/base.html' %}
 
 {% block title %}Rankings visualizer{% endblock %}
 
@@ -6,76 +6,54 @@
 
 <div class="container">
 
-  {% if user.is_authenticated %}
+  <div class="col-md-12">
+      <h1 class="display-4 mb-2">
+          Rankings
+      </h1>
+      <hr />
+  </div>
 
-    <div class="col-md-12">
-        <h1 class="display-4 mb-2">
-            Rankings
-        </h1>
-        <hr />
-    </div>
+  <h5 class="card-header mb-4">
+      List of ranking for this quiz.
+  </h5>
 
-    <h5 class="card-header mb-4">
-        List of ranking for this quiz.
-    </h5>
+  <div class="card-deck">
 
-    <div class="card-deck">
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Position</th>
+            <th scope="col">Quiz</th>
+            <th scope="col">Name user</th>
+            <th scope="col">Score</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
 
-        <table class="table table-striped table-dark">
-          <thead>
-            <tr>
-              <th scope="col">Position</th>
-              <th scope="col">Quiz</th>
-              <th scope="col">Name user</th>
-              <th scope="col">Score</th>
-              <th scope="col">Date</th>
-            </tr>
-          </thead>
+      {% for ranking in object_list %}
 
-        {% for ranking in object_list %}
+          <div class="col-md-4 mb-4">
 
-            <div class="col-md-4 mb-4">
+                  <tbody>
+                    <tr>
+                      <th scope="row">{{ forloop.counter }}</th>
+                      <td>{{ ranking.quiz }}</td>
+                      <td>{{ ranking.user }}</td>
+                      <td>{{ ranking.score }}</td>
+                      <td>{{ ranking.date }}</td>
+                    </tr>
+                  </tbody>
 
-                    <tbody>
-                      <tr>
-                        <th scope="row">{{ forloop.counter }}</th>
-                        <td>{{ ranking.quiz }}</td>
-                        <td>{{ ranking.user }}</td>
-                        <td>{{ ranking.score }}</td>
-                        <td>{{ ranking.date }}</td>
-                      </tr>
-                    </tbody>
+          </div>
 
-            </div>
+          {% empty %}
+          <li>No ranking yet.</li>
+      
+      {% endfor %}
 
-            {% empty %}
-            <li>No ranking yet.</li>
-        
-        {% endfor %}
+    </table>
 
-      </table>
-
-    </div>
-
-    <div class="container ">
-
-    <!-- If user is not connected -->
-    {% else %}
-    <div class="card-body darker">
-        <div class="text-center">
-            <h1>Access Denied</h1>
-            <button type="submit" value="Login" class="button-historia answer mt-5 mb-5"
-                            style="max-width:30%;min-width:10%;" onclick="location.href='{% url 'home' %}'">
-                <div class="lead">
-                    <strong>Go to Home Page</strong>
-                </div>
-            </button>
-        </div>
-    </div>
-  {% endif %}
-
-     
-    </div>
-
+  </div>
+</div>
 
 {% endblock %}

@@ -70,19 +70,16 @@ def login_view(request):
     Args:
         generic (_type_): _description_
     """
+    if request.user.is_authenticated:
+        return redirect('dashboard')
     if request.method == "POST":
-        #msg = ''
-        # Pass information from form with POST request
         form = AuthenticationForm(data=request.POST)
-        if form.is_valid():  # Check if form is valid or not (User exists ? Password ok ?)
+        if form.is_valid():
             user = form.get_user()
             login(request, user)
             context = {}
-            context['user'] = User.objects.all()
-            context['quizzes'] = Quiz.objects.all()
-            context['cards'] = Card.objects.all()
-            context['questions'] = Question.objects.all()
-            return render(request, "historiaapp/dashboard.html", context)
+            context['user'] = User.objects.get(username=request.POST.get("username"))
+            return redirect('dashboard')
         else:
             context = {'form':form}
             context['form_errors'] = "Please enter a correct username and password."
@@ -99,13 +96,15 @@ def register_view(request):
     Args:
         generic (_type_): _description_
     """
+    if request.user.is_authenticated:
+        return redirect('dashboard')
     if request.method == "POST":
         # Pass information from form with request.POST
+        context = {}
         form = UserCreationForm(request.POST)
         if(form.is_valid()):
             form.save()
-            #context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
-            return render(request, "historiaapp/dashboard.html", context)
+            return redirect('login')
         else:
             context = {'form':form}
             context['form_errors'] = "Please enter a correct username and password."
@@ -146,7 +145,6 @@ class DashboardView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         if self.request.user.is_authenticated:
             context = super().get_context_data(**kwargs) 
-            context['user'] = User.objects.all()
             context['quizzes'] = Quiz.objects.all()
             context['cards'] = Card.objects.all()
             context['questions'] = Question.objects.all()
@@ -499,8 +497,9 @@ class RankingListView(generic.ListView):
     
     def get_queryset(self):
         return Ranking.objects.filter(quiz=1).order_by("-score")[:5]
-   
-def RankingsUser(request):
+
+
+def rankings_user(request):
     context = {}
     context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
     return render(request, "historiaapp/home.html", context) 
