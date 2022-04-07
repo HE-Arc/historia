@@ -147,10 +147,13 @@
                                                                 <div class="darker text-light small p-2">
                                                                     <div class="card darker p-1 m-1">
                                                                         <div class="row">
+
+                                                                            {% load static %}
+
                                                                             <div class="col- text-center rounded m-3"
                                                                                 style="max-width:10rem;">
                                                                                 <img class="float-center img-fluid character-image rounded"
-                                                                                src="../../{{ questions.character.image }}"
+                                                                                src="{% static questions.character.image %}"
                                                                                 alt="Card image cap">
                                                                             </div>
 
