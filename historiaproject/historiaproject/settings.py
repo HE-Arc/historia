@@ -90,8 +90,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'historia',
         'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+        'PASSWORD': 'root',
+        'HOST': '127.0.0.1',
         'PORT': '5432'
     }
 }
