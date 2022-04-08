@@ -91,7 +91,7 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3'
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('GROUPNAME'),
+        'NAME': 'historia',
         'USER': os.environ.get('GROUPNAME'),
         'PASSWORD': os.environ.get('PASSWORD', ''),
         'HOST': os.environ.get('MYSQL_HOST', 'localhost'),
