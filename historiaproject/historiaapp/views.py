@@ -504,3 +504,15 @@ def rankings_user(request):
     context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
     return render(request, "historiaapp/home.html", context) 
     
+    
+    
+#|-----------------------|
+#| Categories            |
+#|-----------------------/    
+    
+class CategoriesListView(generic.ListView):
+    model = Category
+    #template_name = "historiaapp/category_list.html"
+    
+    def get_queryset(self):
+        return Category.objects.all()

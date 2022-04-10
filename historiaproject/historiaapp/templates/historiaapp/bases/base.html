@@ -5,6 +5,7 @@
 
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/card.css' %}">
+  <link rel="stylesheet" href="{% static 'css/category.css' %}">
   <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
   <link rel="stylesheet" href="{% static 'css/effects.css' %}">
   
@@ -82,6 +83,14 @@
                   <a class="nav-link text-warning" href="{% url 'quizs-list' %}">
                     <div class="btn btn-warning bi bi-question-square-fill">
                       Quizzes
+                    </div>
+                  </a>
+                </li>
+
+                <li class="nav-item active mr-4">
+                  <a class="nav-link text-warning" href="{% url 'categories-list' %}">
+                    <div class="btn btn-warning bi bi-tags-fill">
+                      Categories
                     </div>
                   </a>
                 </li>

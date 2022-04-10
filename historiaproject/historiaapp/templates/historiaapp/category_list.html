@@ -1,0 +1,55 @@
+{% extends 'historiaapp/bases/base.html' %}
+
+{% block title %}Categories visualizer{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="container">
+    <hr />
+
+    <h1 class="display-4 mt-4 mb-2">
+        Categories
+    </h1>
+
+    <hr />
+
+    <div class="card border-0 darker mt-4 all-categories">
+
+
+                
+                <!--  DISPLAY -->
+
+                {% for category in object_list %}
+                
+                    <div class="one-category">
+                        <div class="card shadow character-card text-white bg-dark">
+                            <div class="card-body">
+                                
+                                <h4 class="card-title text-lg-center">
+                                    {{ category.name }}
+                                </h4>
+
+                                <img class="float-right image-category"
+                                    src="{% static '../media/images/category.PNG' %}"
+                                     alt="category">
+
+                            </div>
+                        
+                        </div>
+
+                    </div>
+
+                    {% empty %}
+                    <li>No Category yet.</li>
+
+                {% endfor %}
+
+                <!-- END CATEGORY DISPLAY -->
+
+
+
+    </div>
+
+{% endblock %}

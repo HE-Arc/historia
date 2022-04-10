@@ -79,5 +79,13 @@ urlpatterns = [
     path('dashboard/quiz/<pk>/update', views.QuizUpdateView.as_view(), name="quizs-update"),
     
     path('dashboard/quiz/<pk>/delete', views.QuizDeleteView.as_view(), name="quizs-delete"),
+    
+    
+    # Categories urls
+    # ---------------------------------------------------------------------------------- #
+    
+    path('dashboard/categories/', views.CategoriesListView.as_view(), name="categories-list"),
+    
+    
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

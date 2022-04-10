@@ -1,0 +1,27 @@
+/******************************************************
+* 
+*   Category style used with bootstrap template.
+*   Used in category_list.html.
+*
+*/  
+
+.all-categories {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  background-color: #1c1c1c !important;
+}
+
+.one-category {
+  display: table-cell;
+  margin: 0;
+  padding: 0;
+  height: fit-content;
+}
+
+.image-category {
+  width: 100%;
+}
+
+
