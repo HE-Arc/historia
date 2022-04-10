@@ -63,10 +63,14 @@ class Question(models.Model):
     character = models.ForeignKey('Card', on_delete=models.CASCADE, null=True)
     
     options = models.IntegerChoices('Options', 'ONE TWO THREE FOUR')
+    
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name="category")
 
     def __str__(self) -> str:
         return self.name
-   
+
+class Category(models.Model):
+    name = models.CharField(max_length=200)
     
 class Ranking(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="quiz")

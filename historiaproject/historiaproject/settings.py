@@ -28,7 +28,8 @@ SECRET_KEY = 'django-insecure-f_^!&yijzdedjb0h+g*dy@+!6gf_oka7n)8yhwjf9dq&_@3t86
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['historia.srvz-webapp.he-arc.ch']
+# ALLOWED_HOSTS = ['historia.srvz-webapp.he-arc.ch']
+ALLOWED_HOSTS = ['*']
 # historia.srvz-webapp.he-arc.ch
 # Application definition
 
@@ -88,8 +89,11 @@ WSGI_APPLICATION = 'historiaproject.wsgi.application'
 DATABASES = {
 
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3'
+        '''
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
+        '''
+        
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'historia',
         'USER': os.environ.get('GROUPNAME'),
@@ -100,6 +104,7 @@ DATABASES = {
             'charset': 'utf8mb4',
             'ssl_mode' : 'DISABLED'
         }
+        
     }
 }
 

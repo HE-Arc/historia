@@ -1,0 +1,23 @@
+[
+    {
+        "model": "historiaapp.category",
+        "pk": 1,
+        "fields": {
+            "name": "Science & Inventions"
+        }
+    },
+    {
+        "model": "historiaapp.category",
+        "pk": 2,
+        "fields": {
+            "name": "Art"
+        }
+    },
+    {
+        "model": "historiaapp.category",
+        "pk": 3,
+        "fields": {
+            "name": "History"
+        }
+    }
+]
