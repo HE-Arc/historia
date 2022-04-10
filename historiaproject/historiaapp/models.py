@@ -37,6 +37,9 @@ class Quiz(models.Model):
     
     score_quiz = models.IntegerField(default=0)
     
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name="category")
+
+    
     def __str__(self) -> str:
         return self.name
 
@@ -64,8 +67,6 @@ class Question(models.Model):
     
     options = models.IntegerChoices('Options', 'ONE TWO THREE FOUR')
     
-    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name="category")
-
     def __str__(self) -> str:
         return self.name
 
