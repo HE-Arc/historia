@@ -1,0 +1,73 @@
+{% extends 'historiaapp/bases/base.html' %}
+
+{% block title %} Quiz {% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="">
+    <div class="row">
+
+        <h3>Quiz with this category</h3>
+
+        
+        {% for quizs in object_list %}
+
+                    <div class="mb-4">
+                        <div class="card shadow character-card text-white bg-dark">
+                            <div class="card-body">
+                                
+                                <h4 class="card-title text-lg-left">
+                                    {{ quizs.name }} ( {{ quizs.category.name }} )
+                                </h4>
+
+                                <p class="card-text lead">
+                                    <small class="lead">
+                                    {{ quizs.text }}
+                                    </small>
+                                </p>
+
+                                <div class="card-header">
+                                    <p class="card-text lead">
+                                        Questions
+                                    </p>
+
+                                    <!-- QUESTIONS DISPLAY -->
+
+                                    <div class="card-body">
+
+                                        {% for question in quizs.questions.all %}
+                                            <p class="card-text">
+                                                <small>
+                                                    {{ question.text }}
+                                                </small>
+                                            </p>
+                                        {% endfor %}
+
+                                        <div class="d-flex justify-content-center mb-5">
+                                            <button type="button"
+                                                class="button-historia text-uppercase lead"
+                                                style="max-width:35%;"
+                                                onclick="location.href='{% url 'quizs-detail' quizs.id %}'">
+                                                Begin
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                    
+                                    <!-- END QUESTIONS DISPLAY -->
+                                    
+                                </div>
+
+                            </div>
+                        
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+    </div>
+
+</div>
+{% endblock %}

@@ -516,3 +516,10 @@ class CategoriesListView(generic.ListView):
     
     def get_queryset(self):
         return Category.objects.all()
+    
+def quiz_with_category(request):
+    context = {}
+    context['quizs'] = Quiz.objects.filter(category=request.id)
+    return render(request, "historiaapp/category_quiz.html", context)
+    
+    
