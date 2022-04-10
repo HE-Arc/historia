@@ -178,19 +178,34 @@
 
                                                                         <div class="col-sm card m-3 p-3 text-dark character-text-reward">
                                                 
-                                                                            <h4 class="card-title text-dark text-lg-left character-text-reward">
+                                                                            <h2 class="card-title text-dark text-lg-left character-text-reward">
                                                                                 {{ questions.character.name }}
-                                                                            </h4>                
-                                                
+                                                                            </h2>
+                                                                                                                            
                                                                             <p class="card-text text-dark text-sm character-text-reward">
                                                                                 <small>
                                                                                 {{ questions.character.text }}
                                                                                 </small>
                                                                             </p>
-                                                
-                                                                            <div class="card-footer text-muted character-text-reward">
+
+                                                                            <div class="card-text text-muted character-text-reward">
+                                                                                Land: 
+                                                                                {{ questions.character.land }}
+                                                                            </div>
+
+                                                                            <div class="card-text text-muted character-text-reward">
                                                                                 Birth: 
                                                                                 {{ questions.character.birth }}
+                                                                            </div>
+
+                                                                            <div class="card-text text-muted character-text-reward">
+                                                                                Domain: 
+                                                                                {{ questions.character.domain }}
+                                                                            </div>
+                                                    
+                                                                            <div class="card-text text-muted character-text-reward">
+                                                                                Category: 
+                                                                                {{ questions.character.category }}
                                                                             </div>
 
                                                                         </div>
@@ -209,7 +224,7 @@
                                                         {% if questions.is_correct %}
                                                             <div class="alert alert-success float-right"
                                                                 role="alert">
-                                                                You guessed right!
+                                                                You guessed right !
                                                             </div>
                                                         {% endif %}
                                                     </div>
