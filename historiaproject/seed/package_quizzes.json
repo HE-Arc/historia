@@ -6,7 +6,6 @@
         "name": "General",
         "text": "A quiz to test your knowledge of history in general",
         "score_quiz": 0,
-        "category": 3,
         "questions": [
             1,
             2,
@@ -65,7 +64,6 @@
         "name": "Antiquity",
         "text": "This is a quiz to test your knowledge of famous people from antiquity",
         "score_quiz": 0,
-        "category": 3,
         "questions": [
             6,
             7,
@@ -94,7 +92,6 @@
         "name": "Kingdoms",
         "text": "This quiz tests your knowledge of the age of kingdoms",
         "score_quiz": 0,
-        "category": 3,
         "questions": [
             20,
             21,
@@ -121,7 +118,6 @@
         "name": "Contemporary",
         "text": "This quiz is here to test your knowledge of the Contemporary era",
         "score_quiz": 0,
-        "category": 3,
         "questions": [
             1,
             2,
