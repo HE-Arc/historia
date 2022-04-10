@@ -26,7 +26,7 @@ Card list visualizer
         class="btn btn-warning float-right">Create card</a>
     </h1>
     
-    <div class="card-deck">
+    <div class="card-deck all-cards">
 
         <!--
         * for loop section to display all characters cards.
@@ -34,7 +34,7 @@ Card list visualizer
 
         {% for card in object_list %}
 
-            <div class="col-md-4 mb-4">
+            <div>
 
                 <div class="card shadow character-card text-white bg-dark">
 
@@ -43,7 +43,7 @@ Card list visualizer
 
                     {% if card.image %}
                     <div class="text-center">
-                        <img class="card-img img-fluid character-image m-3"
+                        <img class="card-img img-fluid character-image m-3 image-card"
                         src=" {{  card.image.url }}"
                         alt="Card image cap">
                     </div>
@@ -86,22 +86,15 @@ Card list visualizer
                             {{ card.land }}
                         </div>
 
-                        <p class="card-text text text-sm-left character-text lead">
-                            <small class="lead">
+                        
+                        <p><a href="#nogo" title="Show more..." onclick="display_details({{card.id}})">Show more...</a></p>
+                        <p id="details{{card.id}}" class="card-text" style="display:none;">
                             {{ card.text }}
-                            </small>
                         </p>
 
-                        <div class="col-sm text-center">
-                            <div class="p-2">
-                                <a href="{% url 'cards-update' card.id %}" class="btn btn-success btn-lg">Update</a>
-                            </div>
-                        </div>
-
-                        <div class="col-sm text-center">
-                            <div class="p-2">
-                                <a href="{% url 'cards-delete' card.id %}" class="btn btn-danger btn-lg">Delete</a>
-                            </div>
+                        <div class="col-sm text-center mx-auto">
+                            <a href="{% url 'cards-update' card.id %}" class="btn btn-success btn-lg">Update</a>
+                            <a href="{% url 'cards-delete' card.id %}" class="btn btn-danger btn-lg ml-5">Delete</a>
                         </div>
 
                     </div>
@@ -110,7 +103,22 @@ Card list visualizer
                     
             </div>
 
+            
+
         {% endfor %}
+
+        <script>
+            function display_details(id) {
+                var num = "details"+id
+                var details = document.getElementById(num);
+                if(details.style.display == "block")
+                    details.style.display = "none";
+                else
+                    details.style.display = "block";
+            }
+        </script>
+
+        
 
     </div>
 </div>
