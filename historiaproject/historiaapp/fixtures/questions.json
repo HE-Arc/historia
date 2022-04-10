@@ -1,707 +1,707 @@
 [
-{
-    "model": "historiaapp.question",
-    "pk": 1,
-    "fields": {
-        "name": "Question 1",
-        "text": "What is the first enzyme discovered by Alexander Flemming about immunity?",
-        "opt_one": "Pennicilin",
-        "opt_two": "Lyzozyme",
-        "opt_three": "Hexokinase",
-        "opt_four": "Caspase-8",
-        "answer": 2,
-        "is_correct": false,
-        "character": 1
+    {
+        "model": "historiaapp.question",
+        "pk": 1,
+        "fields": {
+            "name": "Question 1",
+            "text": "What is the first enzyme discovered by Alexander Flemming about immunity?",
+            "opt_one": "Pennicilin",
+            "opt_two": "Lyzozyme",
+            "opt_three": "Hexokinase",
+            "opt_four": "Caspase-8",
+            "answer": 2,
+            "is_correct": false,
+            "character": 1
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 2,
+        "fields": {
+            "name": "Question 2",
+            "text": "When did Alexander Flemming get the Nobel Prize in in Physiology or Medicine ?",
+            "opt_one": "1940",
+            "opt_two": "1945",
+            "opt_three": "1950",
+            "opt_four": "1955",
+            "answer": 2,
+            "is_correct": false,
+            "character": 1
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 3,
+        "fields": {
+            "name": "Question 3",
+            "text": "To which school Einstein did not pass the entrance exam the first time?",
+            "opt_one": "Swiss Federal Institute of Technology Zurich",
+            "opt_two": "Swiss Federal Institute of Technology Lausanne",
+            "opt_three": "Luitpold Gymnasium in Munich",
+            "opt_four": "University of St. Gallen",
+            "answer": 1,
+            "is_correct": false,
+            "character": 3
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 4,
+        "fields": {
+            "name": "Question 4",
+            "text": "Who wrote the first programming language?",
+            "opt_one": "Konrad Zuse",
+            "opt_two": "Ada Lovelace",
+            "opt_three": "Mary Curry",
+            "opt_four": "Karl Marx",
+            "answer": 2,
+            "is_correct": false,
+            "character": 48
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 6,
+        "fields": {
+            "name": "Question 5",
+            "text": "Whose tutor was Aristotle?",
+            "opt_one": "Philip II of Macedonia",
+            "opt_two": "Alexander the Great",
+            "opt_three": "Epicurus",
+            "opt_four": "Platon",
+            "answer": 2,
+            "is_correct": false,
+            "character": 20
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 7,
+        "fields": {
+            "name": "Question 6",
+            "text": "Plato was a great philosopher and thinker, whose disciple was he?",
+            "opt_one": "Hegel",
+            "opt_two": "Karl Marx",
+            "opt_three": "Socrate",
+            "opt_four": "Claudius Ptolemy",
+            "answer": 3,
+            "is_correct": false,
+            "character": 21
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 8,
+        "fields": {
+            "name": "Question 7",
+            "text": "At Plato's Academy, the school founded in Athens by Plato, what was the phrase engraved at the entrance ?",
+            "opt_one": "No one enters here who is not a surveyor",
+            "opt_two": "No one enters here who is not a physicist",
+            "opt_three": "No one enters here who is not a philosopher",
+            "opt_four": "No one enters here who is not a fighter",
+            "answer": 1,
+            "is_correct": false,
+            "character": 21
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 9,
+        "fields": {
+            "name": "Question 8",
+            "text": "Who should denounce Jesus of Nazareth to the political and religious authorities of the time ?",
+            "opt_one": "James the Just",
+            "opt_two": "Simon",
+            "opt_three": "Ponce Pilate",
+            "opt_four": "Judas",
+            "answer": 4,
+            "is_correct": false,
+            "character": 22
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 10,
+        "fields": {
+            "name": "Question 9",
+            "text": "How did Socrates die after being condemned?",
+            "opt_one": "Stunned with a giant crab",
+            "opt_two": "Peeled with a knife",
+            "opt_three": "By absorbing a deadly poison, hemlock",
+            "opt_four": "Eating the heart by otters",
+            "answer": 3,
+            "is_correct": false,
+            "character": 23
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 11,
+        "fields": {
+            "name": "Question 10",
+            "text": "Which of these three philosophers is not one of Socrate disciples ?",
+            "opt_one": "Plato",
+            "opt_two": "Xenophon",
+            "opt_three": "Bernard-Henri Levy",
+            "opt_four": "Caius Octavius Thurinus",
+            "answer": 1,
+            "is_correct": false,
+            "character": 23
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 12,
+        "fields": {
+            "name": "Question 11",
+            "text": "Whose student was Alexander the Great ?",
+            "opt_one": "Pangloss",
+            "opt_two": "Pytagore",
+            "opt_three": "Aristotle",
+            "opt_four": "Socrate",
+            "answer": 3,
+            "is_correct": false,
+            "character": 24
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 13,
+        "fields": {
+            "name": "Question 12",
+            "text": "Which famous artist - painter, sculptor and goldsmith - agreed to take Leonardo on as an apprentice when he was 14 years old ?",
+            "opt_one": "Fra Filippo Lippi",
+            "opt_two": "Andrea del Verrocchio",
+            "opt_three": "The Perugin",
+            "opt_four": "Michelangelo Buonarroti",
+            "answer": 2,
+            "is_correct": false,
+            "character": 25
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 14,
+        "fields": {
+            "name": "Question 13",
+            "text": "Moving away from his family, Confucius founded a school of wisdom that counts ?",
+            "opt_one": "12 disciples",
+            "opt_two": "100 disciples",
+            "opt_three": "300 disciples",
+            "opt_four": "555 disciples",
+            "answer": 1,
+            "is_correct": false,
+            "character": 26
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 15,
+        "fields": {
+            "name": "Question 14",
+            "text": "How is Confucius viewed?",
+            "opt_one": "China's first soldier",
+            "opt_two": "China's first philosopher",
+            "opt_three": "China's first educator",
+            "opt_four": "China's first god",
+            "answer": 3,
+            "is_correct": false,
+            "character": 26
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 16,
+        "fields": {
+            "name": "Question 15",
+            "text": "Which river did Julius Caesar cross with his legions in 49 BC on his way to Rome, a symbolic barrier between the territories he ruled as proconsul and the Roman Republic ?",
+            "opt_one": "The Tiber",
+            "opt_two": "The Rubicon",
+            "opt_three": "The Po",
+            "opt_four": "The Tanaro",
+            "answer": 2,
+            "is_correct": false,
+            "character": 27
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 17,
+        "fields": {
+            "name": "Question 16",
+            "text": "What is homer famous for?",
+            "opt_one": "The mermaids",
+            "opt_two": "Tomorrow, at dawn",
+            "opt_three": "The Odyssey",
+            "opt_four": "The myth of Orpheus",
+            "answer": 3,
+            "is_correct": false,
+            "character": 28
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 18,
+        "fields": {
+            "name": "Question 17",
+            "text": "A legend suggests that Pythagoras participated in the Olympic Games. In what sport would he have shone ?",
+            "opt_one": "Modern dance",
+            "opt_two": "Catch",
+            "opt_three": "Pugilism",
+            "opt_four": "Javelin",
+            "answer": 3,
+            "is_correct": false,
+            "character": 29
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 19,
+        "fields": {
+            "name": "Question 18",
+            "text": "What famous word did Archimed say ?",
+            "opt_one": "Eureka",
+            "opt_two": "Ataraxie",
+            "opt_three": "Kairos",
+            "opt_four": "Morphed",
+            "answer": 1,
+            "is_correct": false,
+            "character": 30
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 20,
+        "fields": {
+            "name": "Question 19",
+            "text": "Queen Victoria passed away in ...",
+            "opt_one": "1900",
+            "opt_two": "1901",
+            "opt_three": "1902",
+            "opt_four": "1903",
+            "answer": 2,
+            "is_correct": false,
+            "character": 11
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 21,
+        "fields": {
+            "name": "Question 20",
+            "text": "How old was Marie-Antoinette when she arrived in France?",
+            "opt_one": "12",
+            "opt_two": "14",
+            "opt_three": "16",
+            "opt_four": "18",
+            "answer": 2,
+            "is_correct": false,
+            "character": 12
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 22,
+        "fields": {
+            "name": "Question 21",
+            "text": "In what year was Elizabeth I of England born ?",
+            "opt_one": "1525",
+            "opt_two": "1529",
+            "opt_three": "1533",
+            "opt_four": "1536",
+            "answer": 3,
+            "is_correct": false,
+            "character": 13
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 23,
+        "fields": {
+            "name": "Question 22",
+            "text": "How did Anne Boleyn die ?",
+            "opt_one": "Beheaded",
+            "opt_two": "Assassinated by her sister",
+            "opt_three": "Burned by hellfire",
+            "opt_four": "Poisoned",
+            "answer": 1,
+            "is_correct": false,
+            "character": 15
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 24,
+        "fields": {
+            "name": "Question 23",
+            "text": "What taboo did Sappho break ?",
+            "opt_one": "That of working",
+            "opt_two": "That of polyamory",
+            "opt_three": "That of independence",
+            "opt_four": "That of homosexuality",
+            "answer": 4,
+            "is_correct": false,
+            "character": 16
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 25,
+        "fields": {
+            "name": "Question 24",
+            "text": "What did Ramanujan mainly work on?",
+            "opt_one": "theta function, partition formulae and mock theta function",
+            "opt_two": "Alternative Theorems, Bieberbach's conjecture and Borel's law of zero one",
+            "opt_three": "Boundary theorem, Cauchy-Peano-Arzelï¿½ theorem and Quadratic reciprocity law",
+            "opt_four": "Quadratic reciprocity law, Cauchy-Peano-Arzelï¿½ theorem and Constant rank theorem",
+            "answer": 1,
+            "is_correct": false,
+            "character": 4
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 26,
+        "fields": {
+            "name": "Question 25",
+            "text": "Which country did Winston Churchill (1874-1965) lead during World War II?",
+            "opt_one": "The United States",
+            "opt_two": "Canada",
+            "opt_three": "The United Kingdom",
+            "opt_four": "Australia",
+            "answer": 3,
+            "is_correct": false,
+            "character": 5
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 27,
+        "fields": {
+            "name": "Question 26",
+            "text": "To which dynasty does Catherine II belong?",
+            "opt_one": "Habsbourg",
+            "opt_two": "Romanov",
+            "opt_three": "Tudor",
+            "opt_four": "Danilov",
+            "answer": 2,
+            "is_correct": false,
+            "character": 6
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 28,
+        "fields": {
+            "name": "Question 27",
+            "text": "On which river did Peter I The Great build his new capital, St Petersburg in 1703?",
+            "opt_one": "Leva",
+            "opt_two": "Teva",
+            "opt_three": "Neva",
+            "opt_four": "Volga",
+            "answer": 3,
+            "is_correct": false,
+            "character": 7
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 29,
+        "fields": {
+            "name": "Question 28",
+            "text": "Ivan the Terrible was also a builder, what did he build?",
+            "opt_one": "The Kremlin",
+            "opt_two": "The Indisfarne",
+            "opt_three": "Novgorod",
+            "opt_four": "The Basilica of Basil the Blessed",
+            "answer": 4,
+            "is_correct": false,
+            "character": 8
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 30,
+        "fields": {
+            "name": "Question 29",
+            "text": "At what age did Jeanne d'arc hear voices ?",
+            "opt_one": "6 years",
+            "opt_two": "13 years",
+            "opt_three": "17 years",
+            "opt_four": "20 years",
+            "answer": 2,
+            "is_correct": false,
+            "character": 9
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 31,
+        "fields": {
+            "name": "Question 30",
+            "text": "Where was Hypatie born ?",
+            "opt_one": "Antioch",
+            "opt_two": "Alexandrie",
+            "opt_three": "Athens",
+            "opt_four": "Cairo",
+            "answer": 2,
+            "is_correct": false,
+            "character": 10
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 32,
+        "fields": {
+            "name": "Question 31",
+            "text": "What conflict was Phillp II of Spain not involved in?",
+            "opt_one": "Revolt of the netherlands",
+            "opt_two": "Anglo-Spanish War (1585-1604)",
+            "opt_three": "Orange War",
+            "opt_four": "War against France",
+            "answer": 3,
+            "is_correct": false,
+            "character": 14
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 33,
+        "fields": {
+            "name": "Question 32",
+            "text": "Anne Boleyn was arrested on May 2, 1536. What was NOT one of the crimes she was charged with committing?",
+            "opt_one": "bigamy",
+            "opt_two": "adultery",
+            "opt_three": "incest",
+            "opt_four": "conspiracy to murder Henry VIII",
+            "answer": 1,
+            "is_correct": false,
+            "character": 15
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 34,
+        "fields": {
+            "name": "Question 33",
+            "text": "Nefertiti's very name evokes her unusual position in history, to say nothing of the hopes that were held of her. What is the approximate meaning of her name?",
+            "opt_one": "See the daughter of the gods",
+            "opt_two": "The beauty of the world lasts forever",
+            "opt_three": "Songs follow in her steps.",
+            "opt_four": "The beautiful woman has come",
+            "answer": 4,
+            "is_correct": false,
+            "character": 17
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 35,
+        "fields": {
+            "name": "Question 34",
+            "text": "During the war of which two cities did Marco Polo sit in jail?",
+            "opt_one": "Venice and Petropavlovsk-Kamchatskiy",
+            "opt_two": "Venice and Bari",
+            "opt_three": "Venice and Marseille",
+            "opt_four": "Venice and Genoa",
+            "answer": 4,
+            "is_correct": false,
+            "character": 18
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 36,
+        "fields": {
+            "name": "Question 35",
+            "text": "How old was Abraham when he first became a father?",
+            "opt_one": "79",
+            "opt_two": "86",
+            "opt_three": "100",
+            "opt_four": "107",
+            "answer": 3,
+            "is_correct": false,
+            "character": 33
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 37,
+        "fields": {
+            "name": "Question 36",
+            "text": "Upon what was Hitler's argument based when he claimed that Germany should control the Sudetenland of Czechoslovakia?",
+            "opt_one": "Former German ownership of the land",
+            "opt_two": "Many ethnic Germans lived in the area",
+            "opt_three": "Too strategic an area to be in the hands of enemies",
+            "opt_four": "A balance for land lost in Danzig, Poland",
+            "answer": 2,
+            "is_correct": false,
+            "character": 34
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 38,
+        "fields": {
+            "name": "Question 37",
+            "text": "Joseph Stalin was essentially the dictator of the U.S.S.R. How long was he in power?",
+            "opt_one": "12 years",
+            "opt_two": "22 years",
+            "opt_three": "30 years",
+            "opt_four": "33 years",
+            "answer": 3,
+            "is_correct": false,
+            "character": 35
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 39,
+        "fields": {
+            "name": "Question 38",
+            "text": "Mozart composed his first choral mass for 4 part choir, 2 vioins, viola, bass and organ at what age?",
+            "opt_one": "10",
+            "opt_two": "17",
+            "opt_three": "15",
+            "opt_four": "12",
+            "answer": 4,
+            "is_correct": false,
+            "character": 36
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 40,
+        "fields": {
+            "name": "Question 39",
+            "text": "In the book \"Almagest\", Claudius Ptolemy introduced 48 constellations, most of which are still recognised today. Which of the following constellations was one of those he introduced?",
+            "opt_one": "Mensa",
+            "opt_two": "Telescopium",
+            "opt_three": "Perseus",
+            "opt_four": "Sextans",
+            "answer": 3,
+            "is_correct": false,
+            "character": 37
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 41,
+        "fields": {
+            "name": "Question 40",
+            "text": "Whose astronomical system did Nicolaus Copernicus prove wrong?",
+            "opt_one": "Ptolemy",
+            "opt_two": "Kepler",
+            "opt_three": "James Kirk",
+            "opt_four": "Sir Isaac Newton",
+            "answer": 1,
+            "is_correct": false,
+            "character": 38
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 42,
+        "fields": {
+            "name": "Question 41",
+            "text": "What country was Kepler born in ?",
+            "opt_one": "Spain",
+            "opt_two": "Germany",
+            "opt_three": "France",
+            "opt_four": "Switzerland",
+            "answer": 2,
+            "is_correct": false,
+            "character": 39
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 43,
+        "fields": {
+            "name": "Question 42",
+            "text": "Tycho Brahe was the first to make ...",
+            "opt_one": "precise measurements of the orbit of Jupiter ?",
+            "opt_two": "precise measurements of the orbit of Mars ?",
+            "opt_three": "precise measurements of the orbit of Moon ?",
+            "opt_four": "precise measurements of the orbit of Neptune ?",
+            "answer": 2,
+            "is_correct": false,
+            "character": 40
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 44,
+        "fields": {
+            "name": "Question 43",
+            "text": "On what charge was Galileo arrested in Rome?",
+            "opt_one": "vandalism",
+            "opt_two": "murder",
+            "opt_three": "robbery",
+            "opt_four": "heresy",
+            "answer": 4,
+            "is_correct": false,
+            "character": 41
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 45,
+        "fields": {
+            "name": "Question 44",
+            "text": "What object did Sir Isaac Newton use to make these discoveries?",
+            "opt_one": "A telescope",
+            "opt_two": "An optical prism",
+            "opt_three": "An apple",
+            "opt_four": "An eyeglass",
+            "answer": 3,
+            "is_correct": false,
+            "character": 42
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 46,
+        "fields": {
+            "name": "Question 45",
+            "text": "How long was Tamerlan's reign?",
+            "opt_one": "30 years",
+            "opt_two": "20 years",
+            "opt_three": "35 years",
+            "opt_four": "60 years",
+            "answer": 3,
+            "is_correct": false,
+            "character": 50
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 47,
+        "fields": {
+            "name": "Question 46",
+            "text": "What does the title ï¿½Genghis Khanï¿½ mean?",
+            "opt_one": "universal ruler",
+            "opt_two": "great ruler",
+            "opt_three": "top ruler",
+            "opt_four": "good  ruler",
+            "answer": 1,
+            "is_correct": false,
+            "character": 51
+        }
+    },
+    {
+        "model": "historiaapp.question",
+        "pk": 48,
+        "fields": {
+            "name": "Question 47",
+            "text": "What was the one statue that Michelangelo carved his name on?",
+            "opt_one": "David",
+            "opt_two": "The Rome Pieta",
+            "opt_three": "The Pitti Madonna",
+            "opt_four": "The Bruges Madonna",
+            "answer": 2,
+            "is_correct": false,
+            "character": 49
+        }
     }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 2,
-    "fields": {
-        "name": "Question 2",
-        "text": "When did Alexander Flemming get the Nobel Prize in in Physiology or Medicine ?",
-        "opt_one": "1940",
-        "opt_two": "1945",
-        "opt_three": "1950",
-        "opt_four": "1955",
-        "answer": 2,
-        "is_correct": false,
-        "character": 1
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 3,
-    "fields": {
-        "name": "Question 3",
-        "text": "To which school Einstein did not pass the entrance exam the first time?",
-        "opt_one": "Swiss Federal Institute of Technology Zurich",
-        "opt_two": "Swiss Federal Institute of Technology Lausanne",
-        "opt_three": "Luitpold Gymnasium in Munich",
-        "opt_four": "University of St. Gallen",
-        "answer": 1,
-        "is_correct": false,
-        "character": 3
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 4,
-    "fields": {
-        "name": "Question 4",
-        "text": "Who wrote the first programming language?",
-        "opt_one": "Konrad Zuse",
-        "opt_two": "Ada Lovelace",
-        "opt_three": "Mary Curry",
-        "opt_four": "Karl Marx",
-        "answer": 2,
-        "is_correct": false,
-        "character": 48
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 6,
-    "fields": {
-        "name": "Question 5",
-        "text": "Whose tutor was Aristotle?",
-        "opt_one": "Philip II of Macedonia",
-        "opt_two": "Alexander the Great",
-        "opt_three": "Epicurus",
-        "opt_four": "Platon",
-        "answer": 2,
-        "is_correct": false,
-        "character": 20
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 7,
-    "fields": {
-        "name": "Question 6",
-        "text": "Plato was a great philosopher and thinker, whose disciple was he?",
-        "opt_one": "Hegel",
-        "opt_two": "Karl Marx",
-        "opt_three": "Socrate",
-        "opt_four": "Claudius Ptolemy",
-        "answer": 3,
-        "is_correct": false,
-        "character": 21
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 8,
-    "fields": {
-        "name": "Question 7",
-        "text": "At Plato's Academy, the school founded in Athens by Plato, what was the phrase engraved at the entrance ?",
-        "opt_one": "No one enters here who is not a surveyor",
-        "opt_two": "No one enters here who is not a physicist",
-        "opt_three": "No one enters here who is not a philosopher",
-        "opt_four": "No one enters here who is not a fighter",
-        "answer": 1,
-        "is_correct": false,
-        "character": 21
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 9,
-    "fields": {
-        "name": "Question 8",
-        "text": "Who should denounce Jesus of Nazareth to the political and religious authorities of the time ?",
-        "opt_one": "James the Just",
-        "opt_two": "Simon",
-        "opt_three": "Ponce Pilate",
-        "opt_four": "Judas",
-        "answer": 4,
-        "is_correct": false,
-        "character": 22
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 10,
-    "fields": {
-        "name": "Question 9",
-        "text": "How did Socrates die after being condemned?",
-        "opt_one": "Stunned with a giant crab",
-        "opt_two": "Peeled with a knife",
-        "opt_three": "By absorbing a deadly poison, hemlock",
-        "opt_four": "Eating the heart by otters",
-        "answer": 3,
-        "is_correct": false,
-        "character": 23
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 11,
-    "fields": {
-        "name": "Question 10",
-        "text": "Which of these three philosophers is not one of Socrate disciples ?",
-        "opt_one": "Plato",
-        "opt_two": "Xenophon",
-        "opt_three": "Bernard-Henri Levy",
-        "opt_four": "Caius Octavius Thurinus",
-        "answer": 1,
-        "is_correct": false,
-        "character": 23
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 12,
-    "fields": {
-        "name": "Question 11",
-        "text": "Whose student was Alexander the Great ?",
-        "opt_one": "Pangloss",
-        "opt_two": "Pytagore",
-        "opt_three": "Aristotle",
-        "opt_four": "Socrate",
-        "answer": 3,
-        "is_correct": false,
-        "character": 24
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 13,
-    "fields": {
-        "name": "Question 12",
-        "text": "Which famous artist - painter, sculptor and goldsmith - agreed to take Leonardo on as an apprentice when he was 14 years old ?",
-        "opt_one": "Fra Filippo Lippi",
-        "opt_two": "Andrea del Verrocchio",
-        "opt_three": "The Perugin",
-        "opt_four": "Michelangelo Buonarroti",
-        "answer": 2,
-        "is_correct": false,
-        "character": 25
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 14,
-    "fields": {
-        "name": "Question 13",
-        "text": "Moving away from his family, Confucius founded a school of wisdom that counts ?",
-        "opt_one": "12 disciples",
-        "opt_two": "100 disciples",
-        "opt_three": "300 disciples",
-        "opt_four": "555 disciples",
-        "answer": 1,
-        "is_correct": false,
-        "character": 26
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 15,
-    "fields": {
-        "name": "Question 14",
-        "text": "How is Confucius viewed?",
-        "opt_one": "China's first soldier",
-        "opt_two": "China's first philosopher",
-        "opt_three": "China's first educator",
-        "opt_four": "China's first god",
-        "answer": 3,
-        "is_correct": false,
-        "character": 26
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 16,
-    "fields": {
-        "name": "Question 15",
-        "text": "Which river did Julius Caesar cross with his legions in 49 BC on his way to Rome, a symbolic barrier between the territories he ruled as proconsul and the Roman Republic ?",
-        "opt_one": "The Tiber",
-        "opt_two": "The Rubicon",
-        "opt_three": "The Po",
-        "opt_four": "The Tanaro",
-        "answer": 2,
-        "is_correct": false,
-        "character": 27
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 17,
-    "fields": {
-        "name": "Question 16",
-        "text": "What is homer famous for?",
-        "opt_one": "The mermaids",
-        "opt_two": "Tomorrow, at dawn",
-        "opt_three": "The Odyssey",
-        "opt_four": "The myth of Orpheus",
-        "answer": 3,
-        "is_correct": false,
-        "character": 28
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 18,
-    "fields": {
-        "name": "Question 17",
-        "text": "A legend suggests that Pythagoras participated in the Olympic Games. In what sport would he have shone ?",
-        "opt_one": "Modern dance",
-        "opt_two": "Catch",
-        "opt_three": "Pugilism",
-        "opt_four": "Javelin",
-        "answer": 3,
-        "is_correct": false,
-        "character": 29
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 19,
-    "fields": {
-        "name": "Question 18",
-        "text": "What famous word did Archimed say ?",
-        "opt_one": "Eureka",
-        "opt_two": "Ataraxie",
-        "opt_three": "Kairos",
-        "opt_four": "Morphed",
-        "answer": 1,
-        "is_correct": false,
-        "character": 30
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 20,
-    "fields": {
-        "name": "Question 19",
-        "text": "Queen Victoria passed away in ...",
-        "opt_one": "1900",
-        "opt_two": "1901",
-        "opt_three": "1902",
-        "opt_four": "1903",
-        "answer": 2,
-        "is_correct": false,
-        "character": 11
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 21,
-    "fields": {
-        "name": "Question 20",
-        "text": "How old was Marie-Antoinette when she arrived in France?",
-        "opt_one": "12",
-        "opt_two": "14",
-        "opt_three": "16",
-        "opt_four": "18",
-        "answer": 2,
-        "is_correct": false,
-        "character": 12
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 22,
-    "fields": {
-        "name": "Question 21",
-        "text": "In what year was Elizabeth I of England born ?",
-        "opt_one": "1525",
-        "opt_two": "1529",
-        "opt_three": "1533",
-        "opt_four": "1536",
-        "answer": 3,
-        "is_correct": false,
-        "character": 13
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 23,
-    "fields": {
-        "name": "Question 22",
-        "text": "How did Anne Boleyn die ?",
-        "opt_one": "Beheaded",
-        "opt_two": "Assassinated by her sister",
-        "opt_three": "Burned by hellfire",
-        "opt_four": "Poisoned",
-        "answer": 1,
-        "is_correct": false,
-        "character": 15
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 24,
-    "fields": {
-        "name": "Question 23",
-        "text": "What taboo did Sappho break ?",
-        "opt_one": "That of working",
-        "opt_two": "That of polyamory",
-        "opt_three": "That of independence",
-        "opt_four": "That of homosexuality",
-        "answer": 4,
-        "is_correct": false,
-        "character": 16
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 25,
-    "fields": {
-        "name": "Question 24",
-        "text": "What did Ramanujan mainly work on?",
-        "opt_one": "theta function, partition formulae and mock theta function",
-        "opt_two": "Alternative Theorems, Bieberbach's conjecture and Borel's law of zero one",
-        "opt_three": "Boundary theorem, Cauchy-Peano-Arzelà theorem and Quadratic reciprocity law",
-        "opt_four": "Quadratic reciprocity law, Cauchy-Peano-Arzelà theorem and Constant rank theorem",
-        "answer": 1,
-        "is_correct": false,
-        "character": 4
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 26,
-    "fields": {
-        "name": "Question 25",
-        "text": "Which country did Winston Churchill (1874-1965) lead during World War II?",
-        "opt_one": "The United States",
-        "opt_two": "Canada",
-        "opt_three": "The United Kingdom",
-        "opt_four": "Australia",
-        "answer": 3,
-        "is_correct": false,
-        "character": 5
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 27,
-    "fields": {
-        "name": "Question 26",
-        "text": "To which dynasty does Catherine II belong?",
-        "opt_one": "Habsbourg",
-        "opt_two": "Romanov",
-        "opt_three": "Tudor",
-        "opt_four": "Danilov",
-        "answer": 2,
-        "is_correct": false,
-        "character": 6
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 28,
-    "fields": {
-        "name": "Question 27",
-        "text": "On which river did Peter I The Great build his new capital, St Petersburg in 1703?",
-        "opt_one": "Leva",
-        "opt_two": "Teva",
-        "opt_three": "Neva",
-        "opt_four": "Volga",
-        "answer": 3,
-        "is_correct": false,
-        "character": 7
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 29,
-    "fields": {
-        "name": "Question 28",
-        "text": "Ivan the Terrible was also a builder, what did he build?",
-        "opt_one": "The Kremlin",
-        "opt_two": "The Indisfarne",
-        "opt_three": "Novgorod",
-        "opt_four": "The Basilica of Basil the Blessed",
-        "answer": 4,
-        "is_correct": false,
-        "character": 8
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 30,
-    "fields": {
-        "name": "Question 29",
-        "text": "At what age did Jeanne d'arc hear voices ?",
-        "opt_one": "6 years",
-        "opt_two": "13 years",
-        "opt_three": "17 years",
-        "opt_four": "20 years",
-        "answer": 2,
-        "is_correct": false,
-        "character": 9
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 31,
-    "fields": {
-        "name": "Question 30",
-        "text": "Where was Hypatie born ?",
-        "opt_one": "Antioch",
-        "opt_two": "Alexandrie",
-        "opt_three": "Athens",
-        "opt_four": "Cairo",
-        "answer": 2,
-        "is_correct": false,
-        "character": 10
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 32,
-    "fields": {
-        "name": "Question 31",
-        "text": "What conflict was Phillp II of Spain not involved in?",
-        "opt_one": "Revolt of the netherlands",
-        "opt_two": "Anglo-Spanish War (1585-1604)",
-        "opt_three": "Orange War",
-        "opt_four": "War against France",
-        "answer": 3,
-        "is_correct": false,
-        "character": 14
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 33,
-    "fields": {
-        "name": "Question 32",
-        "text": "Anne Boleyn was arrested on May 2, 1536. What was NOT one of the crimes she was charged with committing?",
-        "opt_one": "bigamy",
-        "opt_two": "adultery",
-        "opt_three": "incest",
-        "opt_four": "conspiracy to murder Henry VIII",
-        "answer": 1,
-        "is_correct": false,
-        "character": 15
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 34,
-    "fields": {
-        "name": "Question 33",
-        "text": "Nefertiti's very name evokes her unusual position in history, to say nothing of the hopes that were held of her. What is the approximate meaning of her name?",
-        "opt_one": "See the daughter of the gods",
-        "opt_two": "The beauty of the world lasts forever",
-        "opt_three": "Songs follow in her steps.",
-        "opt_four": "The beautiful woman has come",
-        "answer": 4,
-        "is_correct": false,
-        "character": 17
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 35,
-    "fields": {
-        "name": "Question 34",
-        "text": "During the war of which two cities did Marco Polo sit in jail?",
-        "opt_one": "Venice and Petropavlovsk-Kamchatskiy",
-        "opt_two": "Venice and Bari",
-        "opt_three": "Venice and Marseille",
-        "opt_four": "Venice and Genoa",
-        "answer": 4,
-        "is_correct": false,
-        "character": 18
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 36,
-    "fields": {
-        "name": "Question 35",
-        "text": "How old was Abraham when he first became a father?",
-        "opt_one": "79",
-        "opt_two": "86",
-        "opt_three": "100",
-        "opt_four": "107",
-        "answer": 3,
-        "is_correct": false,
-        "character": 33
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 37,
-    "fields": {
-        "name": "Question 36",
-        "text": "Upon what was Hitler's argument based when he claimed that Germany should control the Sudetenland of Czechoslovakia?",
-        "opt_one": "Former German ownership of the land",
-        "opt_two": "Many ethnic Germans lived in the area",
-        "opt_three": "Too strategic an area to be in the hands of enemies",
-        "opt_four": "A balance for land lost in Danzig, Poland",
-        "answer": 2,
-        "is_correct": false,
-        "character": 34
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 38,
-    "fields": {
-        "name": "Question 37",
-        "text": "Joseph Stalin was essentially the dictator of the U.S.S.R. How long was he in power?",
-        "opt_one": "12 years",
-        "opt_two": "22 years",
-        "opt_three": "30 years",
-        "opt_four": "33 years",
-        "answer": 3,
-        "is_correct": false,
-        "character": 35
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 39,
-    "fields": {
-        "name": "Question 38",
-        "text": "Mozart composed his first choral mass for 4 part choir, 2 vioins, viola, bass and organ at what age?",
-        "opt_one": "10",
-        "opt_two": "17",
-        "opt_three": "15",
-        "opt_four": "12",
-        "answer": 4,
-        "is_correct": false,
-        "character": 36
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 40,
-    "fields": {
-        "name": "Question 39",
-        "text": "In the book \"Almagest\", Claudius Ptolemy introduced 48 constellations, most of which are still recognised today. Which of the following constellations was one of those he introduced?",
-        "opt_one": "Mensa",
-        "opt_two": "Telescopium",
-        "opt_three": "Perseus",
-        "opt_four": "Sextans",
-        "answer": 3,
-        "is_correct": false,
-        "character": 37
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 41,
-    "fields": {
-        "name": "Question 40",
-        "text": "Whose astronomical system did Nicolaus Copernicus prove wrong?",
-        "opt_one": "Ptolemy",
-        "opt_two": "Kepler",
-        "opt_three": "James Kirk",
-        "opt_four": "Sir Isaac Newton",
-        "answer": 1,
-        "is_correct": false,
-        "character": 38
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 42,
-    "fields": {
-        "name": "Question 41",
-        "text": "What country was Kepler born in ?",
-        "opt_one": "Spain",
-        "opt_two": "Germany",
-        "opt_three": "France",
-        "opt_four": "Switzerland",
-        "answer": 2,
-        "is_correct": false,
-        "character": 39
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 43,
-    "fields": {
-        "name": "Question 42",
-        "text": "Tycho Brahe was the first to make ...",
-        "opt_one": "precise measurements of the orbit of Jupiter ?",
-        "opt_two": "precise measurements of the orbit of Mars ?",
-        "opt_three": "precise measurements of the orbit of Moon ?",
-        "opt_four": "precise measurements of the orbit of Neptune ?",
-        "answer": 2,
-        "is_correct": false,
-        "character": 40
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 44,
-    "fields": {
-        "name": "Question 43",
-        "text": "On what charge was Galileo arrested in Rome?",
-        "opt_one": "vandalism",
-        "opt_two": "murder",
-        "opt_three": "robbery",
-        "opt_four": "heresy",
-        "answer": 4,
-        "is_correct": false,
-        "character": 41
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 45,
-    "fields": {
-        "name": "Question 44",
-        "text": "What object did Sir Isaac Newton use to make these discoveries?",
-        "opt_one": "A telescope",
-        "opt_two": "An optical prism",
-        "opt_three": "An apple",
-        "opt_four": "An eyeglass",
-        "answer": 3,
-        "is_correct": false,
-        "character": 42
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 46,
-    "fields": {
-        "name": "Question 45",
-        "text": "How long was Tamerlan's reign?",
-        "opt_one": "30 years",
-        "opt_two": "20 years",
-        "opt_three": "35 years",
-        "opt_four": "60 years",
-        "answer": 3,
-        "is_correct": false,
-        "character": 50
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 47,
-    "fields": {
-        "name": "Question 46",
-        "text": "What does the title “Genghis Khan” mean?",
-        "opt_one": "universal ruler",
-        "opt_two": "great ruler",
-        "opt_three": "top ruler",
-        "opt_four": "good  ruler",
-        "answer": 1,
-        "is_correct": false,
-        "character": 51
-    }
-},
-{
-    "model": "historiaapp.question",
-    "pk": 48,
-    "fields": {
-        "name": "Question 47",
-        "text": "What was the one statue that Michelangelo carved his name on?",
-        "opt_one": "David",
-        "opt_two": "The Rome Pieta",
-        "opt_three": "The Pitti Madonna",
-        "opt_four": "The Bruges Madonna",
-        "answer": 2,
-        "is_correct": false,
-        "character": 49
-    }
-}
-]
+]    

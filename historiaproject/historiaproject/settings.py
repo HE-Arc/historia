@@ -28,8 +28,12 @@ SECRET_KEY = 'django-insecure-f_^!&yijzdedjb0h+g*dy@+!6gf_oka7n)8yhwjf9dq&_@3t86
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['historia.srvz-webapp.he-arc.ch']
+
+# LOCAL
 ALLOWED_HOSTS = ['*']
+
+# SERVER
+# ALLOWED_HOSTS = ['historia.srvz-webapp.he-arc.ch']
 # historia.srvz-webapp.he-arc.ch
 # Application definition
 
