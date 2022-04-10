@@ -516,10 +516,26 @@ class CategoriesListView(generic.ListView):
     
     def get_queryset(self):
         return Category.objects.all()
+
     
-def quiz_with_category(request):
+def quiz_with_category(request, category):
+    #model = Category
+    print(category)
+    #cat = Category.objects.filter(id=category).all()
+    #print(cat)
+    
+    cat = Category.objects.get(id=category)
+    print(cat)
+    
+    
     context = {}
-    context['quizs'] = Quiz.objects.filter(category=request.id)
-    return render(request, "historiaapp/category_quiz.html", context)
+    truc = Quiz.objects.filter(category=cat.id).all()
     
+    context = {
+        "object_list": truc,
+        "cat": cat.name
+    }
+    print(context)
+    return render(request, "historiaapp/category_quiz.html", context)
+
     

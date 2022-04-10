@@ -86,7 +86,8 @@ urlpatterns = [
     
     path('dashboard/categories/', views.CategoriesListView.as_view(), name="categories-list"),
     
-    path('dashboard/categories/<pk>', views.quiz_with_category, name="quiz-category"),
+    path('dashboard/categories/<category>', views.quiz_with_category, name="quiz-category"),
+    
     
     
     
