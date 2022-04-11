@@ -151,7 +151,7 @@ class DashboardView(generic.TemplateView):
             context['cards'] = Card.objects.all()
             context['questions'] = Question.objects.all()
             context['rankings'] = Ranking.objects.all()
-            context['rankings_unique'] = Ranking.objects.order_by().values('').distinct()
+            context['rankings_unique'] = Ranking.objects.order_by().values('quiz').distinct()
             return context
         else:
             context = {}
