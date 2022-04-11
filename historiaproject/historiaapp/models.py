@@ -1,7 +1,6 @@
 from django.db import models
 from django.conf import settings
 
-
 class Card(models.Model):
     """_summary_
     Card model for historical characters registered in cards.json file.
@@ -18,7 +17,7 @@ class Card(models.Model):
     category = models.CharField(max_length=400, default="Unknown")
     birth = models.CharField(max_length=100, default="Unknown")
     land = models.CharField(max_length=200, default="Unknown")
-    text = models.CharField(max_length=4000)
+    text = models.TextField(max_length=4000)
     image = models.ImageField(upload_to='images/', null=True)
     
     def __str__(self) -> str:
@@ -32,13 +31,9 @@ class Quiz(models.Model):
     """
     name = models.CharField(max_length=200)
     text = models.TextField(max_length=2000)
-    
     questions = models.ManyToManyField('Question', related_name="questions")
-    
     score_quiz = models.IntegerField(default=0)
-    
-    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name="category")
-
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name="category")    
     
     def __str__(self) -> str:
         return self.name
@@ -60,22 +55,22 @@ class Question(models.Model):
     opt_four = models.CharField(max_length=200)
     
     answer = models.IntegerField(default=1)
-    
     is_correct = models.BooleanField(default=False)
-    
     character = models.ForeignKey('Card', on_delete=models.CASCADE, null=True)
-    
     options = models.IntegerChoices('Options', 'ONE TWO THREE FOUR')
     
     def __str__(self) -> str:
         return self.name
 
+
 class Category(models.Model):
     name = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='images/category/', null=True)
+
     
 class Ranking(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="quiz")
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     score = models.IntegerField()
-    date = models.DateField(db_index=True)
+    date = models.DateTimeField(db_index=True)
     

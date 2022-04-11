@@ -5,140 +5,153 @@
 {% block content %}
 
 <div class="container">
-    <hr />
+  <hr />
 
-    <h1 class="display-4 mt-4 mb-2">
-        Quizzes
-    </h1>
+  <h1 class="display-4 mt-4 mb-2">
+    Quizzes
+  </h1>
 
-    <hr />
+  <hr />
 
-    <div class="card border-0 darker mt-4">
+  <div class="card border-0 darker mt-4">
 
-        <div class="card-body darker">
+    <div class="card-body darker">
 
-            <div class="card-header mb-4">
-                List of Quizzes actually available.
-            </div>
+      <div class="card-header mb-4">
+        List of Quizzes actually available.
+      </div>
 
-            <div class="card-deck d-flex justify-content-center">
+      <div class="card-deck d-flex justify-content-center">
+        
+        <!-- QUIZ DISPLAY -->
+
+        {% for quizs in page_obj %}
+
+          <div class="card bg-dark mb-4">
+            <div class="mw-70 shadow character-card text-white bg-dark">
+              <div class="card-body">
                 
-                <!-- QUIZ DISPLAY -->
+                <h4 class="card-title text-lg-left">
+                  {{ quizs.name }} ( {{ quizs.category.name }} )
+                </h4>
 
-                {% for quizs in page_obj %}
+                <p class="card-text lead">
+                  <small class="lead">
+                  {{ quizs.text }}
+                  </small>
+                </p>
 
-                    <div class="mb-4">
-                        <div class="card shadow character-card text-white bg-dark">
-                            <div class="card-body">
-                                
-                                <h4 class="card-title text-lg-left">
-                                    {{ quizs.name }} ( {{ quizs.category.name }} )
-                                </h4>
+                <div class="card-header">
+                  <p class="card-text lead font-weight-bold">
+                    Questions
+                  </p>
 
-                                <p class="card-text lead">
-                                    <small class="lead">
-                                    {{ quizs.text }}
-                                    </small>
-                                </p>
+                  <!-- QUESTIONS DISPLAY -->
 
-                                <div class="card-header">
-                                    <p class="card-text lead">
-                                        Questions
-                                    </p>
+                  <div class="card-body" width="">
 
-                                    <!-- QUESTIONS DISPLAY -->
+                    {% for question in quizs.questions.all %}
 
-                                    <div class="card-body">
+                      {% if forloop.counter < 4 %}
 
-                                        {% for question in quizs.questions.all %}
-                                            <p class="card-text">
-                                                <small>
-                                                    {{ question.text }}
-                                                </small>
-                                            </p>
-                                        {% endfor %}
+                        <p class="card-text">
+                          {{ question.id }}.
+                          {{ question.text }}
+                        </p>
 
-                                        <div class="d-flex justify-content-center mb-5">
-                                            <button type="button"
-                                                class="button-historia text-uppercase lead"
-                                                style="max-width:35%;"
-                                                onclick="location.href='{% url 'quizs-detail' quizs.id %}'">
-                                                Begin
-                                            </button>
-                                        </div>
+                      {% elif forloop.last %}
 
-                                    </div>
-                                    
-                                    <!-- END QUESTIONS DISPLAY -->
-                                    
-                                </div>
+                        <p class="card-text">
+                          ... and {{ forloop.counter }} more questions.
+                        </p>
 
-                            </div>
-                        
-                        </div>
+                      {% else %}
 
+                      {% endif %}
+
+                    {% endfor %}
+
+                    <div class="d-flex justify-content-center mb-5">
+                      <button type="button"
+                        class="button-historia text-uppercase lead"
+                        style="max-width:35%;"
+                        onclick="location.href='{% url 'quizs-detail' quizs.id %}'">
+                        Begin
+                      </button>
                     </div>
 
-                {% endfor %}
+                  </div>
+                  
+                  <!-- END QUESTIONS DISPLAY -->
+                  
+                </div>
 
-                <!-- END QUESTIONS DISPLAY -->
-
-            </div>
-
+              </div>
             
-            <!-- PAGINATION -->
-
-            <div class="d-flex justify-content-center darker">
-
-                <nav aria-label="pagination navbar navbar-dark darker">
-
-                    <ul class="pagination navbar darker">
-
-                        {% if page_obj.has_previous %}
-
-                            <li class="page-item darker">
-                                <a class="page-link darker" href="?page=1">
-                                    &laquo; first
-                                </a>
-                            </li>
-
-                            <li class="page-item darker">
-                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
-                                    {{ page_obj.previous_page_number }}
-                                </a>
-                            </li>
-
-                        {% endif %}
-                        
-                        <li class="page-item active">
-                            <a class="page-link" href="#">
-                                {{ page_obj.number }}
-                            </a>
-                        </li>
-                
-                        {% if page_obj.has_next %}
-
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
-                                    {{ page_obj.next_page_number }}
-                                </a>
-                            </li>
-
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
-                                    last &raquo;
-                                </a>
-                            </li>
-
-                        {% endif %}            
-                    </ul>
-                </nav>
             </div>
 
-            <!-- END PAGINATION -->
+          </div>
 
-        </div>
+        {% endfor %}
+
+        <!-- END QUESTIONS DISPLAY -->
+
+      </div>
+
+      
+      <!-- PAGINATION -->
+
+      <div class="d-flex justify-content-center darker">
+
+        <nav aria-label="pagination navbar navbar-dark darker">
+
+          <ul class="pagination navbar darker">
+
+            {% if page_obj.has_previous %}
+
+              <li class="page-item darker">
+                <a class="page-link darker" href="?page=1">
+                  &laquo; first
+                </a>
+              </li>
+
+              <li class="page-item darker">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                  {{ page_obj.previous_page_number }}
+                </a>
+              </li>
+
+            {% endif %}
+            
+            <li class="page-item active">
+              <a class="page-link" href="#">
+                {{ page_obj.number }}
+              </a>
+            </li>
+        
+            {% if page_obj.has_next %}
+
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                  {{ page_obj.next_page_number }}
+                </a>
+              </li>
+
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+                  last &raquo;
+                </a>
+              </li>
+
+            {% endif %}            
+          </ul>
+        </nav>
+      </div>
+
+      <!-- END PAGINATION -->
 
     </div>
+
+  </div>
 
 {% endblock %}

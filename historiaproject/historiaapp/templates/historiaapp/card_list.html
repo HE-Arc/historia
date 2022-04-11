@@ -8,113 +8,96 @@ Card list visualizer
 
 <div class="container">
 
-    <div class="col-md-12">
-        <h1 class="display-4 mb-2">
-            Card list visualizer
-        </h1>
-        <hr />
-    </div>
+  <h5 class="display-4 card-header mb-4 mt-4">
+    Collection of historical characters
+  </h5>
 
-    <h5 class="card-header mb-4">
-        Collection of historical characters
-    </h5>
+  <h1 class="text-lg font-weight-light mb-2 p-3 mt-4">
+    Cards
+    <a href="{% url 'cards-create' %}" 
+    class="btn btn-warning float-right">Create card</a>
+  </h1>
+  
+  <div class="card-deck all-cards">
+
+    <!-- for loop section to display all characters cards. -->
+
+    {% for card in object_list %}
+
+      <div class="card shadow character-card text-white bg-dark">
+
+        <a href="{% url 'cards-detail' card.id %}" 
+        class="btn btn-secondary btn-sm p-6 m-2">Informations</a>
+
+        {% if card.image %}
+        <div class="text-center">
+          <img class="card-img img-fluid character-image m-3 image-card"
+          src=" {{  card.image.url }}"
+          alt="Card image cap">
+        </div>
+        {% endif %}
+
+        <div class="card-body">
+
+          <h4 class="card-title text-lg-left">
+            {{ card.name }}
+          </h4>    
+
+          <h4 class="card-text">
+            Period historic:
+            {{ card.historicPeriod }}
+          </h4>
+
+          <div class="card-text">
+            Domain: 
+            {{ card.domain }}
+          </div>
+
+          <div class="card-text">
+            Category: 
+            {{ card.category }}
+          </div>
+
+          <div class="card-text">
+            Birth: 
+            {{ card.birth }}
+          </div>
+
+          <div class="card-text">
+            Land: 
+            {{ card.land }}
+          </div>
+
+          
+          <p><a href="#nogo" title="Show more..." onclick="display_details({{card.id}})">Show more...</a></p>
+          <p id="details{{card.id}}" class="card-text" style="display:none;">
+            {{ card.text }}
+          </p>
 
 
-    <h1 class="display-4 mb-2 p-3">
-        Cards
-        <a href="{% url 'cards-create' %}" 
-        class="btn btn-warning float-right">Create card</a>
-    </h1>
-    
-    <div class="card-deck all-cards">
+        </div>
 
-        <!--
-        * for loop section to display all characters cards.
-        -->
+        <div class="col-sm text-center mx-auto p-2 m-2">
+          <a href="{% url 'cards-update' card.id %}" class="btn btn-outline-success btn">Update</a>
+          <a href="{% url 'cards-delete' card.id %}" class="btn btn-outline-danger btn ml-5">Delete</a>
+        </div>
 
-        {% for card in object_list %}
+      </div>
+          
+    {% endfor %}
 
-            <div>
+    <script>
+      function display_details(id) {
+        var num = "details"+id
+        var details = document.getElementById(num);
+        if(details.style.display == "block")
+          details.style.display = "none";
+        else
+          details.style.display = "block";
+      }
+    </script>
 
-                <div class="card shadow character-card text-white bg-dark">
-
-                    <a href="{% url 'cards-detail' card.id %}" 
-                    class="btn btn-secondary btn-sm p-6 m-2">Informations</a>
-
-                    {% if card.image %}
-                    <div class="text-center">
-                        <img class="card-img img-fluid character-image m-3 image-card"
-                        src=" {{  card.image.url }}"
-                        alt="Card image cap">
-                    </div>
-                    {% endif %}
-
-                    <div class="card-body">
-
-                        <h4 class="card-title text-lg-left">
-                            {{ card.name }}
-                        </h4>    
-
-                        <h4 class="card-text">
-                            Period historic:
-                            {{ card.historicPeriod }}
-                        </h4>
-
-                        <div class="card-text">
-                            Domain: 
-                            {{ card.domain }}
-                        </div>
-
-                        <div class="card-text">
-                            Category: 
-                            {{ card.category }}
-                        </div>
-
-                        <div class="card-text">
-                            Birth: 
-                            {{ card.birth }}
-                        </div>
-
-                        <div class="card-text">
-                            Land: 
-                            {{ card.land }}
-                        </div>
-
-                        
-                        <p><a href="#nogo" title="Show more..." onclick="display_details({{card.id}})">Show more...</a></p>
-                        <p id="details{{card.id}}" class="card-text" style="display:none;">
-                            {{ card.text }}
-                        </p>
-
-                        <div class="col-sm text-center mx-auto">
-                            <a href="{% url 'cards-update' card.id %}" class="btn btn-outline-success btn-lg">Update</a>
-                            <a href="{% url 'cards-delete' card.id %}" class="btn btn-outline-danger btn-lg ml-5">Delete</a>
-                        </div>
-
-                    </div>
-
-                </div>
-                    
-            </div>
-
-            
-
-        {% endfor %}
-
-        <script>
-            function display_details(id) {
-                var num = "details"+id
-                var details = document.getElementById(num);
-                if(details.style.display == "block")
-                    details.style.display = "none";
-                else
-                    details.style.display = "block";
-            }
-        </script>
-
-        
-
-    </div>
+  </div>
 </div>
 
 {% endblock %}

@@ -1,163 +1,267 @@
 [
-{
-    "model": "historiaapp.quiz",
-    "pk": 1,
-    "fields": {
-        "name": "General",
-        "text": "A quiz to test your knowledge of history in general",
-        "score_quiz": 70,
-        "category": 3,
-        "questions": [
-            1,
-            2,
-            3,
-            4,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12,
-            13,
-            14,
-            15,
-            16,
-            17,
-            18,
-            19,
-            20,
-            21,
-            22,
-            23,
-            24,
-            25,
-            26,
-            27,
-            28,
-            29,
-            30,
-            31,
-            32,
-            33,
-            34,
-            35,
-            36,
-            37,
-            38,
-            39,
-            40,
-            41,
-            42,
-            43,
-            44,
-            45,
-            46,
-            47,
-            48
-        ]
+    {
+        "model": "historiaapp.quiz",
+        "pk": 1,
+        "fields": {
+            "name": "General History",
+            "text": "A quiz to test your knowledge of history in general",
+            "score_quiz": 0,
+            "category": 3,
+            "questions": [
+                1,
+                2,
+                3,
+                4,
+                6
+            ]
+        }
+    },
+    {
+        "model": "historiaapp.quiz",
+        "pk": 2,
+        "fields": {
+            "name": "Antiquity",
+            "text": "This is a quiz to test your knowledge of famous people from antiquity",
+            "score_quiz": 0,
+            "category": 3,
+            "questions": [
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                24,
+                31,
+                34,
+                40
+            ]
+        }
+    },
+    {
+        "model": "historiaapp.quiz",
+        "pk": 3,
+        "fields": {
+            "name": "Kingdoms",
+            "text": "This quiz tests your knowledge of the age of kingdoms",
+            "score_quiz": 0,
+            "category": 3,
+            "questions": [
+                20,
+                21,
+                22,
+                23,
+                27,
+                28,
+                29,
+                30,
+                32,
+                33,
+                34,
+                35,
+                44,
+                46,
+                47
+            ]
+        }
+    },
+    {
+        "model": "historiaapp.quiz",
+        "pk": 4,
+        "fields": {
+            "name": "Contemporary",
+            "text": "This quiz is here to test your knowledge of the Contemporary era",
+            "score_quiz": 20,
+            "category": 3,
+            "questions": [
+                1,
+                2,
+                3,
+                4,
+                20,
+                21,
+                25,
+                26,
+                27,
+                37,
+                38
+            ]
+        }
+    },
+    {
+        "model": "historiaapp.quiz",
+        "pk": 5,
+        "fields": {
+            "name": "Famous Women in History",
+            "text": "Famous Women's History Quiz",
+            "score_quiz": 0,
+            "category": 3,
+            "questions": [
+                4,
+                20,
+                21,
+                22,
+                23,
+                24,
+                27,
+                30,
+                31,
+                33,
+                34
+            ]
+        }
+    },
+    {
+        "model": "historiaapp.quiz",
+        "pk": 6,
+        "fields": {
+            "name": "Astronomy",
+            "text": "This quiz is about people who have made great discoveries about astronomy",
+            "score_quiz": 0,
+            "category": 4,
+            "questions": [
+                40,
+                41,
+                42,
+                43,
+                44,
+                45
+            ]
+        }
+    },
+    {
+        "model": "historiaapp.quiz",
+        "pk": 7,
+        "fields": {
+            "name": "General Science & Inventions",
+            "text": "This is a quiz to test your knowledge of important people who have been involved in major discoveries in the field of science",
+            "score_quiz": 0,
+            "category": 1,
+            "questions": [
+                1,
+                2,
+                3,
+                4,
+                13,
+                14,
+                15,
+                18,
+                19,
+                25,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45
+            ]
+        }
+    },
+    {
+        "model": "historiaapp.quiz",
+        "pk": 8,
+        "fields": {
+            "name": "General art & literature",
+            "text": "This is a quiz to test your knowledge of important figures in art and literature",
+            "score_quiz": 0,
+            "category": 2,
+            "questions": [
+                7,
+                8,
+                9,
+                10,
+                11,
+                13,
+                14,
+                15,
+                17,
+                21,
+                23,
+                24,
+                28,
+                29,
+                31,
+                33,
+                35,
+                36,
+                39,
+                48
+            ]
+        }
+    },
+    {
+        "model": "historiaapp.quiz",
+        "pk": 9,
+        "fields": {
+            "name": "Philosophers",
+            "text": "This is a quiz on philosophers",
+            "score_quiz": 0,
+            "category": 2,
+            "questions": [
+                6,
+                7,
+                8,
+                10,
+                11,
+                12,
+                14,
+                15,
+                17
+            ]
+        }
+    },
+    {
+        "model": "historiaapp.quiz",
+        "pk": 10,
+        "fields": {
+            "name": "Asia",
+            "text": "This is a quiz on important people from Asia",
+            "score_quiz": 0,
+            "category": 4,
+            "questions": [
+                14,
+                15,
+                25,
+                27,
+                28,
+                29,
+                38,
+                46,
+                47
+            ]
+        }
+    },
+    {
+        "model": "historiaapp.quiz",
+        "pk": 11,
+        "fields": {
+            "name": "Mathematicians and Physicists",
+            "text": "This is a quiz on famous mathematicians and phycisians",
+            "score_quiz": 0,
+            "category": 1,
+            "questions": [
+                3,
+                4,
+                13,
+                18,
+                19,
+                25,
+                31,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45
+            ]
+        }
     }
-},
-{
-    "model": "historiaapp.quiz",
-    "pk": 2,
-    "fields": {
-        "name": "Antiquity",
-        "text": "This is a quiz to test your knowledge of famous people from antiquity",
-        "score_quiz": 0,
-        "category": 3,
-        "questions": [
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12,
-            14,
-            15,
-            16,
-            17,
-            18,
-            19,
-            24,
-            31,
-            34,
-            40
-        ]
-    }
-},
-{
-    "model": "historiaapp.quiz",
-    "pk": 3,
-    "fields": {
-        "name": "Kingdoms",
-        "text": "This quiz tests your knowledge of the age of kingdoms",
-        "score_quiz": 0,
-        "category": 3,
-        "questions": [
-            20,
-            21,
-            22,
-            23,
-            27,
-            28,
-            29,
-            30,
-            32,
-            33,
-            34,
-            35,
-            44,
-            46,
-            47
-        ]
-    }
-},
-{
-    "model": "historiaapp.quiz",
-    "pk": 4,
-    "fields": {
-        "name": "Contemporary",
-        "text": "This quiz is here to test your knowledge of the Contemporary era",
-        "score_quiz": 20,
-        "category": 3,
-        "questions": [
-            1,
-            2,
-            3,
-            4,
-            20,
-            21,
-            25,
-            26,
-            27,
-            37,
-            38
-        ]
-    }
-},
-{
-    "model": "historiaapp.quiz",
-    "pk": 5,
-    "fields": {
-        "name": "Famous Women in History",
-        "text": "Famous Women's History Quiz",
-        "score_quiz": 0,
-        "category": 3,
-        "questions": [
-            4,
-            20,
-            21,
-            22,
-            23,
-            24,
-            27,
-            30,
-            31,
-            33,
-            34
-        ]
-    }
-}
-]
+    ]
+    

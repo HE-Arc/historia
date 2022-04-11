@@ -7,210 +7,210 @@
 
 <div class="container">
 
-    <div class="col-md-12">
-        <div class="d-flex justify-content-center mb-5 mt-4">
-            <div class="col-sm">
-                <h1 class="display-4 mb-2">
-                    Questions
-                </h1>
-            </div>
+  <div class="col-md-12">
+    <div class="d-flex justify-content-center mb-5 mt-4">
+      <div class="col-sm">
+        <h1 class="display-4 mb-2">
+          Questions
+        </h1>
+      </div>
 
-            <div class="col-">
-                <button type="button"
-                    onclick="location.href='{% url 'questions-create' %}'"
-                    class="button-historia text-uppercase lead  mr-2">
-                    Create a new question
-                </button>
-            </div>
-        </div>
-        <hr />
-        <hr />
-
+      <div class="col-">
+        <button type="button"
+          onclick="location.href='{% url 'questions-create' %}'"
+          class="button-historia text-uppercase lead  mr-2">
+          Create a new question
+        </button>
+      </div>
     </div>
+    <hr />
+    <hr />
 
-    <h5 class="card-header mb-4">
-        Details of the chosen question.
-    </h5>
+  </div>
 
-        <div class="darker">
+  <h5 class="card-header mb-4">
+    Details of the chosen question.
+  </h5>
 
-            <div class="darker"> 
+    <div class="darker">
 
-                <div class="p-3 mb-4 darker border-bottom border-warning text-white">
-                    <div class"card lead">
-                        <div class="h3">
-                            {{ question.name }}
-                        </div>
+      <div class="darker"> 
 
-                        <div class="row">
-
-                            <div class="col-sm">
-
-                                <div class="lead text-light">
-                                    {{ question.text }}
-                                </div>
-
-                                <!-- OPTIONS -->
-                                <div class="col-sm">
-                                    
-                                    <!-- OPTION ONE -->
-                                    <div class="form-check darker text-light mt-3 mb-3">
-                                        <input type="radio"
-                                        name="option_id"
-                                        value="{{ question.options.ONE }}"
-                                        required>
-                                        <label class="form-check-label" 
-                                        for="{{ question.opt_one }}">  
-                                            <p class="card-text">
-                                                {{ question.opt_one }}
-                                            </p>
-                                        </label>
-                                    </div>
-
-                                    <!-- OPTION TWO -->
-                                    <div class="form-check darker text-light mt-3 mb-3">
-                                        <input type="radio" 
-                                        name="option_id" 
-                                        value="{{ question.options.TWO }}"
-                                        required>
-                                        <label class="form-check-label" 
-                                        for="{{ question.opt_two }}">  
-                                            <p class="card-text">
-                                                {{ question.opt_two }}
-                                            </p>
-                                        </label>
-                                    </div>
-
-                                    <!-- OPTION THREE -->
-                                    <div class="form-check darker text-light mt-3 mb-3">
-                                        <input type="radio" 
-                                        name="option_id" 
-                                        value="{{ question.options.THREE }}" 
-                                        required>
-                                        <label class="form-check-label" for="{{ question.opt_three }}">  
-                                            <p class="card-text">
-                                                {{ question.opt_three }}
-                                            </p>
-                                        </label>
-                                    </div>
-                                    
-                                    <!-- OPTION FOUR -->
-                                    <div class="form-check darker text-light mt-3 mb-3">
-                                        <input type="radio" 
-                                        name="option_id" 
-                                        value="{{ question.options.FOUR }}" 
-                                        required>
-                                        <label class="form-check-label" for="{{ question.opt_four }}">  
-                                            <p class="card-text">
-                                                {{ question.opt_four }}
-                                            </p>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <!-- CARD REWARD -->
-                                <div class="col-sm float-right transition m-2">
-                                    <div class="collapse darker " id="navbarToggleExternalContent">
-                                        <div class="darker text-light small p-2">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="card-deck">
-                                                        <div class="row">
-                                                            <div class="card p-1 m-1">
-                                                                <div class="row text-center">
-
-                                                                    <div class="text-center rounded m-3"
-                                                                        style="max-width:10rem;">
-                                                                        <img class="float-center img-fluid character-image rounded"
-                                                                        src="../../{{ question.character.image }}"
-                                                                        alt="Card image cap">
-                                                                    </div>
-
-                                                                    <div class="card m-3 p-3 text-dark character-text-reward">
-                                            
-                                                                        <h4 class="card-title text-dark text-lg-left character-text-reward">
-                                                                            {{ question.character.name }}
-                                                                        </h4>                
-                                            
-                                                                        <p class="card-text text-dark text-sm character-text-reward">
-                                                                            <small>
-                                                                            {{ question.character.text }}
-                                                                            </small>
-                                                                        </p>
-                                            
-                                                                        <div class="card-footer text-muted character-text-reward">
-                                                                            Birth: 
-                                                                            {{ question.character.birth }}
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="alert alert-success text-center"
-                                                                    role="alert">
-                                                                    Réponse : {{ question.answer }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                        
-                                    <nav class="navbar navbar-dark transition">
-                                        <button class="navbar-toggler transition" 
-                                        name="character-card"
-                                        type="button" 
-                                        data-toggle="collapse" 
-                                        data-target="#navbarToggleExternalContent" 
-                                        aria-controls="navbarToggleExternalContent" 
-                                        aria-expanded="false" 
-                                        aria-label="Toggle navigation">
-
-                                            <span class=""><i class="bi bi-person-badge-fill"></i></span>
-
-                                        </button>
-                                    </nav>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--
-                        MODIFYERS
-                    -->
-
-                    <div class="card-body mt-3 mb-4">
-
-                        <div class="row text-center">
-
-                            <div class="col-sm text-center">
-                                <div class="p-2">
-                                    <a href="{% url 'questions-detail' question.id %}" class="btn btn-primary btn-lg">Details</a>
-                                </div>
-                            </div>
-
-                            <div class="col-sm text-center">
-                                <div class="p-2">
-                                    <a href="{% url 'questions-update' question.id %}" class="btn btn-success btn-lg">Update</a>
-                                </div>
-                            </div>
-
-                            <div class="col-sm text-center">
-                                <div class="p-2">
-                                    <a href="{% url 'questions-delete' question.id %}" class="btn btn-danger btn-lg">Delete</a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
+        <div class="p-3 mb-4 darker border-bottom border-warning text-white">
+          <div class"card lead">
+            <div class="h3">
+              {{ question.name }}
             </div>
+
+            <div class="row">
+
+              <div class="col-sm">
+
+                <div class="lead text-light">
+                  {{ question.text }}
+                </div>
+
+                <!-- OPTIONS -->
+                <div class="col-sm">
+                  
+                  <!-- OPTION ONE -->
+                  <div class="form-check darker text-light mt-3 mb-3">
+                    <input type="radio"
+                    name="option_id"
+                    value="{{ question.options.ONE }}"
+                    required>
+                    <label class="form-check-label" 
+                    for="{{ question.opt_one }}">  
+                      <p class="card-text">
+                        {{ question.opt_one }}
+                      </p>
+                    </label>
+                  </div>
+
+                  <!-- OPTION TWO -->
+                  <div class="form-check darker text-light mt-3 mb-3">
+                    <input type="radio" 
+                    name="option_id" 
+                    value="{{ question.options.TWO }}"
+                    required>
+                    <label class="form-check-label" 
+                    for="{{ question.opt_two }}">  
+                      <p class="card-text">
+                        {{ question.opt_two }}
+                      </p>
+                    </label>
+                  </div>
+
+                  <!-- OPTION THREE -->
+                  <div class="form-check darker text-light mt-3 mb-3">
+                    <input type="radio" 
+                    name="option_id" 
+                    value="{{ question.options.THREE }}" 
+                    required>
+                    <label class="form-check-label" for="{{ question.opt_three }}">  
+                      <p class="card-text">
+                        {{ question.opt_three }}
+                      </p>
+                    </label>
+                  </div>
+                  
+                  <!-- OPTION FOUR -->
+                  <div class="form-check darker text-light mt-3 mb-3">
+                    <input type="radio" 
+                    name="option_id" 
+                    value="{{ question.options.FOUR }}" 
+                    required>
+                    <label class="form-check-label" for="{{ question.opt_four }}">  
+                      <p class="card-text">
+                        {{ question.opt_four }}
+                      </p>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- CARD REWARD -->
+                <div class="col-sm float-right transition m-2">
+                  <div class="collapse darker " id="navbarToggleExternalContent">
+                    <div class="darker text-light small p-2">
+                      <div class="container">
+                        <div class="row">
+                          <div class="card-deck">
+                            <div class="row">
+                              <div class="card p-1 m-1">
+                                <div class="row text-center">
+
+                                  <div class="text-center rounded m-3"
+                                    style="max-width:10rem;">
+                                    <img class="float-center img-fluid character-image rounded"
+                                    src="../../{{ question.character.image }}"
+                                    alt="Card image cap">
+                                  </div>
+
+                                  <div class="card m-3 p-3 text-dark character-text-reward">
+                      
+                                    <h4 class="card-title text-dark text-lg-left character-text-reward">
+                                      {{ question.character.name }}
+                                    </h4>                
+                      
+                                    <p class="card-text text-dark text-sm character-text-reward">
+                                      <small>
+                                      {{ question.character.text }}
+                                      </small>
+                                    </p>
+                      
+                                    <div class="card-footer text-muted character-text-reward">
+                                      Birth: 
+                                      {{ question.character.birth }}
+                                    </div>
+                                  </div>
+
+                                </div>
+
+                                <div class="alert alert-success text-center"
+                                  role="alert">
+                                  Réponse : {{ question.answer }}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            
+                  <nav class="navbar navbar-dark transition">
+                    <button class="navbar-toggler transition" 
+                    name="character-card"
+                    type="button" 
+                    data-toggle="collapse" 
+                    data-target="#navbarToggleExternalContent" 
+                    aria-controls="navbarToggleExternalContent" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation">
+
+                      <span class=""><i class="bi bi-person-badge-fill"></i></span>
+
+                    </button>
+                  </nav>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--
+            MODIFYERS
+          -->
+
+          <div class="card-body mt-3 mb-4">
+
+            <div class="row text-center">
+
+              <div class="col-sm text-center">
+                <div class="p-2">
+                  <a href="{% url 'questions-detail' question.id %}" class="btn btn-primary btn-lg">Details</a>
+                </div>
+              </div>
+
+              <div class="col-sm text-center">
+                <div class="p-2">
+                  <a href="{% url 'questions-update' question.id %}" class="btn btn-success btn-lg">Update</a>
+                </div>
+              </div>
+
+              <div class="col-sm text-center">
+                <div class="p-2">
+                  <a href="{% url 'questions-delete' question.id %}" class="btn btn-danger btn-lg">Delete</a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
+      </div>
+    </div>
 
 </div>
 

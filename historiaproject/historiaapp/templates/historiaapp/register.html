@@ -5,55 +5,44 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-<div>
-    <div class="col-md-9 order-md-1 row featurette" style="margin-left: 10rem;margin-right: 10rem;">
-        <div class="col-md-7 order-md-1" style="font-size: 2em;font-family: monospace;margin-top: 5rem;">
-            <p>Welcome</p>
-            <br>
-            <p>Please,
-            <br>
-            <br>
-            if you are not registered yet, kindly register to access a new world of knowledges.
-            <br>
-            Else, you can sign in.
+<div class="container">
+  <div class="text-center lead">
+    <p class="display-4 mt-4 mb-4 font-weight-light">Welcome</p>
+    <div class="mx-auto col-6 mt-4 mb-4">
+    
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div id="form-errors">{{ form_errors }}</div>
+      
+        <div class="form-outline mb-5">
+          {{ form.username|as_crispy_field }}
         </div>
 
-        <div class="col-md-5 order-md-2" style="font-size: 1.5em; font-family: monospace;margin-top: 2rem;">
-            
-            <form action="" method="POST">
-                {% csrf_token %}
 
-                <div id='form-errors'>{{ form_errors }}</div>
-            
-                <div class="form-outline mb-5">
-                    {{ form.username|as_crispy_field }}
-                </div>
-
-
-                <div class="form-outline mb-5">
-                    {{ form.password1|as_crispy_field }}
-                </div>
-
-                <div class="form-outline mb-5">
-                    {{ form.password2|as_crispy_field }}
-                </div>
-
-                <input type="hidden" value="        
-                    {% if object is None %}
-                        Save
-                    {% endif %}"/>
-
-                <div class="text-center">
-                    <button type="submit" value="Register" class="button-historia answer mt-5 mb-5"
-                    style="max-width:30%;min-width:10%;">
-                        <div class="lead">
-                            <strong>Register</strong>
-                        </div>
-                    </button>
-                </div>
-            </form>
-
+        <div class="form-outline mb-5">
+          {{ form.password1|as_crispy_field }}
         </div>
+
+        <div class="form-outline mb-5">
+          {{ form.password2|as_crispy_field }}
+        </div>
+
+        <input type="hidden" value="        
+          {% if object is None %}
+            Save
+          {% endif %}"/>
+
+        <div class="text-center">
+          <button type="submit" value="Register" class="button-historia answer mt-5 mb-5"
+          style="max-width:30%;min-width:15%;">
+            <div class="lead">
+              <strong>Register</strong>
+            </div>
+          </button>
+        </div>
+      </form>
+
     </div>
+  </div>
 </div>
 {% endblock %}

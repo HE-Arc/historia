@@ -352,8 +352,8 @@
             "text": "What did Ramanujan mainly work on?",
             "opt_one": "theta function, partition formulae and mock theta function",
             "opt_two": "Alternative Theorems, Bieberbach's conjecture and Borel's law of zero one",
-            "opt_three": "Boundary theorem, Cauchy-Peano-Arzel� theorem and Quadratic reciprocity law",
-            "opt_four": "Quadratic reciprocity law, Cauchy-Peano-Arzel� theorem and Constant rank theorem",
+            "opt_three": "Boundary theorem, Cauchy-Peano-Arzela theorem and Quadratic reciprocity law",
+            "opt_four": "Quadratic reciprocity law, Cauchy-Peano-Arzela theorem and Constant rank theorem",
             "answer": 1,
             "is_correct": false,
             "character": 4
@@ -574,7 +574,7 @@
         "pk": 40,
         "fields": {
             "name": "Question 39",
-            "text": "In the book \"Almagest\", Claudius Ptolemy introduced 48 constellations, most of which are still recognised today. Which of the following constellations was one of those he introduced?",
+            "text": "In the book Almagest, Claudius Ptolemy introduced 48 constellations, most of which are still recognised today. Which of the following constellations was one of those he introduced?",
             "opt_one": "Mensa",
             "opt_two": "Telescopium",
             "opt_three": "Perseus",
@@ -679,7 +679,7 @@
         "pk": 47,
         "fields": {
             "name": "Question 46",
-            "text": "What does the title �Genghis Khan� mean?",
+            "text": "What does the title Genghis Khan mean?",
             "opt_one": "universal ruler",
             "opt_two": "great ruler",
             "opt_three": "top ruler",
@@ -704,4 +704,4 @@
             "character": 49
         }
     }
-]    
+] 

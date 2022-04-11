@@ -8,290 +8,282 @@ Questions visualizer
 
 <div class="container text-light darker pt-3">
 
-    <hr>
+  <hr>
 
-    <h1 class="display-2 mb-5 p-3">
+  <h1 class="display-2 mb-5 p-3 mt-5">
+    Questions
+    <div class="d-flex justify-content-center float-right mb-5 mt-4">
+      <button type="button"
+        onclick="location.href='{% url 'questions-create' %}'"
+        class="button-historia text-uppercase lead  mr-2">
+        Create question
+      </button>
+    </div>
+  </h1>
 
-        Questions
+  <h5 class="display-4 mb-4 pb-3 darker border-bottom border-warning">
+    List of questions actually available.
+  </h5>
 
-        <div class="d-flex justify-content-center float-right mb-5 mt-4">
-            <button type="button"
-                onclick="location.href='{% url 'questions-create' %}'"
-                class="button-historia text-uppercase lead  mr-2">
-                Create question
-            </button>
-        </div>
+    <!--
+    * for loop section to display all questions.
+    -->
 
-        <hr>
-        <hr>
+    {% for questions in object_list %}
 
-    </h1>
+      <div class="darker">
 
-    <hr>
+        <!-- FORM -->
 
-    <h5 class="display-4 mb-4 pb-3 darker border-bottom border-warning">
-        List of questions actually available.
-    </h5>
+        <div class="p-3 mb-2 darker border-bottom border-warning text-white">
+          <div class"card lead">
+            <div class="h3">
+              {{ questions.name }}
+            </div>
 
-        <!--
-        * for loop section to display all questions.
-        -->
+            <div class="row">
 
-        {% for questions in object_list %}
+              <div class="col-sm">
 
-            <div class="darker">
+                <div class="lead text-light">
+                  {{ questions.text }}
+                </div>
 
-                <!-- FORM -->
-
-                <div class="p-3 mb-2 darker border-bottom border-warning text-white">
-                    <div class"card lead">
-                        <div class="h3">
-                            {{ questions.name }}
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-sm">
-
-                                <div class="lead text-light">
-                                    {{ questions.text }}
-                                </div>
-
-                                <form class="darker mt-3 mb-3 p-2" 
-                                method="post"
-                                name="question_id"
-                                action="{% url 'questions-check' %}">
-            
-                                {% csrf_token %}
-                                
-                                <!-- OPTIONS -->
-
-                                    <div class="col-sm">
-                                        
-                                        <!-- OPTION ONE -->
-                                        <div class="form-check darker text-light mt-3 mb-3">
-                                            <input type="radio"
-                                            name="option_id"
-                                            value="{{ questions.options.ONE }}"
-                                            required>
-                                            <label class="form-check-label" 
-                                            for="{{ questions.opt_one }}">  
-                                                <p class="card-text">
-                                                    {{ questions.opt_one }}
-                                                </p>
-                                            </label>
-                                        </div>
+                <form class="darker mt-3 mb-3 p-2" 
+                method="post"
+                name="question_id"
+                action="{% url 'questions-check' %}">
+      
+                {% csrf_token %}
                 
-                                        <!-- OPTION TWO -->
-                
-                                        <div class="form-check darker text-light mt-3 mb-3">
-                                            <input type="radio" 
-                                            name="option_id" 
-                                            value="{{ questions.options.TWO }}"
-                                            required>
-                                            <label class="form-check-label" 
-                                            for="{{ questions.opt_two }}">  
-                                                <p class="card-text">
-                                                    {{ questions.opt_two }}
-                                                </p>
-                                            </label>
-                                        </div>
-                
-                                        <!-- OPTION THREE -->
-                
-                                        <div class="form-check darker text-light mt-3 mb-3">
-                                            <input type="radio" 
-                                            name="option_id" 
-                                            value="{{ questions.options.THREE }}" 
-                                            required>
-                                            <label class="form-check-label" for="{{ questions.opt_three }}">  
-                                                <p class="card-text">
-                                                    {{ questions.opt_three }}
-                                                </p>
-                                            </label>
-                                        </div>
-                
-                                        <!-- OPTION FOUR -->
-                
-                                        <div class="form-check darker text-light mt-3 mb-3">
-                                            <input type="radio" 
-                                            name="option_id" 
-                                            value="{{ questions.options.FOUR }}" 
-                                            required>
-                                            <label class="form-check-label" for="{{ questions.opt_four }}">  
-                                                <p class="card-text">
-                                                    {{ questions.opt_four }}
-                                                </p>
-                                            </label>
-                                        </div>
-                                    </div>
+                <!-- OPTIONS -->
 
-                                <!-- END OPTIONS -->
-
-                                    <!-- CARD REWARD -->
-                                    {% if questions.is_correct %}
-                                    <div class="col-sm float-right transition m-2">
-                                        <div class="collapse darker " id="navbarToggleExternalContent">
-                                            <div class="darker text-light small p-2">
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="card-deck">
-                                                            <div class="row">
-                                                                <div class="card p-1 m-1">
-                                                                    <div class="row">
-
-                                                                        {% load static %}
-
-                                                                        <div class="text-center rounded m-3"
-                                                                            style="max-width:10rem;">
-                                                                            <img class="float-center img-fluid character-image rounded"
-                                                                            src="{% static questions.character.image %}"  
-                                                                            alt="Card image cap">
-                                                                        </div>
-
-                                                                        <div class="card m-3 p-3 text-dark character-text-reward">
-                                                
-                                                                            <h4 class="card-title text-dark text-lg-left character-text-reward">
-                                                                                {{ questions.character.name }}
-                                                                            </h4>                
-                                                
-                                                                            <p class="card-text text-dark text-sm character-text-reward">
-                                                                                <small>
-                                                                                {{ questions.character.text }}
-                                                                                </small>
-                                                                            </p>
-                                                
-                                                                            <h4 class="card-footer text-muted character-text-reward">
-                                                                                Period historic:
-                                                                                {{ questions.character.historicPeriod }}
-                                                                            </h4>
-                                                    
-                                                                            <div class="card-footer text-muted character-text-reward">
-                                                                                Domain: 
-                                                                                {{ questions.character.domain }}
-                                                                            </div>
-                                                    
-                                                                            <div class="card-footer text-muted character-text-reward">
-                                                                                Category: 
-                                                                                {{ questions.character.category }}
-                                                                            </div>
-                                                                        
-                                                                            <div class="card-footer text-muted character-text-reward">
-                                                                                Land: 
-                                                                                {{ questions.character.land }}
-                                                                            </div>
-
-                                                                            <div class="card-footer text-muted character-text-reward">
-                                                                                Birth: 
-                                                                                {{ questions.character.birth }}
-                                                                            </div>
-
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                            
-                                        <nav class="navbar navbar-dark transition">
-                                            <button class="navbar-toggler transition" 
-                                            name="character-card"
-                                            type="button" 
-                                            data-toggle="collapse" 
-                                            data-target="#navbarToggleExternalContent" 
-                                            aria-controls="navbarToggleExternalContent" 
-                                            aria-expanded="false" 
-                                            aria-label="Toggle navigation">
-
-                                                <span class=""><i class="bi bi-person-badge-fill"></i></span>
-
-                                            </button>
-                                        </nav>
-                                    </div>
-                                    {% endif %}
-
-                                    <!-- get question id through hidden input. -->
-                                    <input type="hidden"
-                                    name="question_id"
-                                    value="{{ questions.id }}">
-                
-                                    <!-- SUBMIT ANSWER -->
+                  <div class="col-sm">
                     
-                                    <div class="col-">
-                                        <div class="d-flex justify-content-center mb-5 mt-4 p-4">
-                                            <button type="submit" 
-                                                class="button-historia answer text-uppercase  mr-2" style="width: 20%;">
-                                                <i class="bi bi-app"></i>
-                                            </button>
-                                        </div>
+                    <!-- OPTION ONE -->
+                    <div class="form-check darker text-light mt-3 mb-3">
+                      <input type="radio"
+                      name="option_id"
+                      value="{{ questions.options.ONE }}"
+                      required>
+                      <label class="form-check-label" 
+                      for="{{ questions.opt_one }}">  
+                        <p class="card-text">
+                          {{ questions.opt_one }}
+                        </p>
+                      </label>
+                    </div>
+        
+                    <!-- OPTION TWO -->
+        
+                    <div class="form-check darker text-light mt-3 mb-3">
+                      <input type="radio" 
+                      name="option_id" 
+                      value="{{ questions.options.TWO }}"
+                      required>
+                      <label class="form-check-label" 
+                      for="{{ questions.opt_two }}">  
+                        <p class="card-text">
+                          {{ questions.opt_two }}
+                        </p>
+                      </label>
+                    </div>
+        
+                    <!-- OPTION THREE -->
+        
+                    <div class="form-check darker text-light mt-3 mb-3">
+                      <input type="radio" 
+                      name="option_id" 
+                      value="{{ questions.options.THREE }}" 
+                      required>
+                      <label class="form-check-label" for="{{ questions.opt_three }}">  
+                        <p class="card-text">
+                          {{ questions.opt_three }}
+                        </p>
+                      </label>
+                    </div>
+        
+                    <!-- OPTION FOUR -->
+        
+                    <div class="form-check darker text-light mt-3 mb-3">
+                      <input type="radio" 
+                      name="option_id" 
+                      value="{{ questions.options.FOUR }}" 
+                      required>
+                      <label class="form-check-label" for="{{ questions.opt_four }}">  
+                        <p class="card-text">
+                          {{ questions.opt_four }}
+                        </p>
+                      </label>
+                    </div>
+                  </div>
 
-                                        <div class="d-flex justify-content-center mb-4 mt-4">
-                                            {% if questions.is_correct == 'None' %}
-                                                <div class="alert alert-warning float-right" role="alert">
-                                                    Not answered!
-                                                </div>
-                                            {% endif %}
-                
-                                            {% if questions.is_correct %}
-                                                <div class="alert alert-success float-right" role="alert">
-                                                    You guessed right!
-                                                </div>
-                                            {% endif %}
-                                            
-                                            {% if not questions.is_correct %}
-                                                <div class="alert alert-danger float-right" role="alert">
-                                                    You guessed wrong!
-                                                </div>
-                                            {% endif %}
-                                        </div>
+                <!-- END OPTIONS -->
+
+                  <!-- CARD REWARD -->
+                  {% if questions.is_correct %}
+                  <div class="col-sm float-right transition m-2">
+                    <div class="collapse darker " id="navbarToggleExternalContent">
+                      <div class="darker text-light small p-2">
+                        <div class="container">
+                          <div class="row">
+                            <div class="card-deck">
+                              <div class="row">
+                                <div class="card p-1 m-1">
+                                  <div class="row">
+
+                                    {% load static %}
+
+                                    <div class="text-center rounded m-3"
+                                      style="max-width:10rem;">
+                                      <img class="float-center img-fluid character-image rounded"
+                                      src="{% static questions.character.image %}"  
+                                      alt="Card image cap">
                                     </div>
 
-                                </form>
+                                    <div class="card m-3 p-3 text-dark character-text-reward">
+                        
+                                      <h4 class="card-title text-dark text-lg-left character-text-reward">
+                                        {{ questions.character.name }}
+                                      </h4>                
+                        
+                                      <p class="card-text text-dark text-sm character-text-reward">
+                                        <small>
+                                        {{ questions.character.text }}
+                                        </small>
+                                      </p>
+                        
+                                      <h4 class="card-footer text-muted character-text-reward">
+                                        Period historic:
+                                        {{ questions.character.historicPeriod }}
+                                      </h4>
+                          
+                                      <div class="card-footer text-muted character-text-reward">
+                                        Domain: 
+                                        {{ questions.character.domain }}
+                                      </div>
+                          
+                                      <div class="card-footer text-muted character-text-reward">
+                                        Category: 
+                                        {{ questions.character.category }}
+                                      </div>
+                                    
+                                      <div class="card-footer text-muted character-text-reward">
+                                        Land: 
+                                        {{ questions.character.land }}
+                                      </div>
 
+                                      <div class="card-footer text-muted character-text-reward">
+                                        Birth: 
+                                        {{ questions.character.birth }}
+                                      </div>
+
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-
+                          </div>
                         </div>
+                      </div>
                     </div>
-                </div>
+              
+                    <nav class="navbar navbar-dark transition">
+                      <button class="navbar-toggler transition" 
+                      name="character-card"
+                      type="button" 
+                      data-toggle="collapse" 
+                      data-target="#navbarToggleExternalContent" 
+                      aria-controls="navbarToggleExternalContent" 
+                      aria-expanded="false" 
+                      aria-label="Toggle navigation">
 
-                <!-- MODIFYERS -->
+                        <span class=""><i class="bi bi-person-badge-fill"></i></span>
 
-                <div class="card-body mt-3 mb-4">
+                      </button>
+                    </nav>
+                  </div>
+                  {% endif %}
 
-                    <div class="row text-center">
-
-                        <div class="col-sm text-center">
-                            <div class="p-2">
-                                <a href="{% url 'questions-detail' questions.id %}" class="btn btn-primary btn-lg">Details</a>
-                            </div>
-                        </div>
-
-                        <div class="col-sm text-center">
-                            <div class="p-2">
-                                <a href="{% url 'questions-update' questions.id %}" class="btn btn-success btn-lg">Update</a>
-                            </div>
-                        </div>
-
-                        <div class="col-sm text-center">
-                            <div class="p-2">
-                                <a href="{% url 'questions-delete' questions.id %}" class="btn btn-danger btn-lg">Delete</a>
-                            </div>
-                        </div>
-
+                  <!-- get question id through hidden input. -->
+                  <input type="hidden"
+                  name="question_id"
+                  value="{{ questions.id }}">
+        
+                  <!-- SUBMIT ANSWER -->
+          
+                  <div class="col-">
+                    <div class="d-flex justify-content-center mb-5 mt-4 p-4">
+                      <button type="submit" 
+                        class="button-historia answer text-uppercase  mr-2" style="width: 20%;">
+                        <i class="bi bi-app"></i>
+                      </button>
                     </div>
 
-                </div>
+                    <div class="d-flex justify-content-center mb-4 mt-4">
+                      {% if questions.is_correct == 'None' %}
+                        <div class="alert alert-warning float-right" role="alert">
+                          Not answered!
+                        </div>
+                      {% endif %}
+        
+                      {% if questions.is_correct %}
+                        <div class="alert alert-success float-right" role="alert">
+                          You guessed right!
+                        </div>
+                      {% endif %}
+                      
+                      {% if not questions.is_correct %}
+                        <div class="alert alert-danger float-right" role="alert">
+                          You guessed wrong!
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
 
-                <!-- END MODIFYERS -->
+                </form>
+
+              </div>
 
             </div>
-        {% endfor %}
+          </div>
+        </div>
 
-    <div class="container ">
+        <!-- MODIFYERS -->
+
+        <div class="card-body mt-3 mb-4">
+
+          <div class="row text-center">
+
+            <div class="col-sm text-center">
+              <div class="p-2">
+                <a href="{% url 'questions-detail' questions.id %}" class="btn btn-primary btn-lg">Details</a>
+              </div>
+            </div>
+
+            <div class="col-sm text-center">
+              <div class="p-2">
+                <a href="{% url 'questions-update' questions.id %}" class="btn btn-success btn-lg">Update</a>
+              </div>
+            </div>
+
+            <div class="col-sm text-center">
+              <div class="p-2">
+                <a href="{% url 'questions-delete' questions.id %}" class="btn btn-danger btn-lg">Delete</a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- END MODIFYERS -->
+
+      </div>
+    {% endfor %}
+
+  <div class="container ">
 
 </div>
 

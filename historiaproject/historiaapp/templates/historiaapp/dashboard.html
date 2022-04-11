@@ -8,133 +8,146 @@ Historia
 
 <div class="container">
 
-    <div class="col-md-12">
-        <h1 class="display-4">
-            Dashboard
-        </h1>
-        <hr/>
-    </div>
-
-    <div class="card-body darker">
-        <div class="card text-white bg-dark">
-
-            <div class="card-body darker">
-                <h4 class="display-5 darker col mt-5">Quizzes:</h4>
-                <div class="btn container darker">
-                    <div class="row">
-
-                        {% for quiz in quizzes %}
-
-                        <div class="btn container darker" onclick="location.href='{% url 'quizs-detail' quiz.id %}'">
-                        
-                            <div class="card-body darker text-light">
-                        
-                                <div class="row">
-                                    <div class="col">
-                                        <h4 class="card-title text-lg-left ">
-                                            {{ quiz.id }}. {{ quiz.name }} ( {{ quiz.category.name }} )
-                                        </h4>
-                                        
-                                        <p class="card-text lead">
-                                            {{ quiz.text }}
-                                        </p>
-                                    </div>
-                                    <div class="col">
-                                        <div class="d-flex justify-content-center">
-                                            <div class="card-body d-flex justify-content-center">
-                                                <h4 class="card-title text-lg-left">
-                                                    Score:
-                                                </h4>
-                                                <div class="rating">
-                                                    {{ quiz.score_quiz }}%
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-            
-                                {% block scripts %}
-                                <script>
-                                    const ratings = document.querySelectorAll(".rating");
-                                    document.querySelectorAll(".rating").forEach((rating) => {
-                                            const scoreClass = 
-                                                parseInt(rating.innerHTML, 10) < 40 ? "bad" : 
-                                                parseInt(rating.innerHTML, 10) < 60 ? "meh" : "good";
-                                            rating.classList.add(scoreClass);
-                                            const ratingColor = window.getComputedStyle(rating).backgroundColor;
-                                            const gradient = `background: conic-gradient(${ratingColor} 
-                                                ${parseInt(rating.innerHTML, 10)}%, transparent 0 100%)`;
-                                            rating.setAttribute("style", gradient);
-                                            rating.innerHTML = `<span>${parseInt(rating.innerHTML, 10)} ${
-                                                rating.innerHTML.indexOf("%") >= 0 ? "<small>%</small>" : ""
-                                            }</span>`;
-                                        }
-                                    );
-                                </script>
-                                {% endblock %}
-                            </div>
-                        </div>
-                        {% endfor %}
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-body darker">
-                <h4 class="display-5 darker col mt-4">Cards:</h4>
-                <div class="container darker">
-                    <div class="row">
-                        {% for card in cards %}
-                            <div class="card bg-light shadow character-card text-dark p-3 m-3"
-                                style="max-width: 14rem; height: auto;">
-                                
-                                <div class="bg-light">
-                                    <h5 class="card-text">{{ card.name }}</h5>
-                                    <p class="card-text">{{ card.birth }}</p>
-                                </div>
-
-                                {% load static %}
-
-                                <div class="bg-light">                                                  
-                                    <a href="{% url 'cards-detail' card.id %}">
-                                        <img class="float-right"
-                                        src="{% static '../media/images/infos.svg' %}"
-                                        width="32" height="32" alt="logo">
-                                    </a>
-                                </div>
-
-                                <div class="text-center">
-                                    <img class="float-center img-fluid character-image rounded mt-3"
-                                    src="{{ card.image.url }}"
-                                    alt="Card image cap">
-                                </div>
-
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        
-            <div class="card-body darker">
-                <h4 class="display-5 col mt-5">Questions:</h4>
-                <div class="container">
-                    <div class="row">
-
-                        <a href="{% url 'questions-list' %}" class="btn btn-dark btn-sm">Liste de questions</a>
-
-                        {% for question in questions %}
-                            <div class="card shadow character-card text-dark bg-white p-3 m-3"
-                                style="max-width: 14rem;height: auto;">
-                                <h5 class="card-text">{{ question.name }}</h5>
-                                <p class="card-text">{{ question.text }}</p>                                
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-
+  {% if user.is_authenticated %}
+    <div class="container-fluid">
+      <div class="pt-3">
+        <div class="text-light d-flex justify-content-right">
+          <h1 class="lead mt-2 mb-2 animated fade">
+            Welcome {{ user.username }}.
+          </h1>
         </div>
+      </div>
     </div>
+  {% endif %}
+
+  <div class="col-md-12">
+    <h1 class="display-4">
+      Dashboard
+    </h1>
+    <hr/>
+  </div>
+
+  <div class="card-body darker">
+    <div class="card text-white bg-dark">
+
+      <div class="card-body darker">
+        <h4 class="display-5 darker col mt-5">Quizzes:</h4>
+        <div class="btn container darker">
+          <div class="row">            
+
+            {% for ranking in rankings %}
+
+            <div class="btn container darker" onclick="location.href='{% url 'quizs-detail' ranking.quiz.id %}'">
+            
+              <div class="card-body darker text-light">
+            
+                <div class="row">
+                  <div class="col">
+                    <h4 class="card-title text-lg-left ">
+                      {{ ranking.quiz.id }}. {{ ranking.quiz.name }} ( {{ ranking.quiz.category.name }} )
+                    </h4>
+                    
+                    <p class="card-text lead">
+                      {{ ranking.quiz.text }}
+                    </p>
+                  </div>
+                  <div class="col">
+                    <div class="d-flex justify-content-center">
+                      <div class="card-body d-flex justify-content-center">
+                        <h4 class="card-title text-lg-left">
+                          Score:
+                        </h4>
+                        <div class="rating">
+                          {{ ranking.quiz.last_score }}%
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            {% endfor %}
+          
+            {% block scripts %}
+            <script>
+              const ratings = document.querySelectorAll(".rating");
+              document.querySelectorAll(".rating").forEach((rating) => {
+                  const scoreClass = 
+                    parseInt(rating.innerHTML, 10) < 40 ? "bad" : 
+                    parseInt(rating.innerHTML, 10) < 60 ? "meh" : "good";
+                  rating.classList.add(scoreClass);
+                  const ratingColor = window.getComputedStyle(rating).backgroundColor;
+                  const gradient = `background: conic-gradient(${ratingColor} 
+                    ${parseInt(rating.innerHTML, 10)}%, transparent 0 100%)`;
+                  rating.setAttribute("style", gradient);
+                  rating.innerHTML = `<span>${parseInt(rating.innerHTML, 10)} ${
+                    rating.innerHTML.indexOf("%") >= 0 ? "<small>%</small>" : ""
+                  }</span>`;
+                }
+              );
+            </script>
+            {% endblock %}
+
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body darker">
+        <h4 class="display-5 darker col mt-4">Cards:</h4>
+        <div class="container darker">
+          <div class="row">
+            {% for card in cards %}
+              <div class="card bg-light shadow character-card text-dark p-3 m-3"
+                style="max-width: 14rem; height: auto;">
+                
+                <div class="bg-light">
+                  <h5 class="card-text">{{ card.name }}</h5>
+                  <p class="card-text">{{ card.birth }}</p>
+                </div>
+
+                {% load static %}
+
+                <div class="bg-light">                                                  
+                  <a href="{% url 'cards-detail' card.id %}">
+                    <img class="float-right"
+                    src="{% static '../media/images/infos.svg' %}"
+                    width="32" height="32" alt="logo">
+                  </a>
+                </div>
+
+                <div class="text-center">
+                  <img class="float-center img-fluid character-image rounded mt-3"
+                  src="{{ card.image.url }}"
+                  alt="Card image cap">
+                </div>
+
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    
+      <div class="card-body darker">
+        <h4 class="display-5 col mt-5">Questions:</h4>
+        <div class="container">
+          <div class="row">
+
+            <a href="{% url 'questions-list' %}" class="btn btn-dark btn-sm">Liste de questions</a>
+
+            {% for question in questions %}
+              <div class="card shadow character-card text-dark bg-white p-3 m-3"
+                style="max-width: 14rem;height: auto;">
+                <h5 class="card-text">{{ question.name }}</h5>
+                <p class="card-text">{{ question.text }}</p>                                
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 </div>
 

@@ -1,3 +1,5 @@
+from datetime import datetime
+from unicodedata import name
 from django.shortcuts import render, redirect
 from django.views import generic, View
 from django.urls import reverse_lazy
@@ -7,8 +9,8 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
-
+from django.core.paginator import Paginator
+from django.db.models import Count
 from django.contrib.auth.models import User
 from .models import *
 
@@ -144,10 +146,12 @@ class DashboardView(generic.TemplateView):
     
     def get_context_data(self, **kwargs):
         if self.request.user.is_authenticated:
-            context = super().get_context_data(**kwargs) 
+            context = super().get_context_data(**kwargs)
             context['quizzes'] = Quiz.objects.all()
             context['cards'] = Card.objects.all()
             context['questions'] = Question.objects.all()
+            context['rankings'] = Ranking.objects.all()
+            context['rankings_unique'] = Ranking.objects.order_by().values('').distinct()
             return context
         else:
             context = {}
@@ -206,7 +210,8 @@ class CardsUpdateView(generic.UpdateView):
                 'text']
     
     success_url = reverse_lazy('cards-list')
-    
+
+
 class CardsDeleteView(generic.DeleteView):
     
     model = Card
@@ -337,7 +342,12 @@ class QuizCheckView(View):
             _type_: _description_
         """
         quiz = Quiz.objects.get(pk=request.POST.get("quiz_id"))
-        quiz.score = 0
+        user = request.user
+        
+        ranking = Ranking()
+        ranking.quiz = quiz
+        ranking.user = user
+        
         questions = quiz.questions.all()
         values = list(request.POST.values())
         values.pop(0)
@@ -352,14 +362,13 @@ class QuizCheckView(View):
             else:
                 question.is_correct = False
                 question.save()
-                
-        print(quiz.score_quiz)
-        
-        quiz.score_quiz *= 100 / (len(values)-1)
-        
-        print(quiz.score_quiz)
 
+        quiz.score_quiz *= 100 / (len(values)-1)
+
+        ranking.score = quiz.score_quiz
+        ranking.date = datetime.now()
         quiz.save()
+        ranking.save()
         
         return redirect('quizs-detail', quiz.id)
 
@@ -495,14 +504,21 @@ class RankingListView(generic.ListView):
     """
     model = Ranking
     
+    paginate_by = 4
+
     def get_queryset(self):
         return Ranking.objects.filter(quiz=1).order_by("-score")[:5]
 
 
 def rankings_user(request):
+    rankings = Ranking.objects.filter(user=request.user).order_by("-score")
+    paginator = Paginator(rankings, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
     context = {}
     context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
-    return render(request, "historiaapp/home.html", context) 
+    return render(request, "historiaapp/home.html", {'page_obj': page_obj}) 
     
     
     

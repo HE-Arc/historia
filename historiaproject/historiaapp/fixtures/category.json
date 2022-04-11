@@ -3,28 +3,32 @@
         "model": "historiaapp.category",
         "pk": 1,
         "fields": {
-            "name": "Science & Inventions"
+            "name": "Science & Inventions",
+            "image": "../media/images/category/science.jpg"
         }
     },
     {
         "model": "historiaapp.category",
         "pk": 2,
         "fields": {
-            "name": "Art"
+            "name": "Art",
+            "image": "../media/images/category/art.jpg"
         }
     },
     {
         "model": "historiaapp.category",
         "pk": 3,
         "fields": {
-            "name": "History"
+            "name": "History",
+            "image": "../media/images/category/history.jpg"
         }
     },
     {
         "model": "historiaapp.category",
         "pk": 4,
         "fields": {
-            "name": "Geography"
+            "name": "Geography",
+            "image": "../media/images/category/geography.jpg"
         }
     }
 ]
