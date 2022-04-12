@@ -26,6 +26,7 @@ def home(request):
         generic (_type_): _description_
     """
     context = {}
+    context['quiz'] = Quiz.objects.first()
     return render(request, 'historiaapp/home.html', context)
 
 
@@ -151,7 +152,6 @@ class DashboardView(generic.TemplateView):
             context['cards'] = Card.objects.all()
             context['questions'] = Question.objects.all()
             context['rankings'] = Ranking.objects.all()
-            context['rankings_unique'] = Ranking.objects.order_by().values('quiz').distinct()
             return context
         else:
             context = {}
@@ -171,8 +171,11 @@ class CardsListView(generic.ListView):
     """
     model = Card
     
+    paginate_by = 9
+    
     def get_queryset(self):
         return Card.objects.all()
+
 
 class CardsDetailView(generic.DetailView):
     """_summary_
@@ -181,6 +184,7 @@ class CardsDetailView(generic.DetailView):
         generic (_type_): Detail View _description_
     """
     model = Card
+
 
 class CardsCreateView(generic.CreateView):
       
@@ -200,14 +204,16 @@ class CardsCreateView(generic.CreateView):
 class CardsUpdateView(generic.UpdateView):
     
     model = Card
-    fields = ['name',
-                'historicPeriod',
-                'domain',
-                'category',
-                'birth',
-                'land',
-                'image', 
-                'text']
+    fields = [
+        'name',
+        'historicPeriod',
+        'domain',
+        'category',
+        'birth',
+        'land',
+        'image', 
+        'text'
+    ]
     
     success_url = reverse_lazy('cards-list')
 
@@ -256,6 +262,20 @@ class QuizListView(generic.ListView):
                 question.save()
                 
         return quizs
+
+
+class QuizTryView(generic.TemplateView):
+
+    template_name = "historiaapp/quiz_try.html"
+    
+    def get_context_data(self, **kwargs):
+        if not self.request.user.is_authenticated:
+            context = super().get_context_data(**kwargs)
+            context['quiz'] = Quiz.objects.first()
+            return context
+        else:
+            context = {}
+            return context
 
 
 class QuizDetailView(generic.DetailView):
@@ -367,6 +387,7 @@ class QuizCheckView(View):
 
         ranking.score = quiz.score_quiz
         ranking.date = datetime.now()
+        
         quiz.save()
         ranking.save()
         
@@ -491,6 +512,7 @@ class QuestionCheckView(View):
         return redirect('questions-list')
 
 
+
 #|-----------------------|
 #| Ranking               |
 #|-----------------------/
@@ -528,30 +550,22 @@ def rankings_user(request):
     
 class CategoriesListView(generic.ListView):
     model = Category
-    #template_name = "historiaapp/category_list.html"
+    
+    paginate_by = 4
     
     def get_queryset(self):
         return Category.objects.all()
 
     
 def quiz_with_category(request, category):
-    #model = Category
-    print(category)
-    #cat = Category.objects.filter(id=category).all()
-    #print(cat)
     
     cat = Category.objects.get(id=category)
-    print(cat)
-    
-    
-    context = {}
-    truc = Quiz.objects.filter(category=cat.id).all()
-    
+    quiz = Quiz.objects.filter(category=cat.id).all()
     context = {
-        "object_list": truc,
-        "cat": cat.name
+        "object_list": quiz,
+        "category": cat.name
     }
-    print(context)
+
     return render(request, "historiaapp/category_quiz.html", context)
 
     

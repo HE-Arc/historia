@@ -1,13 +1,13 @@
 <html>
 
 <head>
-  <title>{% block title %}{% endblock %}</title>
+  <title>{% block title %}  {% endblock %}</title>
 
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/card.css' %}">
   <link rel="stylesheet" href="{% static 'css/category.css' %}">
   <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
-  <link rel="stylesheet" href="{% static 'css/effects.css' %}">
+  <link rel="stylesheet" href="{% static 'css/effects.css' %}">  
   <link rel="shortcut icon" type="image/png" href="{% static '../media/images/logo.svg' %}"/>
 
   {% load bootstrap4 %}
@@ -28,156 +28,181 @@
   
   <div class="card darker border-0">
   
-  <nav class="navbar navbar-expand-lg navbar-dark darker">
-    
-    <div class="container darker border-bottom border-warning">
+    <nav class="navbar navbar-expand-lg navbar-dark darker">
+      
+      <div class="container darker border-bottom border-warning">
 
-    <div class="row">
+      <div class="row m-3">
 
-      <a class="col-sm navbar-brand text-light darker" href="{% url 'home' %}">
-        <div class="row">
-          <img src="{% static '../media/images/logo.svg' %}"
-          width="100" height="100" alt="logo">
-          
-          <div class="display-4 lead text-light darker mb-4 mr-5">
-            istoria
+        <a class="col-sm navbar-brand text-light darker" href="{% url 'home' %}">
+          <div class="row">
+            <img src="{% static '../media/images/logo.svg' %}"
+            width="100" height="100" alt="logo">
+            
+            <div class="display-4 lead text-light darker mb-4 mr-5">
+              istoria
+            </div>
+            
+            <div class="display-5 ml-5 float-right lead darker pt-4">
+              A web app challenging your historical characters knowledges.
+            </div>
           </div>
-          
-          <div class="display-5 ml-5 float-right lead darker pt-4">
-            A web app challenging your historical characters knowledges.
-          </div>
+        </a>
+
+        <button class="navbar-toggler darker" 
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" 
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon darker"></span>
+        </button>
+
+        <div class="col-sm collapse navbar-collapse ml-4" id="navbarSupportedContent">
+        
+        {% if user.is_authenticated %}
+          <ul class="navbar-nav mr-auto lead m-2">
+
+          <li class="nav-item active mr-4">
+            <a class="nav-link text-warning" href="{% url 'dashboard' %}">
+            <div class="btn btn-warning bi bi-house-fill">
+              Dashboard
+            </div>
+            </a>
+          </li>
+
+          <li class="nav-item active mr-4">
+            <a class="nav-link text-warning" href="{% url 'cards-list' %}">
+            <div class="btn btn-warning bi bi-wallet2">
+              Cards
+            </div>
+            </a>
+          </li>
+
+          <li class="nav-item active mr-4">
+            <a class="nav-link text-warning" href="{% url 'quizs-list' %}">
+            <div class="btn btn-warning bi bi-question-square-fill">
+              Quizzes
+            </div>
+            </a>
+          </li>
+
+          <li class="nav-item active mr-4">
+            <a class="nav-link text-warning" href="{% url 'categories-list' %}">
+            <div class="btn btn-warning bi bi-tags-fill">
+              Categories
+            </div>
+            </a>
+          </li>
+
+          <li class="nav-item active mr-4">
+            <a class="nav-link text-warning" href="{% url 'rankings-user' %}">
+            <div class="btn btn-warning bi bi-trophy">
+              Rankings
+            </div>
+            </a>
+          </li>
+
+          <li class="nav-item active mr-4">
+            <a class="nav-link text-warning" href="{% url 'logout' %}">
+            <div class="btn btn-warning bi bi-box-arrow-left">
+            </div>
+            Logout
+            </a>
+          </li>
+          </ul>
+
+        {% elif not user.is_authenticated %}
+
+          <a class="nav-link text-warning mx-auto" href="{% url 'quizs_try' %}">
+            <div class="btn btn-warning">
+              Try
+            </div>
+          </a>
+      
+        {% endif %}
+
         </div>
-      </a>
-
-      <button class="navbar-toggler darker" 
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent" 
-          aria-controls="navbarSupportedContent" 
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon darker"></span>
-      </button>
-
-      <div class="col-sm collapse navbar-collapse ml-4" id="navbarSupportedContent">
-      
-      {% if user.is_authenticated %}
-        <ul class="navbar-nav mr-auto lead m-2">
-
-        <li class="nav-item active mr-4">
-          <a class="nav-link text-warning" href="{% url 'dashboard' %}">
-          <div class="btn btn-warning bi bi-house-fill">
-            Dashboard
-          </div>
-          </a>
-        </li>
-
-        <li class="nav-item active mr-4">
-          <a class="nav-link text-warning" href="{% url 'cards-list' %}">
-          <div class="btn btn-warning bi bi-wallet2">
-            Cards
-          </div>
-          </a>
-        </li>
-
-        <li class="nav-item active mr-4">
-          <a class="nav-link text-warning" href="{% url 'quizs-list' %}">
-          <div class="btn btn-warning bi bi-question-square-fill">
-            Quizzes
-          </div>
-          </a>
-        </li>
-
-        <li class="nav-item active mr-4">
-          <a class="nav-link text-warning" href="{% url 'categories-list' %}">
-          <div class="btn btn-warning bi bi-tags-fill">
-            Categories
-          </div>
-          </a>
-        </li>
-
-        <li class="nav-item active mr-4">
-          <a class="nav-link text-warning" href="{% url 'rankings-user' %}">
-          <div class="btn btn-warning bi bi-trophy">
-            Rankings
-          </div>
-          </a>
-        </li>
-
-        <li class="nav-item active mr-4">
-          <a class="nav-link text-warning" href="{% url 'logout' %}">
-          <div class="btn btn-warning bi bi-box-arrow-left">
-          </div>
-          Logout
-          </a>
-        </li>
-        </ul>
-
-        </ul>
-      
-      {% else %}
-
-        <ul class="navbar-nav mr-auto lead m-2">
-        <li class="nav-item active mr-4">
-          <a class="nav-link text-warning" href="{% url 'quizs_try' %}">
-          <div class="btn btn-warning bi bi-emoji-wink-fill">
-            Try it!<span class="sr-only">(current)</span>
-          </div>
-          </a>
-        </li>
-        </ul>
-      
-      {% endif %}
 
       </div>
 
-    </div>
+      </div>
 
-    </div>
+    </nav>
 
-  </nav>
+    <!-- Back to top button -->
+    <a id="btn-top" class="display-4">↑</a>
+
+    {% block scroll %}
+    <script>
+      const btn = $('#btn-top');
+
+      $(window).scroll(function() {
+        if ($(window).scrollTop() > 300) {
+          btn.addClass('show');
+        } else {
+          btn.removeClass('show');
+        }
+      });
+      
+      btn.on('click', function(e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop:0}, '300');
+      });
+    </script>
+    {% endblock %}
 
   </div>
+
 
   {% if user.is_authenticated %}
-  {% block content %}
   
-  {% endblock %}
-  {% else %}
-
-  <div class="darker align-items-center">
-    <div class="container m-5">
-      <div class="row darker justify-content-center align-items-center">
-        <div class="darker">
-          <div class="card-body darker p-3">
-            
-            <div class="d-flex justify-content-center mb-5">
-              <button type="button" 
-                class="button-historia text-uppercase lead" 
-                onclick="location.href='{% url 'register' %}'">
-                Create an account
-              </button>
-            </div>
-
-            <div class="text-center text-light">
-              <h1 class="lead mt-4 mb-4">
-                Or
-              </h1>
-            </div>
-
-            <div class="d-flex justify-content-center mb-5">
-              <button type="button" 
-                class="button-historia text-uppercase lead" 
-                onclick="location.href='{% url 'login' %}'">
-                Sign in
-              </button>
-            </div>
+    {% block content %}
     
+    {% endblock %}
+
+  {% elif not user.is_authenticated %}
+
+    {% block unauthenticated %}
+
+      <div class="container mx-auto text-center m-5">
+        
+        <div class="card-body darker m-5">
+
+          <div class="col-5 mx-auto m-5">
+            <button type="button" 
+              class="button-historia text-uppercase lead"
+              onclick="location.href='{% url 'register' %}'">
+              Create an account
+            </button>
           </div>
+
+          <div class="lead mt-4 mb-4 text-light">
+            Or
+          </div>
+
+          <div class="col-5 mx-auto m-5">
+            <button type="button" 
+              class="button-historia text-uppercase lead" 
+              onclick="location.href='{% url 'login' %}'">
+              Sign in
+            </button>
+          </div>
+
         </div>
+
       </div>
-    </div>
-  </div>
+      
+      <div class="container darker">
+
+          {% block tryit %}
+
+          {% endblock %}
+
+      </div>
+
+    {% endblock %}
 
   {% endif %}
 

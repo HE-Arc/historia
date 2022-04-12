@@ -1,5 +1,10 @@
 /* Variables */
 /* CREDITS TO : https://codepen.io/leandroamato */
+/* Smooth scrolling IF user doesn't have a preference due to motion sensitivities */
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
 
 :root {
   --rating-size: 10rem;

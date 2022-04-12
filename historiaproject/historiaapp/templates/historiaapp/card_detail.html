@@ -14,51 +14,70 @@
 
       <div class="row">
 
-        <div class="card bg-light p-3 m-3">
+        <div class="card-body bg-dark rounded p-3 m-3">
 
           <div class="row">
 
             {% if card.image %}
-            <div class="text-center shadow rounded m-3"
-            style="max-width:12rem;">
-              <img class="float-center img-fluid character-image rounded"
-              src="{{  card.image.url }}"
-              alt="Card image cap">
+            <div class="text-center rounded m-3"
+              style="max-width:18rem;">
+                <img class="float-center img-fluid character-image rounded"
+                src="{{  card.image.url }}"
+                alt="Card image cap">
             </div>
             {% endif %}
 
-            <div class="card character-text lead m-3 p-3 text-dark bg-light">
+            <div class="card bg-dark lead m-3 p-3 text-light darker">
 
-              <h4 class="card-header text-lg-left bg-warning text-dark">
+              <h4 class="card-header text-lg-left bg-info mb-3 text-light darker">
                 {{ card.name }}
               </h4>
+              <div class="card-group">
 
-              <h4 class="card-text">
-                Period historic:
-                {{ card.historicPeriod }}
-              </h4>
-  
-              <div class="card-text">
-                Domain: 
-                {{ card.domain }}
-              </div>
-  
-              <div class="card-text">
-                Category: 
-                {{ card.category }}
-              </div>
-  
-              <div class="card-text">
-                Birth: 
-                {{ card.birth }}
-              </div>
-  
-              <div class="card-text">
-                Land: 
-                {{ card.land }}
+                <div class="card-body bg-dark m-2 rounded text-light">
+                  <h4 class="card-text">
+                    Period historic:
+                  </h4>
+                  <p class="card-text">
+                    {{ card.historicPeriod }}
+                  </p>
+                </div>
+
+                <div class="card-body bg-dark m-2 rounded text-light">
+                  <div class="card-text">
+                    <div class="font-weight-bold">Domain: </div>
+                  </div>
+                  <p class="font-weight-normal text-info">{{ card.domain }}</p>
+                </div>
+
               </div>
 
-              <p class="card-text character-text">
+              <div class="card-group">
+                <div class="card-body">
+                  <h4 class="card-text">
+                    Category: 
+                  </h4>
+                  <p class="card-text">
+                    {{ card.category }}
+                  </p>
+                </div>
+                <div class="card-body">
+                  <div class="card-text">
+                    <div class="font-weight-bold">Birth: </div>
+                  </div>
+                  <p class="font-weight-light">{{ card.birth }}</p>
+                </div>
+                <div class="card-body">
+                  <h4 class="card-text">
+                    Land: 
+                  </h4>
+                  <p class="card-text">
+                    {{ card.land }}
+                  </p>
+                </div>
+              </div>
+
+              <p class="card-text">
                 {{ card.text }}
               </p>
               

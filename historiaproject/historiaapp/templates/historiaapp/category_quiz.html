@@ -3,50 +3,46 @@
 {% block title %} Quiz {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container mx-auto">
 
-  <h3>Quiz with category : {{cat}}</h3>
+  <div class="display-4 mb-4 mt-5">Quiz with category : {{cat}}
+  </div>
 
-  <div class="row">
+  <div class="row mx-auto">
 
     {% for quiz in object_list %}
       
-      <div class="mb-4 shadow col-sm-6 col-md-6 mt-4 bg-dark">
-        <div class="card character-card text-white bg-dark mt-4">
-          <div class="card-body">
-            
-            <h4 class="card-title text-lg-left">
-              {{ quiz.name }}
-            </h4>
-
-            <p class="card-text lead">
-              <small class="lead">
-              {{ quiz.text }}
-              </small>
-            </p>
-
-            <div class="card-body">
-
-              <div class="d-flex justify-content-center mb-5">
-                <button type="button"
-                  class="button-historia text-uppercase lead"
-                  style="max-width:35%;"
-                  onclick="location.href='{% url 'quizs-detail' quiz.id %}'">
-                  Begin
-                </button>
-              </div>
-
-            </div>
-
-          </div>
+      <div class="card-body col-5 bg-dark rounded m-2 mb-2 mt-3">
         
+        <h4 class="card-header bg-dark text-light mb-4 text-lg-left">
+          {{ quiz.name }}
+        </h4>
+
+        <p class="card-text lead">
+          <small class="lead">
+          {{ quiz.text }}
+          </small>
+        </p>
+
+        <div class="card-body">
+
+          <div class="d-flex justify-content-center mb-5">
+            <button type="button"
+              class="button-historia text-uppercase lead"
+              style="max-width:35%;"
+              onclick="location.href='{% url 'quizs-detail' quiz.id %}'">
+              Begin
+            </button>
+          </div>
+
         </div>
 
       </div>
 
       {% empty %}
+
       <div>
-        <p style="padding-top: 5rem;">No Quiz in this category yet.</p>
+        <p class="display-4">No Quiz in this category yet.</p>
       </div>
 
     {% endfor %}

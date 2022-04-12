@@ -6,6 +6,8 @@ Questions visualizer
 
 {% block content %}
 
+{% if user.is_superuser %}
+
 <div class="container text-light darker pt-3">
 
   <hr>
@@ -24,10 +26,6 @@ Questions visualizer
   <h5 class="display-4 mb-4 pb-3 darker border-bottom border-warning">
     List of questions actually available.
   </h5>
-
-    <!--
-    * for loop section to display all questions.
-    -->
 
     {% for questions in object_list %}
 
@@ -287,5 +285,16 @@ Questions visualizer
 
 </div>
 
+{% else %}
+
+<div class="container text-light darker p-5">
+
+  <h5 class="display-4 mb-4 pb-3 darker border-bottom border-warning">
+    You do not have the rights to access this.
+  </h5>
+  
+</div>
+
+{% endif %}
 
 {% endblock %}

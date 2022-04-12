@@ -17,10 +17,6 @@
 
     <div class="card-body darker">
 
-      <div class="card-header mb-4">
-        List of Quizzes actually available.
-      </div>
-
       <div class="card-deck d-flex justify-content-center">
         
         <!-- QUIZ DISPLAY -->
@@ -28,7 +24,7 @@
         {% for quizs in page_obj %}
 
           <div class="card bg-dark mb-4">
-            <div class="mw-70 shadow character-card text-white bg-dark">
+            <div class="mw-70 character-card text-white bg-dark">
               <div class="card-body">
                 
                 <h4 class="card-title text-lg-left">
@@ -41,11 +37,11 @@
                   </small>
                 </p>
 
-                <div class="card-header">
+                <div class="card-header bg-dark border-bottom border-info">
                   <p class="card-text lead font-weight-bold">
                     Questions
                   </p>
-
+                </div>
                   <!-- QUESTIONS DISPLAY -->
 
                   <div class="card-body" width="">
@@ -61,7 +57,7 @@
 
                       {% elif forloop.last %}
 
-                        <p class="card-text">
+                        <p class="small lead">
                           ... and {{ forloop.counter }} more questions.
                         </p>
 

@@ -14,77 +14,147 @@ Card list visualizer
 
   <h1 class="text-lg font-weight-light mb-2 p-3 mt-4">
     Cards
+    {% if user.is_superuser %}
+
     <a href="{% url 'cards-create' %}" 
     class="btn btn-warning float-right">Create card</a>
+
+    {% endif %}
   </h1>
-  
+
   <div class="card-deck all-cards">
+    <div class="container darker">
+      <div class="row">
 
-    <!-- for loop section to display all characters cards. -->
+        {% for card in page_obj %}
 
-    {% for card in object_list %}
+          <div class="card-body mx-auto col-5 m-1 mb-5 shadow character-card text-white bg-dark">
 
-      <div class="card shadow character-card text-white bg-dark">
+              <a href="{% url 'cards-detail' card.id %}" 
+              class="btn btn-info ">Informations</a>
 
-        <a href="{% url 'cards-detail' card.id %}" 
-        class="btn btn-secondary btn-sm p-6 m-2">Informations</a>
+              {% if card.image %}
+                <div class="text-center">
+                  <img class="card-img img-fluid mt-3 image-card"
+                  style="max-width: 16rem;"
+                  src=" {{  card.image.url }}"
+                  alt="Card image cap">
+                </div>
+              {% endif %}
 
-        {% if card.image %}
-        <div class="text-center">
-          <img class="card-img img-fluid character-image m-3 image-card"
-          src=" {{  card.image.url }}"
-          alt="Card image cap">
-        </div>
-        {% endif %}
+              <div class="card-body">
+                                  
+                <h4 class="card-title text-lg-left">
+                  {{ card.name }}
+                </h4>
 
-        <div class="card-body">
+                <div class="row mx-auto">
+                  <div class="card-group col-6">
+                    <div class="card-body">
+                      <div class="h6">
+                        Historic period:
+                      </div>
+                      <p class="lead small">
+                        {{ card.historicPeriod }}
+                      </p>
+                      <div class="h6">
+                        Domain: 
+                      </div>
+                        <p class="small text-info">{{ card.domain }}</p>
+                      </div>
+                  </div>
 
-          <h4 class="card-title text-lg-left">
-            {{ card.name }}
-          </h4>    
+                  <div class="card-group col-6">
+                    <div class="card-body">
+                      <div class="h6">
+                        Category: 
+                      </div>
+                      <p class="small lead">
+                        {{ card.category }}
+                      </p>
+                      <div class="h6">
+                          Birth: 
+                      </div>
+                        <p class="font-weight-light">{{ card.birth }}</p>
+                      <div class="h6">
+                          Land: 
+                      </div>
+                      <p class="small lead">
+                        {{ card.land }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-          <h4 class="card-text">
-            Period historic:
-            {{ card.historicPeriod }}
-          </h4>
+                <p><a href="#nogo" title="Show more..." onclick="display_details({{card.id}})">Show more...</a></p>
+                <p id="details{{card.id}}" class="card-text" style="display:none;">
+                  {{ card.text }}
+                </p>
+              </div>
 
-          <div class="card-text">
-            Domain: 
-            {{ card.domain }}
+              <div class="col-sm text-center mx-auto p-2 m-2">
+                <a href="{% url 'cards-update' card.id %}" class="btn btn-outline-success btn">Update</a>
+                <a href="{% url 'cards-delete' card.id %}" class="btn btn-outline-danger btn ml-5">Delete</a>
+              </div>
           </div>
 
-          <div class="card-text">
-            Category: 
-            {{ card.category }}
-          </div>
-
-          <div class="card-text">
-            Birth: 
-            {{ card.birth }}
-          </div>
-
-          <div class="card-text">
-            Land: 
-            {{ card.land }}
-          </div>
-
-          
-          <p><a href="#nogo" title="Show more..." onclick="display_details({{card.id}})">Show more...</a></p>
-          <p id="details{{card.id}}" class="card-text" style="display:none;">
-            {{ card.text }}
-          </p>
-
-
-        </div>
-
-        <div class="col-sm text-center mx-auto p-2 m-2">
-          <a href="{% url 'cards-update' card.id %}" class="btn btn-outline-success btn">Update</a>
-          <a href="{% url 'cards-delete' card.id %}" class="btn btn-outline-danger btn ml-5">Delete</a>
-        </div>
+        {% endfor %}
 
       </div>
-          
-    {% endfor %}
+    </div>
+  </div>
+
+
+      <!-- PAGINATION -->
+
+      <div class="d-flex justify-content-center darker">
+
+        <nav aria-label="pagination navbar navbar-dark darker">
+
+          <ul class="pagination navbar darker">
+
+            {% if page_obj.has_previous %}
+
+              <li class="page-item darker">
+                <a class="page-link darker" href="?page=1">
+                  &laquo; first
+                </a>
+              </li>
+
+              <li class="page-item darker">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                  {{ page_obj.previous_page_number }}
+                </a>
+              </li>
+
+            {% endif %}
+            
+            <li class="page-item active">
+              <a class="page-link" href="#">
+                {{ page_obj.number }}
+              </a>
+            </li>
+        
+            {% if page_obj.has_next %}
+
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                  {{ page_obj.next_page_number }}
+                </a>
+              </li>
+
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+                  last &raquo;
+                </a>
+              </li>
+
+            {% endif %}            
+          </ul>
+        </nav>
+      </div>
+
+      <!-- END PAGINATION -->
 
     <script>
       function display_details(id) {

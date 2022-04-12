@@ -120,3 +120,36 @@ button.button-historia.answer:active::before {
   box-shadow: 0 0 0 2px #000000, 0 0 #000000;
   transform: translate3d(0, 0, -1em);
 }
+
+/* back button */
+
+#btn-top {
+  display: inline-block;
+  color: white;
+  content: "\2191";
+  background-color: dodgerblue;
+  padding: 10px;
+  position: fixed;
+  bottom: 30px;
+  right: 60px;
+  border-radius: 5px;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  z-index: 1000;
+}
+
+#btn-top::after {
+  color: #fff;
+  text-decoration: none;
+}
+#btn-top:hover {
+  cursor: pointer;
+  background-color: #333;
+}
+#btn-top:active {
+  background-color: #555;
+}
+#btn-top.show {
+  opacity: 1;
+  visibility: visible;
+}

@@ -12,9 +12,9 @@ Historia
     <div class="container-fluid">
       <div class="pt-3">
         <div class="text-light d-flex justify-content-right">
-          <h1 class="lead mt-2 mb-2 animated fade">
+          <div class="h1 font-weight-light mt-2 mb-5 text-info mx-auto animated fade">
             Welcome {{ user.username }}.
-          </h1>
+          </div>
         </div>
       </div>
     </div>
@@ -31,52 +31,69 @@ Historia
     <div class="card text-white bg-dark">
 
       <div class="card-body darker">
-        <h4 class="display-5 darker col mt-5">Quizzes:</h4>
+        <h4 class="display-5 darker col mt-5 text-warning">Your scores:</h4>
         <div class="btn container darker">
-          <div class="row">            
+          <div class="row">
 
-            {% if rankings is None %}
-
-            {% else %}
             {% for ranking in rankings %}
 
-            <div class="btn container darker" onclick="location.href='{% url 'quizs-detail' ranking.quiz.id %}'">
-            
-              <div class="card-body darker text-light">
-            
-                <div class="row">
-                  <div class="col">
-                    <h4 class="card-title text-lg-left ">
-                      {{ ranking.quiz.id }}. {{ ranking.quiz.name }} ( {{ ranking.quiz.category.name }} )
-                    </h4>
-                    
-                    <p class="card-text lead">
-                      {{ ranking.quiz.text }}
-                    </p>
-                  </div>
-                  <div class="col">
-                    <div class="d-flex justify-content-center">
-                      <div class="card-body d-flex justify-content-center">
-                        <h4 class="card-title text-lg-left">
-                          Score:
-                        </h4>
-                        <div class="rating">
-                          {{ ranking.quiz.score_quiz }}%
+              {% if ranking.user.id is user.id %}
+
+              <div class="text-light d-flex justify-content-right">
+                <h1 class="lead mt-2 mb-2">
+                User: {{ user.username }}.
+                </h1>
+              </div>
+
+              <div class="btn container darker" onclick="location.href='{% url 'quizs-detail' ranking.quiz.id %}'">
+              
+                <div class="card-body darker text-light">
+              
+                  <div class="row">
+                    <div class="col">
+                      <h4 class="card-title text-lg-left ">
+                        {{ ranking.quiz.id }}. {{ ranking.quiz.name }} ( {{ ranking.quiz.category.name }} )
+                      </h4>
+                      
+                      <p class="card-text lead">
+                        {{ ranking.quiz.text }}
+                      </p>
+
+                      <p class="card-text lead">
+                        {{ ranking.date }}
+                      </p>
+                    </div>
+                    <div class="col">
+                      <div class="d-flex justify-content-center">
+                        <div class="card-body d-flex justify-content-center">
+                          
+                          <h4 class="card-title text-lg-left">
+                            Score:
+                          </h4>
+
+                          {% if ranking.score %}
+                            <div class="rating">
+                              {{ ranking.score }}%
+                            </div>
+                          {% else %}
+
+
+                          {% endif %}
+
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-
               </div>
-            </div>
+
+              {% endif %}
+
             {% endfor %}
 
-            {% endif %}
-
-            {% block scripts %}
+            {% block score %}
             <script>
-              const ratings = document.querySelectorAll(".rating");
+              var ratings = document.querySelectorAll(".rating");
               document.querySelectorAll(".rating").forEach((rating) => {
                   const scoreClass = 
                     parseInt(rating.innerHTML, 10) < 40 ? "bad" : 
@@ -99,7 +116,9 @@ Historia
       </div>
 
       <div class="card-body darker">
+        
         <h4 class="display-5 darker col mt-4">Cards:</h4>
+        
         <div class="container darker">
           <div class="row">
             {% for card in cards %}
@@ -131,26 +150,8 @@ Historia
             {% endfor %}
           </div>
         </div>
+
       </div>
-    
-      <div class="card-body darker">
-        <h4 class="display-5 col mt-5">Questions:</h4>
-        <div class="container">
-          <div class="row">
-
-            <a href="{% url 'questions-list' %}" class="btn btn-dark btn-sm">Liste de questions</a>
-
-            {% for question in questions %}
-              <div class="card shadow character-card text-dark bg-white p-3 m-3"
-                style="max-width: 14rem;height: auto;">
-                <h5 class="card-text">{{ question.name }}</h5>
-                <p class="card-text">{{ question.text }}</p>                                
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 

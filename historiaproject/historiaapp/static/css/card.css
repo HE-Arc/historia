@@ -8,6 +8,7 @@
 
 .character-image {
   height:auto;
+  border-radius: 1.1rem;
   max-width:100%;
 }
 
@@ -22,8 +23,7 @@
 .character-card {
   color:#1c1c1c;
   max-width: 100%;
-  /*height: 100%;*/
-  border-radius: 1.25rem;
+  border-radius: 1.1rem;
 }
 
 .character-text {
@@ -40,39 +40,4 @@
 
 .text:hover {
   color: azure;
-}
-
-.all-cards {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
-}
-
-.one-card {
-  display: table-cell;
-  margin: 0;
-  padding: 0;
-  height: fit-content;
-}
-
-.image-card {
-  width: 80% !important;
-}
-
-/****************************************************
-* 
-*   Style for sign up form.
-*
-*/ 
-
-.gradient-custom-4 {
-  /* fallback for old browsers */
-  background: #84fab0;
-
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
-
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
 }

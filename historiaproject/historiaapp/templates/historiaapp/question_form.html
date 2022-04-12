@@ -11,6 +11,9 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+
+{% if user.is_superuser %}
+
 <div class="container mb-4">
   
   <h1 class="display-3 mb-5 p-3 mt-4">
@@ -90,6 +93,15 @@
       </div>
     </div>
   </div>
-
 </div>
+{% else %}
+
+<div class="container text-light darker p-5">
+
+  <h5 class="display-4 mb-4 pb-3 darker border-bottom border-warning">
+    You do not have the rights to access this.
+  </h5>
+  </div>
+
+{% endif %}
 {% endblock %}

@@ -23,7 +23,9 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
 
     path('register/', views.register_view, name='register'),
-        
+    
+    path('try/', views.QuizTryView.as_view(), name="quizs_try"),
+    
     
     # Cards urls
     # ---------------------------------------------------------------------------------- #
@@ -71,9 +73,7 @@ urlpatterns = [
     path('dashboard/quiz/check/', views.QuizCheckView.as_view(), name="quizs-check"),
             
     path('dashboard/quiz/new/', views.QuizCreateView.as_view(), name="quizs-create"),
-    
-    path('dashboard/quiz/', views.QuizDetailView.as_view(), name="quizs_try"),
-    
+        
     path('dashboard/quiz/<pk>', views.QuizDetailView.as_view(), name="quizs-detail"),
     
     path('dashboard/quiz/<pk>/update', views.QuizUpdateView.as_view(), name="quizs-update"),
