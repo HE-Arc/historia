@@ -511,11 +511,14 @@ class RankingListView(generic.ListView):
 
 
 def rankings_user(request):
+    """_summary_
+    Function to display all rankings of the connected user.
+    Must be connected.
+    """
     rankings = Ranking.objects.filter(user=request.user).order_by("-score")
     paginator = Paginator(rankings, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    
     context = {}
     context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
     return render(request, "historiaapp/home.html", {'page_obj': page_obj}) 
@@ -527,31 +530,29 @@ def rankings_user(request):
 #|-----------------------/    
     
 class CategoriesListView(generic.ListView):
+    """_summary_
+    Function to display all categories.
+    Must be connected.
+    Args:
+        generic (_type_): List View _description_
+    """
     model = Category
-    #template_name = "historiaapp/category_list.html"
-    
     def get_queryset(self):
         return Category.objects.all()
 
     
-def quiz_with_category(request, category):
-    #model = Category
-    print(category)
-    #cat = Category.objects.filter(id=category).all()
-    #print(cat)
-    
+def quiz_with_category(request, category): 
+    """_summary_
+    Function to display all quizs of a specific category.
+    Must be connected.
+    """   
     cat = Category.objects.get(id=category)
-    print(cat)
-    
-    
     context = {}
-    truc = Quiz.objects.filter(category=cat.id).all()
-    
+    objects = Quiz.objects.filter(category=cat.id).all()
     context = {
-        "object_list": truc,
+        "object_list": objects,
         "cat": cat.name
     }
-    print(context)
     return render(request, "historiaapp/category_quiz.html", context)
 
     
