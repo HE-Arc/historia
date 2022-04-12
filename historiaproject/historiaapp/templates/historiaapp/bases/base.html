@@ -139,11 +139,47 @@
 
   </div>
 
-  {% block content %}
   {% if user.is_authenticated %}
+  {% block content %}
   
-  {% endif %}
   {% endblock %}
+  {% else %}
+
+  <div class="darker align-items-center">
+    <div class="container m-5">
+      <div class="row darker justify-content-center align-items-center">
+        <div class="darker">
+          <div class="card-body darker p-3">
+            
+            <div class="d-flex justify-content-center mb-5">
+              <button type="button" 
+                class="button-historia text-uppercase lead" 
+                onclick="location.href='{% url 'register' %}'">
+                Create an account
+              </button>
+            </div>
+
+            <div class="text-center text-light">
+              <h1 class="lead mt-4 mb-4">
+                Or
+              </h1>
+            </div>
+
+            <div class="d-flex justify-content-center mb-5">
+              <button type="button" 
+                class="button-historia text-uppercase lead" 
+                onclick="location.href='{% url 'login' %}'">
+                Sign in
+              </button>
+            </div>
+    
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endif %}
 
 </body>
 
