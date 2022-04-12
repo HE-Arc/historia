@@ -10,6 +10,7 @@
     <p class="display-4 mt-4 mb-4 font-weight-light">Welcome</p>
     <div class="mx-auto col-6 mt-4 mb-4">
     
+      <!-- Register form -->
       <form action="" method="POST">
         {% csrf_token %}
         <div id="form-errors">{{ form_errors }}</div>
@@ -41,13 +42,15 @@
           </button>
         </div>
       </form>
+      <!-- End form -->
       
       <div class="text-center text-light">
         <h1 class="lead mt-4 mb-4">
           Or
         </h1>
       </div>
-                    
+        
+      <!-- Button to sign in -->
       <div class="d-flex justify-content-center mb-5">
         <button type="button" 
           class="button-historia text-uppercase lead"

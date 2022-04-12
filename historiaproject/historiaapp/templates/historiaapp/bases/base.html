@@ -31,7 +31,7 @@
     
     <div class="container darker border-bottom border-warning">
 
-    <div class="row">
+    <div class="r ow">
 
       <a class="col-sm navbar-brand text-light darker" href="{% url 'home' %}">
         <div class="row">
@@ -60,6 +60,7 @@
 
       <div class="col-sm collapse navbar-collapse ml-4" id="navbarSupportedContent">
       
+      <!-- User is authenticated -->
       {% if user.is_authenticated %}
         <ul class="navbar-nav mr-auto lead m-2">
 
@@ -114,6 +115,7 @@
 
         </ul>
       
+      <!-- User is not authenticated -->
       {% else %}
 
         <ul class="navbar-nav mr-auto lead m-2">
@@ -138,10 +140,13 @@
 
   </div>
 
+  <!-- User is authenticated -->
   {% if user.is_authenticated %}
   {% block content %}
   
   {% endblock %}
+
+  <!-- User is not authenticated -->
   {% else %}
 
   <div class="darker align-items-center">
@@ -182,6 +187,7 @@
 
 </body>
 
+<!-- Footer -->
 <footer>
   <div class="container darker">
     <div class="row">
@@ -220,5 +226,6 @@
     </div>
   </div>
 </footer>
+<!-- End Footer -->
 
 </html>

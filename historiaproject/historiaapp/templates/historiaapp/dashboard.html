@@ -8,6 +8,7 @@ Historia
 
 <div class="container">
 
+  <!-- User is authenticated -->
   {% if user.is_authenticated %}
     <div class="container-fluid">
       <div class="pt-3">
@@ -102,6 +103,8 @@ Historia
         <h4 class="display-5 darker col mt-4">Cards:</h4>
         <div class="container darker">
           <div class="row">
+
+            <!-- for loop section to display all cards -->
             {% for card in cards %}
               <div class="card bg-light shadow character-card text-dark p-3 m-3"
                 style="max-width: 14rem; height: auto;">
@@ -129,6 +132,7 @@ Historia
 
               </div>
             {% endfor %}
+
           </div>
         </div>
       </div>
@@ -140,6 +144,7 @@ Historia
 
             <a href="{% url 'questions-list' %}" class="btn btn-dark btn-sm">Liste de questions</a>
 
+            <!-- for loop section to display all questions -->
             {% for question in questions %}
               <div class="card shadow character-card text-dark bg-white p-3 m-3"
                 style="max-width: 14rem;height: auto;">
@@ -147,6 +152,7 @@ Historia
                 <p class="card-text">{{ question.text }}</p>                                
               </div>
             {% endfor %}
+            
           </div>
         </div>
       </div>

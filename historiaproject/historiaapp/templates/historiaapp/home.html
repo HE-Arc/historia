@@ -10,6 +10,7 @@ Historia
 
   <div class="pt-3">
     
+    <!-- User is authenticated -->
     {% if user.is_authenticated %}
 
     <div class="darker align-items-center">
@@ -32,6 +33,7 @@ Historia
                   </tr>
                   </thead>
 
+                <!-- for loop section to display all rankings of the connected user -->
                 {% for ranking in page_obj %}
                   <div class="col-md-4 mb-4">
                       <tbody>
@@ -108,6 +110,8 @@ Historia
 
     <!-- END PAGINATION -->
     
+
+    <!-- User is not authenticated -->
     {% else %}
 
     <div class="darker align-items-center">

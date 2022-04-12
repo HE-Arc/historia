@@ -12,6 +12,7 @@
       
       <h1 class="display-4 text-center mt-5 mb-5">Sign in</h1>
       
+      <!-- Form to login -->
       <form action="" method="POST">
         {% csrf_token %}
         <div id="form-errors">{{ form_errors }}</div>
@@ -41,7 +42,8 @@
           Or
         </h1>
       </div>
-                    
+           
+      <!-- Button to create an account -->
       <div class="d-flex justify-content-center mb-5">
         <button type="button" 
           class="button-historia text-uppercase lead"
