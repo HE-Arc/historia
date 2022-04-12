@@ -34,7 +34,6 @@ button.button-historia {
 button.button-historia.hearc {
   color: #252525;
   padding: 1em 1.5em;
-  min-width: 172px;
   background: #f7f7f7;
   border-radius: 0.75em;
   transform-style: preserve-3d;

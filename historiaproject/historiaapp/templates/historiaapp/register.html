@@ -34,13 +34,28 @@
 
         <div class="text-center">
           <button type="submit" value="Register" class="button-historia answer mt-5 mb-5"
-          style="max-width:30%;min-width:15%;">
+          style="max-width:30%;min-width:35%;">
             <div class="lead">
               <strong>Register</strong>
             </div>
           </button>
         </div>
       </form>
+      
+      <div class="text-center text-light">
+        <h1 class="lead mt-4 mb-4">
+          Or
+        </h1>
+      </div>
+                    
+      <div class="d-flex justify-content-center mb-5">
+        <button type="button" 
+          class="button-historia text-uppercase lead"
+          style="max-width:40%;min-width:35%;"
+          onclick="location.href='{% url 'login' %}'">
+          Sign in
+        </button>
+      </div>
 
     </div>
   </div>
