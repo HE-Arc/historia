@@ -1,3 +1,11 @@
+################################################################################
+#                                                                              #
+# Description : This file contains all models for this project                 #
+# Authors     : Simon Meier, Alex Mozerski and Yasmine Margueron               #
+# Date        : 14.04.2022                                                     #
+#                                                                              #
+################################################################################
+
 from django.db import models
 from django.conf import settings
 

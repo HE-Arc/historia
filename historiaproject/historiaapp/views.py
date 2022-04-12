@@ -1,3 +1,11 @@
+################################################################################
+#                                                                              #
+# Description : This file contains all views for this project                  #
+# Authors     : Simon Meier, Alex Mozerski and Yasmine Margueron               #
+# Date        : 14.04.2022                                                     #
+#                                                                              #
+################################################################################
+
 from datetime import datetime
 from unicodedata import name
 from django.shortcuts import render, redirect

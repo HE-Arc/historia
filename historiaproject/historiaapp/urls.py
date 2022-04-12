@@ -1,3 +1,11 @@
+################################################################################
+#                                                                              #
+# Description : This file contains all urls for this project                   #
+# Authors     : Simon Meier, Alex Mozerski and Yasmine Margueron               #
+# Date        : 14.04.2022                                                     #
+#                                                                              #
+################################################################################
+
 from django.urls import path
 from django.contrib import admin
 from . import views

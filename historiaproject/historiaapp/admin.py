@@ -1,3 +1,11 @@
+################################################################################
+#                                                                              #
+# Description : This file contains all models available in the admin panel     #
+# Authors     : Simon Meier, Alex Mozerski and Yasmine Margueron               #
+# Date        : 14.04.2022                                                     #
+#                                                                              #
+################################################################################
+
 from django.contrib import admin
 from .models import *
 
