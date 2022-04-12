@@ -1,11 +1,13 @@
-"""
-WSGI config for historiaproject project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/
-"""
+################################################################################
+#                                                                              #
+# Description : This file contains WSGI configuration for historiaproject. It  #
+#     exposes the WSGI callable as a module-level variable named `application` #
+#     For more information on this file, see :                                 #
+#     https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/             #
+# Authors     : Simon Meier, Alex Mozerski and Yasmine Margueron               #
+# Date        : 14.04.2022                                                     #
+#                                                                              #
+################################################################################
 
 import os
 

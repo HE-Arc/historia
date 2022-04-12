@@ -5,7 +5,6 @@
 
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/card.css' %}">
-  <link rel="stylesheet" href="{% static 'css/category.css' %}">
   <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
   <link rel="stylesheet" href="{% static 'css/effects.css' %}">  
   <link rel="shortcut icon" type="image/png" href="{% static '../media/images/logo.svg' %}"/>
@@ -155,7 +154,6 @@
 
   </div>
 
-
   {% if user.is_authenticated %}
   
     {% block content %}
@@ -208,6 +206,7 @@
 
 </body>
 
+<!-- Footer -->
 <footer>
   <div class="container darker">
     <div class="row">
@@ -246,5 +245,6 @@
     </div>
   </div>
 </footer>
+<!-- End Footer -->
 
 </html>

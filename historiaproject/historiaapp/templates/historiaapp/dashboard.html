@@ -8,6 +8,7 @@ Historia
 
 <div class="container">
 
+  <!-- User is authenticated -->
   {% if user.is_authenticated %}
     <div class="container-fluid">
       <div class="pt-3">
@@ -121,6 +122,8 @@ Historia
         
         <div class="container darker">
           <div class="row">
+
+            <!-- for loop section to display all cards -->
             {% for card in cards %}
               <div class="card bg-light shadow character-card text-dark p-3 m-3"
                 style="max-width: 14rem; height: auto;">
@@ -148,6 +151,7 @@ Historia
 
               </div>
             {% endfor %}
+
           </div>
         </div>
 

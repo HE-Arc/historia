@@ -1,3 +1,11 @@
+################################################################################
+#                                                                              #
+# Description : This file contains all views for this project                  #
+# Authors     : Simon Meier, Alex Mozerski and Yasmine Margueron               #
+# Date        : 14.04.2022                                                     #
+#                                                                              #
+################################################################################
+
 from datetime import datetime
 from unicodedata import name
 from django.shortcuts import render, redirect
@@ -533,11 +541,14 @@ class RankingListView(generic.ListView):
 
 
 def rankings_user(request):
+    """_summary_
+    Function to display all rankings of the connected user.
+    Must be connected.
+    """
     rankings = Ranking.objects.filter(user=request.user).order_by("-score")
     paginator = Paginator(rankings, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    
     context = {}
     context['rankings'] = Ranking.objects.filter(user=request.user).order_by("-score")
     return render(request, "historiaapp/home.html", {'page_obj': page_obj}) 
@@ -549,6 +560,12 @@ def rankings_user(request):
 #|-----------------------/    
     
 class CategoriesListView(generic.ListView):
+    """_summary_
+    Function to display all categories.
+    Must be connected.
+    Args:
+        generic (_type_): List View _description_
+    """
     model = Category
     
     paginate_by = 4
