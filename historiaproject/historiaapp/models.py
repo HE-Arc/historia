@@ -64,11 +64,21 @@ class Question(models.Model):
 
 
 class Category(models.Model):
+    """_summary_
+    Category model with a name and an image. Category links to quiz.
+    Args:
+        models (_type_): _description_
+    """
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='images/category/', null=True)
 
     
 class Ranking(models.Model):
+    """_summary_
+    Model for ranking against a specific quiz and user.
+    Args:
+        models (_type_): _description_
+    """
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="quiz")
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     score = models.IntegerField()
