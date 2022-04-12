@@ -1,6 +1,13 @@
-/*
-Conic gradients are not supported in all browsers (https://caniuse.com/#feat=css-conic-gradients), so this pen includes the CSS conic-gradient() polyfill by Lea Verou (https://leaverou.github.io/conic-gradient/)
-*/
+/**
+ *  Description : Conic gradients are not supported in all browsers 
+ *                (https://caniuse.com/#feat=css-conic-gradients), 
+ *                so this pen includes the CSS conic-gradient() polyfill 
+ *                by Lea Verou (https://leaverou.github.io/conic-gradient/)
+ *  Authors     : Simon Meier, Alex Mozerski and Yasmine Margueron               
+ *  Date        : 14.04.2022  
+ * 
+ */
+
 
 // Find al rating items
 const ratings = document.querySelectorAll(".rating");
