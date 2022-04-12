@@ -7,7 +7,6 @@
 ################################################################################
 
 from datetime import datetime
-from unicodedata import name
 from django.shortcuts import render, redirect
 from django.views import generic, View
 from django.urls import reverse_lazy
@@ -15,10 +14,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 from django.core.paginator import Paginator
-from django.db.models import Count
 from django.contrib.auth.models import User
 from .models import *
 
@@ -153,7 +149,7 @@ class DashboardView(generic.TemplateView):
     """
     template_name = "historiaapp/dashboard.html"
     
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs):           
         if self.request.user.is_authenticated:
             context = super().get_context_data(**kwargs)
             context['quizzes'] = Quiz.objects.all()
@@ -164,7 +160,7 @@ class DashboardView(generic.TemplateView):
         else:
             context = {}
             return context
-
+        
 
 #|-----------------------|
 #| Cards                 |
@@ -179,7 +175,7 @@ class CardsListView(generic.ListView):
     """
     model = Card
     
-    paginate_by = 9
+    paginate_by = 6
     
     def get_queryset(self):
         return Card.objects.all()
