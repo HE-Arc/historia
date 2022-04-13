@@ -92,10 +92,13 @@ Card list visualizer
                 </p>
               </div>
 
+              {% if user.is_superuser %}
               <div class="col-sm text-center mx-auto p-2 m-2">
                 <a href="{% url 'cards-update' card.id %}" class="btn btn-outline-success btn">Update</a>
                 <a href="{% url 'cards-delete' card.id %}" class="btn btn-outline-danger btn ml-5">Delete</a>
               </div>
+              {% endif %}
+
           </div>
 
         {% endfor %}

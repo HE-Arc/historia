@@ -35,6 +35,7 @@
 
         <a class="col-sm navbar-brand text-light darker" href="{% url 'home' %}">
           <div class="row">
+
             <img src="{% static '../media/images/logo.svg' %}"
             width="100" height="100" alt="logo">
             
@@ -97,8 +98,16 @@
 
           <li class="nav-item active mr-4">
             <a class="nav-link text-warning" href="{% url 'rankings-user' %}">
+            <div class="btn btn-warning bi bi-award">
+              Your ranking
+            </div>
+            </a>
+          </li>
+          
+          <li class="nav-item active mr-4">
+            <a class="nav-link text-warning" href="{% url 'home' %}">
             <div class="btn btn-warning bi bi-trophy">
-              Rankings
+              World Rankings
             </div>
             </a>
           </li>

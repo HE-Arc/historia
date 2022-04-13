@@ -31,6 +31,12 @@ def home(request):
     """
     context = {}
     context['quiz'] = Quiz.objects.first()
+    
+    rankings = Ranking.objects.filter().order_by("-score")[:5]
+    paginator = Paginator(rankings, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context['page_obj'] = page_obj
     return render(request, 'historiaapp/home.html', context)
 
 

@@ -20,33 +20,36 @@ Historia
             <div class="card-body darker p-3">
               
               <h5 class="card-header mb-4">
-                List of ranking for quiz you did.
+                List of ranking of everyone.
               </h5>
 
               <div class="card-deck">
                 <table class="table table-striped table-dark">
                   <thead>
-                  <tr>
-                    <th scope="col">Quiz</th>
-                    <th scope="col">Score</th>
-                    <th scope="col">Date</th>
-                  </tr>
+                    <tr>
+                      <th scope="col">User</th>
+                      <th scope="col">Quiz</th>
+                      <th scope="col">Score</th>
+                      <th scope="col">Date</th>
+                    </tr>
                   </thead>
 
                 <!-- for loop section to display all rankings of the connected user -->
                 {% for ranking in page_obj %}
-                  <div class="col-md-4 mb-4">
-                      <tbody>
-                        <tr>
-                          <td>{{ ranking.quiz }}</td>
-                          <td>{{ ranking.score }}</td>
-                          <td>{{ ranking.date }}</td>
-                        </tr>
-                      </tbody>
 
+                  <div class="col-md-4 mb-4">
+                    <tbody>
+                      <tr>
+                        <td>{{ ranking.user }}</td>
+                        <td>{{ ranking.quiz }}</td>
+                        <td>{{ ranking.score }}</td>
+                        <td>{{ ranking.date }}</td>
+                      </tr>
+                    </tbody>
                   </div>
 
                   {% empty %}
+
                   <li>No ranking yet.</li>
                 
                 {% endfor %}
@@ -109,9 +112,7 @@ Historia
     </div>
 
     <!-- END PAGINATION -->
-    
 
-    <!-- User is not authenticated -->
     {% else %}
 
 

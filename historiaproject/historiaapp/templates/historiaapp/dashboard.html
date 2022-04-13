@@ -13,8 +13,9 @@ Historia
     <div class="container-fluid">
       <div class="pt-3">
         <div class="text-light d-flex justify-content-right">
-          <div class="h1 font-weight-light mt-2 mb-5 text-info mx-auto animated fade">
-            Welcome {{ user.username }}.
+          <div class="h1 font-weight-light mt-2 mb-5 mx-auto animated fade"
+              style="color:#75faff;">
+            Welcome to your dashboard {{ user.username }}.
           </div>
         </div>
       </div>
@@ -138,7 +139,7 @@ Historia
                   <a href="{% url 'cards-detail' card.id %}">
                     <img class="float-right"
                     src="{% static '../media/images/infos.svg' %}"
-                    width="32" height="32" alt="logo">
+                    width="42" height="42" alt="logo">
                   </a>
                 </div>
 
