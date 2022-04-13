@@ -31,6 +31,7 @@ class Card(models.Model):
     def __str__(self) -> str:
         return self.name
 
+
 class Quiz(models.Model):
     """_summary_
     Quiz model based on a number of questions.

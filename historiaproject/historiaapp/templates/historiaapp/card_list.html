@@ -13,12 +13,9 @@ Card list visualizer
   </h5>
 
   <h1 class="text-lg font-weight-light mb-2 p-3 mt-4">
-    Cards
     {% if user.is_superuser %}
-
     <a href="{% url 'cards-create' %}" 
     class="btn btn-warning float-right">Create card</a>
-
     {% endif %}
   </h1>
 

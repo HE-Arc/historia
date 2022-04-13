@@ -23,7 +23,7 @@
 
 </head>
 
-<body class="body text-light darker">
+<body class="body text-light darker mb-5">
   
   <div class="card darker border-0">
   
@@ -115,8 +115,8 @@
           <li class="nav-item active mr-4">
             <a class="nav-link text-warning" href="{% url 'logout' %}">
             <div class="btn btn-warning bi bi-box-arrow-left">
+              Logout
             </div>
-            Logout
             </a>
           </li>
           </ul>
@@ -166,7 +166,11 @@
   {% if user.is_authenticated %}
   
     {% block content %}
-    
+
+    <div class="container mb-5">
+
+    </div>
+
     {% endblock %}
 
   {% elif not user.is_authenticated %}

@@ -23,7 +23,7 @@ Historia
   {% endif %}
 
   <div class="col-md-12">
-    <h1 class="display-4">
+    <h1 class="display-2">
       Dashboard
     </h1>
     <hr/>
@@ -40,12 +40,6 @@ Historia
             {% for ranking in rankings %}
 
               {% if ranking.user.id is user.id %}
-
-              <div class="text-light d-flex justify-content-right">
-                <h1 class="lead mt-2 mb-2">
-                User: {{ user.username }}.
-                </h1>
-              </div>
 
               <div class="btn container darker" onclick="location.href='{% url 'quizs-detail' ranking.quiz.id %}'">
               
@@ -117,44 +111,54 @@ Historia
         </div>
       </div>
 
-      <div class="card-body darker">
-        
-        <h4 class="display-5 darker col mt-4">Cards:</h4>
-        
-        <div class="container darker mx-auto">
-          <div class="row mx-auto">
+      <div class="m-3 ml-5">
+        <a class="btn btn-primary btn-lg bi bi-chevron-double-right" 
+        data-toggle="collapse"
+        href="#show" 
+        role="button" 
+        aria-expanded="false" 
+        aria-controls="show">
+        Show all cards</a>
+      </div>
+      <div class="collapse" id="show">
+        <div class="card-body darker">
+          
+          <div class="container darker mx-auto">
+            <div class="row mx-auto">
+              
+              {% for character in cards %}
 
-            {% for card in cards %}
-              <div class="card col-5 mx-auto bg-light shadow character-card text-dark p-3 m-3"
-                style="max-width: 16rem; height: auto;">
-                
-                <div class="bg-light">
-                  <h5 class="card-text">{{ card.name }}</h5>
-                  <p class="card-text">{{ card.birth }}</p>
+                <div class="card col-5 mx-auto bg-light shadow character-card text-dark p-3 m-3"
+                  style="max-width: 16rem; height: auto;">
+                  
+                  <div class="bg-light">
+                    <h5 class="card-text">{{ character.name }}</h5>
+                    <p class="card-text">{{ character.birth }}</p>
+                  </div>
+
+                  {% load static %}
+
+                  <div class="bg-light">                                                  
+                    <a href="{% url 'cards-detail' character.id %}">
+                      <img class="float-right"
+                      src="{% static '../media/images/infos.svg' %}"
+                      width="42" height="42" alt="logo">
+                    </a>
+                  </div>
+
+                  <div class="text-center">
+                    <img class="float-center img-fluid character-image rounded mt-3"
+                    src="{{ character.image.url }}"
+                    alt="Card image cap">
+                  </div>
+
                 </div>
 
-                {% load static %}
+              {% endfor %}
 
-                <div class="bg-light">                                                  
-                  <a href="{% url 'cards-detail' card.id %}">
-                    <img class="float-right"
-                    src="{% static '../media/images/infos.svg' %}"
-                    width="42" height="42" alt="logo">
-                  </a>
-                </div>
-
-                <div class="text-center">
-                  <img class="float-center img-fluid character-image rounded mt-3"
-                  src="{{ card.image.url }}"
-                  alt="Card image cap">
-                </div>
-
-              </div>
-            {% endfor %}
-
+            </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
