@@ -38,12 +38,7 @@ namespace :python do
 	    execute "python3.8 -m venv #{venv_path}"
             execute "source #{venv_path}/bin/activate"
             execute "#{venv_path}/bin/pip install -r #{release_path}/requirements.txt"
-            execute "cd #{release_path}/historiaproject && #{venv_path}/bin/python3 manage.py makemigrations"
-            execute "cd #{release_path}/historiaproject && #{venv_path}/bin/python3 manage.py migrate"
-            execute "cd #{release_path}/historiaproject && #{venv_path}/bin/python3 manage.py loaddata cards.json"
-            execute "cd #{release_path}/historiaproject && #{venv_path}/bin/python3 manage.py loaddata questions.json"
-            execute "cd #{release_path}/historiaproject && #{venv_path}/bin/python3 manage.py loaddata quizzes.json"
-        end
+       end
     end
 end
 
