@@ -41,8 +41,8 @@ class Quiz(models.Model):
     text = models.TextField(max_length=2000)
     questions = models.ManyToManyField('Question', related_name="questions")
     score_quiz = models.IntegerField(default=0)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name="category")    
-    
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name="category", null=True)    
+
     def __str__(self) -> str:
         return self.name
 

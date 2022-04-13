@@ -30,7 +30,7 @@ DEBUG = True
 
 # SERVER
 # ALLOWED_HOSTS = ['historia.srvz-webapp.he-arc.ch']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['historia.srvz-webapp.he-arc.ch']
 
 # historia.srvz-webapp.he-arc.ch
 # Application definition
