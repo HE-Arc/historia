@@ -1,4 +1,4 @@
-![logo](https://user-images.githubusercontent.com/91063762/163147021-d7b9cadc-9254-4d26-9f1f-b10d7eeb739f.svg)
+<img src="https://user-images.githubusercontent.com/91063762/163147512-7689ed6c-385b-4609-ac62-bc7e61623027.svg" width="100" height="100">
 
 # Historia
 
