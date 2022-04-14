@@ -101,13 +101,9 @@ Historia uses [Capistrano](https://capistranorb.com/) for continuous deployment.
 ![image](https://user-images.githubusercontent.com/91063762/163145645-4eef0ae0-5ca9-4bef-9886-06d0125d2c70.png)
 
 
-## Problème lors du dernier déploiement
+## Problem when deploying
 
-Nous avons réalisé 2 déploiement à l'aide de mySQL qui se sont bien déroulés.
-Lors de notre dernier déploiement, celui-ci s'est mal passé à cause d'une non-possibilité de migrer. 
-Afin d'éviter de tout casser avant la présentation du 14 avril 2022, nous avont décidé de faire en sorte qze ça fonctionne avec sqlite.
-
-
+While realising the application, two deployments using MySQL were perfectly fine. Unfortunately, the last one around midnight before the release went wrong. The error was about a forgeign key constraint on the quiz about the model category. Normally, `python manage.py migrate` would resolve the problem. The thing is that it did not, because the command was not possible, as the category table was not created in the MySQL database. `python manage.py makemigrations` did not see any change in the database, even if the model did change. As simple as it seems, we thought about droping the database to begin anew, but because it was just before the release and presenting the application, we just made possible using the app, even if we had to use the sqlite3.
 
 ## Authors
 * Alex Mozerski (@alex.mozerski)
