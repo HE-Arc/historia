@@ -100,6 +100,15 @@ Historia uses [Capistrano](https://capistranorb.com/) for continuous deployment.
 ![image](https://user-images.githubusercontent.com/91063762/163145509-2f6ce022-f430-4fe4-9083-57c35155b7a4.png)
 ![image](https://user-images.githubusercontent.com/91063762/163145645-4eef0ae0-5ca9-4bef-9886-06d0125d2c70.png)
 
+
+## Problème lors du dernier déploiement
+
+Nous avons réalisé 2 déploiement à l'aide de mySQL qui se sont bien déroulés.
+Lors de notre dernier déploiement, celui-ci s'est mal passé à cause d'une non-possibilité de migrer. 
+Afin d'éviter de tout casser avant la présentation du 14 avril 2022, nous avont décidé de faire en sorte qze ça fonctionne avec sqlite.
+
+
+
 ## Authors
 * Alex Mozerski (@alex.mozerski)
 * Yasmine Margueron (@yasmine.margueron)
