@@ -78,10 +78,10 @@ python manage.py loaddata quizzes.json
 ```
 
 
-8. Compte administrateur
-Nous avons créé en amont un compte administrateur pour vous permettre de tester les fonctionnalités dans ce mode :
-__**user:** Admin__
-__**mdp:** k3yb0ard__
+8. Compte administrateur <br>
+Nous avons créé en amont un compte administrateur pour vous permettre de tester les fonctionnalités dans ce mode : <br>
+__user: Admin__ <br>
+__mdp: k3yb0ard__ <br>
 
 
 
