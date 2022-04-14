@@ -77,6 +77,15 @@ python manage.py loaddata questions.json
 python manage.py loaddata quizzes.json
 ```
 
+
+8. Compte administrateur
+Nous avons créé en amont un compte administrateur pour vous permettre de tester les fonctionnalités dans ce mode :
+__**user:** Admin__
+__**mdp:** k3yb0ard__
+
+
+
+
 ## Continuous Deployment
 
 Historia uses [Capistrano](https://capistranorb.com/) for continuous deployment. 
